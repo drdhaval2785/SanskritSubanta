@@ -31,7 +31,15 @@ $hl = array("k","K","g","G","N","c","C","j","J","Y","w","W","q","Q","R","t","T",
 $e = array("e","E","o","O");
 $dirgha = array("A","I","U","F","X","e","E","o","O");
 $hrasva = array("a","i","u","f","x");
-       
+$guna = array ("e","o");
+$vruddhi = array("E","O");
+$aa = array("a","A");
+$akarantaupasarga = array("pra","apa","ava","upa",);
+$changedupasarga = array("prAr","apAr","avAr","upAr");
+$upasarga = array("pra","prati","api","parA","apa","upa","pari","anu","ava","vi","saM","su","ati","ni","nir","ut","adhi","dur","abhi");
+$verbs_ru = array("fkz","fc","fC","fj","fYj","fR","ft","fd","fD","fn","fP","fBukz","FmP","fmP","fS","fz","fh");
+$verbs_changed = array("kz","c","C","j","Yj","R","t","d","D","n","P","Bukz","mP","mP","S","z","h");
+
 function prat($text)  // prat for pratyAhAra
 {
 global $shiv; 
@@ -140,23 +148,24 @@ function two($a,$b,$c,$d,$merge)
           {
     for($j=0;$j<count($b);$j++)
             {
-      $p =  str_replace($a[$i].$b[$j],$c[$i].$d[$j],$p);    
+      $p =  str_replace($a[$i].$b[$j],$c[$i].$d[$j],$p);   
             }
           }
      $text1[$z]  = $p;      
     }
     if ($merge === 0)
     {
-        $text = $text1;
+        $text2 = $text1;
     }
     if ($merge === 1)
     {
-        $text = array_merge($text,$text1);
-        $text = array_unique($text);
-        $text = array_values($text);
+        $text2 = array_merge($text,$text1);
+        $text2 = array_unique($text2);
+        $text2 = array_values($text2);
     }
-    return $text;
+    return $text2;
 }
+
 
 function three($a,$b,$c,$d,$e,$f,$merge)
 {global $text;
@@ -337,68 +346,419 @@ return $arr;
 }
 
 // function to show the text on screen.
-function display()
+function display($n)
 {global $text;
+    echo "</br>";
+    if ($n === 1) { echo "Please note: Wherever there is dvitva, it is optionally negated by sarvatra zAkalyasya. (8.4.51)</br>"; }
+    if ($n === 2) { global $text1; $text2 = $text; $text = $text1; }
     for($i=1;$i<count($text)+1;$i++)
     {
         echo "$i : ".$text[$i-1]."</br>";
     }
-    echo "</br>";
-}
+    echo "---------------------------------------------------------------------------------------------------------------------------------------</br>";
+    if ($n === 2) { $text1 = $text; $text = $text2; } 
+    
+    }
 
-
-function dvitva($kantha,$talu,$murdha)
-{
-global $text;
-$combinations = array(); 
-
-// get all possible combianations of $kantha+$talu+$murdha
-foreach($kantha as $ki => $k)
+function dvitva ($kantha,$talu,$murdha,$oshtha,$location,$merge)
 { 
-    foreach($talu as $ti => $t)
-    { 
-        foreach($murdha as $mi => $m)
-        {
-            $combinations[] = $k.$t.$m; 
+ global $text;   
+// this is an array of the input values to use below 
+
+
+ // get all possible combianations of $kantha+$talu+$murdha
+//$combinations = get_string_combinations(); 
+   $combinations = array(); 
+
+     foreach($kantha as $k) // "a","k","g","n","h"
+     { 
+        foreach($talu as $t) // "i","c","j","y","s"
+        { 
+            foreach($murdha as $m) // "f","w","q","r","z"
+            {
+               // foreach ($oshtha as $o)
+               // {
+                 $combinations[] = $k.$t.$m;//.$o;    
+               // }
+            } 
         } 
-    } 
-}
-$strings_to_test = $text; 
-foreach ($strings_to_test as $stti => $string) 
+     } 
+
+$values1 = array();
+foreach ($text as $stti => $string)  // 'aifkcwh', 'aifkcwhsz', 'kim', 'aif'
 {
-    $values = array($string); 
+
+    $values = array($string);  
+    
     reset($values); 
+
+
+    // loop through $values using an array pointer 
+    // while the current array pointer position is not null/false
     while(current($values)!==false)
     {
+        // on the first iteration, $values will be the inputted string 
+        // from $strings_to_test... our example is "aifkcwh"
         $value = current($values); 
+        if ($merge === 1)
+        {
+        $values1[] = current($values);
+        }
+        // for each possible combination of $kantha.$talu.$murdha
+        // let's say our first combination is "aif"
         foreach($combinations as $ci => $combination)
-        { 
+        {  
+            // look and see if the current value we are looking
+            // at ("aifkcwh") contains this combination string  
             if (strpos($value,$combination)!==false)
-            {
-                // found in string 
-                $newval = do_string_replacements($value, $combination);  
-                if (!in_array($newval,$values)) 
+            { 
+                // if it does... we perform the string mutation
+                // "aif" does exist in the string "aifkcwh"
+
+                // get the second letter in the combination string
+                
+                $single = $combination[$location-1];   // i 
+
+                // double that second letter
+                $post = substr($combination,$location);
+                $pre = chop($combination,$post);
+                // create a new string that is the combination with the 
+                // second letter doubled... 
+                $newcom = $pre.$combination[$location-1].$post;
+
+                // replace that string in $values so that
+                // aifkcwh becomes aiifkcwh
+                $newval = str_replace($combination, $newcom, $value); // aiifkcwh
+
+                // does the new value ("aiifkcwh") exist in $values?  
+                // have we already recorded this mutation?  
+                if (!in_array($newval,$values1)) 
+                { 
+                    // if not... append it to the array $values
+                    $values1[] = $newval; 
+                    // now, values would go from being = array([0]=>'aifkcwh'); 
+                    // to array ([ 0] => 'aifkcwh', [1] => 'aiifkcwh' ); 
+                }
+                else 
                 {
-                    $values[] = $newval; 
                 }
             } 
-        }
-        next($values); 
+        } // <-- end of the foreach statement, this will go through all combinations 
+          //     in our combinations array for this particular value which is currently aifkcwh
+
+
+        // next($values) increments the array pointer so that we move to the next
+        // value in the $values array.  since we just added a value, 
+        // $values now contains array ([ 0] => 'aifkcwh', [1] => 'aiifkcwh' ); 
+
+        // before this statement index 0, current($values) == 'aifkcwh'
+        next($values);  
+        // after this statement index 1, current($values) == 'aiifkcwh'
+        // for the next loop, we will test this string for all the combinations
+        // if there is no next value, the `while` loop will end 
     }  
-    $output[] = $values; 
+
+    // after we have gone through every possible combination for "aifkcwh",
+    // we will have something like this: 
+    /*
+        Array
+          (
+                [0] => aifkcwh
+                [1] => aiifkcwh
+                [2] => aifkccwh
+                [3] => aiifkccwh
+          )
+    */
+    // and we add that to the $output array that contains an index for 
+    // each input string, which contains all possible mutations of that string 
+    $output[$string] = $values1; 
 }
 
-$output1 = flatten($output);
-return $output1;
+$output = flatten($output);
+$output = array_unique($output);
+$output = array_values($output);
+
+return $output;
 }
 
-function do_string_replacements($value, $combination)
+
+
+
+
+
+
+function lopa ($kantha,$talu,$murdha,$oshtha,$location,$merge)
+{ 
+ global $text;   
+// this is an array of the input values to use below 
+
+
+ // get all possible combianations of $kantha+$talu+$murdha
+//$combinations = get_string_combinations(); 
+   $combinations = array(); 
+
+     foreach($kantha as $k) // "a","k","g","n","h"
+     { 
+        foreach($talu as $t) // "i","c","j","y","s"
+        { 
+            foreach($murdha as $m) // "f","w","q","r","z"
+            {
+                foreach ($oshtha as $o)
+                {
+                 $combinations[] = $k.$t.$m.$o;    
+                }
+            } 
+        } 
+     } 
+
+$values1 = array();
+foreach ($text as $stti => $string)  // 'aifkcwh', 'aifkcwhsz', 'kim', 'aif'
 {
-    $single = $combination[1];  
-    $double = str_repeat($single, 2);    
-    $newcom = str_ireplace($single, $double, $combination);   
-    $newval = str_ireplace($combination, $newcom, $value);
-    return $newval; 
-} 
 
-?>
+    $values = array($string);  
+    
+    reset($values); 
+
+
+    // loop through $values using an array pointer 
+    // while the current array pointer position is not null/false
+    while(current($values)!==false)
+    {
+        // on the first iteration, $values will be the inputted string 
+        // from $strings_to_test... our example is "aifkcwh"
+        $value = current($values); 
+        if ($merge === 1)
+        {
+        $values1[] = current($values);
+        }
+        // for each possible combination of $kantha.$talu.$murdha
+        // let's say our first combination is "aif"
+        foreach($combinations as $ci => $combination)
+        {  
+            // look and see if the current value we are looking
+            // at ("aifkcwh") contains this combination string  
+            if (strpos($value,$combination)!==false)
+            {
+                // if it does... we perform the string mutation
+                // "aif" does exist in the string "aifkcwh"
+
+                // get the second letter in the combination string
+                
+                $single = $combination[$location-1];   // i 
+
+                // double that second letter
+                $post = substr($combination,$location-1);
+                $pre = chop($combination,$post);
+                $post = substr($post,1);
+                // create a new string that is the combination with the 
+                // second letter doubled... 
+                $newcom = $pre.$post;
+
+                // replace that string in $values so that
+                // aifkcwh becomes aiifkcwh
+                $newval = str_replace($combination, $newcom, $value); // aiifkcwh
+
+                // does the new value ("aiifkcwh") exist in $values?  
+                // have we already recorded this mutation?  
+                if (!in_array($newval,$values1)) 
+                { 
+                    // if not... append it to the array $values
+                    $values1[] = $newval; 
+                    // now, values would go from being = array([0]=>'aifkcwh'); 
+                    // to array ([ 0] => 'aifkcwh', [1] => 'aiifkcwh' ); 
+                }
+                else 
+                {
+                }
+            } 
+        } // <-- end of the foreach statement, this will go through all combinations 
+          //     in our combinations array for this particular value which is currently aifkcwh
+
+
+        // next($values) increments the array pointer so that we move to the next
+        // value in the $values array.  since we just added a value, 
+        // $values now contains array ([ 0] => 'aifkcwh', [1] => 'aiifkcwh' ); 
+
+        // before this statement index 0, current($values) == 'aifkcwh'
+        next($values);  
+        // after this statement index 1, current($values) == 'aiifkcwh'
+        // for the next loop, we will test this string for all the combinations
+        // if there is no next value, the `while` loop will end 
+    }  
+
+    // after we have gone through every possible combination for "aifkcwh",
+    // we will have something like this: 
+    /*
+        Array
+          (
+                [0] => aifkcwh
+                [1] => aiifkcwh
+                [2] => aifkccwh
+                [3] => aiifkccwh
+          )
+    */
+    // and we add that to the $output array that contains an index for 
+    // each input string, which contains all possible mutations of that string 
+    $output[$string] = $values1; 
+}
+
+$output = flatten($output);
+$output = array_unique($output);
+$output = array_values($output);
+
+return $output;
+}
+
+function dvitvaprakarana()
+{ global $text,$hrasva,$first,$second,$ac,$hl;
+
+/* aco rahAbhyAM dve (8.4.46) */ 
+$rh = array("r","h");
+$text = dvitva($ac,$rh,prat('yr'),array(""),3,1);
+echo "By aco rahAbhyAM dve (8.4.46) :";
+display(1);
+
+/*anaci ca (8.4.47)*/ // Here the sudhI + upAsya - what about the Asy - Assy is possbile ? Code gives it. But there are 4 options. Code gives two only.
+// The cause for using $hrasva instead of $ac is that the dIrgha vowels are debarred by dIrghAdAcAyANAm.
+$text = dvitva($hrasva,prat('yr'),prat('hl'),array(""),2,1);
+echo "By anaci ca (8.4.47):";
+display(1);
+
+/* nAdinyAkroze putrasya (8.4.48) */
+if (preg_match('/[putra]$/',$first) && $second === "AdinI")
+{
+    echo "By nAdinyAkroze putrasya (8.4.48) - If Akroza is meant : The dvivacana doesn't happen. </br> Otherwise dvivacana will happen.</br>";
+}
+/* vA hatajagdhayoH (vA 5022) */
+if (preg_match('/[putra]$/',$first) && $second === "hatI")
+{
+echo "By vA hatajagdhayoH (vA 5022) :";
+display(0);
+}
+if (preg_match('/[putra]$/',$first) && $second === "jagDI")
+{
+echo "By vA hatajagdhayoH (vA 5022) :";
+display(0);
+}
+
+/* triprabhRtiSu zAkaTAyanasya (8.4.50)*/
+$hrasva1 = "'".implode("",$hrasva)."'";
+if (preg_match('/['.$hrasva1.']['.pc('hl').']['.pc('hl').']['.pc('hl').']/',$first.$second))
+{
+echo "Please note: By triprabhRtiSu zAkaTAyanasya (8.4.50), the dvitva is optionally not done in cases where there are more than three hals appearing consecutively. e.g. indra - inndra.  </br>";
+}
+
+/* sarvatra zAkalyasya (8.4.51) */
+// It is not coded separately. It is sent as a message in all display function when 1 is selected as option. 
+
+/* dIrghAdAcAryANAm (8-4-52) */
+// Not coded separately, because we did dvitva only for $hrasva, and not for 'ac'. So this is already taken care of.
+
+/* jhalAM jaz jhaSi (8.4.53) */
+$text = two(prat('Jl'),prat('Jz'),savarna(prat('Jl'),prat('jS')),prat('Jz'),0);
+echo "By jhalAM jaz jhaSi (8.4.53):";
+display(0);
+/* saMyogAntasya lopaH (8.2.23) */ // coding pending because not clear. And also 'yaNaH pratiSedho vAcyaH' prohibits its application.
+/* yaNo mayo dve vAcye (vA 5018) yaN in paJcamI and may in SaSThI)*/
+$text = dvitva(prat('yR'),prat('my'),array(""),array(""),2,1);
+echo "By yaNo mayo dve vAcye (yaN in paJcamI and may in SaSThI) (vA 5018) :";
+display(1); 
+/* yaNo mayo dve vAcye (vA 5018) may in paJcamI and yaN in SaSThI)*/
+$text = dvitva(prat('my'),prat('yR'),array(""),array(""),2,1);
+echo "By yaNo mayo dve vAcye (may in paJcamI and yaN in SaSThI) (vA 5018):";
+display(1);
+
+/* halo yamAM yami lopaH (8.4.64) */
+$text = lopa($hl,prat('ym'),prat('ym'),array(""),2,1);
+echo "By halo yamAM yami lopaH (8.4.64) :";
+display(0);
+
+/* jharo jhari savarNe (8.4.65) */
+for ($i=0;$i<count(prat('Jr'));$i++)
+{$kkk = array("k","K","g","G"); $ccc = array("c","C","j","J","S");
+$www = array("w","W","q","Q","z"); $ttt = array("t","T","d","D","s");
+$ppp = array("p","P","b","B");
+$text = lopa(prat('hl'),$kkk,$kkk,array(""),2,1);
+$text = lopa(prat('hl'),$ccc,$ccc,array(""),2,1);
+$text = lopa(prat('hl'),$www,$www,array(""),2,1);
+$text = lopa(prat('hl'),$ttt,$ttt,array(""),2,1);
+$text = lopa(prat('hl'),$ppp,$ppp,array(""),2,1);
+}
+echo "By jharo jhari savarNe (8.4.65) :";
+display(0);
+
+return $text; 
+}
+
+
+ // ================================================================
+ // functions 
+ // ================================================================
+
+
+ // get all possible combinations of $kantha.$talu.$murdha
+ function get_string_combinations()
+ {
+     $kantha = array("a","k","g","n","h");
+     $talu   = array("i","c","j","y","s");
+     $murdha = array("f","w","q","r","z");
+
+     $combinations = array(); 
+
+     foreach($kantha as $k) // "a","k","g","n","h"
+     { 
+        foreach($talu as $t) // "i","c","j","y","s"
+        { 
+            foreach($murdha as $m) // "f","w","q","r","z"
+            {
+                $combinations[] = $k.$t.$m; 
+            } 
+        } 
+     } 
+     // this gives us an array if 125 items 
+     /*
+     $combinations = 
+        Array
+        (
+             [0] => aif
+             [1] => aiw
+             [2] => aiq
+             [3] => air
+             [4] => aiz
+             .... 
+             [121] => hsw
+             [122] => hsq
+             [123] => hsr
+             [124] => hsz
+        ) 
+     */
+     return $combinations;
+ }
+
+ function merge($text,$text1)
+ {
+     $text = array_merge($text,$text1);
+    $text = array_unique($text);
+    $text = array_values($text);
+    return $text;
+ }
+ 
+ function flat($array)
+ {
+     $array = "'".implode("",$array)."'";
+     return $array;
+ }
+
+ function blank($n)
+ {
+     $array = array();
+     while(count($array)!== $n)
+     {
+        array_push($array,"");
+     }
+     return $array;
+ }
+
+ 
+ 
+ ?>
