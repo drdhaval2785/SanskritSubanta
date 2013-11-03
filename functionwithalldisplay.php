@@ -1,4 +1,4 @@
-﻿<?php
+﻿ï»¿<?php
 /* Defining grammatical arrays */
 $shiv=array("a","i","u","-R","f","x","-k","e","o","-N","E","O","-c","h","y","v","r","-w","l","-R","Y","m","N","R","n","-m","J","B","-Y","G","Q","D","-z","j","b","g","q","d","-S","K","P","C","W","T","c","w","t","-v","k","p","-y","S","z","s","-r","h","-l");
 $kantha = array("a","A","k","K","g","G","N","h","H");
@@ -614,20 +614,15 @@ function dvitvaprakarana()
 
 /* aco rahAbhyAM dve (8.4.46) */ 
 $rh = array("r","h");
-if (checkarray($ac,$rh,blank(0),blank(0)) === 1)
-{
 $text = dvitva($ac,$rh,prat('yr'),array(""),3,1);
 echo "By aco rahAbhyAM dve (8.4.46) :";
 display(1);
-}
 /*anaci ca (8.4.47)*/ // Here the sudhI + upAsya - what about the Asy - Assy is possbile ? Code gives it. But there are 4 options. Code gives two only.
 // The cause for using $hrasva instead of $ac is that the dIrgha vowels are debarred by dIrghAdAcAyANAm.
-if(checkarray($hrasva,prat('yr'),blank(0),blank(0)) === 1)
-{
 $text = dvitva($hrasva,prat('yr'),prat('hl'),array(""),2,1);
 echo "By anaci ca (8.4.47):";
 display(1);
-}
+
 /* nAdinyAkroze putrasya (8.4.48) */
 if (preg_match('/[putra]$/',$first) && $second === "AdinI")
 {
@@ -659,37 +654,25 @@ echo "Please note: By triprabhRtiSu zAkaTAyanasya (8.4.50), the dvitva is option
 // Not coded separately, because we did dvitva only for $hrasva, and not for 'ac'. So this is already taken care of.
 
 /* jhalAM jaz jhaSi (8.4.53) */
-if(checkarray(prat('Jl'),prat('Jz'),blank(0),blank(0)) === 1)
-{
 $text = two(prat('Jl'),prat('Jz'),savarna(prat('Jl'),prat('jS')),prat('Jz'),0);
 echo "By jhalAM jaz jhaSi (8.4.53):";
 display(0);
-}
 /* saMyogAntasya lopaH (8.2.23) */ // coding pending because not clear. And also 'yaNaH pratiSedho vAcyaH' prohibits its application.
 /* yaNo mayo dve vAcye (vA 5018) yaN in paJcamI and may in SaSThI)*/
-if (checkarray(prat('yR'),prat('my'),blank(0),blank(0)) === 1)
-{
 $text = dvitva(prat('yR'),prat('my'),array(""),array(""),2,1);
 echo "By yaNo mayo dve vAcye (yaN in paJcamI and may in SaSThI) (vA 5018) :";
 display(1); 
-}
 /* yaNo mayo dve vAcye (vA 5018) may in paJcamI and yaN in SaSThI)*/
-if (checkarray(prat('my'),prat('yR'),blank(0),blank(0)) === 1)
-{
 $text = dvitva(prat('my'),prat('yR'),array(""),array(""),2,1);
 echo "By yaNo mayo dve vAcye (may in paJcamI and yaN in SaSThI) (vA 5018):";
 display(1);
-}
+
 /* halo yamAM yami lopaH (8.4.64) */
-if (checkarray($hl,prat('ym'),prat('ym'),blank(0)) === 1)
-{
 $text = lopa($hl,prat('ym'),prat('ym'),array(""),2,1);
 echo "By halo yamAM yami lopaH (8.4.64) :";
 display(0);
-}
+
 /* jharo jhari savarNe (8.4.65) */
-if(checkarray(prat('hl'),prat('Jr'),prat('Jr'),blank(0)) === 1)
-{
 for ($i=0;$i<count(prat('Jr'));$i++)
 {$kkk = array("k","K","g","G"); $ccc = array("c","C","j","J","S");
 $www = array("w","W","q","Q","z"); $ttt = array("t","T","d","D","s");
@@ -702,26 +685,11 @@ $text = lopa(prat('hl'),$ppp,$ppp,array(""),2,1);
 }
 echo "By jharo jhari savarNe (8.4.65) :";
 display(0);
-}
 
 return $text; 
 }
 
-function nosavarna($c)
-{
-    global $ac;
-     $i = array("i","I");$u = array("u","U");$f = array("f","F","x","X");
-    
-    if ( $c === $i[0] ) {$non = array_diff($ac, $i);}
-    if ( $c === $i[1] ) {$non = array_diff($ac, $i);}
-    if ( $c === $u[0] ) {$non = array_diff($ac, $u);}
-    if ( $c === $u[1] ) {$non = array_diff($ac, $u);}
-    if ( $c === $f[0] ) {$non = array_diff($ac, $f);}
-    if ( $c === $f[1] ) {$non = array_diff($ac, $f);}
-    if ( $c === $f[2] ) {$non = array_diff($ac, $f);}
-    if ( $c === $f[3] ) {$non = array_diff($ac, $f);}
-       return $non;
-}
+
  // ================================================================
  // functions 
  // ================================================================
