@@ -3,7 +3,8 @@
 
 <?php
 // Including arrays and functions 
-include "C://xampp//htdocs//sanskrit//function.php";
+//include "C://xampp//htdocs//sanskrit//function.php";
+include "function.php";
 // set execution time to an hour
 ini_set('max_execution_time', 36000);
 // set memory limit to 1000 MB
@@ -12,6 +13,9 @@ ini_set("memory_limit","1000M");
 // Reading from the HTML input.
 $first = $_POST["first"];
 $second = $_POST['second'];
+//$first = "rAma";
+//$second = "iti";
+
 // displaying the data back to the user
 echo "You entered: ".$first." + ".$second."</br></br>";
     echo "---------------------------------------------------------------------------------------------------------------------------------------</br>";
@@ -70,7 +74,7 @@ display(0);
 /* I3 cAkravarmaNasya (6.1.130) */
 // These two are not possible to code, because it will depend on the speaker's choice.
 
-/* IdUdEddvivacanaM pragRhyam (1.1.11) */
+/* IdUdeddvivacanaM pragRhyam (1.1.11) */
 // not possible to code till we get the word forms of all words and check whether it is dvivacana or not. Pending
 
 /* adaso mAt (1.1.12) */
