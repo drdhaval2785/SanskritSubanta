@@ -26,6 +26,156 @@ $input = $first.$second;
 // joining the two words
 $text[] = (string)($first.$second); 
 
+/* pragRhya section */
+
+/* plutapragRhyA aci nityam (6.1.125) */
+// There is no definition of pluta / pragRhya here. So we will code that as and when case arises.
+
+/* iko'savarNe zAkalyasya hrasvazca (6.1.127) */ // Right now coded for only dIrgha. Clarify wheter the hrasva preceding also included?
+/*$ik = 'IUFX';
+if (preg_match('/['.$ik.']$/',$first) && preg_match('/^['.pc('ac').']/',$second))
+{
+$text = two(array("I"),nosavarna("I"),array("i "),nosavarna("I"),1);
+$text = two(array("U"),nosavarna("U"),array("u "),nosavarna("U"),1);
+$text = two(array("F"),nosavarna("F"),array("f "),nosavarna("F"),1);
+$text = two(array("X"),nosavarna("X"),array("x "),nosavarna("X"),1);
+}
+echo "By iko'savarNe zAkalyasya hrasvazca (6.1.127) :</br>
+    Note that this will not apply in samAsa. Also when followed by a 'sit' pratyaya, it will not apply. e.g. pArzva";
+display(0);
+*/
+
+/* RtyakaH (6.1.128) */
+$ak = array("a","A","i","I","u","U","f","F","x","X"); 
+if (preg_match('/['.flat($ak).']$/',$first) && preg_match('/^[f]/',$second))
+{
+if (checkarray($ak,array("f"),blank(0),blank(0))===1)
+{
+$text = two ($ak,array("f"),$ak,array(" f"),1);
+echo "By RtyakaH (6.1.128) :</br>
+    Note: This applies only to padAnta. ";
+display(0);
+}
+}
+
+/* vAkyasya TeH pluta udAttaH (8.2.82) */
+// This is adhikArasutra. Nothing to code here.
+
+/* pratyabhivAde'zUdre (8.2.83) */
+/* dUrAddhUte ca (8.2.84) */
+/* haihe prayoge haihayoH (8.2.85) */
+/* guronanRto'nantyasyApyekaikasya prAcAm (8.2.86) */
+/* aplutavadupasthite (6.1.129) */
+/* I3 cAkravarmaNasya (6.1.130) */
+// These two are not possible to code, because it will depend on the speaker's choice.
+
+/* IdUdeddvivacanaM pragRhyam (1.1.11) */
+// not possible to code till we get the word forms of all words and check whether it is dvivacana or not. Pending
+
+/* adaso mAt (1.1.12) */
+if ($first === "amI")
+{
+$text = two (array("amI"),$ac,array("amI "),$ac,1);
+echo "By adaso mAt (1.1.12) :";
+display(0);
+}
+if ($first === "amU")
+{
+$text = two (array("amU"),$ac,array("amU "),$ac,1);
+echo "By adaso mAt (1.1.12) :";
+display(0);
+}
+
+/* ze (1.1.13) */
+// Not possible to know whether one form has ze or not.
+
+/* nipAta ekAjanAG (1.1.14) */
+if ($first === "a")
+{
+$text = two (array("a"),$ac,array("a "),$ac,1);
+echo "By nipAta ekAjanAG (1.1.14) :";
+display(0);
+}
+if ($first === "i")
+{
+$text = two (array("i"),$ac,array("i "),$ac,1);
+echo "By nipAta ekAjanAG (1.1.14) :";
+display(0);
+}
+if ($first === "u")
+{
+$text = two (array("u"),$ac,array("u "),$ac,1);
+echo "By nipAta ekAjanAG (1.1.14) :";
+display(0);
+}
+if ($first === "A")
+{
+$text = two (array("A"),$ac,array("A "),$ac,1);
+echo "By nipAta ekAjanAG (1.1.14) :</br>
+    Note: If the 'A'kAra is of 'Git; origin, it is not pragRhya. If 'aGit' it is pragRhya";
+display(0);
+}
+
+/* ot (1.1.15) */
+if ($first === "o")
+{
+$text = two (array("o"),$ac,array("o "),$ac,1);
+echo "By ot (1.1.15) :";
+display(0);
+}
+if ($first === "aho")
+{
+$text = two (array("aho"),$ac,array("aho "),$ac,1);
+echo "By ot (1.1.15) :";
+display(0);
+}
+
+/* sambuddhau zAkalyasyetAvanArSe (1.1.16) */
+if (preg_match('/[o]$/',$first) && $second === "iti")
+{
+$text = two(array($first),$ac,array($first." "),$ac,1);
+echo "By sambuddhau zAkalyasyetAvanArSe (1.1.16) :</br>
+    Note: This rule will apply only in case the 'o'kAra at the end of the first word is for sambuddhi and the 'iti' is anArSa (of non-vedic origin).";
+display(0);
+}
+
+/* UYaH (1.1.17) */
+if ($first === "u" && $second === "iti")
+{
+$text = two(array("u"),array("iti"),array("u "),array("iti"),1);
+echo "By uYaH (1.1.17) :</br>";
+display(0);
+}
+
+/* U! (1.1.1) */ // Here ! has been used for anunAsika.
+if ($first === "u" && $second === "iti")
+{
+$text = two(array("u"),array("iti"),array("U! "),array("iti"),1);
+echo "By U! (1.1.17) :</br>
+    Please note that we have used ! as marker of anunAsikatva of a vowel";
+display(0);
+}
+
+/* maya uYo vo vA (8.3.33) */
+if ($first === "kimu")
+{
+$text = two(array("kimu"),$ac,array("kimv"),$ac,1);
+echo "By maya uYo vo vA (8.3.33) :";
+display(0);
+}
+
+/* IdUtau ca saptamyarthe (1.1.19) */
+$idut = array("I","U"); $idut1 = array("I ","U ");
+if (preg_match('/[IU]$/',$first))
+{
+$text = two($idut,$ac,$idut1,$ac,1);
+echo "By IdUtau ca saptamyarthe (1.1.19) :</br>
+    Please note: This will apply only in case the I/U at the end of the first word have been used in sense of saptamI vibhakti. Otherwise this pragRhyatva will not be there.";
+display(0);
+}
+
+
+
 /*iko yaNaci (6.1.77) */
 $text = two(prat('ik'),prat('ac'),prat('yR'),prat('ac'),0);
 echo "By iko yaNaci (6.1.77) :";
@@ -273,6 +423,15 @@ if (preg_match('/['.pc('Jl').']$/',$first))
 // To take care of dvitva prakarana a separate functin has been created. Maybe this can be extended to the whole of tripAdi.
 $text = dvitvaprakarana();
 
+/* aNo'pragRhyasyAnunAsikaH (8.4.57) */
+if (preg_match('/['.flat($ac).']$/',$second))
+{
+$text3 = two($text,array(""),$text,array("!"),1);
+$text = $text3;
+echo "By aNo'pragRhyasyAnunAsikaH (8.4.57) :</br>
+Please note that we have used ! as marker of anunAsikatva of a vowel";
+display(0);
+}
 
 ?>
 </body>

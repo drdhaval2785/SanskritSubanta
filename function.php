@@ -130,6 +130,8 @@ function one($a,$b,$merge)
     if ($merge === 0)
     {
         $text = $text1;
+        $text = array_unique($text);
+        $text = array_values($text);
     }
     if ($merge === 1)
     {
@@ -156,6 +158,8 @@ function two($a,$b,$c,$d,$merge)
     if ($merge === 0)
     {
         $text2 = $text1;
+        $text2 = array_unique($text2);
+        $text2 = array_values($text2);
     }
     if ($merge === 1)
     {
@@ -186,6 +190,8 @@ function three($a,$b,$c,$d,$e,$f,$merge)
     if ($merge === 0)
     {
         $text = $text1;
+        $text = array_unique($text);
+        $text = array_values($text);
     }
     if ($merge === 1)
     {
@@ -353,9 +359,9 @@ function display($n)
     if ($n === 2) { global $text1; $text2 = $text; $text = $text1; }
     for($i=1;$i<count($text)+1;$i++)
     {
-        echo "$i : ".$text[$i-1]."</br>";
+        echo "$i - ".convert($text[$i-1])."</br>";
     }
-    echo "---------------------------------------------------------------------------------------------------------------------------------------</br>";
+    echo "<hr>";
     if ($n === 2) { $text1 = $text; $text = $text2; } 
     
     }
@@ -510,7 +516,7 @@ function lopa ($kantha,$talu,$murdha,$oshtha,$location,$merge)
             } 
         } 
      } 
-
+//print_r($combinations);
 $values1 = array();
 foreach ($text as $stti => $string)  // 'aifkcwh', 'aifkcwhsz', 'kim', 'aif'
 {
@@ -538,27 +544,11 @@ foreach ($text as $stti => $string)  // 'aifkcwh', 'aifkcwhsz', 'kim', 'aif'
             // look and see if the current value we are looking
             // at ("aifkcwh") contains this combination string  
             if (strpos($value,$combination)!==false)
-            {
-                // if it does... we perform the string mutation
-                // "aif" does exist in the string "aifkcwh"
-
-                // get the second letter in the combination string
-                
-                $single = $combination[$location-1];   // i 
-
-                // double that second letter
-                $post = substr($combination,$location-1);
-                $pre = chop($combination,$post);
-                $post = substr($post,1);
-                // create a new string that is the combination with the 
-                // second letter doubled... 
-                $newcom = $pre.$post;
-
-                // replace that string in $values so that
-                // aifkcwh becomes aiifkcwh
-                $newval = str_replace($combination, $newcom, $value); // aiifkcwh
-
-                // does the new value ("aiifkcwh") exist in $values?  
+            {   $posterior = substr($value,strpos($value,$combination)+$location+2);
+                $previous = chop($value,$posterior);
+                $previous = substr($previous,0,strlen($previous)); 
+                $newval = $previous.$posterior;
+               // echo $value."<br>".$combination."</br>".$previous."</br>".$posterior."</br>";
                 // have we already recorded this mutation?  
                 if (!in_array($newval,$values1)) 
                 { 
@@ -573,32 +563,9 @@ foreach ($text as $stti => $string)  // 'aifkcwh', 'aifkcwhsz', 'kim', 'aif'
             } 
         } // <-- end of the foreach statement, this will go through all combinations 
           //     in our combinations array for this particular value which is currently aifkcwh
-
-
-        // next($values) increments the array pointer so that we move to the next
-        // value in the $values array.  since we just added a value, 
-        // $values now contains array ([ 0] => 'aifkcwh', [1] => 'aiifkcwh' ); 
-
-        // before this statement index 0, current($values) == 'aifkcwh'
         next($values);  
-        // after this statement index 1, current($values) == 'aiifkcwh'
-        // for the next loop, we will test this string for all the combinations
-        // if there is no next value, the `while` loop will end 
     }  
 
-    // after we have gone through every possible combination for "aifkcwh",
-    // we will have something like this: 
-    /*
-        Array
-          (
-                [0] => aifkcwh
-                [1] => aiifkcwh
-                [2] => aifkccwh
-                [3] => aiifkccwh
-          )
-    */
-    // and we add that to the $output array that contains an index for 
-    // each input string, which contains all possible mutations of that string 
     $output[$string] = $values1; 
 }
 
@@ -840,5 +807,57 @@ function nosavarna($c)
 
 
 
+ 
+ function sub($a,$b,$c,$repeat)
+{   
+     global $text;
+     $needle = array();
+    // for different length and all combinations
+    if($repeat === 0)
+    {
+        foreach ($a as $aa)
+        {
+         foreach ($b as $bb)
+         {
+             foreach ($c as $cc)
+             {
+                 $needle[]=$aa.$bb.$cc;
+             }
+         }
+        }
+    }
+    // for similar length arrays and ordered combinations.
+    if ($repeat === 1)
+    {
+        for($i=0;$i<count($a);$i++)
+        {
+            $needle[] = $a[$i].$b[$i].$c[$i];
+        }
+    }
+    /*** map with preg_quote ***/
+    $needle = array_map('preg_quote', $needle);
+    /*** loop of the array to get the search pattern ***/
+    foreach ($needle as $pattern)
+    {
+        if (count(preg_grep("/$pattern/", $text)) > 0)
+        {
+        $can = 1;
+        break;
+        }  
+        else
+        {
+            $can = 0;
+        }
+    }
+if ($can === 1)
+{
+    return true;
+}
+else
+{
+    return false;
+}
+
+}
 
  ?>
