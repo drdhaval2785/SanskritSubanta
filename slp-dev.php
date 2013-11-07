@@ -195,7 +195,7 @@ $main['tra'] = array(
 	152 => "||", // ||
 	153 => "|", // |
 	154 => "Q", // Nukta
-	155 => "@", // Abbreviation
+//	155 => "@", // Abbreviation
 	//156 => ";", // Udatta
 	//157 => ":", // Anudatta (svarita)
 //	259 => "La",
@@ -225,6 +225,7 @@ $vow['tra'] = array(
 	254 => " I",
 	255 => " u",
 	256 => " U",
+	155 => " @",
 );
 
 
@@ -246,6 +247,7 @@ $yukta['tra'] = array(
 	304 => "I", // joint
 	305 => "u", // joint
 	306 => "U", // joint
+	320 => "@" 
 );
 
 
@@ -317,7 +319,7 @@ $main['scr'] = array(
 	152 => "॥", // ||
 	153 => "।", // |
 	154 => "़", // . Nukta
-	155 => "॰", // Abbreviation
+//	155 => "॰", // Abbreviation
 	//156 => "॑", // Udatta
 	//157 => "॒", // Anudatta (svarita)
 //	259 => "ळ", // L
@@ -348,7 +350,7 @@ $vow['scr'] = array(
 	254 => " ई", // I
 	255 => " उ", // u
 	256 => " ऊ", // U
-	
+	155 => " उँ",	
 );
 
 $yukta['scr'] = array(
@@ -369,6 +371,7 @@ $yukta['scr'] = array(
 	304 => "ी", // I joint
 	305 => "ु", // u joint
 	306 => "ू", // U joint
+	320 => "ुं",
 );
 
 $yukta['scr'][301] = "";
