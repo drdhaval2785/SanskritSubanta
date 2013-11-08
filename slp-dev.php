@@ -59,8 +59,8 @@ $ch['slp'] = array(
 //61 => "_", // _ (ha_uk)
 //62 => "^", // ^ (ext. sandhi)
 63 => "'", // avagraha
-//64 => ".c", // \_/ (candra e)
-//65 => ".h", // \ (virama)
+64 => "&", // jihvAmUlIya)
+65 => "*", // upadhmAnIya
 //66 => "@", // abbreviation
 //67 => "`", // Latin apostrophe
 
@@ -112,8 +112,8 @@ $ch['hk'] = array(
 //61 => "_", // _ (ha_uk)
 //62 => "^", // ^ (ext. sandhi)
 63 => "'", // avagraha
-//64 => ".c", // \_/ (candra e)
-//65 => ".h", // \ (virama)
+64 => "&", // jihvamuliya
+65 => ".h", // upadhmAnIya
 //66 => "@", // abbreviation
 //67 => "`", // Latin apostrophe
 
@@ -194,8 +194,8 @@ $main['tra'] = array(
 	151 => "~",
 	152 => "||", // ||
 	153 => "|", // |
-	154 => "Q", // Nukta
-//	155 => "@", // Abbreviation
+	154 => "&", // jihvAmUliya
+	155 => "*", // upadhmAnIya
 	//156 => ";", // Udatta
 	//157 => ":", // Anudatta (svarita)
 //	259 => "La",
@@ -318,8 +318,8 @@ $main['scr'] = array(
 	151 => "ँ", // ~
 	152 => "॥", // ||
 	153 => "।", // |
-	154 => "़", // . Nukta
-//	155 => "॰", // Abbreviation
+	154 => "ᳲ", // . Nukta
+	155 => "ᳲ", // Abbreviation
 	//156 => "॑", // Udatta
 	//157 => "॒", // Anudatta (svarita)
 //	259 => "ळ", // L
@@ -414,7 +414,7 @@ $text = str_replace("-", "- ", $text); // Ensure full vowel is given after dash
 	$text = str_replace ($half['tra'], $half['scr'], $text);
 	$text = str_replace ($num['tra'], $num['scr'], " " . $text . " ");
 
-	$text = str_replace("{$v}{$half['scr'][154]}", "{$half['scr'][154]}", $text); // Fix nuktas
+//	$text = str_replace("{$v}{$half['scr'][154]}", "{$half['scr'][154]}", $text); // Fix nuktas
 
 
 	/* Crunch remaining full vowels, e.g. ha_uk  and sei */
