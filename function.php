@@ -533,10 +533,11 @@ foreach ($text as $stti => $string)  // 'aifkcwh', 'aifkcwhsz', 'kim', 'aif'
         // on the first iteration, $values will be the inputted string 
         // from $strings_to_test... our example is "aifkcwh"
         $value = current($values); 
-        if ($merge === 1)
+        
+       if ($merge === 1)
         {
         $values1[] = current($values);
-        }
+        } 
         // for each possible combination of $kantha.$talu.$murdha
         // let's say our first combination is "aif"
         foreach($combinations as $ci => $combination)
@@ -547,7 +548,7 @@ foreach ($text as $stti => $string)  // 'aifkcwh', 'aifkcwhsz', 'kim', 'aif'
             {   $posterior = substr($value,strpos($value,$combination)+$location+2);
                 $previous = chop($value,$posterior);
                 $previous = substr($previous,0,strlen($previous)); 
-                $newval = $previous.$posterior;
+                $newval = $previous.$posterior; 
                // echo $value."<br>".$combination."</br>".$previous."</br>".$posterior."</br>";
                 // have we already recorded this mutation?  
                 if (!in_array($newval,$values1)) 
@@ -566,9 +567,9 @@ foreach ($text as $stti => $string)  // 'aifkcwh', 'aifkcwhsz', 'kim', 'aif'
         next($values);  
     }  
 
-    $output[$string] = $values1; 
+    $output[$string] = $values1;
 }
-
+// print_r($output);
 $output = flatten($output);
 $output = array_unique($output);
 $output = array_values($output);
@@ -858,6 +859,146 @@ else
     return false;
 }
 
+}
+
+
+// Function to find savarna of a given letter from the given array.
+function sl($text,$array) // Known issue - words having two Asyas.
+{
+    global $kantha,$talu,$murdha,$danta,$oshtha,$nasika,$kanthatalu,$kanthoshtha,$dantoshtha,$sprushta,$ishatsprushta,$vivruta,$samvruta,$aghosha,$alpaprana,$ghosha,$mahaprana,$ac,$udatta,$anudatta,$svarita,$shvasa,$nada,$vivara,$samvara,$hl,$ru,$e;
+    // defining an array for sthAna
+$i=0;
+if (in_array($text,$kantha)) { $sthana[$i] = $kantha; $i++; }
+if (in_array($text,$talu)) { $sthana[$i] =  $talu; $i++; }
+if (in_array($text,$murdha)) { $sthana[$i] = $murdha; $i++; }
+if (in_array($text,$danta)) { $sthana[$i] = $danta; $i++; }
+if (in_array($text,$oshtha)) { $sthana[$i] = $oshtha; $i++; }
+if (in_array($text,$nasika)) { $sthana[$i] = $nasika; $i++; }
+if (in_array($text,$kanthatalu)) { $sthana[$i] = $kanthatalu; $i++; }
+if (in_array($text,$kanthoshtha)) { $sthana[$i] = $kanthoshtha; $i++;}
+if (in_array($text,$dantoshtha)) { $sthana[$i] = $dantoshtha; $i++; }
+// defining an array for Abhyantara prayatna for consonants
+$j=0;
+if (in_array($text,$sprushta)) { $abhyantara[$j] = $sprushta; $j++; }
+if (in_array($text,$ishatsprushta)) { $abhyantara[$j] = $ishatsprushta; $j++; }
+if (in_array($text,$vivruta)) { $abhyantara[$j] = $vivruta; $j++; }
+if (in_array($text,$samvruta)) { $abhyantara[$j] = $samvruta; $j++; }
+// defining an array for bAhya prayatna for consonants
+$k=0;
+if (in_array($text,$aghosha)) { $ghosh[$k] = $aghosha; $k++; }
+if (in_array($text,$alpaprana)) { $prana[$k] = $alpaprana; $k++; }
+if (in_array($text,$ghosha)) { $ghosh[$k] = $ghosha; $k++; }
+if (in_array($text,$mahaprana)) { $prana[$k] = $mahaprana; $k++; }
+// defining an array for bAhya prayatna of vowels
+$u=0;
+if (in_array($text,$ac)) { $svar[$u] = $udatta; $u++; }
+
+// Finding out intersections of sthAna, Abhyantara prayatna and bAhya prayatnas of the given letter and the given array. 
+if(empty($sthana)===FALSE)
+{
+$sthanasamya = array_intersect(flatten($sthana),$array); 
+//echo "The letters in the pratyAhAra with same sthAna (Asya) as the letter input are: ".implode(",",$sthanasamya)."</br>";    
+}
+if(empty($abhyantara)===false)
+{
+$abhyantarasamya = array_intersect(flatten($abhyantara),$array);
+//echo "The letters in the pratyAhAra with the same Abhyantara prayatna as the letter input are: ".implode(",",$abhyantarasamya)."</br>";    
+}
+if(empty($ghosh)===FALSE)
+{
+$ghoshasamya = array_intersect(flatten($ghosh),$array);
+//echo "The letters in the pratyAhAra with the same ghoSa as the letter input are: ".implode(",",$ghoshasamya)."</br>";    
+}
+if(empty($prana)===FALSE)
+{
+$pranasamya = array_intersect(flatten($prana),$array);
+//echo "The letters in the pratyAhAra with the same prANa as the letter input are: ".implode(",",$pranasamya)."</br>";    
+}
+if(empty($svar)===false)
+{
+if(in_array($text,$ac)) 
+        { $svarasamya = array_intersect(flatten($svar),$array,$ac); 
+//echo "The letters in the pratyAhAra with the same udAtta/anudAtta/svarita as the letter input are: ".implode(",",$svarasamya)."</br>";
+        }    
+}
+if(empty($sthanasamya)===false && empty($abhyantarasamya)===false && empty($ghoshasamya)===false && empty($pranasamya)===false)
+{ $l = array_intersect($sthanasamya,$abhyantarasamya,$ghoshasamya,$pranasamya); }
+if(empty($sthanasamya)===false && empty($abhyantarasamya)===false && empty($ghoshasamya)===false)
+{ $m = array_intersect($sthanasamya,$abhyantarasamya,$ghoshasamya); }
+if(empty($sthanasamya)===false && empty($abhyantarasamya)===false)
+{ $n = array_intersect($sthanasamya,$abhyantarasamya); }
+if(empty($sthanasamya)===false && empty($abhyantarasamya)===false && empty($pranasamya)===false)
+{ $o = array_intersect($sthanasamya,$abhyantarasamya,$pranasamya); }
+if(empty($sthanasamya)===false && empty($ghoshasamya)===false)
+{ $p = array_intersect($sthanasamya,$ghoshasamya); }
+if(empty($sthanasamya)===false && empty($pranasamya)===false)
+{ $q = array_intersect($sthanasamya,$pranasamya); }
+// Defining savarNas for consonants
+if(in_array($text,$hl))
+{
+    if(empty($sthanasamya)===false&&empty($abhyantarasamya)===false&&empty($ghoshasamya)===false&&empty($pranasamya)===FALSE&&empty($l)===false) 
+    {//echo "four match";
+            $savarna = implode(", ",$l);     
+    }
+    elseif (empty($sthanasamya)===false&&empty($abhyantarasamya)===false&&empty($ghoshasamya)===false&&empty($m)===false)
+    {//echo "three match";
+            $savarna = implode(", ",$m);     
+    }
+    elseif (empty($sthanasamya)===false&&empty($abhyantarasamya)===false&&empty($pranasamya)===false&&empty($o)===false)
+    {//echo "three match";
+            $savarna = implode(", ",$o);     
+    }
+    elseif (empty($sthanasamya)===false&&empty($abhyantarasamya)===false&&empty($n)===false)
+    {//echo "Two match";
+            $savarna = implode(", ",$n);     
+    }
+     elseif (empty($sthanasamya)===false&&empty($ghoshasamya)===false&&empty($p)===false)
+    {//echo "Two match";
+            $savarna = implode(", ",$p);     
+    } elseif (empty($sthanasamya)===false&&empty($pranasamya)===false&&empty($q)===false)
+    {//echo "Two match";
+            $savarna = implode(", ",$q);     
+    }
+    else
+    {//echo "no match";
+    $savarna = implode(", ",$sthanasamya);    
+    }
+} 
+// defining savarNas for vowels
+else
+{  
+    if (in_array($text,$ru)||in_array($text,$e))
+    {// patch for $ru
+        for($i=0;$i<4;$i++)
+        {
+        if ($text === $ru[$i])
+        {
+            if (in_array($text,$array))
+            { $savarna = "f, F, x, X"; }
+            else
+            { $savarna = ""; }
+        }
+        // patch for non sAvarNya of e,E,o,O
+        elseif ($text === $e[$i])
+        {
+            if (in_array($text,$array))
+            { $savarna = $text; }
+            else
+            { $savarna = ""; }
+        }
+        }
+    }
+    
+    
+    else 
+    {// In case of other vowels.
+        $savarna = implode(", ",$sthanasamya);
+    }
+}
+// giving output to the browser for savarNa letter
+//echo "The savarna letter of '".$text."' among the given pratyAhAra is: ".$savarna;    
+// stores that savarNa letter in memory.
+return $savarna;
 }
 
  ?>
