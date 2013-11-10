@@ -2,18 +2,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>
 <body>
 
+<div>
 <form action="sandhi.php" method="post">
 First Word: <input type="text" name="first"><br>
 Second Word: <input type="text" name="second"><br>
+<input type="radio" name="tran" value="Devanagari" checked>Devanagari
+<input type="radio" name="tran" value="IAST">IAST
+<input type="radio" name="tran" value="SLP1">SLP1<br>
 <input type="submit">
 </form>
+</div>
 
-<b>Note: This system is not yet ready for treating pratyayas. Right now it presumes that the words you enter are proper padas (पद).</b></br>
-<b> N.B. : NOW DEVANAGARI INPUT IS ALSO ENABLED. YOU CAN ENTER THE WORDS IN DEVANAGARI ALSO. </b> </br>
-Use this scheme for entering words: </br>
+<p class = hn>Note: This system is not yet ready for treating pratyayas. Right now it presumes that the words you enter are proper padas (पद).</p>
+For <a href = "http://en.wikipedia.org/wiki/International_Alphabet_of_Sanskrit_Transliteration">IAST scheme</a>, please use the lowercase letters.</p>
+<p>For SLP1, use this scheme for entering words: </p>
 aAiIuUfFxXeEoOMH</br>
 kKgGN</br>
 cCjJY</br>
