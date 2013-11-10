@@ -39,7 +39,9 @@ $changedupasarga = array("prAr","apAr","avAr","upAr");
 $upasarga = array("pra","prati","api","parA","apa","upa","pari","anu","ava","vi","saM","su","ati","ni","nir","ut","adhi","dur","abhi");
 $verbs_ru = array("fkz","fc","fC","fj","fYj","fR","ft","fd","fD","fn","fP","fBukz","FmP","fmP","fS","fz","fh");
 $verbs_changed = array("kz","c","C","j","Yj","R","t","d","D","n","P","Bukz","mP","mP","S","z","h");
-
+$ku = array("k","K","g","G","N");
+$pu = array("p","P","b","B","m");
+$iN = array("i","I","u","U");
 function prat($text)  // prat for pratyAhAra
 {
 global $shiv; 
@@ -122,9 +124,9 @@ function one($a,$b,$merge)
     {
         $p = $text[$z];
         for($i=0;$i<count($a);$i++)
-    {
-      $p =  str_replace($a[$i],$b[$i],$p);    
-    }
+        {
+            $p =  str_replace($a[$i],$b[$i],$p);    
+        }
         $text1[$z] = $p;
     }
     if ($merge === 0)
@@ -360,6 +362,7 @@ function display($n)
     for($i=1;$i<count($text)+1;$i++)
     {
         echo "$i - ".convert($text[$i-1])."</br>";
+      //echo "$i - ".$text[$i-1]."</br>";
     }
     echo "<hr>";
     if ($n === 2) { $text1 = $text; $text = $text2; } 
@@ -382,10 +385,10 @@ function dvitva ($kantha,$talu,$murdha,$oshtha,$location,$merge)
         { 
             foreach($murdha as $m) // "f","w","q","r","z"
             {
-               // foreach ($oshtha as $o)
-               // {
-                 $combinations[] = $k.$t.$m;//.$o;    
-               // }
+                foreach ($oshtha as $o)
+                {
+                 $combinations[] = $k.$t.$m.$o;    
+                }
             } 
         } 
      } 
@@ -422,16 +425,18 @@ foreach ($text as $stti => $string)  // 'aifkcwh', 'aifkcwhsz', 'kim', 'aif'
                 // "aif" does exist in the string "aifkcwh"
 
                 // get the second letter in the combination string
-                
+               // echo $combination. "These are combinations </br>";
                 $single = $combination[$location-1];   // i 
 
                 // double that second letter
-                $post = substr($combination,$location);
+                $post = substr($combination,$location-1);
+                // echo $post. "These are posts </br>";
                 $pre = chop($combination,$post);
+                // echo $pre. "These are pres </br>";
                 // create a new string that is the combination with the 
                 // second letter doubled... 
                 $newcom = $pre.$combination[$location-1].$post;
-
+               // echo $newcom."These are newcoms </br> ";
                 // replace that string in $values so that
                 // aifkcwh becomes aiifkcwh
                 $newval = str_replace($combination, $newcom, $value); // aiifkcwh
@@ -993,6 +998,11 @@ else
     else 
     {// In case of other vowels.
         $savarna = implode(", ",$sthanasamya);
+    }
+    
+    if (in_array($text,$array))
+    {
+        $savarna = $text;
     }
 }
 // giving output to the browser for savarNa letter

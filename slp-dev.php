@@ -189,13 +189,7 @@ $main['tra'] = array(
 	146 => "za",
 	147 => "sa",
 	
-	149 => "M",
-	150 => "H",
-	151 => "~",
-	152 => "||", // ||
-	153 => "|", // |
-	154 => "&", // jihvAmUliya
-	155 => "*", // upadhmAnIya
+
 	//156 => ";", // Udatta
 	//157 => ":", // Anudatta (svarita)
 //	259 => "La",
@@ -247,9 +241,19 @@ $yukta['tra'] = array(
 	304 => "I", // joint
 	305 => "u", // joint
 	306 => "U", // joint
-	320 => "@" 
-);
+	320 => "@",
 
+    
+);
+$other['tra'] = array(
+        149 => "M",
+	150 => "H",
+	151 => "~",
+	152 => "||", // ||
+	153 => "|", // |
+	154 => "&", // jihvAmUliya
+	155 => "*", // upadhmAnIya
+);
 
 $num['scr'] = array(
 	60 => "०", // 0
@@ -313,13 +317,7 @@ $main['scr'] = array(
 	147 => "स", // sa
 
 	
-	149 => "ं", // M
-	150 => "ः", // H
-	151 => "ँ", // ~
-	152 => "॥", // ||
-	153 => "।", // |
-	154 => "ᳲ", // . Nukta
-	155 => "ᳲ", // Abbreviation
+	
 	//156 => "॑", // Udatta
 	//157 => "॒", // Anudatta (svarita)
 //	259 => "ळ", // L
@@ -371,7 +369,17 @@ $yukta['scr'] = array(
 	304 => "ी", // I joint
 	305 => "ु", // u joint
 	306 => "ू", // U joint
-	320 => "ुं",
+	320 => "ुँ",
+       
+);
+$other['scr'] = array(
+        149 => "ं", // M
+	150 => "ः", // H
+	151 => "ँ", // ~
+	152 => "॥", // ||
+	153 => "।", // |
+	154 => "ᳲ", // . Nukta
+	155 => "ᳲ", // Abbreviation
 );
 
 $yukta['scr'][301] = "";
@@ -413,6 +421,7 @@ $text = str_replace("-", "- ", $text); // Ensure full vowel is given after dash
 	$text = str_replace ($vow['tra'], $vow['scr'], $text);
 	$text = str_replace ($half['tra'], $half['scr'], $text);
 	$text = str_replace ($num['tra'], $num['scr'], " " . $text . " ");
+        $text = str_replace ($other['tra'], $other['scr'], $text);
 
 //	$text = str_replace("{$v}{$half['scr'][154]}", "{$half['scr'][154]}", $text); // Fix nuktas
 
