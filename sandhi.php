@@ -102,11 +102,11 @@ display(0);
 
 /* RtyakaH (6.1.128) */
 $ak = array("a","A","i","I","u","U","f","F","x","X"); 
-if (preg_match('/['.flat($ak).']$/',$first) && preg_match('/^[f]/',$second) && $start===1 )
+if (preg_match('/['.flat($ak).']$/',$first) && preg_match('/^[fx]/',$second) && $start===1 )
 {
-if (checkarray($ak,array("f"),blank(0),blank(0))===1)
+if (checkarray($ak,array("f","x"),blank(0),blank(0))===1)
 {
-$text = two ($ak,array("f"),$ak,array(" f"),1);
+$text = two ($ak,array("f","x"),$ak,array(" f"," x"),1);
 echo "<p class = sa >By RtyakaH (6.1.128) :</p>
     <p class = hn >Note: This applies only to padAnta. </p>";
 display(0);
@@ -145,42 +145,21 @@ display(0);
 // Not possible to know whether one form has ze or not.
 
 /* nipAta ekAjanAG (1.1.14) */
-if ($first === "a" && $start===1)
+$nipata = array("a","A","i","I","u","U","e","E","o","O");
+$nipata1 = array("a ","A ","i ","I ","u ","U ","e ","E ","o ","O ");
+if (in_array($first,$nipata) && $start===1)
 {
-$text = two (array("a"),$ac,array("a "),$ac,1);
+$text = two ($nipata,$ac,$nipata1,$ac,1);
 echo "<p class = sa >By nipAta ekAjanAG (1.1.14) :</p>";
-display(0);
-}
-if ($first === "i" && $start===1)
-{
-$text = two (array("i"),$ac,array("i "),$ac,1);
-echo "<p class = sa >By nipAta ekAjanAG (1.1.14) :</p>";
-display(0);
-}
-if ($first === "u" && $start===1)
-{
-$text = two (array("u"),$ac,array("u "),$ac,1);
-echo "<p class = sa >By nipAta ekAjanAG (1.1.14) :</p>";
-display(0);
-}
-if ($first === "A" && $start===1)
-{
-$text = two (array("A"),$ac,array("A "),$ac,1);
-echo "<p class = sa >By nipAta ekAjanAG (1.1.14) :</p>
-    <p class = hn >Note: If the 'A'kAra is of 'Git; origin, it is not pragRhya. If 'aGit' it is pragRhya.</p>";
 display(0);
 }
 
 /* ot (1.1.15) */
-if ($first === "o" && $start===1)
+$ot = array("o","aho","ho","utAho","aTo");
+$ot1 = array("o ","aho ","ho ","utAho ","aTo ");
+if (in_array($first,$nipata) && $start===1)
 {
-$text = two (array("o"),$ac,array("o "),$ac,1);
-echo "<p class = sa >By ot (1.1.15) :</p>";
-display(0);
-}
-if ($first === "aho" && $start===1)
-{
-$text = two (array("aho"),$ac,array("aho "),$ac,1);
+$text = two ($ot,$ac,$ot1,$ac,1);
 echo "<p class = sa >By ot (1.1.15) :</p>";
 display(0);
 }
@@ -349,7 +328,7 @@ if (sub(array("jeya"),blank(0),blank(0),0))
     display(0);
 }
 
-/* krayyastadarthe _6.1.82) */
+/* krayyastadarthe (6.1.82) */
 if (sub(array("kreya"),blank(0),blank(0),0))
 {
     
@@ -518,7 +497,7 @@ if (sub($ak,$ac,blank(0),0) && ($ato ===1||$hazi === 1) && $nadici !== 1)
 
 /* ekaH pUrvaparayoH (6.1.84) */ // This is the adhikArasUtra. No vidhi mentioned.
 
-/* etyedhatyuThsu (6.1.89) */ // Pending. Too less examples and too wide implications. 
+
 
 // The following vArtikas are exception to AdguNaH. Otherwise after joining, it will be difficult to identify. So coded here.
 /* akSAdUhinyAmupasaMkhyAnam (vA 3604) */
@@ -564,8 +543,16 @@ $text = two($aa,$forguna,blank(2),$rep,0);
 echo "<p class = sa >By AdguNaH (6.1.87) and uraNraparaH (1.1.51) :</p>";
 display(0);
 }
+
+/* etyedhatyuThsu (6.1.89) */ // Pending. Too less examples and too wide implications. 
+if (sub(array("a","A"),array("eti","eDati","oha"),blank(0),0))
+{
+    $text = two (array("a","A"),array("eti","eDati","oha"),blank(2),array("Eti","EDati","Oha"),0);
+    echo "<p class = sa >By etyedhatyuThsu (6.1.89) :</p>";
+    display(0);
+}
+
 /* eGi pararUpam (6.1.94) */ // Added it here because it is exception to vRddhireci.
-// difficult to code till I get the list of dhAtus which have forms starting from e,o.  Maybe I will have to ask for user input here.
 for($i=0;$i<count($akarantaupasarga);$i++)
 {
     $a_upa_without_a[$i] = substr($akarantaupasarga[$i],0,count(str_split($akarantaupasarga[$i]))-1); 
@@ -620,7 +607,7 @@ display(0);
 }
 /* omAGozca (6.1.95) */ 
 $om = array("om");
-if (sub($aa,$o,blank(0),0))
+if (sub($aa,$om,blank(0),0))
 {
 $text = two($aa,$om,blank(2),$om,0);
 echo "<p class = sa >By omAGozca (6.1.95) :</p>
@@ -872,8 +859,14 @@ if (sub(array("Bo","Bago","aGo","a","A"),array("r@"),$ash,0))
 
 
 /* kharavasAnayorvisarjanIyaH (8.3.15) */
+if (preg_match('/[r]$/',$first) && preg_match('/^['.pc('Kr').']/',$second))
+{
+ $text = $text = one(array(substr($first,0,strlen($first)-1)."r"),array(substr($first,0,strlen($first)-1)."H"),0);
+ echo "<p class = sa >By kharavasAnayorvisarjanIyaH (8.3.15) :</p>";
+ display(0);
+}
 // Patch for ru
-if (preg_match('/[r@mnH]$/',$first) && preg_match('/^['.pc('Kr').']/',$second))
+if (preg_match('/[@]$/',$first) && preg_match('/^['.pc('Kr').']/',$second))
 {
 $text = two(array("r@"),prat('Kr'),array("H"),prat('Kr'),0);
 echo "<p class = sa >By kharavasAnayorvisarjanIyaH (8.3.15) :</p>";
@@ -952,24 +945,6 @@ if ($bho === 1 && sub(array("y"),$hl,blank(0),0))
     display(0);
 }
 
-// Pending to code for proper anunAsika / anusvAra in case the r@ is elided by kharavasAnayorvisarjanIyaH.
-
-/* atrAnunAsikaH pUrvasya tu vA (8.3.2) */
-/*if (sub($ac,array("r@"),blank(0),0))
-{
-$text = two($ac,array("r@"),$ac,array("!r@"),1);
-echo "<p class = sa >By atrAnunAsikaH pUrvasya tu vA (8.3.34) :</p>";
-display(0);
-}*/
-
-/* anunAsikAtparo'nusvAraH (8.3.4) */
-/*if (sub(array("r@"),blank(0),blank(0),0))
-{
-$text = one(array("r@"),array("Mr@"),0);
-$text = one(array("!Mr@"),array("!r@"),0);
-echo "<p class = sa >By anunAsikAtparo'nusvAraH (8.3.4) :</p>";
-display(0);
-}*/
 
 /* mo'nusvAraH (8.3.23) */ 
 if (preg_match('/[m]$/',$first) && preg_match('/^['.pc('hl').']/',$second) && sub(array("m"),$hl,blank(0),0))
@@ -1338,25 +1313,25 @@ echo "<p class = sa >By yaro'nunAsike'nunAsiko vA (8.4.45) :</p>
 display(0);
 }
 
-/* aco rahAbhyAM dve (8.4.46) */ 
-$rh = array("r","h");
-if (sub($ac,$rh,prat('yr'),0))
-{
-$text = dvitva($ac,$rh,prat('yr'),array(""),3,1);
-echo "<p class = sa >By aco rahAbhyAM dve (8.4.46) :</p>";
-display(1);
-}
 
 /*anaci ca (8.4.47)*/ // Here the sudhI + upAsya - what about the Asy - Assy is possbile ? Code gives it. But there are 4 options. Code gives two only.
 // The cause for using $hrasva instead of $ac is that the dIrgha vowels are debarred by dIrghAdAcAyANAm.
 // Here instead of using pratyAhAra hl, we shall do manual enumeration of all the members. Bexause of "anusvAravisargajihvAmUlIyopadhmAnIyayamAnAmakAropari zarSu ca pAThasyopasaGkhyAtatvenAnusvArasyApyactvAt (in derivation of samskAra) 
-$hrasvaplus = array("M","H","&","*","a","i","u","f","x",);
-$hala1 = array("h","y","v","r","l","Y","m","N","R","n","J","B","G","Q","D","j","b","g","q","d","K","P","C","W","T","c","w","t","k","p","S","z","s");
-if(sub($hrasvaplus,$hl,$hala1,0))
+$hrasvaplus = array("M","!");
+$hala1 = array("y","v","l","Y","m","N","R","n","J","B","G","Q","D","j","b","g","q","d","K","P","C","W","T","c","w","t","k","p","S","z","s","M",);
+$hala2 = array("h","y","v","r","l","Y","m","N","R","n","J","B","G","Q","D","j","b","g","q","d","K","P","C","W","T","c","w","t","k","p","S","z","s","M",);
+
+if(sub($hrasva,$hala1,$hala2,0))
 {
-    $text = dvitva($hrasvaplus,$hl,$hl,array(""),2,1);
+    $text = dvitva($hrasva,$hala1,$hala2,array(""),2,1);
 echo "<p class = sa >By anaci ca (8.4.47):</p>"; 
 display(1);
+}
+if(sub($hrasvaplus,$hala1,$hala2,0))
+{
+    $text = dvitva($hrasvaplus,$hala1,$hala2,array(""),2,1);
+    echo "<p class = sa >By anaci ca (8.4.47):</p>"; 
+    display(1);
 }
 if(checkarray($dirgha,$hl,array('r','l'),blank(0))!==0 && $sthanivadbhav===1) 
 {
@@ -1366,7 +1341,6 @@ echo "<p class = sa >By anaci ca (8.4.47):</p>
 display(1);
 }
 /* By anaci ca (according to mahAbhASya example of vAkk) */ 
-// Very wrongly done now. Even non hal gets duplicated.
 if (preg_match('/['.flat($ac).']['.flat($hl).']$/',$second) || (preg_match('/['.flat($ac).']['.flat($hl).']$/',$first) && $input === $first ))
 {
     foreach ($text as $value)
@@ -1409,14 +1383,21 @@ display(0);
 }
 
 /* zaraH khayaH (vA 5019) */
-$shara = array("S","z","s","H","M","*","&");
+$shara = array("S","z","s",);
 if (sub($shara,prat('Ky'),blank(0),0))
 {
 $text = dvitva($shara,prat('Ky'),array(""),array(""),2,1);
 echo "<p class = sa >zaraH khayaH (vA 5019) :</p>";
 display(1);
 }
-
+/* aco rahAbhyAM dve (8.4.46) */ 
+$rh = array("r","h");
+if (sub($ac,$rh,prat('yr'),0))
+{
+$text = dvitva($ac,$rh,prat('yr'),array(""),3,1);
+echo "<p class = sa >By aco rahAbhyAM dve (8.4.46) :</p>";
+display(1);
+}
 /* triprabhRtiSu zAkaTAyanasya (8.4.50)*/
 $hrasva1 = "'".implode("",$hrasva)."'";
 if (checkarray($ac,$hl,$hl,$hl) === 1)
@@ -1467,26 +1448,6 @@ display(1);
 
 
 /* vA'vasAne (8.4.54) */
-/*$second1 = str_split($second);
-$second2 = substr($second,count($second1)-1); 
-$secondbereplaced = chop($second,$second2); 
-$second2 = array($second2); $secondbereplaced=array($secondbereplaced);
-if (preg_match('/['.pc('Jl').']$/',$second))
-{
-    $text = two($secondbereplaced,prat('Jl'),$secondbereplaced,savarna(prat('Jl'),prat('cr')),1);
-    echo "<p class = sa >By vA'vasAne (8.4.54) :</p>";
-    display(0);
-}
-$first1 = str_split($first);
-$first2 = substr($first,count($first1)-1); 
-$firstbereplaced = chop($first,$first2); 
-$first2 = array($first2); $firstbereplaced=array($firstbereplaced);
-if (preg_match('/['.pc('Jl').']$/',$first) && $second === "")
-{
-    $text = two($firstbereplaced,prat('Jl'),$firstbereplaced,savarna(prat('Jl'),prat('cr')),1);
-    echo "<p class = sa >By vA'vasAne (8.4.54) :</p>";
-    display(0);
-} */
 if (preg_match('/['.pc('Jl').']$/',$second) )
 {
 foreach($text as $value)
@@ -1526,18 +1487,30 @@ display(0);
 /* aNo'pragRhyasyAnunAsikaH (8.4.57) */
 if (preg_match('/[aAiIuUfFxX]$/',$second))
 {
-$text3 = two($text,array(""),$text,array("!"),1);
-$text = $text3;
-echo "<p class = sa >By aNo'pragRhyasyAnunAsikaH (8.4.57) :</p>";
-display(0);
+    foreach($text as $value)
+    {
+    $value1[] = $value."!";
+    }
+    $value1 = array_merge($text,$value1);
+    $value1 = array_unique($value1);
+    $text = array_values($value1);
+    echo "<p class = sa >By aNo'pragRhyasyAnunAsikaH (8.4.57)1 :</p>";
+    display(0);
 }
-if (sub(array("a","A","i","I","f","F","x","X"),array(" "),blank(0),0))
+/*if (preg_match('/[aAiIuUfFxX]$/',$first) && !preg_match('/^['.flat($ac).']/',$second))
 {
-$text4 = two(array("a","A","i","I","f","F","x","X"),array(" "),array("a","A","i","I","f","F","x","X"),array("! "),1);
-$text = $text4;
-echo "<p class = sa >By aNo'pragRhyasyAnunAsikaH (8.4.57) :</p>";
-display(0);
-}
+    foreach($text as $value)
+    {
+    $value2[] = str_replace($first,$first."!",$value);
+    }
+    
+    $text = array_merge($text,$value2);
+    $text = array_unique($text);
+    $text = array_values($text);
+    echo "<p class = sa >By aNo'pragRhyasyAnunAsikaH (8.4.57)2 :</p>";
+    display(0);
+}*/
+
 /* anusvArasya yayi parasavarNaH (8.4.58) and vA padAntasya (8.4.59) */
 $pa = array("!yy","!vv","!rr","!ll","YY","mm","NN","RR","nn","YJ","mB","NG","RQ","nD","Yj","mb","Ng","Rq","nd","NK","mP","YC","RW","nT","Yc","Rw","nt","Nk","mp");
 $mm = array("My","Mv","Mr","Ml","MY","Mm","MN","MR","Mn","MJ","MB","MG","MQ","MD","Mj","Mb","Mg","Mq","Md","MK","MP","MC","MW","MT","Mc","Mw","Mt","Mk","Mp");
