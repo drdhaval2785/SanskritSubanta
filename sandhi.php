@@ -384,7 +384,7 @@ if (preg_match('/[s]$/',$first) && $start===1)
 elseif ($start>1 && $r1!==0) { $r1 = 1; } else {$r1=0; }
 if (preg_match('/[s]$/',$second) && $start===1)
 {
-     $text = one(array("r@"),array("r@"),0);
+     $text = one(array(substr($second,1)),array(substr($second,1,strlen($second)-2)."r@"),0);
      echo "<p class = sa >By sasajuSo ruH (8.2.66) :</p>
          <p class = hn >This is an exception to jhalAM jazo'nte.</p>"; $r2 = 1;
      display(0);
@@ -858,6 +858,10 @@ if (sub(array("Bo","Bago","aGo","a","A"),array("r@"),$ash,0))
 // This is regarding pronounciation.
 
 
+// Patch to convert the rutva before vowels and hash to repha.
+$text = two(array("r@"),$ac,array("r"),$ac,0);
+$text = two(array("r@"),prat('hS'),array("r"),prat('hS'),0);
+
 /* kharavasAnayorvisarjanIyaH (8.3.15) */
 if (preg_match('/[r]$/',$first) && preg_match('/^['.pc('Kr').']/',$second))
 {
@@ -880,7 +884,7 @@ display(0);
 }
 if (sub(array("r@"),blank(0),blank(0),0) && preg_match('/[mMnrsH]$/',$second))
 {
-$text = one(array(substr($second,0,strlen($second)-1)."r@"),array(substr($second,0,strlen($second)-1)."H"),0);
+$text = one(array(substr($second,1,strlen($second)-2)."r@"),array((substr($second,1,strlen($second)-2)."H")),0);
 echo "<p class = sa >By kharavasAnayorvisarjanIyaH (8.3.15) :</p>";
 display(0);
 }
@@ -1494,22 +1498,10 @@ if (preg_match('/[aAiIuUfFxX]$/',$second))
     $value1 = array_merge($text,$value1);
     $value1 = array_unique($value1);
     $text = array_values($value1);
-    echo "<p class = sa >By aNo'pragRhyasyAnunAsikaH (8.4.57)1 :</p>";
+    echo "<p class = sa >By aNo'pragRhyasyAnunAsikaH (8.4.57) :</p>";
     display(0);
 }
-/*if (preg_match('/[aAiIuUfFxX]$/',$first) && !preg_match('/^['.flat($ac).']/',$second))
-{
-    foreach($text as $value)
-    {
-    $value2[] = str_replace($first,$first."!",$value);
-    }
-    
-    $text = array_merge($text,$value2);
-    $text = array_unique($text);
-    $text = array_values($text);
-    echo "<p class = sa >By aNo'pragRhyasyAnunAsikaH (8.4.57)2 :</p>";
-    display(0);
-}*/
+
 
 /* anusvArasya yayi parasavarNaH (8.4.58) and vA padAntasya (8.4.59) */
 $pa = array("!yy","!vv","!rr","!ll","YY","mm","NN","RR","nn","YJ","mB","NG","RQ","nD","Yj","mb","Ng","Rq","nd","NK","mP","YC","RW","nT","Yc","Rw","nt","Nk","mp");
