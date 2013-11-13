@@ -862,38 +862,22 @@ if (sub(array("Bo","Bago","aGo","a","A"),array("r@"),$ash,0))
 $text = two(array("r@"),$ac,array("r"),$ac,0);
 $text = two(array("r@"),prat('hS'),array("r"),prat('hS'),0);
 
+
 /* kharavasAnayorvisarjanIyaH (8.3.15) */
-if (preg_match('/[r]$/',$first) && preg_match('/^['.pc('Kr').']/',$second))
+if (preg_match('/^['.pc('Kr').']/',$second) && sub(array("r"), array("@"),prat('Kr'),0))
 {
- $text = $text = one(array(substr($first,0,strlen($first)-1)."r"),array(substr($first,0,strlen($first)-1)."H"),0);
+ $text = two(array("r@"),prat("Kr"),array("H"),prat("Kr"),0);
  echo "<p class = sa >By kharavasAnayorvisarjanIyaH (8.3.15) :</p>";
  display(0);
 }
-// Patch for ru
-if (preg_match('/[@]$/',$first) && preg_match('/^['.pc('Kr').']/',$second))
+if ( sub(array("r"), array("@"),array(""),0) && preg_match('/[snmMr]$/',$second))
 {
-$text = two(array("r@"),prat('Kr'),array("H"),prat('Kr'),0);
-echo "<p class = sa >By kharavasAnayorvisarjanIyaH (8.3.15) :</p>";
-display(0);
+ $text = one(array("r@"),array("H"),0);
+ echo "<p class = sa >By kharavasAnayorvisarjanIyaH (8.3.15) :</p>";
+ display(0);
 }
-if (sub(array("r@"),blank(0),blank(0),0) && preg_match('/[MmnrsH]$/',$first))
-{
-$text = one(array(substr($first,0,strlen($first)-1)."r@"),array(substr($first,0,strlen($first)-1)."H"),0);
-echo "<p class = sa >By kharavasAnayorvisarjanIyaH (8.3.15) :</p>";
-display(0);
-}
-if (sub(array("r@"),blank(0),blank(0),0) && preg_match('/[mMnrsH]$/',$second))
-{
-$text = one(array(substr($second,1,strlen($second)-2)."r@"),array((substr($second,1,strlen($second)-2)."H")),0);
-echo "<p class = sa >By kharavasAnayorvisarjanIyaH (8.3.15) :</p>";
-display(0);
-}
-if (sub(array("aharahar"),blank(0),blank(0),0) && preg_match('/[MmnrsH]$/',$second))
-{
-$text = one(array("aharahar"),array("aharahaH"),0);
-echo "<p class = sa >By kharavasAnayorvisarjanIyaH (8.3.15) :</p>";
-display(0);
-}
+
+
 
 /* ro ri (8.3.14) */
 if (sub(array("rr"),blank(0),blank(0),0))
@@ -1416,9 +1400,9 @@ echo "<p class = hn >N.B.: By triprabhRtiSu zAkaTAyanasya (8.4.50), the dvitva i
 // Not coded separately, because we did dvitva only for $hrasva, and not for 'ac'. So this is already taken care of.
 
 /* jhalAM jaz jhaSi (8.4.53) */
-if(sub(prat('Jl'),prat('Jz'),blank(0),0))
+if(sub(prat('Jl'),prat('JS'),blank(0),0))
 {
-$text = two(prat('Jl'),prat('Jz'),savarna(prat('Jl'),prat('jS')),prat('Jz'),0);
+$text = two(prat('Jl'),prat('JS'),savarna(prat('Jl'),prat('jS')),prat('JS'),0);
 echo "<p class = sa >By jhalAM jaz jhaSi (8.4.53):</p>";
 display(0);
 }
@@ -1549,11 +1533,12 @@ display(0);
 }
 
 /* halo yamAM yami lopaH (8.4.64) */ 
-$duplicate = array("kk","KK","gg","GG","NN","cc","CC","jj","JJ","YY","ww","WW","qq","QQ","RR","tt","TT","dd","DD","nn","pp","PP","bb","BB","mm","yy","rr","ll","vv","SS","zz","ss","hh");
+$duplicate = array("NN","YY","RR","nn","mm","yy","rr","ll","vv",);
+$dup = array("N","Y","R","n","m","y","r","l","v",);
 $hl = array("k","K","g","G","N","c","C","j","J","Y","w","W","q","Q","R","t","T","d","D","n","p","P","b","B","m","y","r","l","v","S","z","s","h");
-if (sub($hl,$duplicate,blank(0),0))
+if (sub($hl,prat('ym'),prat('ym'),0))
 {
-$text = two($hl,$duplicate,$hl,$hl,1);
+$text = two($hl,$duplicate,$hl,$dup,1);
 echo "<p class = sa >By halo yamAM yami lopaH (8.4.64) :</p>";
 display(0);
 }
