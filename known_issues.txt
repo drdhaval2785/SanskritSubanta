@@ -1,0 +1,164 @@
+﻿1. Pluta / apluta / pragRhya issues :
+
+/* vAkyasya TeH pluta udAttaH (8.2.82) */
+// This is adhikArasutra. Nothing to code here.
+
+/* pratyabhivAde'zUdre (8.2.83) */
+/* dUrAddhUte ca (8.2.84) */
+/* haihe prayoge haihayoH (8.2.85) */
+/* guronanRto'nantyasyApyekaikasya prAcAm (8.2.86) */
+/* aplutavadupasthite (6.1.129) */
+/* I3 cAkravarmaNasya (6.1.130) */
+// These two are not possible to code, because it will depend on the speaker's choice.
+
+/* IdUdeddvivacanaM pragRhyam (1.1.11) */
+// not possible to code till we get the word forms of all words and check whether it is dvivacana or not. Pending
+
+
+2.  /* ze (1.1.13) */
+// Not possible to know whether one form has ze or not.
+
+2. /* IdUtau ca saptamyarthe (1.1.19) */
+Is there a way to know what are the words used in saptamyartha in this fashion. This seems to be vedic in nature. Right now coded - applies to all such cases as optionality. But this will unnecessarily throw so many wrong / unneeded forms.
+
+3. /* so'ci lope cetpAdapUraNam (6.1.134) */
+How can we know whether this is for pAdapUraNa or not.
+Right now coded presuming that it is pAdapUraNa.
+
+4. ससजुषो रुः - 
+Right now this रुँ is kept as it is in prakriyA stage and removed at proper place. Because there are many issues which need to know whether there is a simple repha or rutva.
+Grammatically correct - but user perspective ? not known.
+ 
+5. /* prathamayoH pUrvasavarNaH (6.1.102) */
+Difficult to teach the machine the vibhaktis at this stage. Will think over it later.
+Right now it is shown as an optional form. Take whatever is applicable to you.
+
+6. /* etyedhatyuThsu (6.1.89) */ 
+Right now I have taken “eti”,”edhati” and “oha” as the second words to qualify for this rule. If there are others, please enumerate them, so that it can be fed to the computer. As the rule says, ti can apply to all forms of ‘eti’, ‘edhati’ . e.g. ‘ehi’ is also valid. So enumeration may help me.
+
+7. /* upasargAdRti dhAtau (6.1.11) */
+Right now I have taken this verbs: 
+ऋक्ष्‌ ऋच्‌ ऋछ्‌ ऋज्‌ ऋञ्ज्‌ ऋण्‌ ऋत्‌ ऋद्‌ ऋध्‌ ऋन्‌ ऋफ्‌ ऋभुक्ष्‌ ॠम्फ्‌ ऋम्फ्‌ ऋश्‌ ऋष्‌ ऋह्‌
+Is there need to add more?
+Note: Machine can identify only if they exist in the same form. Otherwise it will not be able to identify.. lets say past participle of a verb, hyastana bhUtakAla etc.
+
+8. /* eGi pararUpam (6.1.94) */ 
+Difficult to code till I get the list of dhAtus which have forms starting from e,o.  Maybe I will have to ask for user input here.
+
+9. /* eve cAniyoge (vA 3631) */
+No way we can know whether it is aniyoga or not. so kept two optional forms.
+
+10. /* eGaH padAntAdati (6.1.109) */
+Right now we have kept both the input boxes as padas. e.g. हरे + अव => हरेऽव.
+But it goes wrong when we put ने + अन => instead of नयन it gives नेऽन by this rule
+
+11. /* vA supyapizaleH (6.1.92) */
+Not possible to know what is nAmadhAtu and what is not. Therefore added as comments. Not coded.
+
+12. /* zakandhvAdiSu pararUpaM vAcyam (vA 3632) */
+List of zakandhvAdi is as per siddhAntakaumudI. It says it is an AkRtigaNa. So other forms are possible. Is there a more exhaustive list of these words than that given in SK ?
+
+13. /* vAnto yi pratyaye (6.1.71) */
+Is there a way in which we can get to know the pratyayas starting with य्‌ and also the words which take them and end in ओ/औ?
+
+14. /* dhAtostannimittasyaiva (6.1.80) */
+How can we know whether this o/au are of a dhatu origin ? Is there a list ?
+
+15. /* omAGozca (6.1.95) */ 
+How can we know from a word whether it is आङ्‌ or simple आ ?
+
+16. /* avyaktAnukaraNasyAta itau (6.1.98) */
+Right now I have taken words ending with ‘अत्‌” (पटत्पटत्‌)as denoting avyaktAnukaraNam. Are there other possibilities also?
+
+17. /* nAmreDitasyAntasya tu vA (6.1.99), tasya paramAmreDitam (8.1.2) */
+Right now I bifurcate the string by ‘at’ and then see if the first and the second part is same or not.
+e.g. पटत्‌पटत्‌ -> पट्‌ + अत्‌ + पट्‌ + अत्‌ =>  I check whether first and third are same? If yes I tell it as AmreDita. Is it valid ? Or some other way also exists?
+
+18. /* udaH sthAstambhvoH pUrvasya (8.1.61) */
+Right now I do not give the correct Adeza here. I directly convert उत्‌ स्था -> उत्था.
+
+19. /* dAderdhAtorghaH (8.2.32) */
+// Pending to code because involves dhAtus.
+
+20. /* vA druhamuhaSNuhaSNihAm (8.2.33) */ 
+// Pending to code
+
+21. /* naho dhaH (8.2.33) */
+// Pending to code
+
+22. /* AhsthaH (8.2.34) */
+// Pending to code
+
+23. /* vyorlaghuprayatnataraH zAkaTAyanasya (8.3.18) */
+// This is regarding pronunciation. So not coded.
+
+23. The rutvaprakaraNa - 
+some part is in sixth adhyAya. the others are in tripAdI.
+I have taken the tripAdi part before sixth chapter. Because without defining rutva, how I can do the prakriya of sapAdasaptAdhyAyI. Maybe this alteration in the order of tripAdI may cause some issue later on. We have to keep a watch on this. 
+
+24. /* IdUdeddvivacanaM pragRhyam (1.1.11) */
+In this rule, is there a way in which we can know that the word is dvivacana ?
+
+25. /* kaskAdiSu ca (8.3.48) */
+Any exhaustive list of this ? I have included SK list as of now.
+
+26. पदापदविचारः 
+पदं नाम न केवलं सुप्तिङन्तं, अपि च जलमुक् भ्याम् अत्र जलमुक् शब्दस्य पदसंज्ञा वर्तते. अष्टाध्याय्यां 1-4-14 आरभ्य 1-4-17 पर्यन्तं पदसंज्ञासूत्राणि सन्ति.
+
+27. पदान्तापदान्तत्वम्‌ -
+अष्टमाध्यायस्य प्रथमपादे पदस्य 8-1-16 इत्यारभ्य पदाधिकारः, स्कोः
+संयोगाद्योरन्ते च 8-2-29 इति सूत्रात् अन्ते इति उत्तरत्र 8-2-38
+पर्यन्तमनुवर्तते. उभावपि मिलित्वा पदस्य अन्ते इति निष्पन्नम्. तत्र
+विधीयमानकार्याणि पदान्तकार्याणि. तानि
+
+- चोः कुः
+- हो ढः
+- दादेर्धातोर्घः
+- वा द्रुहमुह...
+- नहो धः
+- आहस्थः
+- व्रश्चभ्रस्ज...
+- एकाचो बशो...
+- दधस्तथो च
+
+एवं झलां जशो अन्ते इति च.
+
+- न पदान्ताट्टोरनाम्
+- यरो अनुनासिके अनुनासिको वा
+- वा पदान्तस्य
+
+वा अवसाने इति तु पदान्तविधिर्न तथापि परे पदाभावे सति प्रवर्तते. अर्थात्
+अवसाने (विरामो अवसानम्).
+अच् सन्धौ- 
+एङः पदान्तादति
+
+28. खरवसानयोर्विसर्जनीयः 
+As the code doesn't know what is padAnta and what is not padAnta. There are various issues like संस्कर्ता -> संस्कःता. Wrongly converted the non पदान्त repha to visarga.
+So currently I have stopped refa -> visarga conversion.
+But sooner or later, the code has to learn what is padAnta and what is not.
+Cases where the visarga is from रेफ and not from रुत्व. 
+प्रातर्- प्रातः, अन्तर्- अन्तः, स्वर्- स्वः, पुनर्- पुनः, सनुतर्- सनुतः, निर्- निः, दुर्- दुः, चतुर्- 
+
+29. 
+1 - किम्वावपनम्
+2 - किमु आवपनम्
+3 - किम्वावपनम्म्
+4 - किमु आवपनम्म्
+Is it possible to get words with two ‘m’ ? just like वाक्क्‌ by anaci ca ?
+भवितव्यं, परन्तु संयोगान्तलोपः अपि वर्तते. एवं सति वाक्क इत्यत्रापि तथैव भवेत्. परन्तु तथा न दृश्यते.
+
+30. Possible places where I will need user input.
+/* ze (1.1.13) */
+/* sambuddhau zAkalyasyetAvanArSe (1.1.16) */
+/* IdUtau ca saptamyarthe (1.1.19) */
+/* vAnto yi pratyaye (6.1.71), goryutau CandasyupasaMkhyAnam (vA 3543), adhvaparimANe ca (vA 3544) dhAtostannimittasyaiva (6.1.80) */
+/* so'ci lope cetpAdapUraNam (6.1.134) */
+/* vasusraMsudhvaMsvanaDuhAM daH (8.2.72) */
+/* etyedhatyuThsu (6.1.89) */
+/* vA supyapizaleH (6.1.92) */
+/* otvoShThayoH samAse vA (vA 3634) */
+/* omAGozca (6.1.95) */ 
+/* nAmreDitasyAntasya tu vA (6.1.99), tasya paramAmreDitam (8.1.2) */
+/* iNaH SaH (8.3.39) */
+/* nAdinyAkroze putrasya (8.4.48) */
+

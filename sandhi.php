@@ -149,7 +149,7 @@ $nipata = array("a","A","i","I","u","U","e","E","o","O");
 $nipata1 = array("a ","A ","i ","I ","u ","U ","e ","E ","o ","O ");
 if (in_array($first,$nipata) && $start===1)
 {
-$text = two ($nipata,$ac,$nipata1,$ac,1);
+$text = two ($nipata,$ac,$nipata1,$ac,0);
 echo "<p class = sa >By nipAta ekAjanAG (1.1.14) :</p>";
 display(0);
 }
@@ -157,9 +157,9 @@ display(0);
 /* ot (1.1.15) */
 $ot = array("o","aho","ho","utAho","aTo");
 $ot1 = array("o ","aho ","ho ","utAho ","aTo ");
-if (in_array($first,$nipata) && $start===1)
+if (in_array($first,$ot) && $start===1)
 {
-$text = two ($ot,$ac,$ot1,$ac,1);
+$text = two ($ot,$ac,$ot1,$ac,0);
 echo "<p class = sa >By ot (1.1.15) :</p>";
 display(0);
 }
@@ -207,6 +207,27 @@ echo "<p class = sa >By IdUtau ca saptamyarthe (1.1.19) :</p>
     <p class = hn >N.B.: This will apply only in case the I/U at the end of the first word have been used in sense of saptamI vibhakti. Otherwise this pragRhyatva will not be there.</p>";
 display(0);
 }
+
+/* zakandhvAdiSu pararUpaM vAcyam (vA 3632) */
+$shakandhu1 = array("Saka","karka","kula","manas","hala","lANgala","patan","mfta");
+$shakandhu2 = array("anDu","anDu","awA","IzA","IzA","IzA","aYjali","aRqa");
+$shakandhu = array("SakanDu","karkanDu","kulawA","manIzA","halIzA","lANgalIzA","pataYjali","mArtaRqa");
+if (sub($shakandhu1,$shakandhu2,blank(0),0))
+{
+$text = two($shakandhu1,$shakandhu2,$shakandhu,blank(count($shakandhu)),0);
+echo "<p class = sa >By zakandhvAdiSu pararUpaM vAcyam (vA 3632) :</p>";
+display(0);
+}
+$shakandhu1 = array("sIman","sAra");
+$shakandhu2 = array("anta","aNga");
+$shakandhu = array("sImanta","sAraNga");
+if (sub($shakandhu1,$shakandhu2,blank(0),0))
+{
+$text = two($shakandhu1,$shakandhu2,$shakandhu,blank(count($shakandhu)),0);
+echo  "<p class = hn >Note: the sImanta - kezaveSa and sAraGga - pazu/pakSI - Then only this will apply.</p>";
+display(0);
+}
+
 
 /* Rti savarNe R vA (vA 3640) and lRti savarNe lR vA (vA 3641) */
 $ruti1 = array("f","F","x","X");
@@ -374,6 +395,11 @@ if ((substr($first,strlen($first)-3) === "vas" ||substr($second,strlen($second)-
 } else {$vasuu = 0; }
 
 /* sasajuSo ruH (8.2.66) */
+if (preg_match('/[H]$/',$first) && $start===1)
+{
+    $text = one(array("H"),array("r@"),0);
+    echo " <p class = hn >You have entered a visarga at the end of the first word. Usually it is derived from a sakAra at the end of the word.</p>";
+}
 if (preg_match('/[s]$/',$first) && $start===1)
 {
      $text = one(array($first),array(substr($first,0,strlen($first)-1)."r@"),0);
@@ -577,25 +603,6 @@ display(0);
 
 /* aco'ntyAdi Ti (1.1.64) */ // a saJjJAsUtra. No vidhi meant.
 
-/* zakandhvAdiSu pararUpaM vAcyam (vA 3632) */
-$shakandhu1 = array("Saka","karka","kula","manas","hala","lANgala","patan","mfta");
-$shakandhu2 = array("anDu","anDu","awA","IzA","IzA","IzA","aYjali","aRqa");
-$shakandhu = array("SakanDu","karkanDu","kulawA","manIzA","halIzA","lANgalIzA","pataYjali","mArtaRqa");
-if (sub($shakandhu1,$shakandhu2,blank(0),0))
-{
-$text = two($shakandhu1,$shakandhu2,$shakandhu,blank(count($shakandhu)),0);
-echo "<p class = sa >By zakandhvAdiSu pararUpaM vAcyam (vA 3632) :</p>";
-display(0);
-}
-$shakandhu1 = array("sIman","sAra");
-$shakandhu2 = array("anta","aNga");
-$shakandhu = array("sImanta","sAraNga");
-if (sub($shakandhu1,$shakandhu2,blank(0),0))
-{
-$text = two($shakandhu1,$shakandhu2,$shakandhu,blank(count($shakandhu)),0);
-echo  "<p class = hn >Note: the sImanta - kezaveSa and sAraGga - pazu/pakSI - Then only this will apply.</p>";
-display(0);
-}
 /* otvoShThayoH samAse vA (vA 3634) */
 $otu = array("otu","ozQ");
 if (sub($aa,$otu,blank(0),0))
@@ -849,7 +856,7 @@ if (preg_match('/['.pc('Jl').']$/',$first) )
 $ash = array("a","A","i","I","u","U","f","F","x","X","e","o","E","O","h","y","v","r","l","Y","m","N","R","n","J","B","G","Q","D","j","b","g","q","d");
 if (sub(array("Bo","Bago","aGo","a","A"),array("r@"),$ash,0)) 
 {
-    $text = three(array("Bo","Bago","aGo","a","A"),array("r@"),$ash,array("Bo","Bago","aGo","a","A"),array("y"),$ash,0);
+    $text = three(array("Bo","Bago","aGo","a","A"),array("r@"),$ash,array("Bo","Bago","aGo","a","A"),array("y+"),$ash,0);
     echo "<p class = sa >By bhobhagoaghoapUrvasya yo'zi (8.3.17) and vyorlaghuprayatnataraH zAkaTAyanasya (8.3.18) :</p>
        <p class = hn > In the opinion of zAkaTAyana, the padAnta yakAra and vakAra gets laghUccAraNa.</p>"; $bho = 1;
     display (0);
@@ -900,12 +907,12 @@ display(0);
 }
 
 /* lopaH zAkalyasya (8.3.19) */ 
-$aa = array("a","A");$yv = array("y","v"); $space=array(" "," ");
+$aa = array("a","A");$yv = array("y+","v"); $space=array(" "," ");
 if (sub($aa,$yv,blank(0),0) && (preg_match('/['.pc('ec').']$/',$first) || $bho === 1))
 {
 echo "<p class = sa >By lopaH zAkalyasya (8.3.19) :</p>";
-$aa = array("a","A");$yv = array("y","v"); $space=array(" "," ");
 $text = three($aa,$yv,$ac,$aa,$space,$ac,1); 
+$text = one(array("+"),array(""),0); 
 display(0);
 }
 
