@@ -59,7 +59,7 @@ $second = convert1($second);// echo $input2."</p>";
  
 $input = ltrim(chop($first.$second));
 
-$padanta[] = strpos($input,$second);
+//$padanta[] = strpos($input,$second);
 
 // displaying the data back to the user
 echo "<p class = no >You entered: ".convert($first)." + ".convert($second)."</p>";
@@ -365,7 +365,7 @@ if (sub($vasu,blank(0),blank(0),0))
     display(0); $vasuu = 1;
 } else {$vasuu = 0; }
 $vasu1 = array("vas");
-if (sub($vasu1,blank(0),blank(0),0) && $vasuu !==1 )
+if ((substr($first,strlen($first)-3) === "vas" ||substr($second,strlen($second)-3) === "vas") && $vasuu !==1 )
 {
     $text = one($vasu1,array("vad"),1);
     echo "<p class = sa >By vasusraMsudhvaMsvanaDuhAM daH (8.2.72) :</p>
@@ -756,16 +756,17 @@ if (preg_match('/['.flat($cu).']$/',$second))
     echo "<p class = sa >By coH kuH (8.2.30) :</p>";
     display(0);   
 }
+/*
 $first1 = str_split($first);
 $first2 = substr($first,count($first1)-1); 
 $firstbereplaced = chop($first,$first2); 
 $first2 = array($first2); $firstbereplaced=array($firstbereplaced);
-if (preg_match('/['.flat($cu).']$/',$first))
+if (preg_match('/['.flat($cu).']$/',$first) && $first === $input)
 {
     $text = two($firstbereplaced,$cu,$firstbereplaced,$ku,0);
     echo "<p class = sa >By coH kuH (8.2.30) :</p>";
     display(0);   
-}
+}*/
 
 
 /* ho DhaH (8.2.32) */
@@ -1349,7 +1350,7 @@ if (preg_match('/['.flat($ac).']['.flat($hl).']$/',$second) || (preg_match('/['.
     $text = array_unique($text);
     $text = array_values($text);
     $value1 = array();
-    echo "<p class = sa >By anaci ca (according to mahAbhASya example of vAkk) :</p>";
+    echo "<p class = sa >By anaci ca :</p>";
     display(1);
 }
 
