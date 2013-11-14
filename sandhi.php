@@ -763,7 +763,6 @@ if (preg_match('/['.flat($cu).']$/',$second))
     echo "<p class = sa >By coH kuH (8.2.30) :</p>";
     display(0);   
 }
-/*
 $first1 = str_split($first);
 $first2 = substr($first,count($first1)-1); 
 $firstbereplaced = chop($first,$first2); 
@@ -773,7 +772,7 @@ if (preg_match('/['.flat($cu).']$/',$first) && $first === $input)
     $text = two($firstbereplaced,$cu,$firstbereplaced,$ku,0);
     echo "<p class = sa >By coH kuH (8.2.30) :</p>";
     display(0);   
-}*/
+}
 
 
 /* ho DhaH (8.2.32) */
@@ -797,16 +796,7 @@ if (preg_match('/[h]$/',$second))
     echo "<p class = sa >By ho DhaH (8.2.32) :</p>";
     display(0);   
 }
-$first1 = str_split($first);
-$first2 = substr($first,count($first1)-1); 
-$firstbereplaced = chop($first,$first2); 
-$first2 = array($first2); $firstbereplaced=array($firstbereplaced);
-if (preg_match('/[h]$/',$first) )
-{
-    $text = two($firstbereplaced,array("h"),$firstbereplaced,array("Q"),0);
-    echo "<p class = sa >By coH kuH (8.2.30) :</p>";
-    display(0);   
-}
+
 
 /* dAderdhAtorghaH (8.2.32) */
 // Pending to code because involves dhAtus.
@@ -878,7 +868,7 @@ if (preg_match('/^['.pc('Kr').']/',$second) && sub(array("r"), array("@"),prat('
  echo "<p class = sa >By kharavasAnayorvisarjanIyaH (8.3.15) :</p>";
  display(0);
 }
-if ( sub(array("r"), array("@"),array(""),0) && preg_match('/[snmMr]$/',$second))
+if ( sub(array("r"), array("@"),array(""),0) && preg_match('/[snmMrH]$/',$second))
 {
  $text = one(array("r@"),array("H"),0);
  echo "<p class = sa >By kharavasAnayorvisarjanIyaH (8.3.15) :</p>";
@@ -1313,7 +1303,7 @@ display(0);
 /*anaci ca (8.4.47)*/ // Here the sudhI + upAsya - what about the Asy - Assy is possbile ? Code gives it. But there are 4 options. Code gives two only.
 // The cause for using $hrasva instead of $ac is that the dIrgha vowels are debarred by dIrghAdAcAyANAm.
 // Here instead of using pratyAhAra hl, we shall do manual enumeration of all the members. Bexause of "anusvAravisargajihvAmUlIyopadhmAnIyayamAnAmakAropari zarSu ca pAThasyopasaGkhyAtatvenAnusvArasyApyactvAt (in derivation of samskAra) 
-$hrasvaplus = array("M","!");
+$hrasvaplus = array("M","!","'");
 $hala1 = array("y","v","l","Y","m","N","R","n","J","B","G","Q","D","j","b","g","q","d","K","P","C","W","T","c","w","t","k","p","S","z","s","M",);
 $hala2 = array("h","y","v","r","l","Y","m","N","R","n","J","B","G","Q","D","j","b","g","q","d","K","P","C","W","T","c","w","t","k","p","S","z","s","M",);
 
@@ -1331,9 +1321,8 @@ if(sub($hrasvaplus,$hala1,$hala2,0))
 }
 if(checkarray($dirgha,$hl,array('r','l'),blank(0))!==0 && $sthanivadbhav===1) 
 {
-$text = dvitva($dirgha,$hl,$hala1,array(""),2,1);
-echo "<p class = sa >By anaci ca (8.4.47):</p>
-    <p class = hn >N.B.: The exception dIrghAdAcAryANAm is taken as optional in the mahAbhASya by denoting vAkk as a valid form. There is difference of opinion on this point in commentaries.</p>";
+$text = dvitva($dirgha,$hala1,$hala2,array(""),2,1);
+echo "<p class = sa >By anaci ca (8.4.47):</p>";
 display(1);
 }
 /* By anaci ca (according to mahAbhASya example of vAkk) */ 
@@ -1444,8 +1433,7 @@ display(1);
 
 
 /* vA'vasAne (8.4.54) */
-if (preg_match('/['.pc('Jl').']$/',$second) )
-{
+
 foreach($text as $value)
 {
     $part1 = substr($value,0,count(str_split($value))-1); 
@@ -1462,6 +1450,8 @@ foreach($text as $value)
     }
     }
 }
+if ($value1!==$text)
+{
 $text = array_merge($text,$value1);
 $value1= array();
 echo "<p class = sa >By vA'vasAne (8.4.54) :</p>";
