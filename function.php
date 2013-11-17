@@ -1,4 +1,16 @@
 ﻿<?php
+/* This code is developed by Dr. Dhaval Patel (drdhaval2785@gmail.com) of www.sanskritworld.in and Ms. Sivakumari Katuri.
+  * Layout assistance by Mr Marcis Gasuns.
+  * Available under GNU licence.
+  * Version 1.1 date 17/11/2013
+  * The latest source code is available at https://github.com/drdhaval2785/sanskrit
+  * For setup, copy and paste sandhi.html, sandhi.php, function.php, mystyle.css, slp-dev.php and dev-slp.php to your localhost and server and run sandhi.html.
+  * sandhi.html is the frontend for the code.
+  * function.php stores the frequently used functions in this code (The description on how to use the code is there in function.php.
+  * slp-dev.php is for converting SLP1 data to Devanagari. dev-slp.php is for converting Devanagari data to SLP1.
+  * Mystyle.css is stylesheet where you can change your preferences.
+  */
+
 /* Defining grammatical arrays */
 $shiv=array("a","i","u","-R","f","x","-k","e","o","-N","E","O","-c","h","y","v","r","-w","l","-R","Y","m","N","R","n","-m","J","B","-Y","G","Q","D","-z","j","b","g","q","d","-S","K","P","C","W","T","c","w","t","-v","k","p","-y","S","z","s","-r","h","-l");
 $kantha = array("a","A","k","K","g","G","N","h","H");
@@ -42,6 +54,9 @@ $verbs_changed = array("kz","c","C","j","Yj","R","t","d","D","n","P","Bukz","mP"
 $ku = array("k","K","g","G","N");
 $pu = array("p","P","b","B","m");
 $iN = array("i","I","u","U");
+
+/* Function to find pratyAhAra from given two letters */ 
+// Enter your letters in the arguments like prat('Jl') will mean pratyAhAra jhal.
 function prat($text)  // prat for pratyAhAra
 {
 global $shiv; 
@@ -85,18 +100,24 @@ $text = explode(" ",$b);
 }
 return $text;
 }
+/* function pratyAhAra check is for checking in regular expressions. 
+ * In regular expressions we don't treat arrays. usually it is 'aAiIuU'. 
+ * so this function converts the pratyAhAra to this flat format. */
 function pc($text) // pratyAhAra check
 {
 $text = "'".implode("",prat($text))."'";
 return $text;
 }
-function f($text,$n) // find 'n'th letter in the word
+/* Function to find the nth letter in the word */
+function f($text,$n) // Not used in code.
 {
 $p = str_split($text);
 $text = $p[$n-1];
 return $text;
 }
-function sa($text,$n)	// find string after removing 'n' letters from beginning of the word (sa for string after)
+
+/* find string after removing 'n' letters from beginning of the word (sa for string after) */
+function sa($text,$n)	// Not used in code.
 {
 $p = str_split($text);
 $a = "";
@@ -104,13 +125,15 @@ for ($q=0;$q<$n;$q++)
 { $text = ltrim($text,$p[$q]); }
 return $text;
 }
-function r($text,$n) 		// find 'n'th letter from the end in a word (r for reverse direction)
+/* find 'n'th letter from the end in a word (r for reverse direction) */
+function r($text,$n) 		// Not used in code
 {
 $p = str_split($text);
 $text = $p[count($p)-$n];
 return $text;
 }
-function sb($text, $n)	// find the string remaining after removing n characters from the end (sb for string before)
+/* find the string remaining after removing n characters from the end (sb for string before) */
+function sb($text, $n)	// Not used in code.
 {
 $p = str_split($text);
 $a= "";
@@ -118,6 +141,11 @@ for ($q=0;$q<$n;$q++)
 {$text = chop($text,$p[count($p)-$q-1]);} 
 return $text;
 }
+
+/* Function one is for replacing one letter in the whole array of $text with another letter */
+// There are three arguments, $a is the array which you want to change, $b is the array which will be put in place of the replaced one.
+// $merge can take two values. 0 will mean that the whole $text will be replaced with the new replaced values. Used in case of mandatory Adezas.
+// 1 will mean that $text will not be replaced, but the replaced values will be added to it. Used in case of optional Adezas.
 function one($a,$b,$merge)
 {global $text;
     for($z=0;$z<count($text);$z++)
@@ -143,6 +171,10 @@ function one($a,$b,$merge)
     }
 return $text;  
 }
+/* Function two is for replacing one letter in the whole array of $text with another letter */
+// There are five arguments, $a,$b are the arrays which you want to change, $c,$d are the arrays which will be put in place of the replaced one.
+// $merge can take two values. 0 will mean that the whole $text will be replaced with the new replaced values. Used in case of mandatory Adezas.
+// 1 will mean that $text will not be replaced, but the replaced values will be added to it. Used in case of optional Adezas.
 function two($a,$b,$c,$d,$merge)
 {
     global $text;
@@ -172,7 +204,10 @@ function two($a,$b,$c,$d,$merge)
     return $text2;
 }
 
-
+/* Function three is for replacing one letter in the whole array of $text with another letter */
+// There are seven arguments, $a,$b,$c are the arrays which you want to change, $d,$e,$f are the arrays which will be put in place of the replaced one.
+// $merge can take two values. 0 will mean that the whole $text will be replaced with the new replaced values. Used in case of mandatory Adezas.
+// 1 will mean that $text will not be replaced, but the replaced values will be added to it. Used in case of optional Adezas.
 function three($a,$b,$c,$d,$e,$f,$merge)
 {global $text;
    for ($z=0;$z<count($text);$z++)
@@ -205,7 +240,7 @@ function three($a,$b,$c,$d,$e,$f,$merge)
 }
 
 
-// A function to flatten a multidimentional array
+/* function flatten is a function to flatten a multidimentional array */
 function flatten(array $array) 
 {
     $return = array();
@@ -213,6 +248,7 @@ function flatten(array $array)
     return $return;
 }
 
+/* function savarna is to find out savarNa of a character from the given pratyAhAra */
 // Actual function to find out the savarNa of a character from the given pratyAhAra. e.g. savarNa("a",prat('ac')) will give 
 // savarNa of letter 'a' from the pratyAhAra 'ac'.
 function savarna($inarray,$array) // Known issue - words having two Asyas.
@@ -353,11 +389,13 @@ $arr[$z] =  $savarna;
 return $arr;
 }
 
-// function to show the text on screen.
+/* function display will show the text on screen. */
+// There are three arguments. 0 will simply display the message. 1 will show an additional message in dvitva. 2 is used only once in the code, where there were two optional forms.
 function display($n)
 {global $text;
     
-    if ($n === 1) { echo "Please note: Wherever there is dvitva, it is optionally negated by sarvatra zAkalyasya. (8.4.51)</br>"; }
+    if ($n === 1) { echo "<p class = hn>Please note: Wherever there is dvitva, it is optionally negated by sarvatra zAkalyasya. (8.4.51)</p>";
+    echo "<p class = hn>द्वित्व का सर्वत्र सर्वत्र शाकल्यस्य (८.४.५१) से पाक्षिक निषेध होता है ।</p>";}
     if ($n === 2) { global $text1; $text2 = $text; $text = $text1; }
     for($i=1;$i<count($text)+1;$i++)
     {
@@ -369,16 +407,18 @@ function display($n)
     
     }
 
+
+/* function dvitva will be used to duplicate a letter */
+// It has six arguments, first four arguments are the arrays which need to be replaced. 
+// $location is to specify which of these 4 consecutive arrays is to be duplicated. e.g. 2 will mean that the second member will be duplicated.
+// $merge is to specify whether to replace (0) or add (1) to the existing array. 0 is used for mandatory dvitva and 1 is used for optional dvitva.
 function dvitva ($kantha,$talu,$murdha,$oshtha,$location,$merge)
 { 
  global $text;   
 // this is an array of the input values to use below 
-
-
  // get all possible combianations of $kantha+$talu+$murdha
 //$combinations = get_string_combinations(); 
    $combinations = array(); 
-
      foreach($kantha as $k) // "a","k","g","n","h"
      { 
         foreach($talu as $t) // "i","c","j","y","s"
@@ -396,13 +436,9 @@ function dvitva ($kantha,$talu,$murdha,$oshtha,$location,$merge)
 $values1 = array();
 foreach ($text as $stti => $string)  // 'aifkcwh', 'aifkcwhsz', 'kim', 'aif'
 {
-
     $values = array($string);  
-    
-    reset($values); 
-
-
-    // loop through $values using an array pointer 
+       reset($values); 
+  // loop through $values using an array pointer 
     // while the current array pointer position is not null/false
     while(current($values)!==false)
     {
@@ -496,8 +532,7 @@ return $output;
 
 
 
-
-
+/* function lopa is not used in the code because it is not stable */
 function lopa ($kantha,$talu,$murdha,$oshtha,$location,$merge)
 { 
  global $text;   
@@ -597,12 +632,8 @@ function nosavarna($c)
     if ( $c === $f[3] ) {$non = array_diff($ac, $f);}
        return $non;
 }
- // ================================================================
- // functions 
- // ================================================================
-
-
- // get all possible combinations of $kantha.$talu.$murdha
+ 
+/* function get_string_combinations is a subset of the function dvitva and lopa */
  function get_string_combinations()
  {
      $kantha = array("a","k","g","n","h");
@@ -640,7 +671,8 @@ function nosavarna($c)
      */
      return $combinations;
  }
-
+ 
+/* function merge is not used in the code */
  function merge($text,$text1)
  {
      $text = array_merge($text,$text1);
@@ -648,13 +680,13 @@ function nosavarna($c)
     $text = array_values($text);
     return $text;
  }
- 
+/* function flat is used to make an array useful for regular expressions */
  function flat($array)
  {
      $array = "'".implode("",$array)."'";
      return $array;
  }
-
+/* function blank will return an array having n blank members. blank(2) === array("","",""); */
  function blank($n)
  {
      $array = array();
@@ -665,6 +697,7 @@ function nosavarna($c)
      return $array;
  }
 
+/* function checkarray is used to see whether the sequence of $a,$b,$c,$d is found in any of the members of $text */ 
  function checkarray($a,$b,$c,$d)
  {
      global $text;
@@ -715,7 +748,9 @@ function nosavarna($c)
 
 
 
- 
+/* function sub is a modified version of checkarray. It searches for the consecutive occurences of $a,$b,$c in the members of array $text. 
+ * $repeat 0 will mean that the sequence doesnt matter. 1 will mean that the sequence has to be the same.
+ */ 
  function sub($a,$b,$c,$repeat)
 {   
      global $text;
@@ -769,7 +804,7 @@ else
 }
 
 
-// Function to find savarna of a given letter from the given array.
+/* Function to find savarna of a given letter from the given array. */
 function sl($text,$array) // Known issue - words having two Asyas.
 {
     global $kantha,$talu,$murdha,$danta,$oshtha,$nasika,$kanthatalu,$kanthoshtha,$dantoshtha,$sprushta,$ishatsprushta,$vivruta,$samvruta,$aghosha,$alpaprana,$ghosha,$mahaprana,$ac,$udatta,$anudatta,$svarita,$shvasa,$nada,$vivara,$samvara,$hl,$ru,$e;
