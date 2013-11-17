@@ -32,10 +32,10 @@ ini_set('max_execution_time', 36000);
 // set memory limit to 1000 MB
 ini_set("memory_limit","1000M");
 // Reading from the HTML input.
-$first = $_POST["first"];
-$second = $_POST['second'];
-$tran = $_POST['tran'];
-$pada = $_POST['pada'];
+$first = $_GET["first"];
+$second = $_GET['second'];
+$tran = $_GET['tran'];
+$pada = $_GET['pada'];
 
 // Code for converting from IAST to SLP
 $iast = array("a","ā","i","ī","u","ū","ṛ","ṝ","ḷ","ḹ","e","ai","o","au","ṃ","ḥ","kh","ch","ṭh","th","ph","gh","jh","ḍh","dh","bh","ṅ","ñ","ṇ","k","c","ṭ","t","p","g","j","ḍ","d","b","n","m","y","r","l","v","s","h","ś","ṣ",);
@@ -67,7 +67,7 @@ $second = convert1($second);// echo $input2."</p>";
 $input = ltrim(chop($first.$second));
 
 // displaying the data back to the user
-echo "<p class = no >You entered: ".convert($first)." + ".convert($second)."</p>";
+echo "<p class = no >You entered: ".convert($first)." + ".convert($second)." <a href = sandhi.html>Go Back</a></p>";
 echo "</br>";
        
  /* main coding part starts from here. Based on Siddhantakaumudi text. */
