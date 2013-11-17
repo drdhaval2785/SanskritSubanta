@@ -1,4 +1,4 @@
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 <meta charset="UTF-8">
@@ -35,7 +35,7 @@ ini_set("memory_limit","1000M");
 $first = $_GET["first"];
 $second = $_GET['second'];
 $tran = $_GET['tran'];
-$pada = $_GET['pada'];
+$pada = "pratyaya";
 
 // Code for converting from IAST to SLP
 $iast = array("a","ā","i","ī","u","ū","ṛ","ṝ","ḷ","ḹ","e","ai","o","au","ṃ","ḥ","kh","ch","ṭh","th","ph","gh","jh","ḍh","dh","bh","ṅ","ñ","ṇ","k","c","ṭ","t","p","g","j","ḍ","d","b","n","m","y","r","l","v","s","h","ś","ṣ",);
@@ -62,6 +62,43 @@ $second = str_replace("\u200c","",$second);
 $second = json_decode($second);
 $first = convert1($first); //echo $input1."</p>";
 $second = convert1($second);// echo $input2."</p>";
+
+$fo = $first;
+$so = $second;
+/* preprocessing for the sup pratyayas. */
+$sup = array("su!","O","jas","am","Ow","Sas","wA","ByAm","Bis","Ne","ByAm","Byas","Nasi!","ByAm","Byas","Nas","os","Am","Ni","os","sup");
+
+/* upadeze'janunAsika it (1.3.2)*/
+if (preg_match('/['.flat($ac).'][!]/',$so) && $pada=== "pratyaya")
+{
+    $second = two1($second,$ac,array("!"),blank(count($ac)),array(""),0); 
+}
+/* AdirGiTuDavaH (1.3.5) */
+if ((substr($first,0,2) === "Yi" || substr($first,0,2) === "wu" || substr($first,0,2) === "qu") && $pada=== "pratyaya")
+{
+    $first = one1(array("Yi","wu","qu"),blank(3),0);
+}
+/* cuTU (1.3.7) & SaH pratyayasya (1.3.6) */
+if (preg_match('/^[cCjJYwWqQRz]/',$so) && $pada=== "pratyaya")
+{
+    $second = substr($second,1);
+}
+/* lazakvataddhite (1.3.8) */
+if (preg_match('/^[lSkKgGN]/',$so) && $pada=== "pratyaya" && $taddhita === 0)
+{
+    $second = substr($second,1);
+}
+/* halantyam (1.3.3) and tasya lopaH */
+if (preg_match('/['.flat($hl).']$/',$so) && $pada=== "pratyaya" && !in_array($so,$sup))
+{
+    $second = substr($second,0,strlen($second)-1);
+}
+/* na vibhaktau tusmAH (1.3.4) */
+if (!preg_match('/[tTdDnsm]$/',$so) && preg_match('/['.flat($hl).']$/',$so) && $pada=== "pratyaya" && in_array($so,$sup))
+{
+    $second = substr($second,0,strlen($second)-1);
+}
+echo $first." ".$second;
 
 // Joining the two input words 
 $input = ltrim(chop($first.$second));
@@ -426,9 +463,15 @@ if (preg_match('/[s]$/',$first) && $start===1  && $pada ==="pada")
      display(0);
 }
 elseif ($start>1 && $r1!==0) { $r1 = 1; } else {$r1=0; }
-if (preg_match('/[s]$/',$second) && $start===1 )
-{
-     $text = one(array(substr($second,1)),array(substr($second,1,strlen($second)-2)."r@"),0);
+echo $input; echo $second;
+if (preg_match('/[s]$/',$input) && $start===1 )
+{ 
+    foreach($text as $value)
+    {
+        $value1[] = substr($value,0,strlen($value)-1)."r@";
+    }
+    $text = $value1;
+//    $text = one(array(substr($second,1)),array(substr($second,1,strlen($second)-2)."r@"),0);
      echo "<p class = sa >By sasajuSo ruH (8.2.66) :</p>
          <p class = hn >This is an exception to jhalAM jazo'nte.</p>"; 
      echo "<p class = sa >ससजुषो रुः (८.२.६६) :</p>
@@ -879,13 +922,13 @@ if (preg_match('/['.pc('Jl').']$/',$second))
 }
 if (preg_match('/['.pc('Jl').']$/',$first) && $pada === "pada" )
 { 
-   
-    if ($r1 === 1 || $r2 ===1) {echo "<p class = sa >jhalAM jazo'nte is barred by sasajuSo ruH. <hr>"; echo "<p class = sa >ससजुषो रुः से झलां जशोऽन्ते बाधित हुआ है । <hr>";}
-    else {  $text = two($firstbereplaced,prat('Jl'),$firstbereplaced,savarna(prat('Jl'),prat('jS')),0);
+    
+    if ($r1 === 1 || $r2 === 1) {echo "<p class = sa >jhalAM jazo'nte is barred by sasajuSo ruH. <hr>"; }
+    else {$text = two($firstbereplaced,prat('Jl'),$firstbereplaced,savarna(prat('Jl'),prat('jS')),0);
     echo "<p class = sa >By jhalAM jazo'nte (8.2.39), The padAnta is 'jhal' is replaced by 'jaz' :</p>";
         echo "<p class = sa >झलां जशोऽन्ते (८.२.३९) :</p>";
             display(0);    }
-}
+} 
 /* bhobhagoaghoapUrvasya yo'zi (8.3.17) and vyorlaghuprayatnataraH zAkaTAyanasya (8.3.18) : */
 $ash = array("a","A","i","I","u","U","f","F","x","X","e","o","E","O","h","y","v","r","l","Y","m","N","R","n","J","B","G","Q","D","j","b","g","q","d");
 if (sub(array("Bo","Bago","aGo","a","A"),array("r@"),$ash,0)) 
@@ -918,7 +961,7 @@ if ( sub(array("r"), array("@"),array(""),0) && preg_match('/[snmMrH]$/',$second
  echo "<p class = sa >खरवसानयोर्विसर्जनीयः (८.३.१५) :</p>";
  display(0);
 }
-if ( sub(array("r"), array("@"),array(""),0) && preg_match('/[snmMrH]$/',$first) && $input === $first)
+if ( sub(array("r"), array("@"),array(""),0) && preg_match('/[snmMrH]$/',$input))
 {
  $text = one(array("r@"),array("H"),0);
  echo "<p class = sa >By kharavasAnayorvisarjanIyaH (8.3.15) :</p>";
@@ -1561,7 +1604,7 @@ $text = one($mm,$pa,1);
 echo "<p class = sa >By anusvArasya yayi parasavarNaH (8.4.58) and vA padAntasya (8.4.59) :</p>
     <p class = hn >N.B.: The change of anusvARa to parasavarNa is mandatory for non padAnta conjoints. For padAnta conjoints, it is optional.</p>";
 echo "<p class = sa >अनुस्वारस्य ययि परसवर्णः (८.४.५८) तथा वा पदान्तस्य (८.४.५९) :</p>
-    <p class = hn >पदान्त में पाक्षिक है । अपदान्त के लिए अनिवार्य है ।</p>";
+    <p class = hn >अपदान्त में पाक्षिक है । पदान्त के लिए अनिवार्य है ।</p>";
 display(0);
 }
 /* torli (8.4.60) */

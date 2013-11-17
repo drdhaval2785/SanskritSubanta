@@ -948,4 +948,52 @@ else
 return $savarna;
 }
 
+
+/* Function one is for replacing one letter in the whole array of $text with another letter */
+// There are three arguments, $a is the array which you want to change, $b is the array which will be put in place of the replaced one.
+// $merge can take two values. 0 will mean that the whole $text will be replaced with the new replaced values. Used in case of mandatory Adezas.
+// 1 will mean that $text will not be replaced, but the replaced values will be added to it. Used in case of optional Adezas.
+function one1($text,$a,$b,$merge)
+{
+        for($i=0;$i<count($a);$i++)
+        {
+            $text =  str_replace($a[$i],$b[$i],$text);    
+        }
+return $text;  
+}
+/* Function two is for replacing one letter in the whole array of $text with another letter */
+// There are five arguments, $a,$b are the arrays which you want to change, $c,$d are the arrays which will be put in place of the replaced one.
+// $merge can take two values. 0 will mean that the whole $text will be replaced with the new replaced values. Used in case of mandatory Adezas.
+// 1 will mean that $text will not be replaced, but the replaced values will be added to it. Used in case of optional Adezas.
+function two1($text,$a,$b,$c,$d,$merge)
+{
+    for($i=0;$i<count($a);$i++)
+          {
+    for($j=0;$j<count($b);$j++)
+            {
+      $text =  str_replace($a[$i].$b[$j],$c[$i].$d[$j],$text);   
+            }
+          }
+    return $text;
+}
+
+/* Function three is for replacing one letter in the whole array of $text with another letter */
+// There are seven arguments, $a,$b,$c are the arrays which you want to change, $d,$e,$f are the arrays which will be put in place of the replaced one.
+// $merge can take two values. 0 will mean that the whole $text will be replaced with the new replaced values. Used in case of mandatory Adezas.
+// 1 will mean that $text will not be replaced, but the replaced values will be added to it. Used in case of optional Adezas.
+function three1($text,$a,$b,$c,$d,$e,$f,$merge)
+{
+     for($i=0;$i<count($a);$i++)
+    {
+    for($j=0;$j<count($b);$j++)
+        {
+        for($k=0;$k<count($c);$k++)
+            {
+         $text =  str_replace($a[$i].$b[$j].$c[$k],$d[$i].$e[$j].$f[$k],$text);       
+            }
+        }
+    }
+    return $text;
+}
+
  ?>
