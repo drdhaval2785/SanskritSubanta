@@ -996,4 +996,28 @@ function three1($text,$a,$b,$c,$d,$e,$f,$merge)
     return $text;
 }
 
+/* function to search the occurence of a pattern in any of the member of an array */
+function arr($text,$a)
+{
+    foreach ($text as $value)
+    {
+        if (preg_match($a,$value))
+        {
+            $count[] = 1;
+            break;
+        }
+        else 
+        {
+            $count[] = 0;
+        }
+    }
+    if (in_array(1,$count))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
  ?>
