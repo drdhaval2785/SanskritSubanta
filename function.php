@@ -1020,4 +1020,34 @@ function arr($text,$a)
         return false;
     }
 }
- ?>
+
+/* function to remove the last n letters from a word in the $text array and replace them with another word */
+function last($a,$b,$merge)
+{
+    global $text;
+    foreach ($text as $value)
+    {
+        if (preg_match('/['.$a.']$/',$value))
+        {
+            $value1[] = chop($value,$a).$b;
+        }
+        else 
+        {
+            $value1[] = $value;
+        }
+    }
+    if ($merge === 0)
+    {
+    $text = array_unique($value1);
+    $text = array_values($text);    
+    }
+    if ($merge === 1)
+    {
+    $text = array_merge($text,$value1);
+    $text = array_unique($text);
+    $text = array_values($text);    
+    }
+    
+    return $text;
+}
+?>
