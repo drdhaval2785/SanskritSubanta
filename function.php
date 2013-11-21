@@ -54,6 +54,7 @@ $verbs_changed = array("kz","c","C","j","Yj","R","t","d","D","n","P","Bukz","mP"
 $ku = array("k","K","g","G","N");
 $pu = array("p","P","b","B","m");
 $iN = array("i","I","u","U");
+$pratya =  array("aR","ak","ik","uk","eN","ac","ic","ec","Ec","aw","aR","iR","yaR","am","yam","Yam","Nam","yaY","Jaz","Baz","aS","haS","vaS","JaS","jaS","vaS","Cav","yay","may","Jay","Kay","cay","yar","Jar","Kar","car","Sar","al","hal","val","ral","Jal","Sal");
 
 /* Function to find pratyAhAra from given two letters */ 
 // Enter your letters in the arguments like prat('Jl') will mean pratyAhAra jhal.
@@ -686,7 +687,7 @@ function nosavarna($c)
      $array = "'".implode("",$array)."'";
      return $array;
  }
-/* function blank will return an array having n blank members. blank(2) === array("","",""); */
+/* function blank will return an array having n blank members. blank(2) === array("",""); */
  function blank($n)
  {
      $array = array();
@@ -696,6 +697,17 @@ function nosavarna($c)
      }
      return $array;
  }
+/* function blank1 will return an array having n members of $a. blank("a",2) === array("a","a"); */
+ function blank1($a,$n)
+ {
+     $array = array();
+     while(count($array)< $n+1)
+     {
+        array_push($array,$a);
+     }
+     return $array;
+ }
+ 
 
 /* function checkarray is used to see whether the sequence of $a,$b,$c,$d is found in any of the members of $text */ 
  function checkarray($a,$b,$c,$d)

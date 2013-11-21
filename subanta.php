@@ -194,6 +194,7 @@ if ((preg_match('/['.flat($hl).']$/',$so) && $pada=== "pratyaya" && !in_array($s
     echo convert($first).convert($second)."</br>";
 }
 
+
 // Joining the two input words 
 $input = ltrim(chop($first.$second));
 
