@@ -1187,7 +1187,7 @@ if (sub(array("rr"),blank(0),blank(0),0))
 } else { $ro = 0; }
 /* Dhralope pUrvasya dIrgho'NaH (6.3.111) */
 $ana = array("a","A","i","I","u","U","f","F","x","X");
-$anna = array("A","A","I","I","U","U","F","F","X","X");
+$anna = array("A ","A ","I ","I ","U ","U ","F ","F ","X ","X ");
 if (($ro ===1 || $dho===1) && sub($ana,array('#r',"#Q"),blank(0),0))
 {
 $text = two($ana,array('#r','#Q'),$anna,array('r','Q'),0);
