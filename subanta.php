@@ -488,17 +488,16 @@ if ($sambuddhi === 1 && $so === "su!" && (sub($hrasva,array("s"),blank(0),0)||su
     display(0); $eg = 1;
 } else { $eg = 0; }
 /* Rti savarNe R vA (vA 3640) and lRti savarNe lR vA (vA 3641) */
-$ruti1 = array("f","F","x","X");
-$ruti2 = array("f","f");
-$lruti2 = array("x","x");
-if (sub($ruti1,$ruti2,blank(0),0)||sub($ruti1,$lruti2,blank(0),0))
+$ruti2 = array("f");
+$lruti2 = array("-lx");
+if (sub($ruti1,array("f","x"),blank(0),0))
 {
-$text = two($ruti1,$ruti2,blank(count($ruti1)),$ruti2,1);
-$text = two($ruti1,$lruti2,blank(count($ruti1)),$lruti2,1);
+$text = two($ruti1,array("f"),blank(count($ruti1)),$ruti2,1);
+$text = two($ruti1,array("x"),blank(count($ruti1)),$lruti2,1);
 echo "<p class = sa >By Rti savarNe R vA (vA 3640) and lRti savarNe lR vA (vA 3641) :</p>";
 echo "<p class = sa >ऋति सवर्णे ऋ वा (वा ३६४०) तथा लृति सवर्णे लृ वा (वा ३६४१) :</p>";
-display(0);
-}
+display(0); $rutrut = 1;
+} else { $rutrut = 0; } 
 /* akaH savarNe dIrghaH (6.1.101) */ 
 $ak1 = array("a","a","A","A","i","i","I","I","u","u","U","U","f","f","F","F","f","f","F","F","x","x","X","X","x","x","X","X");
 $ak2 = array("a","A","a","A","i","I","i","I","u","U","u","U","f","F","f","F","x","X","x","X","f","F","f","F","x","X","x","X");
@@ -946,9 +945,9 @@ echo "<p class = sa >वृद्धिरेचि (६.१.८८) :</p>";
 display(0);
 }
 /* udaH sthAstambhvoH pUrvasya (8.1.61) */
-if(sub(array("utsTA","utstam"),blank(0),blank(0),0))
+if(sub(array("udsTA","udstam"),blank(0),blank(0),0))
 {
-$text = two(array("ut"),array('sTA','stam'),blank(1),array('utTA','uttam'),0);
+$text = two(array("ud"),array('sTA','stam'),blank(1),array('utTA','uttam'),0);
 echo "<p class = sa >By udaH sthAstambhvoH pUrvasya (8.1.61) :</p>";
 echo "<p class = sa >उदः स्थास्तम्भ्वोः पूर्वस्य (८.१.६१) :</p>";
 display(0);
@@ -1873,7 +1872,7 @@ display(0);
 /* torli (8.4.60) */
 $to = array("tl","Tl","dl","Dl","nl");
 //$li = array("l","l","l","l","l",);
-$lirep = array("ll","ll","ll","ll","!ll",);
+$lirep = array("ll","ll","ll","ll","l!l",);
 while(sub($to,blank(0),blank(0),0) !== false)
 {
 if (sub($to,blank(0),blank(0),0))
@@ -1884,6 +1883,9 @@ echo "<p class = sa >तोर्लि (८.४.६०) :</p>";
 display(0);
 }
 }
+// Patch for removing -
+$text = one(array("-"),array(""),0);
+
 /* jhayo ho'nyatarasyAm (8.4.62) */ 
 $Jy = array("Jh","Bh","Gh","Qh","Dh","jh","bh","gh","qh","dh","Kh","Ph","Ch","Wh","Th","ch","wh","th","kh","ph",);
 $h1 = array("JJ","BB","GG","QQ","DD","jJ","bB","gG","qQ","dD","KG","PB","CJ","WQ","TD","cJ","wQ","tD","kG","pB",);

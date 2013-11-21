@@ -1589,7 +1589,7 @@ display(0);
 /* torli (8.4.60) */
 $to = array("tl","Tl","dl","Dl","nl");
 //$li = array("l","l","l","l","l",);
-$lirep = array("ll","ll","ll","ll","!ll",); 
+$lirep = array("ll","ll","ll","ll","l!l",); 
 while(sub($to,blank(0),blank(0),0) !== false)
 {
 if (sub($to,blank(0),blank(0),0))
