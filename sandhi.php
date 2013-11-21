@@ -1389,9 +1389,9 @@ echo "<p class = sa >By anaci ca (8.4.47):</p>";
 echo "<p class = sa >अनचि च (८.४.४७):</p>"; 
 display(1);
 }
-if(sub($hrasvaplus,$hala1,$hala2,0))
+if(sub($hrasvaplus,$hl,$hala2,0))
 {
-    $text = dvitva($hrasvaplus,$hala1,$hala2,array(""),2,1);
+    $text = dvitva($hrasvaplus,$hl,$hala2,array(""),2,1);
     echo "<p class = sa >By anaci ca (8.4.47):</p>"; 
     echo "<p class = sa >अनचि च (८.४.४७):</p>"; 
     display(1);
@@ -1425,7 +1425,7 @@ if (preg_match('/['.flat($ac).']['.flat($hl).']$/',$second) || (preg_match('/['.
     $text = array_values($text);
     $value1 = array();
     echo "<p class = sa >By anaci ca :</p>";
-    echo "<p class = sa >अनचि च (८.४.४७):</p>"; 
+    echo "<p class = sa >अनचि च (८.४.४७) :</p>"; 
     display(1);
 }
 /* nAdinyAkroze putrasya (8.4.48) */
