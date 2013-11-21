@@ -1037,7 +1037,8 @@ if (preg_match('/[CS]$/',$first) && $pada === "pada")
 /* coH kuH (8.2.30) */
 $cu = array("c","C","j","J","Y");
 $ku = array("k","K","g","G","N");
-if (preg_match('/['.flat($cu).']$/',$first) && preg_match('/^['.pc('Jl').']/',$second)) 
+$noco = array("ac","ic","ec","Ec");
+if (preg_match('/['.flat($cu).']$/',$first) && !in_array($first,$noco) && preg_match('/^['.pc('Jl').']/',$second)) 
 {
 $text = two($cu,prat('Jl'),$ku,prat('Jl'),0); 
 echo "<p class = sa >By coH kuH (8.2.30) :</p>";
@@ -1048,7 +1049,7 @@ $second1 = str_split($second);
 $second2 = substr($second,count($second1)-1); 
 $secondbereplaced = chop($second,$second2); 
 $second2 = array($second2); $secondbereplaced=array($secondbereplaced);
-if (preg_match('/['.flat($cu).']$/',$second))
+if (preg_match('/['.flat($cu).']$/',$second)&& !in_array($second,$noco))
 {
     $text = two($secondbereplaced,$cu,$secondbereplaced,$ku,0);
     echo "<p class = sa >By coH kuH (8.2.30) :</p>";
@@ -1059,8 +1060,7 @@ $first1 = str_split($first);
 $first2 = substr($first,count($first1)-1); 
 $firstbereplaced = chop($first,$first2); 
 $first2 = array($first2); $firstbereplaced=array($firstbereplaced);
-if (preg_match('/['.flat($cu).']$/',$first) && $first === $input &&$pada === "pada")
-{
+if (preg_match('/['.flat($cu).']$/',$first) &&$pada === "pada" && !in_array($first,$noco)){
     $text = two($firstbereplaced,$cu,$firstbereplaced,$ku,0);
     echo "<p class = sa >By coH kuH (8.2.30) :</p>";
     echo "<p class = sa >चोः कुः (८.२.३०) :</p>";
@@ -1130,16 +1130,15 @@ if (preg_match('/['.pc('Jl').']$/',$first) && $pada === "pada" && $sambuddhi ===
         echo "<p class = sa >झलां जशोऽन्ते (८.२.३९) :</p>";
             display(0);    }
 } 
-/* bhobhagoaghoapUrvasya yo'zi (8.3.17) and vyorlaghuprayatnataraH zAkaTAyanasya (8.3.18) : */
+/* bhobhagoaghoapUrvasya yo'zi (8.3.17) */
 $ash = array("a","A","i","I","u","U","f","F","x","X","e","o","E","O","h","y","v","r","l","Y","m","N","R","n","J","B","G","Q","D","j","b","g","q","d");
 if (sub(array("Bo","Bago","aGo","a","A"),array("r@"),$ash,0)) 
 {
     $text = three(array("Bo","Bago","aGo","a","A"),array("r@"),$ash,array("Bo","Bago","aGo","a","A"),array("y+"),$ash,0);
-    echo "<p class = sa >By bhobhagoaghoapUrvasya yo'zi (8.3.17) and vyorlaghuprayatnataraH zAkaTAyanasya (8.3.18) :</p>
-       <p class = hn > In the opinion of zAkaTAyana, the padAnta yakAra and vakAra gets laghUccAraNa.</p>"; 
-     echo "<p class = sa >भोभगोअघोअपूर्वस्य योऽशि (८.३.१७) तथा व्योर्लघुप्रयत्नः शाकटायनस्य (८.३.१८) :</p>
-       <p class = hn > शाकटायन के मत में पदान्त वकार तथा यकार के लघूच्चारण होते हैं ।</p>";$bho = 1;
-    display (0);
+      echo "<p class = sa >By bhobhagoaghoapUrvasya yo'zi (8.3.17):</p>";
+      echo "<p class = sa >भोभगोअघोअपूर्वस्य योऽशि (८.३.१७) :</p>";
+     $bho = 1;
+display (0);
 } else { $bho =0; }
 /* vyorlaghuprayatnataraH zAkaTAyanasya (8.3.18) */
 // This is regarding pronounciation.
@@ -1169,6 +1168,15 @@ if ( sub(array("r"), array("@"),array(""),0) && preg_match('/[snmMrH]$/',$input)
  echo "<p class = sa >खरवसानयोर्विसर्जनीयः (८.३.१५) :</p>";
  display(0);
 }
+/* Dho Dhe lopaH (8.3.13) */
+if (sub(array("QQ"),blank(0),blank(0),0))
+{
+    $text = one(array('QQ'),array('#Q'),0); 
+    echo "<p class = sa >By Dho Dhe lopaH (8.3.13) :</p>";
+    echo "<p class = sa >ढो ढे लोपः (८.३.१३) :</p>";
+    display(0); $dho = 1;
+} else { $dho = 0; }
+
 /* ro ri (8.3.14) */
 if (sub(array("rr"),blank(0),blank(0),0))
 {
@@ -1181,19 +1189,19 @@ if (sub(array("rr"),blank(0),blank(0),0))
 /* Dhralope pUrvasya dIrgho'NaH (6.3.111) */
 $ana = array("a","A","i","I","u","U","f","F","x","X");
 $anna = array("A","A","I","I","U","U","F","F","X","X");
-if ($ro ===1 && sub($ana,array('#r'),blank(0),0))
+if (($ro ===1 || $dho===1) && sub($ana,array('#r',"#Q"),blank(0),0))
 {
-$text = two($ana,array('#r'),$anna,array('r'),0);
+$text = two($ana,array('#r','#Q'),$anna,array('r','Q'),0);
 echo "<p class = sa >By Dhralope pUrvasya dIrgho'NaH (6.3.111) :</p>";
 echo "<p class = sa >ढ्रलोपे पूर्वस्य दीर्घोऽणः (६.३.१११) :</p>";
 display(0);
 }
-/* lopaH zAkalyasya (8.3.19) */ 
+/* lopaH zAkalyasya (8.3.19) and vyorlaghuprayatnataraH zAkaTAyanasya (8.3.18) */ 
 $aa = array("a","A");$yv = array("y+","v+"); $space=array(" "," ");
-if (sub($aa,$yv,blank(0),0) && (preg_match('/['.pc('ec').']$/',$first) || $bho === 1) && $pada === "pada")
+if (sub($aa,$yv,$ac,0) && (preg_match('/['.pc('ec').']$/',$first) || $bho === 1) && $pada === "pada")
 {
-echo "<p class = sa >By lopaH zAkalyasya (8.3.19) :</p>";
-echo "<p class = sa >लोपः शाकल्यस्य (८.३.१९) :</p>";
+echo "<p class = sa >By lopaH zAkalyasya (8.3.19) and vyorlaghuprayatnataraH zAkaTAyanasya (8.3.18) :</p>";
+echo "<p class = sa >लोपः शाकल्यस्य (८.३.१९) तथा व्योर्लघुप्रयत्नः शाकटायनस्य (८.३.१८) :</p>";
 $text = three($aa,$yv,$ac,$aa,$space,$ac,1); 
 $text = one(array("+"),array(""),0); 
 display(0);
@@ -1226,8 +1234,16 @@ if ($bho === 1 && sub(array("y+"),$hl,blank(0),0))
 }
 // patch to remove the added + sign.
 $text = one(array("+"),array(""),0);
+/* mo rAji samaH kvau (8.3.25) */
+if (sub(array("saMrA"),blank(0),blank(0),0))
+{
+    $text = one(array("saMrA"),array("samrA"),0);
+    echo "<p class = sa >By mo rAji samaH kvau (8.3.25) :</p>";
+  echo "<p class = sa >मो राजि समः क्वौ (८.३.२५) :</p>";
+  display(0); $mo = 1;
+} else { $mo = 0; }
 /* mo'nusvAraH (8.3.23) */ 
-if (preg_match('/[m]$/',$first) && preg_match('/^['.pc('hl').']/',$second) && sub(array("m"),$hl,blank(0),0) && $pada ==="pada")
+if (preg_match('/[m]$/',$first) && preg_match('/^['.pc('hl').']/',$second) && sub(array("m"),$hl,blank(0),0) && $pada ==="pada" && $mo === 0)
 {
 $text = two(array('m'),prat('hl'),array('M'),prat('hl'),0);
 echo "<p class = sa >By mo'nusvAraH (8.3.23) :</p>
@@ -1246,18 +1262,11 @@ echo "<p class = sa >नश्चापदान्तस्य झलि (८.�
     <p class = hn >यदि नकार या मकार पदान्त में नहीं है तब भी यह नियम से अनुस्वार होता है ।</p>";
 display(0);
 }
-/* mo rAji samaH kvau (8.3.25) */
-if (sub(array("saMrA"),blank(0),blank(0),0))
-{
-    $text = one(array("saMrA"),array("samrA"),0);
-    echo "<p class = sa >By mo rAji samaH kvau (8.3.25) :</p>";
-  echo "<p class = sa >मो राजि समः क्वौ (८.३.२५) :</p>";
-  display(0);
-}
+
 /* he mapare vA (8.3.26) and yavalapare yavalA veti vaktavyam (vA 4902) */
 if (sub(array("Mhm","Mhy","Mhv","Mhl"),blank(0),blank(0),0))
 {
-$text = one(array("Mhm","Mhy","Mhv","Mhl"),array("mhm","!yhy","!vhv","!lhl"),1);
++$text = one(array("Mhm","Mhy","Mhv","Mhl"),array("mhm","y!hy","v!hv","l!hl"),1);
 echo "<p class = sa >By he mapare vA (8.3.26) and yavalapare yavalA veti vaktavyam (vA 4902) :</p>";
 echo "<p class = sa >हे मपरे वा (८.३.२६) तथा यवलपरे यवला वेति वक्तव्यम्‌ (वा ४९०२) :</p>";
 display(0);
@@ -1308,7 +1317,8 @@ echo "<p class = sa >शि तुक्‌ (८.३.३१) :</p>";
 display(0);
 }
 /* Gamo hrasvAdaci GamuNnityam (8.3.32) */
-if (preg_match('/['.flat($hrasva).'][NRn]$/',$first) && preg_match('/^['.flat($ac).']/',$second) && $pada === "pada")
+$nogamo = array("aR","ak","ik","uk","ac","ic","ec","aw","aR","iR","am","aS","al",);
+if (preg_match('/['.flat($hrasva).'][NRn]$/',$first) && preg_match('/^['.flat($ac).']/',$second) && $pada === "pada" && !in_array($second,$nogamo))
 {
 $text = three($hrasva,array("N","R","n"),$ac,$hrasva,array("NN","RR","nn"),$ac,0);
 echo "<p class = sa >By Gamo hrasvAdaci GamuNnityam (8.3.32) :</p>";
@@ -1726,10 +1736,21 @@ display(1);
 $rh = array("r","h");
 if (sub($ac,$rh,prat('yr'),0))
 {
-$text = dvitva($ac,$rh,prat('yr'),array(""),3,1);
-echo "<p class = sa >By aco rahAbhyAM dve (8.4.46) :</p>";
-echo "<p class = sa >अचो रहाभ्यां द्वे (८.४.४६) :</p>";
-display(1);
+    if (sub($rh,array("S","z","s"),$ac,0))
+    {
+        echo "<p class = sa >By zaro'ci (8.4.48) :</p>";
+        echo "<p class = hn >N.B.: zaro'ci bars application of aco rahAbhyAm dve</p>";
+        echo "<p class = sa >शरोऽचि (८.४.४८) :</p>";
+        echo "<p class = hn >शरोऽचि अचो रहाभ्यां द्वे के प्रयोग का निषेध करता है ।</p>";
+    }
+    else
+    {
+        $text = dvitva($ac,$rh,prat('yr'),array(""),3,1);
+        echo "<p class = sa >By aco rahAbhyAM dve (8.4.46) :</p>";
+        echo "<p class = sa >अचो रहाभ्यां द्वे (८.४.४६) :</p>";
+        display(1);
+    }
+
 }
 /* triprabhRtiSu zAkaTAyanasya (8.4.50)*/
 $hrasva1 = "'".implode("",$hrasva)."'";
