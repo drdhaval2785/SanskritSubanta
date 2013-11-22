@@ -792,8 +792,8 @@ if (sub(array("a"),array("r@"),prat('hS'),0))
 /*prAdUhoDhoDyeSaiSyeSu (vA 3605) */
 /* Rte ca tRtIyAsamAse (vA 3607) */
 /* pravatsatarakambalavasanadazArNAnAmRNe (vA 3608-9) */
-$va3607 = array('akzaUhinI','svairi','praUh','praUQ','praez','praezy','suKaft','prafR','vatsafR','kambalafR','vasanafR','daSafR','fRafR','svaira');
-$va3608 = array('akzOhiRI','svEri','prOh','prOQ','prEz','prEzy','suKArt','prArR','vatsArR','kambalArR','vasanArR','daSArR','fRArR','svEra');
+$va3607 = array('akzaUhin','svair','praUh','praUQ','praez','praezy','suKaft','prafR','vatsafR','kambalafR','vasanafR','daSafR','fRafR','svaIr');
+$va3608 = array('akzOhiR','svEr','prOh','prOQ','prEz','prEzy','suKArt','prArR','vatsArR','kambalArR','vasanArR','daSArR','fRArR','svEr');
 if (sub($va3607,blank(0),blank(0),0))
 {
 $text = one($va3607,$va3608,0);
@@ -814,6 +814,14 @@ echo "<p class = hn >यदि नामधातु का प्रयोग �
 
 display(0);
 }
+/* etyedhatyuThsu (6.1.89) */ 
+if (sub(array("a","A"),array("eti","ezi","emi","etu","Et","EtAm","EH","Es","Etam","Eta","Eva","Ema","ezyati","Ezyati","etA","eDati","eDate","Uh"),blank(0),0))
+{
+    $text = two (array("a","A"),array("eti","ezi","emi","etu","Et","EtAm","EH","Es","Etam","Eta","Eva","Ema","ezyati","Ezyati","etA","eDati","eDate","Uh"),blank(2),array("Eti","Ezi","Emi","Etu","Et","EtAm","EH","Es","Etam","Eta","Eva","Ema","Ezyati","Ezyati","EtA","EDati","EDate","Oh"),0);
+    echo "<p class = sa >By etyedhatyuThsu (6.1.89) :</p>";
+    echo "<p class = sa >एत्येधत्यूठ्सु (६.१.८९) :</p>";
+    display(0);
+}
 /* AdguNaH (6.1.87) */
 $forguna = array("i","I","u","U");
 $rep = array("e","e","o","o");
@@ -833,14 +841,6 @@ $text = two($aa,$forguna,blank(2),$rep,0);
 echo "<p class = sa >By AdguNaH (6.1.87) and uraNraparaH (1.1.51) :</p>";
 echo "<p class = sa >आद्गुणः (६.१.८७) तथा उरण्रपरः (१.१.५१) :</p>";
 display(0);
-}
-/* etyedhatyuThsu (6.1.89) */ 
-if (sub(array("a","A"),array("eti","eDati","oha"),blank(0),0))
-{
-    $text = two (array("a","A"),array("eti","eDati","oha"),blank(2),array("Eti","EDati","Oha"),0);
-    echo "<p class = sa >By etyedhatyuThsu (6.1.89) :</p>";
-    echo "<p class = sa >एत्येधत्यूठ्सु (६.१.८९) :</p>";
-    display(0);
 }
 /* eGi pararUpam (6.1.94) */ // Added it here because it is exception to vRddhireci.
 for($i=0;$i<count($akarantaupasarga);$i++)
