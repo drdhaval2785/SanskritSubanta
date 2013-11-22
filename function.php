@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /* This code is developed by Dr. Dhaval Patel (drdhaval2785@gmail.com) of www.sanskritworld.in and Ms. Sivakumari Katuri.
   * Layout assistance by Mr Marcis Gasuns.
   * Available under GNU licence.
@@ -118,7 +118,7 @@ return $text;
 }
 
 /* find string after removing 'n' letters from beginning of the word (sa for string after) */
-function sa($text,$n)	// Not used in code.
+function sa($text,$n)        // Not used in code.
 {
 $p = str_split($text);
 $a = "";
@@ -127,14 +127,14 @@ for ($q=0;$q<$n;$q++)
 return $text;
 }
 /* find 'n'th letter from the end in a word (r for reverse direction) */
-function r($text,$n) 		// Not used in code
+function r($text,$n)                 // Not used in code
 {
 $p = str_split($text);
 $text = $p[count($p)-$n];
 return $text;
 }
 /* find the string remaining after removing n characters from the end (sb for string before) */
-function sb($text, $n)	// Not used in code.
+function sb($text, $n)        // Not used in code.
 {
 $p = str_split($text);
 $a= "";
