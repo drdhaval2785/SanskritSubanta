@@ -404,9 +404,9 @@ if ((substr($first,strlen($first)-3) === "vas" ||substr($second,strlen($second)-
 {
     $text = one($vasu1,array("vad"),1);
     echo "<p class = sa >By vasusraMsudhvaMsvanaDuhAM daH (8.2.72) :</p>
-        <p class = hn >N.B. : If 'vas' is used in sense of vasvanta as in 'vidvas', then only this conversion takes place. Not in cases like 'zivas'.</p>";
+        <p class = hn >N.B. : If 'vas' is used in sense of vasupratyayAnta as in 'vidvas', then only this conversion takes place. Not in cases like 'zivas'.</p>";
      echo "<p class = sa >वसुस्रंसुध्वंस्वनडुहाः दः (८.२.७२) :</p>
-        <p class = hn >यदि वस्वन्त शब्द जैसे कि विद्वस्‌ इत्यादि में यह नियम लागू होता है । शिवस्‌ जैसे शब्दों में नहीं ।</p>";
+        <p class = hn >यदि वसुप्रत्ययान्त शब्द जैसे कि विद्वस्‌ इत्यादि में यह नियम लागू होता है । शिवस्‌ जैसे शब्दों में नहीं ।</p>";
    display(0); $vasuu = 1;
 } else {$vasuu = 0; }
 /* sasajuSo ruH (8.2.66) */
