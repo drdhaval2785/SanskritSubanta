@@ -1,4 +1,4 @@
-﻿    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 <meta charset="UTF-8">
@@ -7,7 +7,6 @@
 </meta>
 </head>
 <body>
-
 <?php
  header('Content-type: text/html; charset=utf-8');
  
@@ -34,6 +33,14 @@ ini_set("memory_limit","1000M");
 // Reading from the HTML input.
 $first = $_GET["first"];
 $second = $_GET['second'];
+if ($_GET['sambuddhi'] === "a")
+{
+$sambuddhi = 1;    
+}
+else
+{
+$sambuddhi = 0;
+}
 $tran = $_GET['tran'];
 $pada = "pratyaya";
 
@@ -61,8 +68,8 @@ $second = json_encode($second);
 $second = str_replace("\u200d","",$second);
 $second = str_replace("\u200c","",$second);
 $second = json_decode($second);
-$first = convert1($first); //echo $input1."</p>";
-$second = convert1($second);// echo $input2."</p>";
+$first = convert1($first); 
+$second = convert1($second);
 
 $fo = $first;
 $so = $second; ;
@@ -76,7 +83,6 @@ $prathama = array("su!","O","jas","am","Ow","Sas");
 $sarvanama = array("sarva","viSva","uBa","uBaya","qatara","qatama","anya","anyatara","itara","tvat","tva","nema","sima","pUrva","para","avara","dakziRa","uttara","apara","aDara","sva","antara","tyad","tad","yad","etad","idam","adas","eka","dvi","yuzmad","asmad","Bavat","kim");
 // Datara / Datama are pratyayas. Pending . apuri vaktavyam pending.
 $taddhita = 0;
-$sambuddhi = 1;
 $nadi = 0;
 $Ap = 0;
 /* jasaH shI (7.1.17) */
@@ -178,7 +184,7 @@ if (preg_match('/^[lSkKgGN]/',$second) && $pada=== "pratyaya" && $taddhita === 0
     echo convert($first).convert($second)."</br>";
 }
 /* na vibhaktau tusmAH (1.3.4) */
-if (preg_match('/[tTdDnsm]$/',$second) && $pada=== "pratyaya" && in_array($so,$sup) && $wa === 0 && $wa1 === 0)
+if (preg_match('/[tTdDnsm]$/',$so) && $pada=== "pratyaya" && in_array($so,$sup) && $wa === 0 && $wa1 === 0)
 {
     
     echo "<p class = sa >By na vibhaktau tusmAH (1.3.4)  :</p>";
@@ -462,7 +468,7 @@ if ($prathamayoh ===1 && $so === "Sas")
     $value1 = array();
     echo "<p class = sa >By tasmAcChaso naH puMsi (6.1.103) :</p>";
     echo "<p class = sa >तस्माच्छसो नः पुंसि (६.१.१०३) :</p>";  
-    display(0); $tasmat = 1;
+    display(0); $tasmat = 1; $second = "an";
 } else { $tasmat = 0; }
 
 
@@ -488,6 +494,7 @@ if ($sambuddhi === 1 && $so === "su!" && (sub($hrasva,array("s"),blank(0),0)||su
     display(0); $eg = 1;
 } else { $eg = 0; }
 /* Rti savarNe R vA (vA 3640) and lRti savarNe lR vA (vA 3641) */
+$ruti1 = array("f","F","x","X");
 $ruti2 = array("f");
 $lruti2 = array("-lx");
 if (sub($ruti1,array("f","x"),blank(0),0))
@@ -1545,7 +1552,7 @@ display(0);
 }
 /* apadAntasya mUrdhanyaH (8.3.55), iNkoH (8.3.57) and AdezapratyayayoH (8.3.59) */
 // Not coded perfectly, only according to the need of vibhaktis.
-if((sub(array("i","I","u","U","k","K","g","G","N"),array("s"),array("u","Am"),0) && preg_match('/^[s]/',$second) && $pada === "pratyaya") || (preg_match('/^[s]/',$second) && $pada === "pratyaya") )
+if((sub(array("i","I","u","U","k","K","g","G","N"),array("s"),array("u","Am"),0)  && $pada === "pratyaya"))
 {
 $text = last("su","zu",0);  $text = last("sAm","zAm",0);
 echo "<p class = sa >By apadAntasya mUrdhanyaH (8.3.55), iNkoH (8.3.57) and AdezapratyayayoH (8.3.59) :</p>";
