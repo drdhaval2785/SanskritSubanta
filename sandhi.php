@@ -399,10 +399,10 @@ if (sub($vasu,blank(0),blank(0),0)  && $pada ==="pada")
      echo "<p class = sa >वसुस्रंसुध्वंस्वनडुहां दः (८.२.७२) :</p>";
     display(0); $vasuu = 1;
 } else {$vasuu = 0; }
-$vasu1 = array("vas");
-if ((substr($first,strlen($first)-3) === "vas" ||substr($second,strlen($second)-3) === "vas") && $vasuu !==1  && $pada ==="pada")
+$vasu1 = array("vidvas");
+if ((substr($first,strlen($first)-6) === "vidvas" ||substr($second,strlen($second)-6) === "vidvas") && $vasuu !==1  && $pada ==="pada")
 {
-    $text = one($vasu1,array("vad"),1);
+    $text = one($vasu1,array("vidvad"),0);
     echo "<p class = sa >By vasusraMsudhvaMsvanaDuhAM daH (8.2.72) :</p>
         <p class = hn >N.B. : If 'vas' is used in sense of vasupratyayAnta as in 'vidvas', then only this conversion takes place. Not in cases like 'zivas'.</p>";
      echo "<p class = sa >वसुस्रंसुध्वंस्वनडुहाः दः (८.२.७२) :</p>
