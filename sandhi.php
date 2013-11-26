@@ -397,18 +397,17 @@ if (sub($vasu,blank(0),blank(0),0)  && $pada ==="pada")
     $text = one($vasu,array("vad","srad","Dvad","anaqud"),0);
     echo "<p class = sa >By vasusraMsudhvaMsvanaDuhAM daH (8.2.72) :</p>";
      echo "<p class = sa >वसुस्रंसुध्वंस्वनडुहां दः (८.२.७२) :</p>";
-    display(0); $vasuu = 1;
-} else {$vasuu = 0; }
-$vasu1 = array("vidvas");
-if ((substr($first,strlen($first)-6) === "vidvas" ||substr($second,strlen($second)-6) === "vidvas") && $vasuu !==1  && $pada ==="pada")
+    display(0); 
+}
+if ((sub(array("vidvas","sedivas","uzivas","Suzruvas","upeyivas","anASvas"),blank(0),blank(0),0))  && $pada ==="pada")
 {
-    $text = one($vasu1,array("vidvad"),0);
+    $text = one(array("vidvas","sedivas","uzivas","Suzruvas","upeyivas","anASvas"),array("vidvad","sedivad","uzivad","Suzruvad","upeyivad","anASvad"),0);
     echo "<p class = sa >By vasusraMsudhvaMsvanaDuhAM daH (8.2.72) :</p>
         <p class = hn >N.B. : If 'vas' is used in sense of vasupratyayAnta as in 'vidvas', then only this conversion takes place. Not in cases like 'zivas'.</p>";
      echo "<p class = sa >वसुस्रंसुध्वंस्वनडुहाः दः (८.२.७२) :</p>
         <p class = hn >यदि वसुप्रत्ययान्त शब्द जैसे कि विद्वस्‌ इत्यादि में यह नियम लागू होता है । शिवस्‌ जैसे शब्दों में नहीं ।</p>";
-   display(0); $vasuu = 1;
-} else {$vasuu = 0; }
+   display(0); 
+}
 /* sasajuSo ruH (8.2.66) */
 if (preg_match('/[H]$/',$first) && $start===1  && $pada ==="pada")
 {
