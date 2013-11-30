@@ -764,47 +764,51 @@ while ($text !== $original);
 
 /* saMyogAntasya lopaH (8.2.23) */ // coding pending because not clear. And also 'yaNaH pratiSedho vAcyaH' prohibits its application.
 /* vrazcabhrasjamRjayajarAjabhrAjacChazAM ca (8.2.35) */
-$vrasca = array("vfSc","Brasj","mfj","yaj","rAj","BrAj",);
-$vrashca = array("vfSz","Brasz","mfz","yaz","rAz","BrAz");
+$vrasca = array("vfSc","Bfsj","sfj","mfj","yaj","rAj","BrAj",);
+$vrashca = array("vfSz","Bfsz","sfz","mfz","yaz","rAz","BrAz");
 if ((sub($vrasca,blank(0),blank(0),0)) && $pada ==="pada")
 {
     if (sub($vrasca,$hl,blank(0),0))
     {
     $text = two($vrasca,prat('Jl'),$vrashca,prat("Jl"),0);
+    $first = str_replace($vrasca,$vrashca,$first);
+    $second = str_replace($vrasca,$vrashca,$second);
     }
     else 
     {
     $text = one($vrasca,$vrashca,0);    
+    $first = str_replace($vrasca,$vrashca,$first);
+    $second = str_replace($vrasca,$vrashca,$second);
     }
-    echo "<p class = sa >By vrazcabhrasjamRjayajarAjabhrAjacChazAM ca (8.2.35) :</p>";
-    echo "<p class = sa >व्रश्चभ्रस्जमृजयजराजभ्राजच्छशां च (८.२.३५) :</p>";
+    echo "<p class = sa >By vrazcabhrasjasRjamRjayajarAjabhrAjacChazAM ShaH (8.2.35) :</p>";
+    echo "<p class = sa >व्रश्चभ्रस्जसृजमृजयजराजभ्राजच्छशां षः (८.२.३५) :</p>";
     display(0); $vras1 = 1;
 } else { $vras1 = 0; }
 if ((sub($vrasca,blank(0),blank(0),0)||arr($text,'/['.flat($vrasca).']$/')) && (in_array($second,$vrasca)||in_array($first,$vrasca)) && $pada === "pada"  )
 {
     $text = one($vrasca,$vrashca,0);
-    echo "<p class = sa >By vrazcabhrasjamRjayajarAjabhrAjacChazAM ca (8.2.35) :</p>";
-    echo "<p class = sa >व्रश्चभ्रस्जमृजयजराजभ्राजच्छशां च (८.२.३५) :</p>";
+    echo "<p class = sa >By vrazcabhrasjasRjamRjayajarAjabhrAjacChazAM ShaH (8.2.35) :</p>";
+    echo "<p class = sa >व्रश्चभ्रस्जसृजमृजयजराजभ्राजच्छशां षः (८.२.३५) :</p>";
     display(0); $vras2 = 1;
 } else { $vras2 = 0; }
 if (preg_match('/[CS]$/',$second))
 {
     $text = one(array(substr($second,0,strlen($second)-1)."C"),array(substr($second,0,strlen($second)-1)."z"),0);
     $text = one(array(substr($second,0,strlen($second)-1)."S"),array(substr($second,0,strlen($second)-1)."z"),0);
-    echo "<p class = sa >By vrazcabhrasjamRjayajarAjabhrAjacChazAM ca (8.2.35) :</p>";
-    echo "<p class = sa >व्रश्चभ्रस्जमृजयजराजभ्राजच्छशां च (८.२.३५) :</p>";
+    echo "<p class = sa >By vrazcabhrasjasRjamRjayajarAjabhrAjacChazAM ShaH (8.2.35) :</p>";
+    echo "<p class = sa >व्रश्चभ्रस्जसृजमृजयजराजभ्राजच्छशां षः (८.२.३५) :</p>";
     display(0); $vras3 = 1;
 } else { $vras3 =0; }
 if (preg_match('/[CS]$/',$first) && $pada === "pada")
 {
     $text = one(array(substr($first,0,strlen($first)-1)."C"),array(substr($first,0,strlen($first)-1)."z"),0);
     $text = one(array(substr($first,0,strlen($first)-1)."S"),array(substr($first,0,strlen($first)-1)."z"),0);
-    echo "<p class = sa >By vrazcabhrasjamRjayajarAjabhrAjacChazAM ca (8.2.35) :</p>";
-    echo "<p class = sa >व्रश्चभ्रस्जमृजयजराजभ्राजच्छशां च (८.२.३५) :</p>";
+    echo "<p class = sa >By vrazcabhrasjasRjamRjayajarAjabhrAjacChazAM ShaH (8.2.35) :</p>";
+    echo "<p class = sa >व्रश्चभ्रस्जसृजमृजयजराजभ्राजच्छशां षः (८.२.३५) :</p>";
     display(0); $vras4 = 1;
 } else { $vras4 = 0; } 
 /* nimittApAye naimittikasyApyapAyaH (paribhASA) */ 
-if ($vras1===1 || $vras2===1 || (($vras3 ===1 || $vras4 ===1) && sub(array("cz"),blank(0),blank(0),0)))
+if ((($vras1===1 || $vras2===1) && sub(array("vfSz"),blank(0),blank(0),0)) || (($vras3 ===1 || $vras4 ===1) && sub(array("cz"),blank(0),blank(0),0)))
 {
     $text = one(array("vfSz"),array("vfsz"),0);
     $text = one(array("cz"),array("z"),0);
@@ -813,14 +817,14 @@ if ($vras1===1 || $vras2===1 || (($vras3 ===1 || $vras4 ===1) && sub(array("cz")
     echo "<p class = sa >By nimittApAye naimittikasyApyapAyaH (paribhASA) :</p>";
     echo "<p class = sa >निमित्तापाये नैमित्तिकस्याप्यपायः (परिभाषा) :</p>";
     display(0);
-}
+} 
 /* skoH saMyogAdyorante ca (8.2.29) */
-if ((sub(array("s","k"),$hl,prat("Jl"),0) || sub($ac,array("s","k"),$hl,0)) && $pada === "pada")
+if ((sub(array("s","k"),$hl,prat("Jl"),0) || arr($text,'/[sk]['.flat($hl).']$/'))  && $pada === "pada")
 {
     $text = three(array("s","k"),$hl,prat("Jl"),array("",""),$hl,prat("Jl"),0);
     $text = three($ac,array("s","k"),$hl,$ac,array("",""),$hl,0);
-    $first = str_replace("vfsz","vfz",$first);
-    $second = str_replace("vfsz","vfz",$second); // This is not a good patch. Needs revision.
+    $first = str_replace(array("vfsz","Bfsz"),array("vfz","Bfz"),$first);
+    $second = str_replace(array("vfsz","Bfsz"),array("vfz","Bfz"),$second); // This is not a good patch. Needs revision.
     echo "<p class = sa >By skoH saMyogAdyorante ca (8.2.29) :</p>";
     echo "<p class = sa >स्कोः संयोगाद्योरन्ते च (८.२.२९) :</p>";
     display(0);
@@ -912,7 +916,7 @@ if (preg_match('/['.pc('Jl').']$/',$second))
     echo "<p class = sa >By jhalAM jazo'nte (8.2.39), The padAnta is 'jhal' is replaced by 'jaz' :</p>";
         echo "<p class = sa >झलां जशोऽन्ते (८.२.३९) :</p>";
     display(0);    }
-}
+} 
 if (preg_match('/['.pc('Jl').']$/',$first) && $pada === "pada" )
 { 
    
