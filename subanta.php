@@ -588,7 +588,7 @@ $bho = 1;
 } else { $bho = 0; }
 /* vAnto yi pratyaye (6.1.71), goryutau CandasyupasaMkhyAnam (vA 3543), adhvaparimANe ca (vA 3544) dhAtostannimittasyaiva (6.1.80) */
 $o = array("o","O"); $oo = 'oO'; $y = array("y"); $ab = array("av","Av");
-$text1 = $text; 
+$text1 = $text;  
 if (sub($o,$y,blank(0),0)  && $pada ==="pratyaya")
 {
 $text = two($o,$y,$ab,$y,0);
@@ -815,14 +815,18 @@ echo "<p class = sa >Applying the following vArtikas : akSAdUhinyAmupasaMkhyAnam
 echo "<p class = sa >अक्षादूहिन्यामुपसंख्यानम्‌ (वा ३६०४), स्वादेरेरिणोः (वा ३६०६), प्रादूहोढोढ्येषैष्येषु (वा ३६०५), ऋते च तृतीयासमासे (वा ३६०७), प्रवत्सतरकम्बलवसनदशार्णानामृणे (वा ३६०८-०९)</p>";
 display(0);
 }
-/* upasargAdRti dhAtau (6.1.11) */
+/* upasargAdRti dhAtau (6.1.11) and vA supyApizaleH (6.1.12) */
+$akarantaupasarga = array("pra","apa","ava","upa",);
+$changedupasarga = array("prAr","apAr","avAr","upAr");
+$changedupasarga1 = array("prar","apar","avar","upar");
 if (sub($akarantaupasarga,$verbs_ru,blank(0),0))
 {
-$text = two($akarantaupasarga,$verbs_ru,$changedupasarga,$verbs_changed,0);
-echo "<p class = sa >By upasargAdRti dhAtau (6.1.11) :</p>";
+$text = two($akarantaupasarga,$verbs_ru,$changedupasarga,$verbs_changed,1);
+$text = two($akarantaupasarga,$verbs_ru,$changedupasarga1,$verbs_changed,0);
+echo "<p class = sa >By upasargAdRti dhAtau (6.1.11) and vA supyApizaleH (6.1.12) :</p>";
 echo "<p class = hn >If the dhAtu used is a nAmadhAtu, the 'a'kAra of upasarga is optionally kept hrasva by vA supyApizaleH (6.1.92).
     Also if the following verb starts from a dIrgha 'R'kAra or dIrgha 'lR'kAra, the optionallity is not there. There is always a hrasva.</p>";
-echo "<p class = sa >उपसर्गादृति धातौ (६.१.११) :</p>";
+echo "<p class = sa >उपसर्गादृति धातौ (६.१.११) तथा वा सुप्यापिशलेः (६.१.१२) :</p>";
 echo "<p class = hn >यदि नामधातु का प्रयोग किया गया है, तो उपसर्ग के अकार को पाक्षिक रूप से वा सुप्यापिशलेः सूत्र से ह्रस्व रखा जाता है ।
    यदि धातु ॠकार से आरंभ होता है तो यह पाक्षिक रूप नहीं होता है । सदैव ह्रस्व ही होता है ।</p>";
 
