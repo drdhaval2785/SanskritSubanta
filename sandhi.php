@@ -108,7 +108,7 @@ $changedupasarga = array("prAr","apAr","avAr","upAr");
 $changedupasarga1 = array("prar","apar","avar","upar");
 $changedupasarga2 = array("prAl","apAl","avAl","upAl");
 $changedupasarga3 = array("pral","apal","aval","upal");
-if (sub($akarantaupasarga,$verbs_ru,blank(0),0)||sub($akarantaupasarga,array("xkAr"),blank(0),0))
+if (sub($akarantaupasarga,$verbs_ru,blank(0),0)||sub($akarantaupasarga,array("xkArIy"),blank(0),0))
 {
     if (arr($text,'/[I][y]/'))
     {
@@ -118,8 +118,8 @@ if (sub($akarantaupasarga,$verbs_ru,blank(0),0)||sub($akarantaupasarga,array("xk
     {
             $text = two($akarantaupasarga,$verbs_ru,$changedupasarga,$verbs_changed,0);
     }
-$text = two($akarantaupasarga,array("xkAr"),$changedupasarga2,array("kAr"),1);
-$text = two($akarantaupasarga,array("xkAr"),$changedupasarga3,array("kAr"),0);
+$text = two($akarantaupasarga,array("xkArIy"),$changedupasarga2,array("kArIy"),1);
+$text = two($akarantaupasarga,array("xkArIy"),$changedupasarga3,array("kArIy"),0);
 echo "<p class = sa >By upasargAdRti dhAtau (6.1.11) and vA supyApizaleH (6.1.12) :</p>";
 echo "<p class = hn >In case akArAnta upasarga is followed by RkArAdi nAmadhAtu, there is optional vRddhi ekAdeza. If there is dIrgha RUkAra at the start of dhAtu or nAmadhAtu, upasargAdRti dhAtau and vA supyApizaleH don't apply. iko yaNaci and uraNraparaH apply.</p>";
 echo "<p class = sa >उपसर्गादृति धातौ (६.१.११) तथा वा सुप्यापिशलेः (६.१.१२) :</p>";
