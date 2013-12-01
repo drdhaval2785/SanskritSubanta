@@ -299,9 +299,33 @@ echo "<p class = sa >इकोऽसवर्णे शाकल्यस्य 
     <p class = hn >समास व सित्‌ प्रत्यय परे होने पर यह लागू नहीं होता । जैसे कि पार्श्व ।</p>";
 display(0);
 }
+/* upasargAdRti dhAtau (6.1.11) and vA supyApizaleH (6.1.12) */
+$akarantaupasarga = array("pra","apa","ava","upa",);
+$changedupasarga = array("prAr","apAr","avAr","upAr");
+$changedupasarga1 = array("prar","apar","avar","upar");
+$changedupasarga2 = array("prAl","apAl","avAl","upAl");
+$changedupasarga3 = array("pral","apal","aval","upal");
+if (sub($akarantaupasarga,$verbs_ru,blank(0),0)||sub($akarantaupasarga,array("xkAr"),blank(0),0))
+{
+    if (arr($text,'/[I][y]/'))
+    {
+            $text = two($akarantaupasarga,$verbs_ru,$changedupasarga,$verbs_changed,1);
+    }
+    else
+    {
+            $text = two($akarantaupasarga,$verbs_ru,$changedupasarga,$verbs_changed,0);
+    }
+$text = two($akarantaupasarga,array("xkAr"),$changedupasarga2,array("kAr"),1);
+$text = two($akarantaupasarga,array("xkAr"),$changedupasarga3,array("kAr"),0);
+echo "<p class = sa >By upasargAdRti dhAtau (6.1.11) and vA supyApizaleH (6.1.12) :</p>";
+echo "<p class = hn >In case akArAnta upasarga is followed by RkArAdi nAmadhAtu, there is optional vRddhi ekAdeza. If there is dIrgha RUkAra at the start of dhAtu or nAmadhAtu, upasargAdRti dhAtau and vA supyApizaleH don't apply. iko yaNaci and uraNraparaH apply.</p>";
+echo "<p class = sa >उपसर्गादृति धातौ (६.१.११) तथा वा सुप्यापिशलेः (६.१.१२) :</p>";
+echo "<p class = hn >अकारान्त उपसर्ग से ऋकारादि नामधातु परे होने पर विकल्प से वृद्धि एकादेश होता है । यदि धातु या नामधातु ॠकार से आरंभ होता है, तब उपसर्गादृति धातौ तथा वा सुप्यापिशलेः लागू नहीं होते हैं । अतः इको यणचि व उरण्रपरः ही लागू होते हैं ।</p>";
+display(0); $upas = 1;
+} else { $upas = 0; }
 /* RtyakaH (6.1.128) */
 $ak = array("a","A","i","I","u","U","f","F","x","X"); 
-if (preg_match('/['.flat($ak).']$/',$first) && preg_match('/^[fx]/',$second) && $start===1 && $pada ==="pada")
+if (preg_match('/['.flat($ak).']$/',$first) && preg_match('/^[fx]/',$second) && $start===1 && $pada ==="pada" && $upas ===0 )
 {
 if (checkarray($ak,array("f","x"),blank(0),blank(0))===1)
 {
@@ -312,6 +336,11 @@ echo "<p class = sa >ऋत्यकः (६.१.१२८) :</p>
     <p class = hn >Note: This applies only to padAnta. </p>";
 display(0);
 }
+}
+if ($upas === 1)
+{
+    echo "<p class = hn >RtyakaH is barred by upasargAdRti dhAtau. </p>
+    <p class = hn >ऋत्यकः उपसर्गादृति धातौ से बाधित हुआ है ।</p><hr>";
 }
 /* vAkyasya TeH pluta udAttaH (8.2.82) */
 // This is adhikArasutra. Nothing to code here.
@@ -815,24 +844,6 @@ echo "<p class = sa >Applying the following vArtikas : akSAdUhinyAmupasaMkhyAnam
 echo "<p class = sa >अक्षादूहिन्यामुपसंख्यानम्‌ (वा ३६०४), स्वादेरेरिणोः (वा ३६०६), प्रादूहोढोढ्येषैष्येषु (वा ३६०५), ऋते च तृतीयासमासे (वा ३६०७), प्रवत्सतरकम्बलवसनदशार्णानामृणे (वा ३६०८-०९)</p>";
 display(0);
 }
-/* upasargAdRti dhAtau (6.1.11) and vA supyApizaleH (6.1.12) */
-$akarantaupasarga = array("pra","apa","ava","upa",);
-$changedupasarga = array("prAr","apAr","avAr","upAr");
-$changedupasarga1 = array("prar","apar","avar","upar");
-$changedupasarga2 = array("prAl","apAl","avAl","upAl");
-$changedupasarga3 = array("pral","apal","aval","upal");
-if (sub($akarantaupasarga,$verbs_ru,blank(0),0)||sub($akarantaupasarga,array("xkAr"),blank(0),0))
-{
-$text = two($akarantaupasarga,$verbs_ru,$changedupasarga,$verbs_changed,1);
-$text = two($akarantaupasarga,$verbs_ru,$changedupasarga1,$verbs_changed,0);
-$text = two($akarantaupasarga,array("xkAr"),$changedupasarga2,array("kAr"),1);
-$text = two($akarantaupasarga,array("xkAr"),$changedupasarga3,array("kAr"),0);
-echo "<p class = sa >By upasargAdRti dhAtau (6.1.11) and vA supyApizaleH (6.1.12) :</p>";
-echo "<p class = hn >If there is nAmadhAtu after the upasarga ending in akAra, the akAra optionally gets vRddhi by vA supyApizaleH. If there is dIrgha RUkAra at the start of dhAtu, upasargAdRti dhAtau and vA supyApizaleH don't apply. iko yaNaci and uraNraparaH apply.</p>";
-echo "<p class = sa >उपसर्गादृति धातौ (६.१.११) तथा वा सुप्यापिशलेः (६.१.१२) :</p>";
-echo "<p class = hn >यदि नामधातु का प्रयोग किया गया है, तो उपसर्ग के अकार को पाक्षिक रूप से वा सुप्यापिशलेः सूत्र से वृद्धि होती है ।  यदि धातु ॠकार से आरंभ होता है तब उपसर्गादृति धातौ तथा वा सुप्यापिशलेः लागू नहीं होते हैं । अतः इको यणचि व उरण्रपरः ही लागू होते हैं ।</p>";
-display(0);
-}
 /* etyedhatyuThsu (6.1.89) */ 
 if (sub(array("a","A"),array("eti","ezi","emi","etu","Et","EtAm","EH","Es","Etam","Eta","Eva","Ema","ezyati","Ezyati","etA","eDati","eDate","Uh"),blank(0),0))
 {
@@ -866,7 +877,14 @@ for($i=0;$i<count($akarantaupasarga);$i++)
 {
     $a_upa_without_a[$i] = substr($akarantaupasarga[$i],0,count(str_split($akarantaupasarga[$i]))-1); 
 }
-if (sub($akarantaupasarga,prat('eN'),blank(0),0))
+if (sub($akarantaupasarga,prat('eN'),blank(0),0) && arr($text,'/[I][y]/'))
+{
+$text = two($akarantaupasarga,prat('eN'),$a_upa_without_a,prat('eN'),1);
+echo "<p class = sa >By eGi pararUpam (6.1.94) and vA supyApizaleH (6.1.92) :</p>";
+echo "<p class = sa >एङि पररूपम्‌ (६.१.९४) तथा वा सुप्यापिशलेः (६.१.९२) :</p>";
+display(0);
+}
+elseif (sub($akarantaupasarga,prat('eN'),blank(0),0))
 {
 $text = two($akarantaupasarga,prat('eN'),$a_upa_without_a,prat('eN'),0);
 echo "<p class = sa >By eGi pararUpam (6.1.94) :</p>";
@@ -1027,10 +1045,14 @@ if ((sub($vrasca,blank(0),blank(0),0)) && $pada ==="pada")
     if (sub($vrasca,$hl,blank(0),0))
       {
     $text = two($vrasca,prat('Jl'),$vrashca,prat("Jl"),0);
+    $first = str_replace($vrasca,$vrashca,$first);
+    $second = str_replace($vrasca,$vrashca,$second);
     }
     else 
     {
-    $text = one($vrasca,$vrashca,0);    
+    $text = one($vrasca,$vrashca,0);  
+    $first = str_replace($vrasca,$vrashca,$first);
+    $second = str_replace($vrasca,$vrashca,$second);
     }
     echo "<p class = sa >By vrazcabhrasjasRjamRjayajarAjabhrAjacChazAM ShaH (8.2.35) :</p>";
     echo "<p class = sa >व्रश्चभ्रस्जसृजमृजयजराजभ्राजच्छशां षः (८.२.३५) :</p>";
@@ -1061,7 +1083,7 @@ if (preg_match('/[CS]$/',$first) && $pada === "pada")
     display(0); $vras4 = 1;
 } else { $vras4 = 0; } 
 /* nimittApAye naimittikasyApyapAyaH (paribhASA) */ 
-if ($vras1===1 || $vras2===1 || (($vras3 ===1 || $vras4 ===1) && sub(array("cz"),blank(0),blank(0),0)))
+if ((($vras1===1 || $vras2===1) && sub(array("vfSz"),blank(0),blank(0),0)) || (($vras3 ===1 || $vras4 ===1) && sub(array("cz"),blank(0),blank(0),0)))
 {
     $text = one(array("vfSz"),array("vfsz"),0);
     $text = one(array("cz"),array("z"),0);
@@ -1072,12 +1094,12 @@ if ($vras1===1 || $vras2===1 || (($vras3 ===1 || $vras4 ===1) && sub(array("cz")
     display(0);
 }
 /* skoH saMyogAdyorante ca (8.2.29) */
-if ((sub(array("s","k"),$hl,prat("Jl"),0) || sub($ac,array("s","k"),$hl,0)) && $pada === "pada")
+if ((sub(array("s","k"),$hl,prat("Jl"),0) || arr($text,'/[sk]['.flat($hl).']$/'))  && $pada === "pada")
 {
     $text = three(array("s","k"),$hl,prat("Jl"),array("",""),$hl,prat("Jl"),0);
     $text = three($ac,array("s","k"),$hl,$ac,array("",""),$hl,0);
-    $first = str_replace("vfsz","vfz",$first);
-    $second = str_replace("vfsz","vfz",$second); // This is not a good patch. Needs revision.
+    $first = str_replace(array("vfsz","Bfsz"),array("vfz","Bfz"),$first);
+    $second = str_replace(array("vfsz","Bfsz"),array("vfz","Bfz"),$second); // This is not a good patch. Needs revision.
     echo "<p class = sa >By skoH saMyogAdyorante ca (8.2.29) :</p>";
     echo "<p class = sa >स्कोः संयोगाद्योरन्ते च (८.२.२९) :</p>";
     display(0);
@@ -1210,7 +1232,7 @@ if ( sub(array("r"), array("@"),array(""),0) && preg_match('/[snmMrH]$/',$second
  echo "<p class = sa >खरवसानयोर्विसर्जनीयः (८.३.१५) :</p>";
  display(0);
 }
-if ( sub(array("r"), array("@"),array(""),0) && preg_match('/[snmMrH]$/',$input))
+if ( sub(array("r"), array("@"),array(""),0) && preg_match('/[snmMrH]$/',$first) && $input === $first)
 {
  $text = one(array("r@"),array("H"),0);
  echo "<p class = sa >By kharavasAnayorvisarjanIyaH (8.3.15) :</p>";
@@ -1315,7 +1337,7 @@ display(0);
 /* he mapare vA (8.3.26) and yavalapare yavalA veti vaktavyam (vA 4902) */
 if (sub(array("Mhm","Mhy","Mhv","Mhl"),blank(0),blank(0),0))
 {
-+$text = one(array("Mhm","Mhy","Mhv","Mhl"),array("mhm","y!hy","v!hv","l!hl"),1);
+$text = one(array("Mhm","Mhy","Mhv","Mhl"),array("mhm","y!hy","v!hv","l!hl"),1);
 echo "<p class = sa >By he mapare vA (8.3.26) and yavalapare yavalA veti vaktavyam (vA 4902) :</p>";
 echo "<p class = sa >हे मपरे वा (८.३.२६) तथा यवलपरे यवला वेति वक्तव्यम्‌ (वा ४९०२) :</p>";
 display(0);
@@ -1914,7 +1936,7 @@ $text = one($mm,$pa,1);
 echo "<p class = sa >By anusvArasya yayi parasavarNaH (8.4.58) and vA padAntasya (8.4.59) :</p>
     <p class = hn >N.B.: The change of anusvARa to parasavarNa is mandatory for non padAnta conjoints. For padAnta conjoints, it is optional.</p>";
 echo "<p class = sa >अनुस्वारस्य ययि परसवर्णः (८.४.५८) तथा वा पदान्तस्य (८.४.५९) :</p>
-    <p class = hn >अपदान्त में पाक्षिक है । पदान्त के लिए अनिवार्य है ।</p>";
+    <p class = hn >पदान्त में पाक्षिक है । अपदान्त के लिए अनिवार्य है ।</p>";
 display(0);
 }
 /* torli (8.4.60) */
