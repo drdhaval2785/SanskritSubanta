@@ -571,17 +571,18 @@ display(0);
 $akarantaupasarga = array("pra","apa","ava","upa",);
 $changedupasarga = array("prAr","apAr","avAr","upAr");
 $changedupasarga1 = array("prar","apar","avar","upar");
-if (sub($akarantaupasarga,$verbs_ru,blank(0),0))
+$changedupasarga2 = array("prAl","apAl","avAl","upAl");
+$changedupasarga3 = array("pral","apal","aval","upal");
+if (sub($akarantaupasarga,$verbs_ru,blank(0),0)||sub($akarantaupasarga,array("xkAr"),blank(0),0))
 {
 $text = two($akarantaupasarga,$verbs_ru,$changedupasarga,$verbs_changed,1);
 $text = two($akarantaupasarga,$verbs_ru,$changedupasarga1,$verbs_changed,0);
+$text = two($akarantaupasarga,array("xkAr"),$changedupasarga2,array("kAr"),1);
+$text = two($akarantaupasarga,array("xkAr"),$changedupasarga3,array("kAr"),0);
 echo "<p class = sa >By upasargAdRti dhAtau (6.1.11) and vA supyApizaleH (6.1.12) :</p>";
-echo "<p class = hn >If the dhAtu used is a nAmadhAtu, the 'a'kAra of upasarga is optionally kept hrasva by vA supyApizaleH (6.1.92).
-    Also if the following verb starts from a dIrgha 'R'kAra or dIrgha 'lR'kAra, the optionallity is not there. There is always a hrasva.</p>";
+echo "<p class = hn >If there is nAmadhAtu after the upasarga ending in akAra, the akAra optionally gets vRddhi by vA supyApizaleH. If there is dIrgha RUkAra at the start of dhAtu, upasargAdRti dhAtau and vA supyApizaleH don't apply. iko yaNaci and uraNraparaH apply.</p>";
 echo "<p class = sa >उपसर्गादृति धातौ (६.१.११) तथा वा सुप्यापिशलेः (६.१.१२) :</p>";
-echo "<p class = hn >यदि नामधातु का प्रयोग किया गया है, तो उपसर्ग के अकार को पाक्षिक रूप से वा सुप्यापिशलेः सूत्र से ह्रस्व रखा जाता है ।
-   यदि धातु ॠकार से आरंभ होता है तो यह पाक्षिक रूप नहीं होता है । सदैव ह्रस्व ही होता है ।</p>";
-
+echo "<p class = hn >यदि नामधातु का प्रयोग किया गया है, तो उपसर्ग के अकार को पाक्षिक रूप से वा सुप्यापिशलेः सूत्र से वृद्धि होती है ।  यदि धातु ॠकार से आरंभ होता है तब उपसर्गादृति धातौ तथा वा सुप्यापिशलेः लागू नहीं होते हैं । अतः इको यणचि व उरण्रपरः ही लागू होते हैं ।</p>";
 display(0);
 }
 /* etyedhatyuThsu (6.1.89) */ 
