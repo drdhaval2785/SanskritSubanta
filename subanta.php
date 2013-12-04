@@ -13,7 +13,7 @@
  /* This code is developed by Dr. Dhaval Patel (drdhaval2785@gmail.com) of www.sanskritworld.in and Ms. Sivakumari Katuri.
   * Layout assistance by Mr Marcis Gasuns.
   * Available under GNU licence.
-  * Version 1.1 date 17/11/2013
+  * Version 1.2 date 5/12/2013
   * The latest source code is available at https://github.com/drdhaval2785/sanskrit
   * For setup, copy and paste sandhi.html, sandhi.php, function.php, mystyle.css, slp-dev.php and dev-slp.php to your localhost and server and run sandhi.html.
   * sandhi.html is the frontend for the code.
@@ -305,7 +305,7 @@ $changedupasarga = array("prAr","apAr","avAr","upAr");
 $changedupasarga1 = array("prar","apar","avar","upar");
 $changedupasarga2 = array("prAl","apAl","avAl","upAl");
 $changedupasarga3 = array("pral","apal","aval","upal");
-if (sub($akarantaupasarga,$verbs_ru,blank(0),0)||sub($akarantaupasarga,array("xkArIy"),blank(0),0))
+if ((sub($akarantaupasarga,$verbs_ru,blank(0),0) && !sub(array("prafRa"),blank(0),blank(0),0))||sub($akarantaupasarga,array("xkArIy"),blank(0),0))
 {
     if (arr($text,'/[I][y]/'))
     {
@@ -617,8 +617,17 @@ $bho = 1;
 } else { $bho = 0; }
 /* vAnto yi pratyaye (6.1.71), goryutau CandasyupasaMkhyAnam (vA 3543), adhvaparimANe ca (vA 3544) dhAtostannimittasyaiva (6.1.80) */
 $o = array("o","O"); $oo = 'oO'; $y = array("y"); $ab = array("av","Av");
-$text1 = $text;  
-if (sub($o,$y,blank(0),0)  && $pada ==="pratyaya")
+$dhato = array("urRo","yo","ro","no","sno","kzo","kzRo","Do","Dro","do","dro","sro","so","sto","ko","Go","qo","cyo","jyo","pro","plo","ro","ho","Sro","hno","dyo","sko","yo","po","lo","kno","mo","Bo","urRO","yO","rO","nO","snO","kzO","kzRO","DO","DrO","dO","drO","srO","sO","stO","kO","GO","qO","cyO","jyO","prO","plO","rO","hO","SrO","hnO","dyO","skO","yO","pO","lO","knO","mO","BO","Co","zo","So");
+$dhato1 = array("urRa","ya","ra","na","sna","kza","kzRa","Da","Dra","da","dra","sra","sa","sta","ka","Ga","qa","cya","jya","pra","pla","ra","ha","Sra","hna","dya","ska","ya","pa","la","kna","ma","Ba","urRA","yA","rA","nA","snA","kzA","kzRA","DA","DrA","dA","drA","srA","sA","stA","kA","GA","qA","cyA","jyA","prA","plA","rA","hA","SrA","hnA","dyA","skA","yA","pA","lA","knA","mA","BA","Ca","za","Sa");
+$text1 = $text;
+if (sub($dhato,$y,blank(0),0)  && $pada ==="pratyaya" && $start ===1)
+{
+$text = two($dhato,$y,$dhato1,array("vy"),0);
+    echo "<p class = sa >By dhAtostannimittasyaiva (6.1.77)  : </p>";
+    echo "<p class = sa >धातोस्तन्निमित्तस्यैव (६.१.७७) : </p>";
+    display(0);
+} 
+if (sub($o,$y,blank(0),0)  && $pada ==="pratyaya" && !sub($dhato,$y,blank(0),0))
 {
 $text = two($o,$y,$ab,$y,0);
     echo "<p class = sa >By vAnto yi pratyaye (6.1.71), goryutau CandasyupasaMkhyAnam (vA 3543), adhvaparimANe ca (vA 3544)  : </p>
@@ -626,15 +635,9 @@ $text = two($o,$y,$ab,$y,0);
     echo "<p class = sa >वान्तो यि प्रत्यये (६.१.७१), गोर्यूतौ छन्दस्युपसंख्यानम्‌ (वा ३५४३), अध्वपरिमाणे च (वा ३५४४)  : </p>
         <p class = hn > यकारादि प्रत्यय के परे रहते या वैदिक भाषा / अध्वपरिमाण के अर्थ में यूति शब्द परे हो तब यह नियम लागू होता है ।</p>";
     display(0);
-    echo "<p class = hn >N.B. that if the 'o'kAra or 'au'kAra is of a dhAtu and caused by the pratyaya starting from 'y', this prakriyA applies only in cases where the 'o'kAra or the 'au'kAra is of dhAtu only.</p>";
-    echo "<p class = hn >Otherwise :</p>";
-     echo "<p class = hn >धातु का ओकार या औकार जब प्रत्यय के कारण से ही उत्पन्न हुआ हो तभी यह नियम लागू होता है ।</p>";
-    echo "<p class = hn >अन्यथा  -</p>";
-    display(2);
 }
-$text = merge($text,$text1);
 /* kSayyajayyau zakyArthe (6.1.81)*/
-if (sub(array("kzeya"),blank(0),blank(0),0)  && $pada ==="pratyaya")
+if (sub(array("kzeya"),blank(0),blank(0),0)  && $pada ==="pratyaya" && $start === 1)
 {
     $text = one(array("kzeya"),array("kzayya"),1);
     echo "<p class = sa >By kSayyajayyau zakyArthe (6.1.81) :</p>
@@ -643,7 +646,7 @@ if (sub(array("kzeya"),blank(0),blank(0),0)  && $pada ==="pratyaya")
         <p class = hn >यदि क्षय कर सकने के  अर्थ में प्रयोग होता है तभी क्षय्य होगा ।</p>";
     display(0);    
 }
-if (sub(array("jeya"),blank(0),blank(0),0) && $pada ==="pratyaya")
+if (sub(array("jeya"),blank(0),blank(0),0) && $pada ==="pratyaya" && $start === 1)
 {
         $text = one(array("jeya"),array("jayya"),1);
     echo "<p class = sa >By kSayyajayyau zakyArthe (6.1.81) :</p>
@@ -653,7 +656,7 @@ if (sub(array("jeya"),blank(0),blank(0),0) && $pada ==="pratyaya")
     display(0);
 }
 /* krayyastadarthe (6.1.82) */
-if (sub(array("kreya"),blank(0),blank(0),0)  && $pada ==="pratyaya")
+if (sub(array("kreya"),blank(0),blank(0),0)  && $pada ==="pratyaya" && $start ===1)
 {
     
     $text = one(array("kreya"),array("krayya"),1);
@@ -835,9 +838,9 @@ if (sub(array("a"),array("r@"),prat('hS'),0))
 /*prAdUhoDhoDyeSaiSyeSu (vA 3605) */
 /* Rte ca tRtIyAsamAse (vA 3607) */
 /* pravatsatarakambalavasanadazArNAnAmRNe (vA 3608-9) */
-$va3607 = array('akzaUhin','svair','praUh','praUQ','praez','praezy','suKaft','prafR','vatsafR','kambalafR','vasanafR','daSafR','fRafR','svaIr');
-$va3608 = array('akzOhiR','svEr','prOh','prOQ','prEz','prEzy','suKArt','prArR','vatsArR','kambalArR','vasanArR','daSArR','fRArR','svEr');
-if (sub($va3607,blank(0),blank(0),0))
+$va3607 = array('akzaUhin','svair','praUh','praUQ','praez','praezy','suKaft','prafR','vatsatarafR','kambalafR','vasanafR','daSafR','fRafR','svaIr');
+$va3608 = array('akzOhiR','svEr','prOh','prOQ','prEz','prEzy','suKArt','prArR','vatsatarArR','kambalArR','vasanArR','daSArR','fRArR','svEr');
+if (sub($va3607,blank(0),blank(0),0) && $pada === "pada")
 {
 $text = one($va3607,$va3608,0);
 echo "<p class = sa >Applying the following vArtikas : akSAdUhinyAmupasaMkhyAnam (vA 3604), svAdireriNoH (vA 3606), prAdUhoDhoDyeSaiSyeSu (vA 3605), Rte ca tRtIyAsamAse (vA 3607), pravatsatarakambalavasanadazArNAnAmRNe (vA 3608-9)</p>";
@@ -877,14 +880,14 @@ for($i=0;$i<count($akarantaupasarga);$i++)
 {
     $a_upa_without_a[$i] = substr($akarantaupasarga[$i],0,count(str_split($akarantaupasarga[$i]))-1); 
 }
-if (sub($akarantaupasarga,prat('eN'),blank(0),0) && arr($text,'/[I][y]/'))
+if (sub($akarantaupasarga,prat('eN'),blank(0),0) && arr($text,'/[I][y]/') && in_array($first,$akarantaupasarga))
 {
 $text = two($akarantaupasarga,prat('eN'),$a_upa_without_a,prat('eN'),1);
-echo "<p class = sa >By eGi pararUpam (6.1.94) and vA supyApizaleH (6.1.92) :</p>";
-echo "<p class = sa >एङि पररूपम्‌ (६.१.९४) तथा वा सुप्यापिशलेः (६.१.९२) :</p>";
+echo "<p class = sa >By eGi pararUpam (6.1.94) and anuvRtti of vA supi :</p>";
+echo "<p class = sa >एङि पररूपम्‌ (६.१.९४) तथा वा सुपि की अनुवृत्ति :</p>";
 display(0);
 }
-elseif (sub($akarantaupasarga,prat('eN'),blank(0),0))
+elseif (sub($akarantaupasarga,prat('eN'),blank(0),0) && in_array($first,$akarantaupasarga))
 {
 $text = two($akarantaupasarga,prat('eN'),$a_upa_without_a,prat('eN'),0);
 echo "<p class = sa >By eGi pararUpam (6.1.94) :</p>";
@@ -905,7 +908,7 @@ display(0);
 /* vA supyapizaleH (6.1.92) */ // Not possible to know what is nAmadhAtu and what is not. Therefore added as comments. Not coded.
 /* aco'ntyAdi Ti (1.1.64) */ // a saJjJAsUtra. No vidhi mentioned.
 /* otvoShThayoH samAse vA (vA 3634) */
-$otu = array("otu","ozQ");
+$otu = array("otu","ozW");
 if (sub($aa,$otu,blank(0),0))
 {
 $text = two($aa,$otu,blank(2),$otu,1);
@@ -916,10 +919,10 @@ echo "<p class = sa >ओत्वोष्ठ्योः समासे वा
 display(0);
 }
 /* omAGozca (6.1.95) */ 
-$om = array("om");
+$om = array("om","OM");
 if (sub($aa,$om,blank(0),0))
 {
-$text = two($aa,$om,blank(2),$om,0);
+$text = two($aa,$om,blank(2),array("om","om"),0);
 echo "<p class = sa >By omAGozca (6.1.95) :</p>
     <p class = hn >The om or AG following the a,A gets converted to pararUpa. Because of technical reasons, we can't tell when there is an 'AG' in the verb form. Whenever 'AG' is used, this rule would apply.</p>";
 echo "<p class = sa >ओमाङोश्च (६.१.९५) :</p>
