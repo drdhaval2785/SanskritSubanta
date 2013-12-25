@@ -8,12 +8,12 @@ ini_set('max_execution_time', 36000);
 // set memory limit to 1000 MB
 ini_set("memory_limit","1000M");
 // input the words
-$test = file("C:\\xampp\\htdocs\\sanskrit\\reverse-250026-dev.txt");
+$test = file("C:\\devanagari.txt");
 
-//$test = array("vfdDirAdEc");
+//$test = array("वृद्दिरादैच्‌");
 // process to remove the consonants and vowels
 
-$ap = array(" ",".","|",",","0","1","2","3","4","5","6","7","8","9","!","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
+$ap = array("\\r\\n","\\n"," ",".","|",",","0","1","2","3","4","5","6","7","8","9","!","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
 $b = one1($test,$ap,blank(count($ap)),0);
 $a = array_map('convert1',$b);
 for($i=0;$i<count($a);$i++)
@@ -29,13 +29,17 @@ for($i=0;$i<count($a);$i++)
     $text = one($hl,blank(count($hl)),0);
     $text = one(array("+","-"),array("G","L"),0);
     $text = one(array("\r\n","<br>","</br>","\n"),array("","","","",),0);
-    $matra = 2*substr_count($text[0],"G") + substr_count($text[0],"L");
-    $input[] = $test[$i].", ".$matra.", ".$text[0];  
+    $matra = 2*substr_count($text[0],"G") + substr_count($text[0],"L"); 
+    $text[0] = chunk_split($text[0],3," ");
+    $text1[$i] = str_replace(array("LGG","GGG","GGL","GLG","LGL","LLL","LLG"),array("ya","ma","ta","ra","ja","na","sa"),$text[0]);
+    $input[] = $test[$i].", ".$matra.", ".$text[0].", ".$text1[$i];
+
 }
-
-$inputtext = implode("\r\n",$input);
-$inputtext = str_replace("\r\n,","",$inputtext);
-file_put_contents("C:\\one.txt",$inputtext);
-
+// keep this if you want not to convert to ganas
+//$inputtext = implode("\r\n",$input);
+// keep this if you want to convert to ganas
+$inputtext = implode("</br>",$input);
+//file_put_contents("C:\\one.txt",$inputtext);
+echo $inputtext;
 
 ?>

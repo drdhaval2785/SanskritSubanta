@@ -766,7 +766,7 @@ function nosavarna($c)
      global $text;
      $needle = array();
     // for different length and all combinations
-    if($repeat === 0)
+    if($repeat !== 1)
     {
         foreach ($a as $aa)
         {
@@ -788,11 +788,12 @@ function nosavarna($c)
         }
     }
     /*** map with preg_quote ***/
-    $needle = array_map('preg_quote', $needle);
+    $needle = array_map('preg_quote', $needle); 
     /*** loop of the array to get the search pattern ***/
+    global $first;
     foreach ($needle as $pattern)
-    {
-        if (count(preg_grep("/$pattern/", $text)) > 0)
+    { 
+        if (($repeat <2 && count(preg_grep("/$pattern/", $text)) >0) || ($repeat ===2 && stripos(strrev($first), strrev($pattern)) === 0) || ($repeat ===3 && stripos($first,$pattern) === 0) || ($repeat ===4 && stripos(strrev($second), strrev($pattern)) === 0) || ($repeat ===5 && stripos($second,$pattern) === 0))
         {
         $can = 1;
         break;
@@ -812,7 +813,6 @@ else
 }
 
 }
-
 
 /* Function to find savarna of a given letter from the given array. */
 function sl($text,$array) // Known issue - words having two Asyas.
