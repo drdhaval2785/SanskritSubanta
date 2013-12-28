@@ -793,7 +793,7 @@ function nosavarna($c)
     global $first;
     foreach ($needle as $pattern)
     { 
-        if (($repeat <2 && count(preg_grep("/$pattern/", $text)) >0) || ($repeat ===2 && stripos(strrev($first), strrev($pattern)) === 0) || ($repeat ===3 && stripos($first,$pattern) === 0) || ($repeat ===4 && stripos(strrev($second), strrev($pattern)) === 0) || ($repeat ===5 && stripos($second,$pattern) === 0))
+        if (($repeat <2 && count(preg_grep("/$pattern/", $text)) >0) || ($repeat ===2 && strpos(strrev($first), strrev($pattern)) === 0) || ($repeat ===3 && strpos($first,$pattern) === 0) || ($repeat ===4 && strpos(strrev($second), strrev($pattern)) === 0) || ($repeat ===5 && strpos($second,$pattern) === 0))
         {
         $can = 1;
         break;
@@ -1060,4 +1060,20 @@ function last($a,$b,$merge)
     
     return $text;
 }
+
+/* An attempt to create an all encompassing function 
+ * name is panini
+ * three arrays for checking,
+ * one for adding additional checking in addition to sub function
+ * one for adding whether pratyaya / pada
+ *  one for the 0/1/2/3/4 etc of sub function, 
+ * three for the substituted, 
+ * three for substitution, 
+ * one for 0/1 of one/two/three function,
+ * one for english sutra name,
+ * one for english sutra number
+ * one for hindi sutra name,
+ * one for hindi sutra number
+ * 
+ */
 ?>

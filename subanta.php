@@ -624,8 +624,8 @@ $bho = 1;
 } else { $bho = 0; }
 /* vAnto yi pratyaye (6.1.71), goryutau CandasyupasaMkhyAnam (vA 3543), adhvaparimANe ca (vA 3544) dhAtostannimittasyaiva (6.1.80) */
 $o = array("o","O"); $oo = 'oO'; $y = array("y"); $ab = array("av","Av");
-$dhato = array("urRo","ro","no","sno","kzo","kzRo","Do","Dro","do","dro","sro","so","ko","Go","qo","cyo","jyo","pro","plo","ro","ho","Sro","hno","dyo","sko","po","lo","kno","mo","Bo","urRO","rO","nO","snO","kzO","kzRO","DO","DrO","dO","drO","srO","sO","kO","GO","qO","cyO","jyO","prO","plO","rO","hO","SrO","hnO","dyO","skO","pO","lO","knO","mO","BO","Co","zo","So");
-$dhato1 = array("urRa","ra","na","sna","kza","kzRa","Da","Dra","da","dra","sra","sa","ka","Ga","qa","cya","jya","pra","pla","ra","ha","Sra","hna","dya","ska","pa","la","kna","ma","Ba","urRA","rA","nA","snA","kzA","kzRA","DA","DrA","dA","drA","srA","sA","kA","GA","qA","cyA","jyA","prA","plA","rA","hA","SrA","hnA","dyA","skA","pA","lA","knA","mA","BA","Ca","za","Sa");
+$dhato = array("urRo","ro","no","sno","kzo","kzRo","Do","Dro","do","dro","sro","so","ko","Go","qo","cyo","jyo","pro","plo","ro","ho","Sro","hno","dyo","sko","po","lo","kno","mo","Bo","urRO","rO","snO","kzO","kzRO","DO","DrO","dO","drO","srO","sO","kO","GO","qO","cyO","jyO","prO","plO","rO","hO","SrO","hnO","dyO","skO","pO","lO","knO","mO","BO","Co","zo","So");
+$dhato1 = array("urRa","ra","na","sna","kza","kzRa","Da","Dra","da","dra","sra","sa","ka","Ga","qa","cya","jya","pra","pla","ra","ha","Sra","hna","dya","ska","pa","la","kna","ma","Ba","urRA","rA","snA","kzA","kzRA","DA","DrA","dA","drA","srA","sA","kA","GA","qA","cyA","jyA","prA","plA","rA","hA","SrA","hnA","dyA","skA","pA","lA","knA","mA","BA","Ca","za","Sa");
 $text1 = $text;
 if (sub($dhato,$y,blank(0),0)  && $pada ==="pratyaya" && $start ===1)
 {
@@ -637,10 +637,18 @@ $text = two($dhato,$y,$dhato1,array("vy"),0);
 if (sub($o,$y,blank(0),0)  && $pada ==="pratyaya" && !sub($dhato,$y,blank(0),0))
 {
 $text = two($o,$y,$ab,$y,0);
+    if (sub(array("gav"),$y,blank(0),0))
+    {
     echo "<p class = sa >By vAnto yi pratyaye (6.1.71), goryutau CandasyupasaMkhyAnam (vA 3543), adhvaparimANe ca (vA 3544)  : </p>
         <p class = hn > If the 'y' following 'o/O' belongs to a pratyaya or the word 'go' is followed by 'yuti' in Chandas/ as a measure of distance (vA 3543, 3544).</p>";
     echo "<p class = sa >वान्तो यि प्रत्यये (६.१.७१), गोर्यूतौ छन्दस्युपसंख्यानम्‌ (वा ३५४३), अध्वपरिमाणे च (वा ३५४४)  : </p>
-        <p class = hn > यकारादि प्रत्यय के परे रहते या वैदिक भाषा / अध्वपरिमाण के अर्थ में यूति शब्द परे हो तब यह नियम लागू होता है ।</p>";
+        <p class = hn > यकारादि प्रत्यय के परे रहते या वैदिक भाषा / अध्वपरिमाण के अर्थ में यूति शब्द परे हो तब यह नियम लागू होता है ।</p>";        
+    }
+    else
+    {
+    echo "<p class = sa >By vAnto yi pratyaye (6.1.71) : </p>";
+    echo "<p class = sa >वान्तो यि प्रत्यये (६.१.७१) :</p>";        
+    }
     display(0);
 }
 /* kSayyajayyau zakyArthe (6.1.81)*/
@@ -1755,6 +1763,25 @@ echo "<p class = sa >By yaro'nunAsike'nunAsiko vA (8.4.45) :</p>";
 echo "<p class = sa >यरोऽनुनासिकेऽनुनासिको वा (८.४.४५) :</p>";
 display(0);
 }
+/* nAdinyAkroze putrasya (8.4.48) */
+if (sub(array('putrAdin'),blank(0),blank(0),0))
+{
+    echo "<p class = sa >By nAdinyAkroze putrasya (8.4.48) - If Akroza is meant : The dvitva doesn't happen. Otherwise dvitva will happen.</p>";
+    echo "<p class = sa >नादिन्याक्रोशे पुत्रस्य (८.४.४८) - यदि आक्रोश के अर्थ में प्रयुक्त हुआ है, तब द्वित्व नहीं होगा । अन्यथा द्वित्व होगा ।</p>";
+}
+/* vA hatajagdhayoH (vA 5022) */
+if (sub(array("putrahatI"),blank(0),blank(0),0))
+{
+echo "<p class = sa >By vA hatajagdhayoH (vA 5022) :</p>";
+echo "<p class = sa >वा हतजग्धयोः (वा ५०२२) :</p>";
+display(0);
+}
+if (sub(array('putrajagDI'),blank(0),blank(0),0))
+{
+echo "<p class = sa >By vA hatajagdhayoH (vA 5022) :</p>";
+echo "<p class = sa >वा हतजग्धयोः (वा ५०२२) :</p>";
+display(0);
+}
 /*anaci ca (8.4.47)*/ // Here the sudhI + upAsya - what about the Asy - Assy is possbile ? Code gives it. But there are 4 options. Code gives two only.
 // The cause for using $hrasva instead of $ac is that the dIrgha vowels are debarred by dIrghAdAcAyANAm.
 // Here instead of using pratyAhAra hl, we shall do manual enumeration of all the members. Bexause of "anusvAravisargajihvAmUlIyopadhmAnIyayamAnAmakAropari zarSu ca pAThasyopasaGkhyAtatvenAnusvArasyApyactvAt (in derivation of samskAra) 
@@ -1764,22 +1791,46 @@ $hala2 = array("h","y","v","r","l","Y","m","N","R","n","J","B","G","Q","D","j","
 if(sub($hrasva,$hala1,$hala2,0))
 {
     $text = dvitva($hrasva,$hala1,$hala2,array(""),2,1);
-echo "<p class = sa >By anaci ca (8.4.47):</p>"; 
-echo "<p class = sa >अनचि च (८.४.४७):</p>"; 
+    if (sub($dirgha,$hala1,$hala2,0))
+    {
+    echo "<p class = sa >By anaci ca (8.4.47) and dIrghAdAcAryANAm (8.4.52) :</p>"; 
+    echo "<p class = sa >अनचि च (८.४.४७): तथा दीर्घादाचार्याणाम्‌ (८.४.५२) :</p>";     
+    }
+    else
+    {
+    echo "<p class = sa >By anaci ca (8.4.47):</p>"; 
+    echo "<p class = sa >अनचि च (८.४.४७):</p>";     
+    }
 display(1);
 }
 if(sub($hrasvaplus,$hl,$hala2,0))
 {
     $text = dvitva($hrasvaplus,$hl,$hala2,array(""),2,1);
+    if (sub($dirgha,$hl,$hala2,0))
+    {
+    echo "<p class = sa >By anaci ca (8.4.47) and dIrghAdAcAryANAm (8.4.52) :</p>"; 
+    echo "<p class = sa >अनचि च (८.४.४७): तथा दीर्घादाचार्याणाम्‌ (८.४.५२) :</p>";     
+    }
+    else
+    {
     echo "<p class = sa >By anaci ca (8.4.47):</p>"; 
-    echo "<p class = sa >अनचि च (८.४.४७):</p>"; 
+    echo "<p class = sa >अनचि च (८.४.४७):</p>";     
+    }
     display(1);
 }
 if(checkarray($dirgha,$hl,array('r','l'),blank(0))!==0 && $sthanivadbhav===1) 
 {
 $text = dvitva($dirgha,$hala1,$hala2,array(""),2,1);
-echo "<p class = sa >By anaci ca (8.4.47):</p>";
-echo "<p class = sa >अनचि च (८.४.४७):</p>"; 
+    if (sub($dirgha,$hl,array('r','l'),0))
+    {
+    echo "<p class = sa >By anaci ca (8.4.47) and dIrghAdAcAryANAm (8.4.52) :</p>"; 
+    echo "<p class = sa >अनचि च (८.४.४७): तथा दीर्घादाचार्याणाम्‌ (८.४.५२) :</p>";     
+    }
+    else
+    {
+    echo "<p class = sa >By anaci ca (8.4.47):</p>"; 
+    echo "<p class = sa >अनचि च (८.४.४७):</p>";     
+    }
 display(1);
 }
 /* By anaci ca (according to mahAbhASya example of vAkk) */ 
@@ -1803,28 +1854,17 @@ if (arr($text,'/['.flat($ac).']['.flat($hl).']$/') || (preg_match('/['.flat($ac)
     $text = array_unique($text);
     $text = array_values($text);
     $value1 = array();
-    echo "<p class = sa >By anaci ca :</p>";
-    echo "<p class = sa >अनचि च (८.४.४७) :</p>"; 
+    if (sub($dirgha,$hala1,$hala2,0))
+    {
+    echo "<p class = sa >By anaci ca (8.4.47) and dIrghAdAcAryANAm (8.4.52) :</p>"; 
+    echo "<p class = sa >अनचि च (८.४.४७): तथा दीर्घादाचार्याणाम्‌ (८.४.५२) :</p>";     
+    }
+    else
+    {
+    echo "<p class = sa >By anaci ca (8.4.47):</p>"; 
+    echo "<p class = sa >अनचि च (८.४.४७):</p>";     
+    }
     display(1);
-}
-/* nAdinyAkroze putrasya (8.4.48) */
-if (sub(array('putrAdinI'),blank(0),blank(0),0))
-{
-    echo "<p class = sa >By nAdinyAkroze putrasya (8.4.48) - If Akroza is meant : The dvitva doesn't happen. Otherwise dvitva will happen.</p>";
-    echo "<p class = sa >नादिन्याक्रोशे पुत्रस्य (८.४.४८) - यदि आक्रोश के अर्थ में प्रयुक्त हुआ है, तब द्वित्व नहीं होगा । अन्यथा द्वित्व होगा ।</p>";
-}
-/* vA hatajagdhayoH (vA 5022) */
-if (sub(array("putrahatI"),blank(0),blank(0),0))
-{
-echo "<p class = sa >By vA hatajagdhayoH (vA 5022) :</p>";
-echo "<p class = sa >वा हतजग्धयोः (वा ५०२२) :</p>";
-display(0);
-}
-if (sub(array('putrajagDI'),blank(0),blank(0),0))
-{
-echo "<p class = sa >By vA hatajagdhayoH (vA 5022) :</p>";
-echo "<p class = sa >वा हतजग्धयोः (वा ५०२२) :</p>";
-display(0);
 }
 /* zaraH khayaH (vA 5019) */
 $shara = array("S","z","s",);
