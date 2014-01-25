@@ -121,7 +121,7 @@ if (preg_match('/['.flat($ac).'][!]/',$so) && $pada=== "pratyaya" && $wa === 0 &
 /* AdirGiTuDavaH (1.3.5) */
 if ((substr($first,0,2) === "Yi" || substr($first,0,2) === "wu" || substr($first,0,2) === "qu") && $pada=== "pratyaya")
 {
-    $first = one1(array("Yi","wu","qu"),blank(3),0);
+    $first = one1($first,array("Yi","wu","qu"),blank(3),0);
     echo "<p class = sa >By AdirGiTuDavaH (1.3.5) and tasya lopaH (1.3.9) :</p>";
     echo "<p class = sa >आदिर्ञिटुडवः (१.३.५) तथा तस्य लोपः (१.३.९) :</p>";
     echo convert($first).convert($second)."</br>";
@@ -355,10 +355,10 @@ display(0);
 // Not possible to know whether one form has ze or not.
 /* nipAta ekAjanAG (1.1.14) */
 $nipata = array("a","A","i","I","u","U","e","E","o","O");
-$nipata1 = array("a ","A ","i ","I ","u ","U ","e ","E ","o ","O ");
-if (in_array($first,$nipata) && $start===1)
+$nipata1 = array("a ","A ","i ","I ","u ","U ","e ","E ","o ","O "); 
+if (in_array($first,$nipata) && sub(array($first),$ac,blank(0),0) && $start===1)
 {
-$text = two ($nipata,$ac,$nipata1,$ac,0);
+$text = two ($nipata,$ac,$nipata1,$ac,0); print_r($text);
 echo "<p class = sa >By nipAta ekAjanAG (1.1.14) :</p>";
 echo "<p class = sa >निपात एकाजनाङ्‌ (१.१.१४) :</p>";
 display(0);
@@ -366,7 +366,7 @@ display(0);
 /* ot (1.1.15) */
 $ot = array("o","aho","ho","utAho","aTo");
 $ot1 = array("o ","aho ","ho ","utAho ","aTo ");
-if (in_array($first,$ot) && $start===1)
+if (in_array($first,$ot) && sub(array($first),$ac,blank(0),0) && $start===1)
 {
 $text = two ($ot,$ac,$ot1,$ac,0);
 echo "<p class = sa >By ot (1.1.15) :</p>";
@@ -443,7 +443,7 @@ echo  "<p class = hn >यदि सीमन्त केशवेश के अ
 display(0);
 }
 /* omAGozca (6.1.95) */ 
-$aag = array("om","OM","Aj","Acy","AYc","Anakt","Att","As","et","eh","er","Eray","okz","ArcC","Arpit","Ohyat","oQ","arSyAt");
+$aag = array("om","OM","Aj","Acy","AYc","Anakt","Att","As","er","Eray","okz","ArcC","Arpit","Ohyat","oQ","arSyAt");
 if (sub(array("a","A"),$aag,blank(0),0))
 { 
 $text = two(array("a","A"),array("om","OM"),blank(2),array("om","om"),0);
@@ -618,25 +618,31 @@ $o = array("o","O"); $oo = 'oO'; $y = array("y"); $ab = array("av","Av");
 $dhato = array("urRo","ro","no","sno","kzo","kzRo","Do","Dro","do","dro","sro","so","ko","Go","qo","cyo","jyo","pro","plo","ro","ho","Sro","hno","dyo","sko","po","lo","kno","mo","Bo","urRO","rO","snO","kzO","kzRO","DO","DrO","dO","drO","srO","sO","kO","GO","qO","cyO","jyO","prO","plO","rO","hO","SrO","hnO","dyO","skO","pO","lO","knO","mO","BO","Co","zo","So");
 $dhato1 = array("urRa","ra","na","sna","kza","kzRa","Da","Dra","da","dra","sra","sa","ka","Ga","qa","cya","jya","pra","pla","ra","ha","Sra","hna","dya","ska","pa","la","kna","ma","Ba","urRA","rA","snA","kzA","kzRA","DA","DrA","dA","drA","srA","sA","kA","GA","qA","cyA","jyA","prA","plA","rA","hA","SrA","hnA","dyA","skA","pA","lA","knA","mA","BA","Ca","za","Sa");
 $text1 = $text;
-if (sub($dhato,$y,blank(0),0)  && $pada ==="pratyaya" && $start ===1)
+if (sub($dhato,$y,blank(0),0) && $pada ==="pratyaya" && $start ===1)
 {
 $text = two($dhato,$y,$dhato1,array("vy"),0);
     echo "<p class = sa >By dhAtostannimittasyaiva (6.1.77)  : </p>";
     echo "<p class = sa >धातोस्तन्निमित्तस्यैव (६.१.७७) : </p>";
     display(0);
 } 
-if (sub($o,$y,blank(0),0)  && $pada ==="pratyaya" && !sub($dhato,$y,blank(0),0))
+if (sub($o,$y,blank(0),0) && $pada ==="pratyaya" && !sub($dhato,$y,blank(0),0))
 {
-$text = two($o,$y,$ab,$y,0);
     if (sub(array("gav"),$y,blank(0),0))
     {
+    $text = two($o,$y,$ab,$y,0);
     echo "<p class = sa >By vAnto yi pratyaye (6.1.71), goryutau CandasyupasaMkhyAnam (vA 3543), adhvaparimANe ca (vA 3544)  : </p>
         <p class = hn > If the 'y' following 'o/O' belongs to a pratyaya or the word 'go' is followed by 'yuti' in Chandas/ as a measure of distance (vA 3543, 3544).</p>";
     echo "<p class = sa >वान्तो यि प्रत्यये (६.१.७१), गोर्यूतौ छन्दस्युपसंख्यानम्‌ (वा ३५४३), अध्वपरिमाणे च (वा ३५४४)  : </p>
         <p class = hn > यकारादि प्रत्यय के परे रहते या वैदिक भाषा / अध्वपरिमाण के अर्थ में यूति शब्द परे हो तब यह नियम लागू होता है ।</p>";        
     }
+    elseif (sub(array("oyat","Oyat"),blank(0),blank(0),0))
+    {
+    echo "<p class = sa >By dhAtostannimittasyaiva (6.1.77)  : </p>";
+    echo "<p class = sa >धातोस्तन्निमित्तस्यैव (६.१.७७) :</p>";                
+    }
     else
     {
+    $text = two($o,$y,$ab,$y,0);
     echo "<p class = sa >By vAnto yi pratyaye (6.1.71) : </p>";
     echo "<p class = sa >वान्तो यि प्रत्यये (६.१.७१) :</p>";        
     }
