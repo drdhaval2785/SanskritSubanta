@@ -1032,34 +1032,88 @@ function arr($text,$a)
 }
 
 /* function to remove the last n letters from a word in the $text array and replace them with another word */
+// Write this function with a fresh mind. It is going all wrong.
 function last($a,$b,$merge)
 {
     global $text;
     foreach ($text as $value)
     {
-        if (preg_match('/['.$a.']$/',$value))
+        for($i=0;$i<count($a);$i++)
         {
-            $value1[] = chop($value,$a).$b;
+            if (preg_match('/('.$a[$i].')$/',$value))
+            {
+                $value1[] = substr($value,0,-strlen($a[$i])).$b[$i];
+                if ($merge === 1)
+                {
+                    $value1[] = $value;
+                }
+            }
+            else
+            {
+                $value1[] = $value;
+            }
         }
-        else 
+        if (array_unique($value1)===array($value))
         {
-            $value1[] = $value;
+            $value2[] = array_unique($value1);
         }
+        elseif ($merge === 1)
+        {
+            $value2[] = array_unique($value1);
+        }
+        else
+        {
+            $value2[] = array_diff($value1,array($value));
+        }
+        $value1 = array();
     }
-    if ($merge === 0)
-    {
-    $text = array_unique($value1);
-    $text = array_values($text);    
-    }
-    if ($merge === 1)
-    {
-    $text = array_merge($text,$value1);
+    $text = flatten($value2);
     $text = array_unique($text);
-    $text = array_values($text);    
-    }
-    
+    $text = array_values($text);
     return $text;
 }
+
+/* function to remove the first n letters from a word in the $text array and replace them with another word */
+function first($a,$b,$merge)
+{
+    global $text;
+    foreach ($text as $value)
+    {
+        for($i=0;$i<count($a);$i++)
+        {
+            if (preg_match('/('.$a[$i].')$/',$value))
+            {
+                $value1[] = $b[$i].substr($value,strlen($a[$i]));
+                if ($merge === 1)
+                {
+                    $value1[] = $value;
+                }
+            }
+            else
+            {
+                $value1[] = $value;
+            }
+        }
+        if (array_unique($value1)===array($value))
+        {
+            $value2[] = array_unique($value1);
+        }
+        elseif ($merge === 1)
+        {
+            $value2[] = array_unique($value1);
+        }
+        else
+        {
+            $value2[] = array_diff($value1,array($value));
+        }
+        $value1 = array();
+    }
+    $text = flatten($value2);
+    $text = array_unique($text);
+    $text = array_values($text);
+    return $text;
+}
+
 
 /* An attempt to create an all encompassing function 
  * name is panini
