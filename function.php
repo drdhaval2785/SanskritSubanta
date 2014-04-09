@@ -174,6 +174,10 @@ return $text;
 // There are five arguments, $a,$b are the arrays which you want to change, $c,$d are the arrays which will be put in place of the replaced one.
 // $merge can take two values. 0 will mean that the whole $text will be replaced with the new replaced values. Used in case of mandatory Adezas.
 // 1 will mean that $text will not be replaced, but the replaced values will be added to it. Used in case of optional Adezas.
+// 2 will mean - without + sign, mandatory (apadAnta etc)
+// 3 = without + sign, optional
+// 4 = with + sign only, mandatory (padAnta etc)
+// 5 = with + sign only, optional.
 function two($a,$b,$c,$d,$merge)
 {
     global $text;
@@ -181,20 +185,32 @@ function two($a,$b,$c,$d,$merge)
     {$p = $text[$z];
           for($i=0;$i<count($a);$i++)
           {
-    for($j=0;$j<count($b);$j++)
-            {
-      $p =  str_replace($a[$i].$b[$j],$c[$i].$d[$j],$p);   
-            }
+           for($j=0;$j<count($b);$j++)
+                {
+                if($merge<2)
+                {
+                $p =  str_replace($a[$i].$b[$j],$c[$i].$d[$j],$p);   
+                $p =  str_replace($a[$i]."+".$b[$j],$c[$i]."+".$d[$j],$p); 
+                }
+                elseif ($merge<4)
+                {
+                $p =  str_replace($a[$i].$b[$j],$c[$i].$d[$j],$p);                       
+                }
+                else
+                {
+                $p =  str_replace($a[$i]."+".$b[$j],$c[$i]."+".$d[$j],$p);                                           
+                }
+                }
           }
      $text1[$z]  = $p;      
     }
-    if ($merge === 0)
+if (($merge === 0) || ($merge === 2) ||($merge === 4) )
     {
         $text2 = $text1;
         $text2 = array_unique($text2);
         $text2 = array_values($text2);
     }
-    if ($merge === 1)
+if (($merge === 1) || ($merge === 3) ||($merge === 5) )
     {
         $text2 = array_merge($text,$text1);
         $text2 = array_unique($text2);
@@ -217,7 +233,10 @@ function three($a,$b,$c,$d,$e,$f,$merge)
         {
         for($k=0;$k<count($c);$k++)
             {
-         $p =  str_replace($a[$i].$b[$j].$c[$k],$d[$i].$e[$j].$f[$k],$p);       
+            $p =  str_replace($a[$i].$b[$j].$c[$k],$d[$i].$e[$j].$f[$k],$p);       
+           $p =  str_replace($a[$i]."+".$b[$j].$c[$k],$d[$i]."+".$e[$j].$f[$k],$p);       
+           $p =  str_replace($a[$i].$b[$j]."+".$c[$k],$d[$i].$e[$j]."+".$f[$k],$p);       
+           $p =  str_replace($a[$i]."+".$b[$j]."+".$c[$k],$d[$i]."+".$e[$j]."+".$f[$k],$p);       
             }
         }
     }
@@ -775,6 +794,9 @@ function nosavarna($c)
              foreach ($c as $cc)
              {
                  $needle[]=$aa.$bb.$cc;
+                 $needle[]=$aa."+".$bb.$cc;
+                 $needle[]=$aa.$bb."+".$cc;
+                 $needle[]=$aa."+".$bb."+".$cc;
              }
          }
         }
@@ -785,6 +807,9 @@ function nosavarna($c)
         for($i=0;$i<count($a);$i++)
         {
             $needle[] = $a[$i].$b[$i].$c[$i];
+            $needle[] = $a[$i]."+".$b[$i].$c[$i];
+            $needle[] = $a[$i].$b[$i]."+".$c[$i];
+            $needle[] = $a[$i]."+".$b[$i]."+".$c[$i];
         }
     }
     /*** map with preg_quote ***/
@@ -1114,6 +1139,32 @@ function first($a,$b,$merge)
     return $text;
 }
 
+/* tadanta function */
+/*function tadanta($text,$needle)
+{
+    for ($i=0;$i<count($text);$i++)
+    {
+        for($j=0;$j<count($needle);$j++)
+        {echo strrev($text[$i]); echo strrev($needle[$j]);   
+            if (strpos(strrev($text[$i]),strrev($needle[$j])>=0))
+            {
+                $can[] = 1;
+            }
+            else
+            { 
+                $can[] = 0; 
+            }
+        }
+    } print_r($can);
+    if (in_array(1,$can))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}*/
 
 /* An attempt to create an all encompassing function 
  * name is panini
