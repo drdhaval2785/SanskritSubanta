@@ -174,7 +174,7 @@ return $text;
 // There are five arguments, $a,$b are the arrays which you want to change, $c,$d are the arrays which will be put in place of the replaced one.
 // $merge can take two values. 0 will mean that the whole $text will be replaced with the new replaced values. Used in case of mandatory Adezas.
 // 1 will mean that $text will not be replaced, but the replaced values will be added to it. Used in case of optional Adezas.
-// 2 will mean - without + sign, mandatory (apadAnta etc)
+// 2 = without + sign, mandatory (apadAnta etc)
 // 3 = without + sign, optional
 // 4 = with + sign only, mandatory (padAnta etc)
 // 5 = with + sign only, optional.
