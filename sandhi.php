@@ -2214,7 +2214,7 @@ display(0);
 /* Final Display */
 echo "<p class = sa >Final forms are :</p>";
 echo "<p class = sa >आखिरी रूप हैं :</p>";
-display(0);
+display(0); echo "hi";
 ?>
 </body>
 </html>
