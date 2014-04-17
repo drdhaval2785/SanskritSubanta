@@ -138,6 +138,16 @@ if (sub($sankhyahan,array("+"),array("Ni"),0) && $so==="Ni")
     echo "<p class = sa >सङ्ख्याविसायपूर्वस्याह्नस्याहन्नन्यतरस्याम्‌ (६.३.११०) :</p>";
     display(0);
 }
+/* Ato dhAtoH (6.4.140) */
+// Right now we have presumed that all are AkArAnta dhAtus. Abanta etc will have to be dealt with later on.
+$haha = array("hAhA");
+if ($bham === 1 && arr($text,'/[A][+]/') && !in_array($fo,$haha))
+{
+    $text = two(array("A"),array("+"),array(""),array("+"),0);
+    echo "<p class = sa >By Ato dhAtoH (6.4.140) :</p>";
+    echo "<p class = sa >आतो धातोः (६.४.१४०) :</p>";
+    display(0);
+}
 /* bhasya (6.4.129) and allopo'naH (6.4.134) and vibhASA GizyoH (6.4.236) */
 if ($bham === 1 && arr($text,'/[a][n][+]/'))
 {
@@ -154,7 +164,6 @@ if ($bham === 1 && arr($text,'/[a][n][+]/'))
     echo "<p class = sa >By bhasya (6.4.129) and allopo'naH (6.4.134) :</p>";
     echo "<p class = sa >भस्य (६.४.१२९) तथा अल्लोपोऽनः (६.४.१३४) :</p>";
     display(0);    
-        
     }
 }
 /* jasaH shI (7.1.17) */
@@ -252,7 +261,7 @@ print_r($text);    $text = two(array("jaras"),array("ina","sya"),array("jaras"),
     display(0);
     $wa = 1;
 } else { $wa =0; }
-if (in_array($so,array("Nasi!")))
+if (preg_match('/[a]$/',$fo) && in_array($so,array("Nasi!")))
 {
     $text = last(array("Nasi!"),array("At"),0);
     $text = two(array("jaras"),array("At"),array("jaras"),array("Nasi!"),0);
@@ -606,7 +615,7 @@ if ($so === "am" && sub(array("a","A","i","I","u","U","f","F","x"),array("am"),b
 }  
 /* nAdici (6.1.104) */
 $ic = array("i","I","u","U","f","F","x","X","e","o","E","O");
-if (arr($text,'/[aA][+]['.flat($ic).']/') && (in_array($so,$prathama)))
+if (arr($text,'/[a][+]['.flat($ic).']/') && (in_array($so,$prathama)))
 {
     echo "<p class = sa >By nAdici (6.1.104) :</p>
         <p class = hn >N.B. : This is exception to prathamayoH pUrvasavarNaH. </p>";
@@ -614,10 +623,20 @@ if (arr($text,'/[aA][+]['.flat($ic).']/') && (in_array($so,$prathama)))
         <p class = hn >यह नियम प्रथमयोः पूर्वसवर्णः का अपवाद है ।</p>";
     display (0); $nadici = 1;
 } else { $nadici = 0; }
+/* dIrghAjjasi ca (6.1.105) */
+if ((arr($text,'/[AIUFeEoO][+]['.flat($ic).']/')||$so==="jas") && (in_array($so,$prathama)))
+{
+    echo "<p class = sa >By dIrghAjjasi ca (6.1.105) :</p>
+        <p class = hn >N.B. : This is exception to prathamayoH pUrvasavarNaH. </p>";
+      echo "<p class = sa >दीर्घाज्जसि च (६.१.१०५) :</p>
+        <p class = hn >यह नियम प्रथमयोः पूर्वसवर्णः का अपवाद है ।</p>";
+    display (0); $nadici1 = 1;
+} else { $nadici1 = 0; }
 /* prathamayoH pUrvasavarNaH (6.1.102) */ 
+// Not coded well. Please revisit.
 $ak = array("a","A","i","I","u","U","f","F","x","X"); 
 $akreplace = array("A","A","I","I","U","U","F","F","F","X");
-if (sub($ak,array("a","A"),blank(0),0) && in_array($so,$prathama))
+if (sub($ak,array("a","A"),blank(0),0) && in_array($so,$prathama) && $nadici === 0 && $nadici1 === 0)
 {
     $text = two($ak,array("a","A"),$akreplace,array("",""),0);
     echo "<p class = sa >By prathamayoH pUrvasavarNaH (6.1.102) :</p>
@@ -1821,7 +1840,7 @@ if ( arr($text,'/['.pc('ac').'HM! ][+]['.pc('ac').']/') || arr($text,'/[HM!][+][
 { 
 $text = one(array("+"),array(" "),0);
 }
-if ( arr($text,'/['.pc('ac').' ][+]['.pc('hl').'MH]/') )
+if ( arr($text,'/['.pc('ac').' ][+]['.pc('hl').'MH]/') || arr($text,'/[+]$/') )
 { 
 $text = one(array("+"),array(""),0);
 }
