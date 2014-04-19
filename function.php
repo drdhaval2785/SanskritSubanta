@@ -1144,25 +1144,33 @@ function first($a,$b,$merge)
     $text = array_values($text);
     return $text;
 }
-
-/* tadanta function */
-/*function tadanta($text,$needle)
-{
-    for ($i=0;$i<count($text);$i++)
+/* vriddhi function */
+function vriddhi($a)
+{ $ac = array("a","A","i","I","u","U","f","F","x","X","e","o","E","O",);
+  $acreplace = array("A","A","E","E","O","O","Ar","Ar","Al","Al","E","O","E","O",);
+    foreach ($a as $value)
     {
-        for($j=0;$j<count($needle);$j++)
-        {echo strrev($text[$i]); echo strrev($needle[$j]);   
-            if (strpos(strrev($text[$i]),strrev($needle[$j])>=0))
-            {
-                $can[] = 1;
-            }
-            else
-            { 
-                $can[] = 0; 
-            }
-        }
-    } print_r($can);
-    if (in_array(1,$can))
+        $out[] = str_replace($ac,$acreplace,$value);
+    }
+    return $out;
+}
+/* guna function */
+function guna($a)
+{ $ac = array("a","A","i","I","u","U","f","F","x","X","e","o","E","O",);
+  $acreplace = array("a","a","e","e","o","o","ar","ar","al","al","e","o","e","o",);
+    foreach ($a as $value)
+    {
+        $out[] = str_replace($ac,$acreplace,$value);
+    }
+    return $out;
+}
+
+/* anekAca function */
+function anekAca($a)
+{
+    $ac = array("a","A","i","I","u","U","f","F","x","X","e","o","E","O",);
+    $b = preg_split('/['.flat($ac).']/',$a);
+    if (count($b)>1)
     {
         return true;
     }
@@ -1170,7 +1178,7 @@ function first($a,$b,$merge)
     {
         return false;
     }
-}*/
+}
 
 /* An attempt to create an all encompassing function 
  * name is panini
