@@ -60,6 +60,7 @@ $sarvanama = array("sarva","viSva","uBa","uBaya","qatara","qatama","anya","anyat
 $zasadi = array("Sas","wA","ByAm","Bis","Ne","ByAm","Byas","Nasi!","ByAm","Byas","Nas","os","Am","Ni","os","sup");
 $sarvanamasthana = array("su!","O","jas","am","Ow");
 $yacibham = array("Sas","wA","Ne","Nasi!","Nas","os","Am","os","Ni");
+$tRtIyAdiSvaci = array("wA","Ne","Nasi!","Nas","os","Am","Ni","os");
 /* Function to find pratyAhAra from given two letters */ 
 // Enter your letters in the arguments like prat('Jl') will mean pratyAhAra jhal.
 function prat($text)  // prat for pratyAhAra
@@ -1164,19 +1165,31 @@ function guna($a)
     }
     return $out;
 }
+/* dirgha function */
+function dirgha($a)
+{ $ac = array("a","A","i","I","u","U","f","F","x","X","e","o","E","O",);
+  $acreplace = array("A","A","I","I","U","U","F","F","F","F","e","o","E","O",);
+    foreach ($a as $value)
+    {
+        $out[] = str_replace($ac,$acreplace,$value);
+    }
+    return $out;
+}
 
 /* anekAca function */
 function anekAca($a)
 {
     $ac = array("a","A","i","I","u","U","f","F","x","X","e","o","E","O",);
     $b = preg_split('/['.flat($ac).']/',$a);
-    if (count($b)>1)
+    if (count($b)>2)
     {
-        return true;
+        return true; 
+        //echo "1";
     }
     else
     {
-        return false;
+        return false; 
+        //echo "0";
     }
 }
 
