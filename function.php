@@ -55,6 +55,7 @@ $iN = array("i","I","u","U");
 $pratya =  array("aR","ak","ik","uk","eN","ac","ic","ec","Ec","aw","aR","iR","yaR","am","yam","Yam","Nam","yaY","Jaz","Baz","aS","haS","vaS","JaS","jaS","vaS","Cav","yay","may","Jay","Kay","cay","yar","Jar","Kar","car","Sar","al","hal","val","ral","Jal","Sal");
 $sup = array("su!","O","jas","am","Ow","Sas","wA","ByAm","Bis","Ne","ByAm","Byas","Nasi!","ByAm","Byas","Nas","os","Am","Ni","os","sup");
 $acsup = array("O","jas","am","Ow","Sas","wA","Ne","Nasi!","Nas","os","Am","Ni","os");
+$hlsup = array("su!","ByAm","Bis","Byas","sup");
 $prathama = array("su!","O","jas","am","Ow","Sas");
 $sarvanama = array("sarva","viSva","uBa","uBaya","qatara","qatama","anya","anyatara","itara","tvat","tva","nema","sima","pUrva","para","avara","dakziRa","uttara","apara","aDara","sva","antara","tyad","tad","yad","etad","idam","adas","eka","dvi","yuzmad","asmad","Bavat","kim");
 $zasadi = array("Sas","wA","ByAm","Bis","Ne","ByAm","Byas","Nasi!","ByAm","Byas","Nas","os","Am","Ni","os","sup");
@@ -415,13 +416,27 @@ return $arr;
 }
 
 /* function display will show the text on screen. */
-// There are three arguments. 0 will simply display the message. 1 will show an additional message in dvitva. 2 is used only once in the code, where there were two optional forms.
+// There are three arguments. 0 will simply display the message. 
+// 1 will show an additional message in dvitva. 
+// 2 is used only once in the code, where there were two optional forms.
+// 3 is for yaNaH pratiSedho vAcyaH in case of yaN.
+
 function display($n)
 {global $text;
-    
-    if ($n === 1) { echo "<p class = hn>Please note: Wherever there is dvitva, it is optionally negated by sarvatra zAkalyasya. (8.4.51)</p>";
-    echo "<p class = hn>द्वित्व का सर्वत्र सर्वत्र शाकल्यस्य (८.४.५१) से पाक्षिक निषेध होता है ।</p>";}
-    if ($n === 2) { global $text1; $text2 = $text; $text = $text1; }
+    if ($n === 1) 
+        {
+        echo "<p class = hn>Please note: Wherever there is dvitva, it is optionally negated by sarvatra zAkalyasya. (8.4.51)</p>";
+        echo "<p class = hn>द्वित्व का सर्वत्र सर्वत्र शाकल्यस्य (८.४.५१) से पाक्षिक निषेध होता है ।</p>";
+        }
+    if ($n === 2) 
+        { 
+        global $text1; $text2 = $text; $text = $text1; 
+        }
+    if ($n === 3) 
+        {
+        echo "<p class = hn>N.B.: yaNaH pratiSedho vAcyaH (vA 4806) prevents application of saMyogAntasya lopaH (8.2.23) </p>";
+        echo "<p class = hn>यणः प्रतिषेधो वाच्यः (वा ४८०६) से संयोगान्तस्य लोपः (८.२.२३) का निषेध होता है ।</p>";
+        }
     for($i=1;$i<count($text)+1;$i++)
     {
         echo "<p class = pp>$i - ".convert($text[$i-1])."</p>";
