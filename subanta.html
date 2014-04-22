@@ -3,13 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="mystyle.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+<script>
+  $(document).ready(function() {
+    // Initialize array
+	var sarvanama = ["sarva","viSva","uBa","uBaya","qatara","qatama","anya","anyatara","itara","tvat","tva","nema","sima","pUrva","para","avara","dakziRa","uttara","apara","aDara","sva","antara","tyad","tad","yad","etad","idam","adas","eka","dvi","yuzmad","asmad","Bavat","kim"];
+	
+	
+	// Check for the blur event
+	/*$( "#first" ).blur(function() {
+		//check if the value is blank
+		var first = $( "#first" ).val();
+		if(first == ''){
+			return false;
+		}else{
+			// find the text box value in  array
+			var rslt = $.inArray( first, sarvanama );
+			if(rslt !== -1){
+				$('#option1').show(); // if found display the radio button
+			}else{
+				$('#option1').hide(); // if not found hide the radio button
+			}
+		}
+		return false;
+	});*/
+	$( "#first" ).blur(function() {
+		$.ajax({
+			type: "POST",
+			url: "ajax.php",
+			data: $( "form" ).serialize()
+			})
+			.done(function( data ) {
+				$('#response').html(data);
+		});
+  	});
+  });
+  
+
+</script>
 </head>
 <body>
 
 <div>
-<form action="subanta.php" method = "get">
-First Word: <input type="text" name="first"><br>
-<input type="radio" name="second" value="su!" checked>सुँ
+<form action="subanta.php" method = "get" id="frm">
+First Word: <input type="text" name="first" id="first"><br>
+<input type="radio" name="gender" value="m" checked>पुल्लिङ्ग
+<input type="radio" name="gender" value="f">स्त्रीलिङ्ग
+<input type="radio" name="gender" value="n">नपुंसकलिङ्ग</br>
+<input type="radio" name="second" value="su!">सुँ
 <input type="radio" name="second" value="au">औ
 <input type="radio" name="second" value="jas">जस्‌
 <input type="radio" name="second" value="am">अम्‌
@@ -35,6 +76,7 @@ First Word: <input type="text" name="first"><br>
 <input type="radio" name="tran" value="Devanagari" checked>Devanagari
 <input type="radio" name="tran" value="IAST">IAST
 <input type="radio" name="tran" value="SLP1">SLP1<br>
+<div id="response"></div>
 <input type="submit">
 </form>
 </div>

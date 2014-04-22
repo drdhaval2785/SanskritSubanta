@@ -62,6 +62,9 @@ $zasadi = array("Sas","wA","ByAm","Bis","Ne","ByAm","Byas","Nasi!","ByAm","Byas"
 $sarvanamasthana = array("su!","O","jas","am","Ow");
 $yacibham = array("Sas","wA","Ne","Nasi!","Nas","os","Am","os","Ni");
 $tRtIyAdiSvaci = array("wA","Ne","Nasi!","Nas","os","Am","Ni","os");
+$eksup = array("su!","am","wA","Ne","Nasi!","Nas","Ni",);
+$dvisup = array("O","Ow","ByAm","ByAm","ByAm","os","os",);
+$bahusup = array("jas","Sas","Bis","Byas","Byas","Am","sup");
 /* Function to find pratyAhAra from given two letters */ 
 // Enter your letters in the arguments like prat('Jl') will mean pratyAhAra jhal.
 function prat($text)  // prat for pratyAhAra
@@ -419,7 +422,10 @@ return $arr;
 // There are three arguments. 0 will simply display the message. 
 // 1 will show an additional message in dvitva. 
 // 2 is used only once in the code, where there were two optional forms.
-// 3 is for yaNaH pratiSedho vAcyaH in case of yaN.
+// 3 is for aGgAdhikAra.
+// 4 is for yaNaH pratiSedho vAcyaH in case of yaN.
+// 5 is for sarvAdeza.
+// 6 is for bhasya adhikAra.
 
 function display($n)
 {global $text;
@@ -434,8 +440,23 @@ function display($n)
         }
     if ($n === 3) 
         {
+        echo "<p class = pa>yasmAtpratyayavidhistadAdi pratyaye'Ggam (2.4.13) and aGgasya (6.4.1) </p>";
+        echo "<p class = pa>यस्मात्प्रत्ययविधिस्तदादि प्रत्ययेऽङ्गम्‌ (२.४.१३) तथा अङ्गस्य (६.४.१) </p>";
+        }
+    if ($n === 4) 
+        {
         echo "<p class = hn>N.B.: yaNaH pratiSedho vAcyaH (vA 4806) prevents application of saMyogAntasya lopaH (8.2.23) </p>";
         echo "<p class = hn>यणः प्रतिषेधो वाच्यः (वा ४८०६) से संयोगान्तस्य लोपः (८.२.२३) का निषेध होता है ।</p>";
+        }
+    if ($n === 5) 
+        {
+        echo "<p class = hn>N.B.: anekAlzitsarvasya (1.1.55) mandates sarvAdeza.  </p>";
+        echo "<p class = hn>अनेकाल्शित्सर्वस्य (१.१.५५) से सर्वादेश होता है ।</p>";
+        }
+    if ($n === 6) 
+        {
+        echo "<p class = pa>yasmAtpratyayavidhistadAdi pratyaye'Ggam (2.4.13) aGgasya (6.4.1) and bhasya (6.4.129) :</p>";
+        echo "<p class = pa>यस्मात्प्रत्ययविधिस्तदादि प्रत्ययेऽङ्गम्‌ (२.४.१३), अङ्गस्य (६.४.१) तथा भस्य (६.४.१२९) :</p>";
         }
     for($i=1;$i<count($text)+1;$i++)
     {
@@ -1086,8 +1107,8 @@ function last($a,$b,$merge)
     foreach ($text as $value)
     {
         for($i=0;$i<count($a);$i++)
-        {
-            if (preg_match('/('.$a[$i].')$/',$value))
+        { $c = str_replace("\\","",$a[$i]);
+            if (preg_match('/('.$a[$i].')$/',$value) || preg_match('/('.$c.')$/',$value))
             {
                 $value1[] = substr($value,0,-strlen($a[$i])).$b[$i];
                 if ($merge === 1)
@@ -1205,6 +1226,47 @@ function anekAca($a)
     {
         return false; 
         //echo "0";
+    }
+}
+/* ends function */
+// to find if there is any member of array which end in a particular member of another array.
+function ends($a,$b,$n)
+{
+    foreach ($a as $aa)
+    {
+        foreach ($b as $bb)
+        {
+            if ($n===0)
+            {
+                if (strpos($aa,$bb)>0)
+                {
+                    $can[] = 1;
+                }
+                else
+                {
+                    $can[] = 0;
+                }                
+            }
+            if ($n===1)
+            {
+                if (strpos($aa,$bb)>=0)
+                {
+                    $can[] = 1;
+                }
+                else
+                {
+                    $can[] = 0;
+                }                
+            }
+        }
+    }
+    if (in_array(1,$can))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
     }
 }
 
