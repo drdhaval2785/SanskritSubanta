@@ -65,6 +65,8 @@ $tRtIyAdiSvaci = array("wA","Ne","Nasi!","Nas","os","Am","Ni","os");
 $eksup = array("su!","am","wA","Ne","Nasi!","Nas","Ni",);
 $dvisup = array("O","Ow","ByAm","ByAm","ByAm","os","os",);
 $bahusup = array("jas","Sas","Bis","Byas","Byas","Am","sup");
+$diksamAsa = array("uttarapUrvA","dakziRapUrvA","uttarapaScimA","dakziRapaScimA");
+$sarvanamastri = array("sarvA","viSvA","uBA","uBayA","qatarA","qatamA","anyA","anyatarA","itarA","tvA","nemA","simA","pUrvA","parA","avarA","dakziRA","uttarA","aparA","aDarA","svA","antarA","ekA",);
 /* Function to find pratyAhAra from given two letters */ 
 // Enter your letters in the arguments like prat('Jl') will mean pratyAhAra jhal.
 function prat($text)  // prat for pratyAhAra
@@ -460,7 +462,7 @@ function display($n)
         }
     for($i=1;$i<count($text)+1;$i++)
     {
-        echo "<p class = pp>$i - ".convert($text[$i-1])."</p>";
+        echo "<p class = form>$i - ".convert($text[$i-1])."</p>";
       //echo "$i - ".$text[$i-1]."</br>";
     }
     echo "<hr>";
@@ -1228,7 +1230,7 @@ function anekAca($a)
         //echo "0";
     }
 }
-/* ends function */
+/* (ends) function */
 // to find if there is any member of array which end in a particular member of another array.
 function ends($a,$b,$n)
 {
@@ -1238,7 +1240,7 @@ function ends($a,$b,$n)
         {
             if ($n===0)
             {
-                if (strpos($aa,$bb)>0)
+                if (strpos($aa,$bb)>0 && strpos(strrev($aa),strrev($bb)) ===0)
                 {
                     $can[] = 1;
                 }
@@ -1249,9 +1251,10 @@ function ends($a,$b,$n)
             }
             if ($n===1)
             {
-                if (strpos($aa,$bb)>=0)
+                if (strpos($aa,$bb) >= 0 && strpos(strrev($aa),strrev($bb)) ===0)
                 {
-                    $can[] = 1;
+                    
+		    $can[] = 1;
                 }
                 else
                 {
@@ -1260,6 +1263,7 @@ function ends($a,$b,$n)
             }
         }
     }
+	
     if (in_array(1,$can))
     {
         return true;
