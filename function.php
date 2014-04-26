@@ -1300,6 +1300,17 @@ function Ti($merge)
     return $text;
 }
 
+/* function samprasarana */
+function samprasarana($a,$merge)
+{
+    $yan = array("y","v","r","l");
+    $yanik = array("i","u","f","x");
+    foreach ($a as $value)
+    {
+    $b[] = str_replace($yan,$yanik,$a);        
+    }    
+    return $b;
+}
 /* An attempt to create an all encompassing function 
  * name is panini
  * three arrays for checking,
