@@ -28,7 +28,6 @@ font-family: "Siddhanta";
  padding-right: 40px;
    left: 20px;
 }
-
 /* rv01.001.01 */
 p.stamp {
 font-size: 14pt;
@@ -42,7 +41,7 @@ font-style: italic;
 }
 /* vidhi sUtra */
 p.sa {
- color: #8b0000;
+    color: #8b0000; 
  background-color: #d0d0d0;
  font-size: 16pt;
 font-family: "Siddhanta";

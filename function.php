@@ -57,9 +57,9 @@ $sup = array("su!","O","jas","am","Ow","Sas","wA","ByAm","Bis","Ne","ByAm","Byas
 $acsup = array("O","jas","am","Ow","Sas","wA","Ne","Nasi!","Nas","os","Am","Ni","os");
 $hlsup = array("su!","ByAm","Bis","Byas","sup");
 $prathama = array("su!","O","jas","am","Ow","Sas");
-$sarvanama = array("sarva","viSva","uBa","uBaya","qatara","qatama","anya","anyatara","itara","tvat","tva","nema","sima","pUrva","para","avara","dakziRa","uttara","apara","aDara","sva","antara","tyad","tad","yad","etad","idam","adas","eka","dvi","yuzmad","asmad","Bavat","kim");
+$sarvanama = array("sarva","viSva","uBa","uBaya","atara","atama","anya","anyatara","itara","tvat","tva","nema","sima","pUrva","para","avara","dakziRa","uttara","apara","aDara","sva","antara","tyad","tad","yad","etad","idam","adas","eka","dvi","yuzmad","asmad","Bavat","kim");
 $zasadi = array("Sas","wA","ByAm","Bis","Ne","ByAm","Byas","Nasi!","ByAm","Byas","Nas","os","Am","Ni","os","sup");
-$sarvanamasthana = array("su!","O","jas","am","Ow");
+$sarvanamasthana = array("su!","O","jas","am","Ow","Si");
 $yacibham = array("Sas","wA","Ne","Nasi!","Nas","os","Am","os","Ni");
 $tRtIyAdiSvaci = array("wA","Ne","Nasi!","Nas","os","Am","Ni","os");
 $eksup = array("su!","am","wA","Ne","Nasi!","Nas","Ni",);
@@ -1274,6 +1274,30 @@ function ends($a,$b,$n)
     {
         return false;
     }
+}
+
+/* function Ti to remove the Ti */
+function Ti($merge)
+{   
+    global $text;
+    $te1 = '/(['.pc('ac').'])(['.pc('hl').']*)([+])/';
+    $te2 = '$3';
+        foreach ($text as $value)
+        {
+            $val[] = preg_replace($te1,$te2,$value);
+        }
+        if ($merge===0)
+        {
+            $text = $val;
+        }
+        if ($merge === 1)
+        {
+            $text = array_merge($text,$val);
+        }        
+    $val=array();
+    $text = array_unique($text);
+    $text = array_values($text);
+    return $text;
 }
 
 /* An attempt to create an all encompassing function 
