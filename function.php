@@ -68,7 +68,7 @@ $bahusup = array("jas","Sas","Bis","Byas","Byas","Am","sup");
 $diksamAsa = array("uttarapUrvA","dakziRapUrvA","uttarapaScimA","dakziRapaScimA");
 $sarvanamastri = array("sarvA","viSvA","uBA","uBayA","qatarA","qatamA","anyA","anyatarA","itarA","tvA","nemA","simA","pUrvA","parA","avarA","dakziRA","uttarA","aparA","aDarA","svA","antarA","ekA",);
 $svasrAdi = array("svasf","tisf","catasf","nanAndf","duhitf","yAtf","mAtf");
-
+$tyadadi = array("dvi","tyad","tad","etad","idam","adas","eka",);
 /* Function to find pratyAhAra from given two letters */ 
 // Enter your letters in the arguments like prat('Jl') will mean pratyAhAra jhal.
 function prat($text)  // prat for pratyAhAra
