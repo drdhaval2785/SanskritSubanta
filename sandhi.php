@@ -3065,8 +3065,8 @@ display(0);
 $text = two(array("Nk","Rw"),prat('Sr'),array("NK","RW"),prat('Sr'),1);
 echo "<p class = sa >By cayo dvitIyAH zari pauSkarasAderiti vAcyam (vA 5023) :</p>";
 echo "<p class = sa >चयोः द्वितीयाः शरि पौष्करसादेरिति वाच्यम्‌ (वा ५०२३) :</p>";
-display(0);
-}
+display(0); $cayo=1;
+} else {$cayo = 0; }
 /* DaH si dhuT (8.3.29) */
 if (sub(array("q"),array("s"),blank(0),0))
 {
@@ -3700,23 +3700,26 @@ echo "<p class = sa >वाऽवसाने (८.४.५४) :</p>";
 /* khari ca (8.4.55) */ 
 $Jl1 = array("J","B","G","Q","D","j","b","g","q","d","K","P","C","W","T","c","w","t","k","p","S","z","s","h");
 $Jl2 = array("J","B","G","Q","D","j","b","g","q","d","K","P","C","W","T","h");
-while(sub($Jl2,prat('Kr'),blank(0),0) !== false)
+if ($cayo===0)
 {
-    if (sub($Jl1,prat('Kr'),blank(0),0) || $dhut === 1)
+    while(sub($Jl2,prat('Kr'),blank(0),0) !== false)
     {
-    $text = two($Jl1,prat('Kr'),savarna(prat('Jl'),prat('cr')),prat('Kr'),0);
+        if (sub($Jl1,prat('Kr'),blank(0),0) || $dhut === 1)
+        {
+        $text = two($Jl1,prat('Kr'),savarna(prat('Jl'),prat('cr')),prat('Kr'),0);
+        echo "<p class = sa >By khari ca (8.4.55) :</p>";
+        echo "<p class = sa >खरि च (८.४.५५) :</p>";
+        display(0);
+        }
+    }
+    if (sub(prat('cr'),prat('Kr'),blank(0),0) || $dhut === 1)
+    {
     echo "<p class = sa >By khari ca (8.4.55) :</p>";
+    echo "<p class = hn >N.B. By khari ca (8.4.55), 'car' varNas give 'car' varNas only as their savarNa :</p>";
     echo "<p class = sa >खरि च (८.४.५५) :</p>";
+    echo "<p class = hn >खरि च (८.४.५५) से चर्‌ वर्णों का सवर्ण चर्‌ ही रहता है ।</p>";
     display(0);
     }
-}
-if (sub(prat('cr'),prat('Kr'),blank(0),0) || $dhut === 1)
-{
-echo "<p class = sa >By khari ca (8.4.55) :</p>";
-echo "<p class = hn >N.B. By khari ca (8.4.55), 'car' varNas give 'car' varNas only as their savarNa :</p>";
-echo "<p class = sa >खरि च (८.४.५५) :</p>";
-echo "<p class = hn >खरि च (८.४.५५) से चर्‌ वर्णों का सवर्ण चर्‌ ही रहता है ।</p>";
-display(0);
 }
 /* aNo'pragRhyasyAnunAsikaH (8.4.57) */
 if (arr($text,'/[aAiIuUfFxX]$/'))
