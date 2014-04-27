@@ -57,18 +57,19 @@ $sup = array("su!","O","jas","am","Ow","Sas","wA","ByAm","Bis","Ne","ByAm","Byas
 $acsup = array("O","jas","am","Ow","Sas","wA","Ne","Nasi!","Nas","os","Am","Ni","os");
 $hlsup = array("su!","ByAm","Bis","Byas","sup");
 $prathama = array("su!","O","jas","am","Ow","Sas");
-$sarvanama = array("sarva","viSva","uBa","uBaya","atara","atama","anya","anyatara","itara","tvat","tva","nema","sima","pUrva","para","avara","dakziRa","uttara","apara","aDara","sva","antara","tyad","tad","yad","etad","idam","adas","eka","dvi","yuzmad","asmad","Bavat","kim");
+$sarvanama = array("sarva","viSva","uBa","uBaya","atara","atama","anya","anyatara","itara","tvat","tva","nema","sima","pUrva","para","avara","dakziRa","uttara","apara","aDara","sva","antara","tyad","tad","yad","etad","idam","adas","eka","dvi","yuzmad","asmad","Bavat","kim","idakam");
 $zasadi = array("Sas","wA","ByAm","Bis","Ne","ByAm","Byas","Nasi!","ByAm","Byas","Nas","os","Am","Ni","os","sup");
 $sarvanamasthana = array("su!","O","jas","am","Ow","Si");
 $yacibham = array("Sas","wA","Ne","Nasi!","Nas","os","Am","os","Ni");
 $tRtIyAdiSvaci = array("wA","Ne","Nasi!","Nas","os","Am","Ni","os");
+$tRtIyAdi = array("wA","ByAm","Bis","Ne","ByAm","Byas","Nasi!","ByAm","Byas","Nas","os","Am","Ni","os","sup");
 $eksup = array("su!","am","wA","Ne","Nasi!","Nas","Ni",);
 $dvisup = array("O","Ow","ByAm","ByAm","ByAm","os","os",);
 $bahusup = array("jas","Sas","Bis","Byas","Byas","Am","sup");
 $diksamAsa = array("uttarapUrvA","dakziRapUrvA","uttarapaScimA","dakziRapaScimA");
 $sarvanamastri = array("sarvA","viSvA","uBA","uBayA","qatarA","qatamA","anyA","anyatarA","itarA","tvA","nemA","simA","pUrvA","parA","avarA","dakziRA","uttarA","aparA","aDarA","svA","antarA","ekA",);
 $svasrAdi = array("svasf","tisf","catasf","nanAndf","duhitf","yAtf","mAtf");
-$tyadadi = array("dvi","tyad","tad","etad","idam","adas","eka",);
+$tyadadi = array("dvi","tyad","tad","etad","idam","adas","eka","idakam");
 /* Function to find pratyAhAra from given two letters */ 
 // Enter your letters in the arguments like prat('Jl') will mean pratyAhAra jhal.
 function prat($text)  // prat for pratyAhAra
