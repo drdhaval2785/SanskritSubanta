@@ -35,8 +35,6 @@ $nada = array("g","G","N","j","J","Y","q","Q","R","d","D","n","b","B","m","y","r
 $ghosha = array("g","G","N","j","J","Y","q","Q","R","d","D","n","b","B","m","y","r","l","v","h");
 $alpaprana = array("k","g","c","j","w","q","t","d","p","b","y","r","l","v");
 $mahaprana = array("K","G","C","J","W","Q","T","D","P","B","S","z","s","h");
-$antastha = array("y","r","l","v");
-$ushma = array("S","z","s","h");
 $ru = array("f","F","x","X");
 $ac = array("a","A","i","I","u","U","f","F","x","X","e","o","E","O",);
 $hl = array("k","K","g","G","N","c","C","j","J","Y","w","W","q","Q","R","t","T","d","D","n","p","P","b","B","m","y","r","l","v","S","z","s","h");
@@ -50,10 +48,15 @@ $upasarga = array("pra","prati","api","parA","apa","upa","pari","anu","ava","vi"
 $verbs_ru = array("fkz","fc","fC","fj","fYj","fR","ft","fd","fD","fn","fP","fBukz","fmP","fS","fz","fh");
 $verbs_changed = array("kz","c","C","j","Yj","R","t","d","D","n","P","Bukz","mP","S","z","h");
 $ku = array("k","K","g","G","N");
+$cu = array("c","C","j","J","Y");
+$Tu = array("w","W","q","Q","R");
+$tu = array("t","T","d","D","n");
 $pu = array("p","P","b","B","m");
+$antastha = array("y","r","l","v");
+$ushma = array("S","z","s","h");
 $iN = array("i","I","u","U");
 $pratya =  array("aR","ak","ik","uk","eN","ac","ic","ec","Ec","aw","aR","iR","yaR","am","yam","Yam","Nam","yaY","Jaz","Baz","aS","haS","vaS","JaS","jaS","vaS","Cav","yay","may","Jay","Kay","cay","yar","Jar","Kar","car","Sar","al","hal","val","ral","Jal","Sal");
-$sup = array("su!","O","jas","am","Ow","Sas","wA","ByAm","Bis","Ne","ByAm","Byas","Nasi!","ByAm","Byas","Nas","os","Am","Ni","os","sup");
+$sup = array("su!","Ow","jas","am","O","Sas","wA","ByAm","Bis","Ne","ByAm","Byas","Nasi!","ByAm","Byas","Nas","os","Am","Ni","os","sup");
 $acsup = array("O","jas","am","Ow","Sas","wA","Ne","Nasi!","Nas","os","Am","Ni","os");
 $hlsup = array("su!","ByAm","Bis","Byas","sup");
 $prathama = array("su!","O","jas","am","Ow","Sas");
@@ -70,6 +73,8 @@ $diksamAsa = array("uttarapUrvA","dakziRapUrvA","uttarapaScimA","dakziRapaScimA"
 $sarvanamastri = array("sarvA","viSvA","uBA","uBayA","qatarA","qatamA","anyA","anyatarA","itarA","tvA","nemA","simA","pUrvA","parA","avarA","dakziRA","uttarA","aparA","aDarA","svA","antarA","ekA",);
 $svasrAdi = array("svasf","tisf","catasf","nanAndf","duhitf","yAtf","mAtf");
 $tyadadi = array("dvi","tyad","tad","etad","idam","adas","eka","idakam");
+$acdir = array("A","A","I","I","U","U","F","F","F","F","e","o","E","O",);
+$tiG = array("tip","tas","Ji");
 /* Function to find pratyAhAra from given two letters */ 
 // Enter your letters in the arguments like prat('Jl') will mean pratyAhAra jhal.
 function prat($text)  // prat for pratyAhAra
