@@ -436,6 +436,7 @@ return $arr;
 // 4 is for yaNaH pratiSedho vAcyaH in case of yaN.
 // 5 is for sarvAdeza.
 // 6 is for bhasya adhikAra.
+// 7 is for padasya, padAt, anudAttaM sarvamapAdAdau adhikAra.
 
 function display($n)
 {global $text;
@@ -467,6 +468,11 @@ function display($n)
         {
         echo "<p class = pa>yasmAtpratyayavidhistadAdi pratyaye'Ggam (2.4.13) aGgasya (6.4.1) and bhasya (6.4.129) :</p>";
         echo "<p class = pa>यस्मात्प्रत्ययविधिस्तदादि प्रत्ययेऽङ्गम्‌ (२.४.१३), अङ्गस्य (६.४.१) तथा भस्य (६.४.१२९) :</p>";
+        }
+    if ($n === 7) 
+        {
+        echo "<p class = pa>padasya (8.1.16), padAt (8.1.17) and anudAttaM sarvamapAdAdau (8.1.18) :</p>";
+        echo "<p class = pa>पदस्य (८.१.१६), पदात्‌ (८.१.१७) तथा अनुदात्तं सर्वमपादादौ (८.१.१८) :</p>";
         }
     for($i=1;$i<count($text)+1;$i++)
     {
@@ -1306,6 +1312,30 @@ function Ti($merge)
     return $text;
 }
 
+/* function mit */
+// $b is the addition to upadha
+// $merge 0 is replacement, 1 is optional.
+function mit($b,$merge)
+{   global $text;
+    $te1 = '/(['.pc('ac').'])(['.pc('hl').']*)([+])/';
+    $te2 = '$1'.$b.'$2$3';
+        foreach ($text as $value)
+        {
+            $val[] = preg_replace($te1,$te2,$value);
+        }
+        if ($merge===0)
+        {
+            $text = $val;
+        }
+        if ($merge === 1)
+        {
+            $text = array_merge($text,$val);
+        }        
+    $val=array();
+    $text = array_unique($text);
+    $text = array_values($text);
+    return $text;
+}
 /* function samprasarana */
 function samprasarana($a,$merge)
 {
@@ -1316,6 +1346,46 @@ function samprasarana($a,$merge)
     $b[] = str_replace($yan,$yanik,$a);        
     }    
     return $b;
+}
+/* function samprasarana */
+// $a to contain the array of it markers to check.
+// $b. 0 for it. 1 for itpratipadika. 2 for itpratyaya
+function itcheck($a,$b)
+{
+    global $text; global $it; global $itpratipadika; global $itpratyaya;
+    if ($b===0)
+    {
+        if(count(array_intersect($it,$a))>0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+    if ($b===1)
+    {
+        if(count(array_intersect($itpratipadika,$a))>0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+    if ($b===2)
+    {
+        if(count(array_intersect($itpratyaya,$a))>0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
 }
 /* An attempt to create an all encompassing function 
  * name is panini
