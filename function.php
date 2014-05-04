@@ -1352,7 +1352,7 @@ function samprasarana($a,$merge)
 // $b. 0 for it. 1 for itpratipadika. 2 for itpratyaya
 function itcheck($a,$b)
 {
-    global $text; global $it; global $itpratipadika; global $itpratyaya;
+    global $text; global $it; global $itprakriti; global $itpratyaya;
     if ($b===0)
     {
         if(count(array_intersect($it,$a))>0)
@@ -1366,7 +1366,7 @@ function itcheck($a,$b)
     }
     if ($b===1)
     {
-        if(count(array_intersect($itpratipadika,$a))>0)
+        if(count(array_intersect($itprakriti,$a))>0)
         {
             return TRUE;
         }
@@ -1387,6 +1387,88 @@ function itcheck($a,$b)
         }
     }
 }
+
+/* function it (to find an it marker). The function adds the marker to its arrays. */
+// $pattern is the pattern to look for
+// $a 0 for finding it in the whole word. 1 for it in prakriti. 2 for it in pratyaya.
+function it($pattern)
+{
+    global $text; global $it; global $itprakriti; global $itpratyaya;
+        foreach ($text as $value)
+        {
+            $b = preg_split($pattern,$value,null,PREG_SPLIT_DELIM_CAPTURE);
+            for($i=1;$i<((count($b)+1)/2);$i++)
+            {
+                $b[$i*2-1]= str_replace("!","",$b[$i*2-1]);
+                $b[$i*2-1]= str_replace("+","",$b[$i*2-1]);
+                $it = array_merge($it,array($b[$i*2-1]));
+                $it = array_unique($it);
+                $it = array_values($it);                
+            }                   
+        }
+       foreach ($text as $value)
+        {
+            $c = explode("+",$value);
+            $b = preg_split($pattern,$c[0],null,PREG_SPLIT_DELIM_CAPTURE);
+            for($i=1;$i<((count($b)+1)/2);$i++)
+            {
+                $b[$i*2-1]= str_replace("!","",$b[$i*2-1]);
+                $b[$i*2-1]= str_replace("+","",$b[$i*2-1]);
+                $itprakriti = array_merge($itprakriti,array($b[$i*2-1]));
+                $itprakriti = array_unique($itprakriti);
+                $itprakriti = array_values($itprakriti);         
+            }                   
+        }
+       foreach ($text as $value)
+        {
+            $c = explode("+",$value);
+            $pattern = str_replace("[+]","^",$pattern); 
+            $b = preg_split($pattern,$c[1],null,PREG_SPLIT_DELIM_CAPTURE);
+            for($i=1;$i<((count($b)+1)/2);$i++)
+            {
+                $b[$i*2-1]= str_replace("!","",$b[$i*2-1]);
+                $b[$i*2-1]= str_replace("+","",$b[$i*2-1]);
+                $itpratyaya = array_merge($itpratyaya,array($b[$i*2-1]));
+                $itpratyaya = array_unique($itpratyaya);
+                $itpratyaya = array_values($itpratyaya);         
+            }                   
+        }
+//        print_r($it);
+//        print_r($itprakriti);
+//        print_r($itpratyaya);
+}
+/* function to find out it markers when they can occur only in the pratayayas. */
+function itprat($pattern)
+{
+    global $text; global $it; global $itprakriti; global $itpratyaya; 
+       foreach ($text as $value)
+        {
+            $c = explode("+",$value);
+            $b = preg_split($pattern,$c[1],null,PREG_SPLIT_DELIM_CAPTURE);
+            for($i=1;$i<((count($b)+1)/2);$i++)
+            {
+                $b[$i*2-1]= str_replace("!","",$b[$i*2-1]);
+                $b[$i*2-1]= str_replace("+","",$b[$i*2-1]);
+                $itpratyaya = array_merge($itpratyaya,array($b[$i*2-1]));
+                $itpratyaya = array_unique($itpratyaya);
+                $itpratyaya = array_values($itpratyaya);         
+            }                   
+        }
+//        print_r($it);
+//        print_r($itprakriti);
+//        print_r($itpratyaya);
+}
+
+/* function antya to do antyAdeza */
+function antya($a,$rep)
+{
+    foreach ($a as $value)
+    {
+        $value1[] = substr($value,0,-1).$rep;
+    }
+    return $value1;
+}
+
 /* An attempt to create an all encompassing function 
  * name is panini
  * three arrays for checking,
