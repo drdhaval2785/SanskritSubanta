@@ -70,9 +70,9 @@ $eksup = array("su!","am","wA","Ne","Nasi!","Nas","Ni",);
 $dvisup = array("O","Ow","ByAm","ByAm","ByAm","os","os",);
 $bahusup = array("jas","Sas","Bis","Byas","Byas","Am","sup");
 $diksamAsa = array("uttarapUrvA","dakziRapUrvA","uttarapaScimA","dakziRapaScimA");
-$sarvanamastri = array("sarvA","viSvA","uBA","uBayA","qatarA","qatamA","anyA","anyatarA","itarA","tvA","nemA","simA","pUrvA","parA","avarA","dakziRA","uttarA","aparA","aDarA","svA","antarA","ekA",);
+$sarvanamastri = array("sarvA","viSvA","uBA","uBayA","qatarA","qatamA","anyA","anyatarA","itarA","tvA","nemA","simA","pUrvA","parA","avarA","dakziRA","uttarA","aparA","aDarA","svA","antarA","ekA","dvA","kA","idA");
 $svasrAdi = array("svasf","tisf","catasf","nanAndf","duhitf","yAtf","mAtf");
-$tyadadi = array("dvi","tyad","tad","etad","idam","adas","eka","idakam");
+$tyadadi = array("dvi","tyad","tad","yad","etad","idam","adas","eka","idakam");
 $acdir = array("A","A","I","I","U","U","F","F","F","F","e","o","E","O",);
 $tiG = array("tip","tas","Ji");
 /* Function to find pratyAhAra from given two letters */ 
@@ -1313,16 +1313,24 @@ function Ti($merge)
 }
 
 /* function mit */
+// $pattern is the pattern to search in the word to add mit pratyaya.
 // $b is the addition to upadha
 // $merge 0 is replacement, 1 is optional.
-function mit($b,$merge)
+function mit($pattern,$b,$merge)
 {   global $text;
     $te1 = '/(['.pc('ac').'])(['.pc('hl').']*)([+])/';
     $te2 = '$1'.$b.'$2$3';
         foreach ($text as $value)
         {
-            $val[] = preg_replace($te1,$te2,$value);
-        }
+            if (preg_match($pattern,$value))
+            {
+                $val[] = preg_replace($te1,'$1n$2$3',$value); 
+            }
+            else
+            {
+                $val[] = $value;
+            }
+        }        
         if ($merge===0)
         {
             $text = $val;

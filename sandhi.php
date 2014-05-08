@@ -41,13 +41,13 @@ $gender = "m";
 $GI = 0;
 $Ap = 0;
 $taddhita = 0;
-$dhatu = 1;
+$dhatu = 0;
 $eranekaca = 0; // Not clear how to differentiate between iyaG and yaN
 $tri = "m";
 $nityastri = 0;
 $ekajuttarapada = 0;
 $bhashitapumska = 0;
-$anvadesha = 1;
+$anvadesha = 0;
 $samasa = 0; // nalopaH supsvara... 8.2.2
 $pradhana = 0;
 $Jit = 0; // ho hanterJNinneSu 7.3.54
@@ -58,10 +58,12 @@ $bhyas = 4; // 4 for caturthI, 5 for paJcamI. Default 4.
 $asmadpada = 2; // 0 for niSedha, 1 for nitya, 2 for vibhASA. Default 2. 
 $bhavat = 0; // 0 for bhAterDavatu, 1 for bhU+zatR.
 $abhyasta = 0; // 0 for not abhyasta, 1 for abhyasta.
-$shatR = 0; // 0 for not shatR, 1 for shatR.
-$Nyanta = 1; // 0 for aNyanta, 1 for Nyanta.
-$san = 1; // 0 for non san, 1 for san.
-$vasu = 1; // 0 for no vasvanta, 1 for vasvanta.
+$shatR = 1; // 0 for not shatR, 1 for shatR.
+$Nyanta = 0; // 0 for aNyanta, 1 for Nyanta.
+$san = 0; // 0 for non san, 1 for san.
+$vasu = 0; // 0 for no vasvanta, 1 for vasvanta.
+$shap = 0; 
+$shyan = 0;
 $R = array();
 $num = array();
 $it = array();
@@ -159,7 +161,7 @@ if ( $sambuddhi === 1 && $so==="su!" && $pada==="pratyaya")
     display(0);
 }
 /* nityabahuvacanAnta special messages */
-$nityabahuvacana = array("kati","tri","catur","paYcan","saptan","azwan","navan","daSan");
+$nityabahuvacana = array("kati","tri","catur","paYcan","saptan","azwan","navan","daSan","ap");
 if (in_array($fo,$nityabahuvacana) && !in_array($so,$bahusup) && in_array($so,$sup))
 {
     echo "<p class = red >the word you entered is a nitya bahuvacanAnta word. Please check again.</p>";
@@ -238,7 +240,7 @@ if ($sarvafinal !==0)
 }
 /* defining kRt pratyayas */
 /* kRdatiG (3.1.93) */
-if ($pada === "pratyaya" && !in_array($so,$tiG))
+if ($pada === "pratyaya" && !in_array($so,$tiG) && $dhatu===1)
 {
     echo "<p class = pa >By kRdatiG (3.1.93) :</p>";
     echo "<p class = pa >कृदतिङ्‌ (३.१.९३) :</p>";
@@ -407,6 +409,20 @@ if ( sub($tyadadi,array("dfS"),blank(0),0) )
     echo "<p class = pa >त्यदादिषु दृशोऽनालोचने कञ्च (३.२.६०) :</p>";
     display(0); $kvin=1;
 }
+/* kvin pratyaya from asRj */
+if ( $fo==="asfj"  && in_array($so,$sup) )
+{
+    echo "<p class = pa >asRj has kutva at padAnta, because of mandate of kvin pratyaya after sRj. </p>";
+    echo "<p class = pa >असृजः पदान्ते कुत्वम्‌, सृजेः क्विनो विधानात्‌ ।</p>";
+    display(0); $kvin=1;
+}
+/* no kvin pratyaya from viSvasRj */
+if ( $fo==="viSvasfj"  && in_array($so,$sup) )
+{
+    echo "<p class = pa >'rajjusRDbhyAm' usage in bhASya under 'sRjidRSoH' sUtra mandates that there will be no kutva here.</p>";
+    echo "<p class = pa >विश्वसृड्‌ इत्यादौ तु कुत्वं न । 'सृजिदृशोः' इति सूत्रे 'रज्जुसृड्भ्याम्‌' इति भाष्यप्रयोगात्‌ ।</p>";
+    display(0); $kvin=0;
+}
 /* spRSo'nudake kvin (3.2.58) */
 if ( sub(array("spfS"),array("+"),blank(0),0) )
 {
@@ -474,7 +490,7 @@ if (sub(array("arvan"),array("+"),blank(0),0) && in_array($so,$sup) && ($fo=="an
     display(0); 
 }
 /* RtvigdadhRksragdiguSNigaJcuyujikruJcAM ca (3.2.59) */
-if (sub(array("ftvij","daDfz","sfj","diS","zNih","aYcu","yuj","kruYc"),array("+"),blank(0),0) && $kvin===1 )
+if (sub(array("ftvij","daDfz","sfj","diS","zNih","aYcu","yuj","kruYc","ancu"),array("+"),blank(0),0) && $kvin===1 )
 {
     echo "<p class = sa >By RtvigdadhRksragdiguSNigaJcuyujikruJcAM ca (3.2.59) :</p>";
     echo "<p class = sa >ऋत्विग्दधृक्स्रग्दिगुष्णिगञ्चुयुजिक्रुञ्चां च (३.२.५९) :</p>";
@@ -521,14 +537,6 @@ if (sub(array("a"),array("+"),array("su!","am"),0) && $gender==="n" && $adD ===0
     echo "<p class = sa >अतोऽम्‌ (७.१.२४) :</p>";
     display(3); $atom=1;
 } else { $atom =0; }
-/* kimaH kaH (7.2.103) */
-if (sub(array("kim","kaka"),array("+"),blank(0),0) && in_array($so,$sup))
-{
-    $text = two(array("kim","kaka"),array("+"),array("ka","ka"),array("+"),0);
-    echo "<p class = sa >By kimaH kaH (7.2.103) :</p>";
-    echo "<p class = sa >किमः कः (७.२.१०३) :</p>";
-    display(3);
-}
 /* defining whether the first word is asmad / yuzmad */
 // tvamatikrAntaH, yuvAmatikrAntaH, yuSmAnatikrAntaH are pending. Very confusing.
 if (sub(array("asmad","yuzmad"),array("+"),blank(0),0) && in_array($so,$sup))
@@ -779,14 +787,30 @@ if (sub(array("idam","idakam"),array("+"),blank(0),0) && $so==="su!")
     echo "<p class = sa >इदमो मः (७.२.१०८) :</p>";
     display(3); $idamoma=1;
 } else { $idamoma=0; }
+/* yaH sau (7.2.110) */
+if (sub(array("idam","idakam"),array("+"),blank(0),0) && $so==="su!" && $gender==="m")
+{
+    $text = two(array("idam"),array("+"),array("iyam"),array("+"),0);
+    echo "<p class = sa >By yaH sau (7.2.110) :</p>";
+    echo "<p class = sa >यः सौ (७.२.११०) :</p>";
+    display(3);
+}
 /* ido'y puMsi (7.2.111) */
 if (sub(array("idam","idakam"),array("+"),blank(0),0) && $so==="su!" && $gender==="m")
 {
     $text = two(array("idam","idakam"),array("+"),array("ayam","ayakam"),array("+"),0);
     echo "<p class = sa >By ido'y puMsi (7.2.111) :</p>";
     echo "<p class = sa >इदोऽय्‌ पुंसि (७.२.१११) :</p>";
-    display(3); $idamoma=1;
-} else { $idamoma=0; }
+    display(3); $idamoma1=1;
+} else { $idamoma1=0; }
+/* anvAdeze napuMsake enadvaktavyaH (vA 1569) */
+if ($gender==="n" && sub(array("idam+","etad+","idakam+",),blank(0),blank(0),0) && in_array($fo,array("idam","etad","idakam")) && $anvadesha===1 && in_array($so,array("am")))
+{
+    $text = one(array("idam+","etad+","idakam+",),array("enad+","enad+","enad",),0);
+    echo "<p class = sa >By anvAdeze napuMsake enadvaktavyaH (vA 1569) :</p>";
+    echo "<p class = sa >अन्वादेशे नपुंसके एनद्वक्तव्यः (वा १५६९) :</p>";
+    display(0);
+}
 /* svamornapuMsakAt (7.1.23) */
 if ( $gender==="n" && in_array($so,array("su!","am")) && $atom===0 && $adD ===0 )
 {
@@ -795,6 +819,21 @@ if ( $gender==="n" && in_array($so,array("su!","am")) && $atom===0 && $adD ===0 
     echo "<p class = sa >स्वमोर्नपुंसकात्‌ (७.१.२३) :</p>";
     display(3); $svamo = 1;
 } else { $svamo = 0; }
+/* kimaH kaH (7.2.103) */
+if (sub(array("kim","kaka"),array("+"),blank(0),0) && !arr($text,'/[k][i][m][+]$/') && in_array($so,$sup))
+{
+    $text = two(array("kim","kaka"),array("+"),array("ka","ka"),array("+"),0);
+    echo "<p class = sa >By kimaH kaH (7.2.103) :</p>";
+    echo "<p class = sa >किमः कः (७.२.१०३) :</p>";
+    display(3);
+}
+if (sub(array("kim","kaka"),array("+"),blank(0),0) && arr($text,'/[k][i][m][+]$/') && in_array($so,$sup))
+{
+    echo "<p class = pa >na lumatA'Ggasya prevents application of kimaH kaH (7.2.103) :</p>";
+    echo "<p class = pa >न लुमताऽङ्गस्य से किमः कः (७.२.१०३) का बाध होता है ।</p>";
+    display(0);
+}
+
 /* Rnnebhyo GIp (4.1.5) */
 // Pending, because it deals with two pratyayas. Right now, if user wants he can write the Gyanta itself and check.
 
@@ -924,22 +963,6 @@ if ( sub($sarvanama,array("dfg","dfS","avatu"),blank(0),0) )
     echo "<p class = sa >आ सर्वनाम्नः (६.३.९१) :</p>";
     display(0);  $Asarva=1;     
 } else { $Asarva=0; }
-/* caturanaDuhorAmudAttaH (7.1.98) */
-if ($sarvanamasthana1 === 1 && sub(array("catur","anaquh"),blank(0),blank(0),0))
-{
-    $text = one(array("catur+","anaquh+"),array("catuAr+","anaquAh+"),0);
-    echo "<p class = sa >By caturanaDuhorAmudAttaH (7.1.98) :</p>";
-    echo "<p class = sa >चतुरनडुहोरामुदात्तः (७.१.९८) :</p>";
-    display(3);        
-}
-/* sAvanaDuhaH (7.1.82) */
-if (sub(array("anaquAh+","anaquah+"),array("su!"),blank(0),0))
-{
-    $text = one(array("anaquAh+","anaquah+"),array("anaquAnh+","anaquanh+"),0);
-    echo "<p class = sa >By sAvanaDuhaH (7.1.82) :</p>";
-    echo "<p class = sa >सावनडुहः (७.१.८२) :</p>";
-    display(3);        
-}
 /* tricaturoH striyAM tisRcatasR (7.2.99) */
 if ($tri === "f" && ends(array($fo),array("tri","catur"),1) && !ends(array($fo),array("stri"),1) && ends($text,$sup,1))
 {
@@ -955,13 +978,21 @@ if ($tri === "f" && ends(array($fo),array("tri","catur"),1) && !ends(array($fo),
     echo "<p class = sa >त्रिचतुरोः स्त्रियां तिसृचतस्रू (७.२.९९) तथा 'न लुमता..' इत्यस्य निषेधस्य अनित्यत्वम्‌ :</p>";
     display(3);
 } 
-/* napuMsakAcca (7.1.19) */
-if ( $gender==="n" && in_array($so,array("O","Ow"))) 
+/* caturanaDuhorAmudAttaH (7.1.98) */
+if ($sarvanamasthana1 === 1 && sub(array("catur","anaquh"),blank(0),blank(0),0))
 {
-    $text = two(array("+"),array("Ow","O",),array("+"),array("SI","SI"),0);
-    echo "<p class = sa >By napuMsakAcca (7.1.19) :</p>";
-    echo "<p class = sa >नपुंसकाच्च (७.१.१९) :</p>";
-    display(3);
+    $text = one(array("catur+","anaquh+"),array("catuAr+","anaquAh+"),0);
+    echo "<p class = sa >By caturanaDuhorAmudAttaH (7.1.98) :</p>";
+    echo "<p class = sa >चतुरनडुहोरामुदात्तः (७.१.९८) :</p>";
+    display(3);        
+}
+/* sAvanaDuhaH (7.1.82) */
+if (sub(array("anaquAh+","anaquah+"),array("su!"),blank(0),0))
+{
+    $text = one(array("anaquAh+","anaquah+"),array("anaquAnh+","anaquanh+"),0);
+    echo "<p class = sa >By sAvanaDuhaH (7.1.82) :</p>";
+    echo "<p class = sa >सावनडुहः (७.१.८२) :</p>";
+    display(3);        
 }
 /* jarAyA jarasanyatarasyAm (7.2.101) */
 if (arr($text,'/(jar)([aA])[+][a][m]/') && $pada=== "pratyaya"  && $so==="su!" && $gender === "n" )
@@ -981,12 +1012,12 @@ if (arr($text,'/(jar)([aA])[+]/') && $pada=== "pratyaya"  && in_array($so,$acsup
     }
 /* paddannomAshRnnizasanyUSandoSanyakaJChakannudannAsaJChasprabhRtiSu (6.1.63) */
 // The random examples given under vibhASA GizyoH on page 147 are pending. Will do them after understanding fully. 
-    // kakuddoSaNI etc are pending.
+    // kakuddoSaNI etc are pending. 
 $paddanno = array("pAda","danta","nAsikA","mAsa","hfdaya","niSA","asfj","yUza","doz","yakft","Sakft","udaka","Asya");
 $paddanno1 = array("pad","dat","nas","mAs","hfd","niS","asan","yUzan","dozan","yakan","Sakan","udan","Asan");
-if (sub($paddanno,array("+"),$zasadi,0) && in_array($so,$zasadi))
+if (sub($paddanno,array("+"),blank(0),0) && in_array($so,$zasadi))
 {
-    $text = two($paddanno,$zasadi,$paddanno1,$zasadi,1);
+    $text = two($paddanno,array("+"),$paddanno1,array("+"),1);
     echo "<p class = sa >By paddannomAshRnnizasanyUSandoSanyakaJChakannudannAsaJChasprabhRtiSu (6.1.63) :</p>";
     echo "<p class = sa >पद्दन्नोमास्‍हृन्निशसन्यूषन्दोषन्यकञ्छकन्नुदन्नासञ्छस्प्रभृतिषु (६.१.६३) :</p>";
     display(0);
@@ -1075,7 +1106,9 @@ if (sub(array("div+"),array("su!"),blank(0),0))
     display(0);        
 }
 /* diva ut (6.1.131) */
-if (sub(array("div+"),$hlsup,blank(0),0))
+// uttarapadatve cApadAdividhau pratiSedhaH (vA) pending.
+// dadhisecau example is also pending.
+if (sub(array("div+"),$hlsup,blank(0),0) || arr($text,'/[d][i][v][+]$/') )
 {
     $text = one(array("div+"),array("diu+"),0);
     echo "<p class = sa >By diva ut (6.1.131) :</p>";
@@ -1106,11 +1139,10 @@ else
 }
 /* na mu ne (8.2.3) */ 
 //adas + wA -> nAbhAva has to happen. Special case.
-if ( $fo==="adas" && $so==="wA")
+if ( $fo==="adas" && $so==="wA" && $gender!=="f")
 {
     $text = one(array("adas"),array("amu"),0);
-    echo "<p class = sa >By 
-        dAdu do maH (8.2.80) :</p>";
+    echo "<p class = sa >By adaso'serdAdu do maH (8.2.80) :</p>";
     echo "<p class = sa >अदसोऽसेर्दादु दो मः (८.२.८०) :</p>";
     display(0);
     echo "<p class = pa >By na mu ne (8.2.3) :</p>";
@@ -1177,16 +1209,10 @@ if (sub(array("paTa","maTa"),blank(0),blank(0),0) && ($pathi===1 || $pathi1===1)
 }
 /* sambuddhau napuMsakAnAM nalopo vA vAcyaH (vA) */
 // Pending. Not clear to me.
-/* auGaH zyAM pratiSedho vAcyaH (vA) */
-if (arr($text,'/[aI][+][SI]/') && $bham===1 && in_array($so,array("O","Ow")))
-{
-    echo "<p class = pa >By auGaH zyAM pratiSedho vAcyaH (vA) :</p>";
-    echo "<p class = pa >औङः श्यां प्रतिषेधो वाच्यः (वा) :</p>";
-    display(0); $auGazyA = 1;
-} else { $auGazyA = 0; }
 /* sau ca (6.4.13) */
+$noin=array("ahan","Ahan");
 $acdir = array("A","A","I","I","U","U","F","F","F","F","e","o","E","O",);
-if (sub(array("in","han","pUzan","aryaman"),array("+"),array("su!"),0) && in_array($so,array("su!")) && $sambuddhi===0)
+if (sub(array("in","han","pUzan","aryaman"),array("+"),array("su!"),0) && !sub(array("ahan","Ahan"),array("+"),array("su!"),0) && in_array($so,array("su!")) && $sambuddhi===0)
 {
     $text = two($ac,array("n+"),$acdir,array("n+"),0);
     echo "<p class = sa >By sau ca (6.4.13) :</p>";
@@ -1199,8 +1225,9 @@ if (sub(array("in","han","pUzan","aryaman"),array("+"),array("su!"),0) && in_arr
     display(3); $inhan=1;
 } else {$inhan=0; }
 /* inhanpUSAryamNAM zau (6.4.12) */
-if (sub(array("in","han","pUzan","aryaman"),array("+"),$sarvanamasthana,0) && $sambuddhi===0 && $inhan===0)
+if (sub(array("in","han","pUzan","aryaman"),array("+"),$sarvanamasthana,0) && !sub(array("ahan","Ahan"),array("+"),array("su!"),0) && $sambuddhi===0 && $inhan===0 && $fo!=="ahan")
 {
+    $text = two(array("in","han","pUzan","aryaman"),array("Si"),array("In","hAn","pUzAn","aryamAn"),array("Si"),0);
     echo "<p class = sa >By inhanpUSAryamNAM zau (6.4.12) :</p>";
     echo "<p class = sa >इन्हन्पूषार्यम्णां शौ (६.४.१२) :</p>";        
     if (sub(array("vin+"),blank(0),blank(0),0))
@@ -1211,7 +1238,7 @@ if (sub(array("in","han","pUzan","aryaman"),array("+"),$sarvanamasthana,0) && $s
     display(3); $inhan1=1;
 } else { $inhan1=0; }
 /* sarvanAmasthAne cAsambuddhau (6.4.8) */ 
-if (arr($text,'/['.flat($ac).'][n][+]/') && !arr($text,'/['.flat($ac).'][n][+]$/') && $sarvanamasthana1===1 && $sambuddhi===0 && $inhan===0 && $inhan1===0  )
+if ( arr($text,'/['.flat($ac).'][n][+]/')  && !arr($text,'/['.flat($ac).'][n][+]$/') && !sub(array("Ahan"),blank(0),blank(0),0) && $sarvanamasthana1===1 && $sambuddhi===0 && $inhan===0 && $inhan1===0  )
 {
     $text = two($ac,array("n+"),$acdir,array("n+"),0);
     echo "<p class = sa >By sarvanAmasthAne cAsambuddhau (6.4.8) :</p>";
@@ -1390,6 +1417,22 @@ if (((sub(array("tar+","war+"),blank(0),blank(0),0) && !in_array($fo,$excludesva
     echo "<p class = sa >अप्तृन्तृच्स्वसृनप्तृनेष्टृत्वष्टृक्षत्तृहोतृपोतृप्रशास्तॄणाम्‌ (६.४.११) :</p>";
     display(3);
 }
+if (arr(array($fo),'/[a][p]$/') && $sarvanamasthana1===1 && $pada==="pratyaya" && $sambuddhi===0)
+{
+    $text = two(array("ap"),array("+"),array("Ap"),array("+"),0);
+    echo "<p class = sa >By aptRntRcsvasRnaptRneSTRtvaSTRkSattRhotRpotRprazAstRRNAm (6.4.11) :</p>";
+    echo "<p class = sa >अप्तृन्तृच्स्वसृनप्तृनेष्टृत्वष्टृक्षत्तृहोतृपोतृप्रशास्तॄणाम्‌ (६.४.११) :</p>";
+    display(3);
+}
+/* apo bhi (7.4.48) */
+if (arr(array($fo),'/[a][p]$/') && arr($text,'/[a][p][+][B]/') && in_array($so,array("Bis","Byas","ByAm")))
+{
+    $text = two(array("ap"),array("+B"),array("ad"),array("+B"),0);
+    echo "<p class = sa >By apo bhi (7.4.48) :</p>";
+    echo "<p class = sa >अपो भि (७.४.४८) :</p>";
+    display(3);
+}
+
 /* Ato dhAtoH (6.4.140) */
 // Right now we have presumed that all are AkArAnta dhAtus. Abanta etc will have to be dealt with later on.
 // AtaH yogavibhAga is pending.
@@ -1455,10 +1498,25 @@ if ( in_array(1,$samp) && arr($text,'/[yv]/') )
     echo "<p class = sa>न सम्प्रसारणे सम्प्रसारणम्‌ :</p>";
     display(0); 
 }
+/* napuMsakAcca (7.1.19) */
+if ( $gender==="n" && in_array($so,array("O","Ow"))) 
+{
+    $text = two(array("+"),array("Ow","O",),array("+"),array("SI","SI"),0);
+    echo "<p class = sa >By napuMsakAcca (7.1.19) :</p>";
+    echo "<p class = sa >नपुंसकाच्च (७.१.१९) :</p>";
+    display(3); $napuMsakAcca=1;
+} else { $napuMsakAcca=0; }
+/* auGaH zyAM pratiSedho vAcyaH (vA) */
+if (arr($text,'/[+][SI]/') && in_array($so,array("O","Ow")))
+{
+    echo "<p class = pa >By auGaH zyAM pratiSedho vAcyaH (vA) :</p>";
+    echo "<p class = pa >औङः श्यां प्रतिषेधो वाच्यः (वा) :</p>";
+    display(0); $auGazyA = 1;
+} else { $auGazyA = 0; }
 /* bhasya (6.4.129) and allopo'naH (6.4.134) and vibhASA GizyoH (6.4.236) and na saMyogAdvamantAt (6.4.137) */        
 if ($bham === 1 && $vamanta===0 && arr($text,'/[a][n][+]/') && $shat===0 ) 
 {
-    if ($so === "Ni")
+    if ( $so==="Ni" || $napuMsakAcca===1 )
     {
     $text = one(array("an+"),array("n+"),1);
     echo "<p class = sa >By allopo'naH (6.4.134) and vibhASA GizyoH (6.4.236) :</p>";
@@ -1475,7 +1533,7 @@ if ($bham === 1 && $vamanta===0 && arr($text,'/[a][n][+]/') && $shat===0 )
 } else {$allopo=0; }
 /* ho hanterJNinneSu (7.3.54) */
 // Jit and Nit pending. nakAra done.
-if ( sub(array("h"),array("n"),blank(0),0) && arr(array($fo),'/[h][a][n]/'))
+if ( sub(array("h"),array("n"),blank(0),0) && arr(array($fo),'/[h][a][n]/') && !in_array($fo,array("ahan","dIrGAhan")))
 {
     $text = two(array("h"),array("n"),array("G"),array("n"),0);
     echo "<p class = sa >By ho hanterJNinneSu (7.3.54) :</p>";
@@ -1515,20 +1573,36 @@ if (sub(array("adas"),array("+"),array("su!"),0) && $so==="su!" && $fo==="adas")
 }
 /* tyadAdInAmaH (7.2.102) */
 // It is not possible to decide the prAdhAnya or gauNatva because it depends on speaker's choice.
-$tyadadinamah = array("dva+a","tya+a","ta+a","eta+a","ida+a","ada+a","eka+a","idaka+a");
-$tyadadinamah1 = array("dva","tya","ta","eta","ida","ada","eka","idaka");
-if (sub($tyadadi,array("+"),$sup,0) && in_array($fo,$tyadadi) && $idamoma===0)
+$tyadadinamah = array("dva+a","tya+a","ta+a","ya+a","eta+a","ida+a","ada+a","eka+a","idaka+a");
+$tyadadinamah1 = array("dva","tya","ta","ya","eta","ida","ada","eka","idaka");
+if (sub($tyadadi,array("+"),blank(0),0) && in_array($so,$sup) && in_array($fo,$tyadadi) && $idamoma===0 && $idamoma1===0 && $svamo===0)
 {
-    $text = two($tyadadi,$sup,$tyadadinamah,$sup,0);
+    $text = one($tyadadi,$tyadadinamah,0);
     echo "<p class = sa >By tyadAdInAmaH (7.2.102) :</p>";
     echo "<p class = hn >Only the words till 'dvi' are included. (vA 4468) :</p>";
     echo "<p class = sa >त्यदादीनामः (७.२.१०२) :</p>";
     echo "<p class = hn >द्विपर्यन्तानामेवेष्टिः (वा ४४६८) :</p>";
     display(3);
-    $text = two($tyadadinamah,$sup,$tyadadinamah1,$sup,0);
+    $text = one($tyadadinamah,$tyadadinamah1,0);
     echo "<p class = sa >By ato guNe (6.1.96) :</p>";
     echo "<p class = sa >अतो गुणे (६.१.९६) :</p>";
     display(0);
+}
+/* ajAdyataSTAp (4.1.4) */
+if ($gender==="f" && $Ap===1 && sub(array("ida","tya","ta","ya","eta","ada"),array("+"),blank(0),0) && in_array($fo,array("idam","idakam","tyad","tad","yad","etad","adas")) && in_array($so,$sup))
+{
+    $text = one(array("ida+","tya+","ta+","ya+","eta+","ada+"),array("idaA+","tyaA+","taA+","yaA+","etaA+","adaA+"),0);
+    echo "<p class = sa >By ajAdyataSTAp (4.1.4) :</p>";
+    echo "<p class = sa >अजाद्यतष्टाप्‌ (४.१.४) :</p>";
+    display(3);
+}
+/* akaH savarNe dIrghaH (6.1.101) */
+if ($gender==="f" && $Ap===1 && sub(array("idaA","tyaA","taA","yaA","etaA","adaA"),array("+"),blank(0),0) && in_array($fo,array("idam","idakam","tyad","tad","yad","etad","adas")) && in_array($so,$sup))
+{
+    $text = one(array("idaA","tyaA","taA","yaA","etaA","adaA"),array("idA+","tyA","tA","yA","etA","adA"),0);
+    echo "<p class = sa >By akaH savarNe dIrghaH (6.1.101) :</p>";
+    echo "<p class = sa >अकः सवर्णे दीर्घः (६.१.१०१) :</p>";
+    display(3);
 }
 /* adasa au sulopazca (7.2.107) */
 if (sub(array("adakas"),array("+"),array("su!"),0) && $so==="su!" && $fo==="adakas")
@@ -1540,8 +1614,8 @@ if (sub(array("adakas"),array("+"),array("su!"),0) && $so==="su!" && $fo==="adak
     display(3);
 }
 /* tadoH saH sAvanantyayoH (7.2.106) */
-$tyadadinamah3 = array("dva","tya","eta","ta","ida","ada","eka","idaka");
-$tyadadinamah2 = array("dva","sya","eza","sa","isa","asa","eka","isaka");
+$tyadadinamah3 = array("dva","tya","eta","ta","ida","ada","eka","idaka","tyA","tA","etA");
+$tyadadinamah2 = array("dva","sya","eza","sa","isa","asa","eka","isaka","syA","sA","esA");
 if (sub($tyadadinamah3,array("su!"),blank(0),0) && $sarvafinal!==0)
 {
     $text = two($tyadadinamah3,array("su!"),$tyadadinamah2,array("su!"),0);
@@ -1617,9 +1691,9 @@ if (sub(array("asma","yuzma"),array("+"),array("sAm"),0) && in_array($so,array("
     display(3); $sAmaAkam=1;
 } else { $sAmaAkam=0; }
 /* dvitIyATaussvenaH (2.4.34) */
-if (sub(array("ida+","eta+","idaka+"),blank(0),blank(0),0) && in_array($fo,array("idam","etad","idakam")) && $anvadesha===1 && in_array($so,array("am","Ow","Sas","wA","os")))
+if (sub(array("ida+","eta+","idaka+","idA+",),blank(0),blank(0),0) && in_array($fo,array("idam","etad","idakam")) && $anvadesha===1 && in_array($so,array("am","Ow","Sas","wA","os")))
 {
-    $text = one(array("ida+","eta+","idaka+"),array("ena+","ena+","ena+"),0);
+    $text = one(array("ida+","eta+","idaka+","idA+",),array("ena+","ena+","ena+","enA+"),0);
     echo "<p class = sa >By dvitIyATaussvenaH (2.4.34) :</p>";
     echo "<p class = sa >द्वितीयाटौस्स्वेनः (२.४.३४) :</p>";
     display(0);
@@ -1632,42 +1706,11 @@ if (sub(array("idaka+"),blank(0),blank(0),0) && $fo==="idakam" && $anvadesha===1
     echo "<p class = sa >इदमोऽन्वादेशेऽशनुदात्तस्तृतीयादौ (२.४.३२) :</p>";
     display(0);
 }
-/* anApyakaH (7.2.112) */
-if (sub(array("ida+"),$acsup,blank(0),0) && $fo==="idam" && in_array($so,$tRtIyAdiSvaci))
-{
-    $text = one(array("ida+"),array("ana+"),0);
-    echo "<p class = sa >By anApyakaH (7.2.112) :</p>";
-    echo "<p class = sa >अनाप्यकः (७.२.११२) :</p>";
-    display(3);
-}
 /* nAnarthake'lo'ntyavidhiranabhyAsavikAre (vA 490) */
 // Pending. Not clear to me.
 /* Adyantavadekasmin */
 // paribhASA. Difficult to code.
 
-/* hali lopaH (7.2.113) */
-if (sub(array("ida+"),$hl,blank(0),0) && $fo==="idam" && !in_array($so,array("jas")))
-{
-    $text = one(array("ida+"),array("a+"),0);
-    echo "<p class = sa >By hali lopaH (7.2.113) :</p>";
-    echo "<p class = sa >हलि लोपः (७.२.११३) :</p>";
-    display(3);
-}
-/* nedamadasorakoH (7.1.11) */
-if (arr($text,'/^[a][+]/') && $so==="Bis" && in_array($fo,array("idam","idakam","adas")))
-{
-    echo "<p class = sa >By nedamadasorakoH (7.1.11) :</p>";
-    echo "<p class = sa >नेदमदसोरकोः (७.२.११) :</p>";
-    display(3); $nedamadas=1;
-} else { $nedamadas=0; }
-/* dazca (7.2.109) */
-if (sub(array("ida","idaka"),array("+"),blank(0),0) && in_array($fo,array("idam","idakam")) && in_array($so,$sup))
-{
-    $text = one(array("ida+","idaka+"),array("ima+","imaka+"),0);
-    echo "<p class = sa >By dazca (7.2.109) :</p>";
-    echo "<p class = sa >दश्च (७.२.१०९) :</p>";
-    display(3);
-}
 /* goto Nit (7.1.90) and oto Niditi vAcyam (vA 5035) */
 if (sub(array("o+"),$sarvanamasthana,blank(0),0) && !in_array($fo,array("am","Sas")))
 {   
@@ -1849,42 +1892,47 @@ if ($Ap===1  && in_array($so,array("Ne","Nas","Nasi!","Ni")) && in_array(array($
     echo "<p class = pa >विभाषा दिक्समासे बहुव्रीहौ (१.१.२८) </p>";
     display(0); $sarvafinal = 2;
 }
-/* sarvanAmnaH syADDhrasvazca (7.3.114) */
-$sarvanamastri1 = array("sarva","viSva","uBa","uBaya","atara","atama","anya","anyatara","itara","tva","nema","sima","pUrva","para","avara","dakziRa","uttara","apara","aDara","sva","antara","eka","dva",);
-if ($Ap===1 && $sarvafinal !==0 && in_array($so,array("Ne","Nas","Ni")) && ends(array($fo),$sarvanamastri,1))
+/* sarvanAmnaH syADDhrasvazca (7.3.114) */ 
+$sarvanamastri = array("sarvA","viSvA","uBA","uBayA","atarA","atamA","anyA","anyatarA","itarA","tvA","nemA","simA","pUrvA","parA","avarA","dakziRA","uttarA","aparA","aDarA","svA","antarA","tyA","tA","yA","etA","idA","adA","ekA","dvA","kA","idakA");
+$sarvanamastri1 = array("sarva","viSva","uBa","uBaya","atara","atama","anya","anyatara","itara","tva","nema","sima","pUrva","para","avara","dakziRa","uttara","apara","aDara","sva","antara","tya","ta","ya","eta","ida","ada","eka","dva","ka","idaka");
+if ($Ap===1 && $sarvafinal !==0 && in_array($so,array("Ne","Nas","Ni")) && ( ends(array($fo),$sarvanama,1)||in_array($fo,array("idam")) ))
 { 
     if ( $sarvafinal === 2)
     {
-    $text = last(array("Ne","Nas","Ni"),array("syA+Ne","syA+Nas","syA+Ni"),1);        
+    $text = one($sarvanamastri,$sarvanamastri1,0);
+    $text = last(array("Ne","Nas","Am"),array("syA+Ne","syA+Nas","syA+Am"),1);        
     $text = one(array("tIyA+syA+Ne","tIyA+syA+Nas","tIyA+syA+Ni"),array("tIya+syA+Ne","tIya+syA+Nas","tIya+syA+Ni"),0);            
     }
     else
     {
-    $text = last(array("Ne","Nas","Ni"),array("syA+Ne","syA+Nas","syA+Ni"),0);        
+    $text = one($sarvanamastri,$sarvanamastri1,0);
+    $text = last(array("Ne","Nas","Am"),array("syA+Ne","syA+Nas","syA+Am"),0);        
     $text = one(array("tIyA+syA+Ne","tIyA+syA+Nas","tIyA+syA+Ni"),array("tIya+syA+Ne","tIya+syA+Nas","tIya+syA+Ni"),0);            
     }
     echo "<p class = sa >By sarvanAmnaH syADDhrasvazca (7.3.114) :</p>";
     echo "<p class = sa >सर्वनाम्नः स्याड्ढ्रस्वश्च (७.३.११४) :</p>";
     display(3); $syaddhrasva = 1;
 } else { $syaddhrasva = 0; }
-if ($Ap===1  && $sarvafinal !==0 && in_array($so,array("Nasi!")) && ends(array($fo),$sarvanamastri,1))
+if ($Ap===1  && $sarvafinal !==0 && in_array($so,array("Nasi!")) && ( ends(array($fo),$sarvanama,1) ))
 {
     if ( $sarvafinal === 2)
     {
+    $text = one($sarvanamastri,$sarvanamastri1,0);
     $text = last(array("Nasi!"),array("syA+Nasi!"),1);        
     $text = one(array("tIyA+syA+Nasi!"),array("tIya+syA+Nasi!"),1);        
     }
     else
     {
+    $text = one($sarvanamastri,$sarvanamastri1,0);
     $text = last(array("Nasi!"),array("syA+Nasi!"),0);        
     $text = one(array("tIyA+syA+Nasi!"),array("tIya+syA+Nasi!"),0);        
     }
     echo "<p class = sa >By sarvanAmnaH syADDhrasvazca (7.3.114) :</p>";
     echo "<p class = sa >सर्वनाम्नः स्याड्ढ्रस्वश्च (७.३.११४) :</p>";
     display(3); $syaddhrasva1 = 1;
-} else { $syaddhrasva = 0; }
+} else {$syaddhrasva1=0; }
 /* yADApaH (7.3.113) */
-if ($Ap===1 && in_array($so,array("Ne","Nas","Ni")))
+if ($Ap===1 && in_array($so,array("Ne","Nas","Ni")) && $syaddhrasva===0)
 {
     $text = three(array("A+"),array(""),array("Ne","Nas","Ni"),array("A+"),array("yA+"),array("Ne","Nas","Ni"),0);
     $text = one(array("syA+yA+"),array("syA+"),0);
@@ -1892,7 +1940,7 @@ if ($Ap===1 && in_array($so,array("Ne","Nas","Ni")))
     echo "<p class = sa >याडापः (७.३.११३) :</p>";
     display(3);
 }
-if ($Ap===1 && in_array($so,array("Nasi!")) )
+if ($Ap===1 && in_array($so,array("Nasi!")) && $syaddhrasva1===0 )
 {
     $text = three(array("A+"),array(""),array("Nasi!"),array("A+"),array("yA+"),array("Nasi!"),0);
     $text = one(array("syA+yA+"),array("syA+"),0);
@@ -1900,8 +1948,31 @@ if ($Ap===1 && in_array($so,array("Nasi!")) )
     echo "<p class = sa >याडापः (७.३.११३) :</p>";
     display(3);
 }
+/* hali lopaH (7.2.113) */
+if (sub(array("ida+","idA+"),$hl,blank(0),0) && $fo==="idam" && !in_array($so,array("jas","Ow","O","Sas")))
+{
+    $text = one(array("ida+","idA+",),array("a+","A+",),0);
+    echo "<p class = sa >By hali lopaH (7.2.113) :</p>";
+    echo "<p class = sa >हलि लोपः (७.२.११३) :</p>";
+    display(3);
+}
+/* nedamadasorakoH (7.1.11) */
+if (arr($text,'/^[a][+]/') && $so==="Bis" && in_array($fo,array("idam","idakam","adas")))
+{
+    echo "<p class = sa >By nedamadasorakoH (7.1.11) :</p>";
+    echo "<p class = sa >नेदमदसोरकोः (७.२.११) :</p>";
+    display(3); $nedamadas=1;
+} else { $nedamadas=0; }
+/* anApyakaH (7.2.112) */
+if (sub(array("ida+","idA+"),blank(0),blank(0),0) && $fo==="idam" && in_array($so,$tRtIyAdiSvaci))
+{
+    $text = one(array("ida+","idA+"),array("ana+","anA+"),0);
+    echo "<p class = sa >By anApyakaH (7.2.112) :</p>";
+    echo "<p class = sa >अनाप्यकः (७.२.११२) :</p>";
+    display(3);
+}
 /* jasaH zI (7.1.17) */
-if (arr($text,'/[a][+]/') && $pada=== "pratyaya" && $so === "jas" && in_array($fo,$sarvanama) && $nojas===0)
+if (arr($text,'/[a][+]/') && $pada=== "pratyaya" && $so === "jas" && in_array($fo,$sarvanama) && $nojas===0 && !sub(array("ida"),blank(0),blank(0),0))
     {
     $text = last(array("jas"),array("SI"),0);
     echo "<p class = sa >By jasaH shI (7.1.17) :</p>";
@@ -2154,9 +2225,9 @@ if (preg_match('/[s][a][h][a][a][n][c][u]/',$fo) && $aniditAm === 1 && sub(array
     display(0);
 }
 /* tirasastiryalope (6.3.94) */ 
-if (preg_match('/[t][i][r][a][s][a][n][c][u]/',$fo) && $aniditAm === 1 && sub(array("ac","Ac"),array("+"),blank(0),0) && $bham===0 && $ancu===1)
+if (preg_match('/[t][i][r][a][s][a][n][c][u]/',$fo) && sub(array("ac","Ac"),array("+"),blank(0),0) && $bham===0 && $ancu===1)
 {
-    $text = two(array("tirasac"),array("+"),array("tiriac"),array("+"),0);
+    $text = two(array("tirasac","tirasanc"),array("+"),array("tiriac","tirianc"),array("+"),0);
     echo "<p class = sa >tirasastiryalope (6.3.94) :</p>";
     echo "<p class = sa >तिरसस्तिर्यलोपे (६.३.९४) :</p>";
     display(0);
@@ -2189,21 +2260,54 @@ if ( $acaH===1)
     display(3);
 }
 /* atvasantasya cAdhAtoH (6.4.14) */
-if ( ( $atu===1 || ( $dhatu===0 && arr($text,'/[a][s][+]/') ) ) && $so==="su!" && $sambuddhi===0)
+if ( ( $atu===1  )  && $so==="su!" && $sambuddhi===0)
 {
     $text = two($ac,array("t+"),$acdir,array("t+"),0);
-    $text = one(array("as+"),array("As+"),0);
+//    $text = one(array("as+"),array("As+"),0);
     echo "<p class = sa >atvasantasya cAdhAtoH (6.4.14) :</p>";
     echo "<p class = sa >अत्वसन्तस्य चाधातोः (६.४.१४) :</p>";
     display(3);
 }
+/* shatR */
+if ($shatR===1)
+{
+    $it=array_merge($it,array("f"));
+    $itprakriti=array_merge($itprakriti,array("f"));
+}
 /* nAbhyAsAcChatuH (7.1.78) */
-if ($abhyasta===1 && $shatR===1 && itcheck(array("f"),1) )
+if ($abhyasta===1 && $shatR===1 && itcheck(array("f"),1) && $gender!=="n")
 {
     echo "<p class = sa >By nAbhyastAcChatuH (7.1.78) :</p>";
     echo "<p class = sa >नाभ्यास्ताच्छतुः (7.1.78) :</p>";
     display(0); $nAbhyasta=1;
 } else { $nAbhyasta=0; }
+/* vA napuMsakasya (7.1.79) */ 
+if ($abhyasta===1 && $shatR===1 && itcheck(array("f"),1) && $gender==="n")
+{
+    $text = mit('/['.pc('hl').'][+]/','n',1); $num=array_merge($num,array(1));
+    $text = one(array("annc"),array("anc"),0);
+    echo "<p class = sa >By vA napuMsakasya (7.1.79) :</p>";
+    echo "<p class = sa >वा नपुंसकस्य (७.१.७९) :</p>";
+    display(0); $vAnapuMsaka=1;
+} else { $vAnapuMsaka=0; }
+/* zapzyanornityam (7.1.81) */ 
+if (arr($text,'/[aA][t][+[S][I]/') && ($shap===1|| $shyan===1 ) )
+{
+    $text = mit('/['.pc('hl').'][+]/','n',0); $num=array_merge($num,array(1));
+    $text = one(array("annc"),array("anc"),0);
+    echo "<p class = sa >By zapzyanornityam (7.1.81) :</p>";
+    echo "<p class = sa >शप्श्यनोर्नित्यम्‌ (७.१.८१) :</p>";
+    display(0);
+}
+/* AcChInadyornum (7.1.80) */ 
+if (arr($text,'/[aA][t][+[S][I]/') && $shatR===1 && itcheck(array("f"),1) )
+{
+    $text = mit('/['.pc('hl').'][+]/','n',1); $num=array_merge($num,array(1));
+    $text = one(array("annc"),array("anc"),0);
+    echo "<p class = sa >By AcChInadyornum (7.1.80) :</p>";
+    echo "<p class = sa >आच्छीनद्योर्नुम्‌ (७.१.८०) :</p>";
+    display(0);
+}
 /* ugidacAM sarvanAmasthAne'dhAtoH (7.1.70) */
 if ($sarvanamasthana1===1 && ( ($ancu===0 && $dhatu===1)  ) && $kruJca===0 && arr(array($fo),'/[a][t]$/'))
     {
@@ -2211,9 +2315,9 @@ if ($sarvanamasthana1===1 && ( ($ancu===0 && $dhatu===1)  ) && $kruJca===0 && ar
     echo "<p class = pa >धातोश्चेदुगित्कार्यं तर्ह्यञ्चतेरेव ।</p>";      
     display(0);
     }
-if ($sarvanamasthana1===1 && $nAbhyasta===0 &&  (( $dhatu===0 && itcheck(array("u","U","f","F","x","X"),1) ) ||  ($ancu===1 && $dhatu===1) ||  ( ($kvip===1 || $kvin===1)&& $dhatu===1 && arr(array($fo),'/[a][t]$/')) || $bhavat===1 ) && $kruJca===0)
+if ($sarvanamasthana1===1 && $nAbhyasta===0 &&  (( $dhatu===0 && itcheck(array("u","U","f","F","x","X"),1) ) ||  ($ancu===1 && $dhatu===1) ||  ( ($kvip===1 || $kvin===1)&& $dhatu===1 && arr(array($fo),'/[a][t]$/')) || $bhavat===1 ) && $kruJca===0 && $vAnapuMsaka===0)
 {
-    $text = mit("n",0); $num=array_merge($num,array(1));
+    $text = mit('/['.pc('hl').'][+]/','n',0); $num=array_merge($num,array(1));
     $text = one(array("annc"),array("anc"),0);
     echo "<p class = sa >By ugidacAM sarvanAmasthAne'dhAtoH (7.1.70) :</p>";
     echo "<p class = sa >उगिदचां सर्वनामस्थानेऽधातोः (७.१.७०) :</p>";
@@ -2227,8 +2331,8 @@ if ($sarvanamasthana1===1 && $nAbhyasta===0 &&  (( $dhatu===0 && itcheck(array("
         echo "<p class = hn >As there is no lopa of nakAra, 'ugidacAm..' doesn't apply.</p>";
         echo "<p class = hn >अलुप्तनकारत्वात्‌ न नुम्‌ ।</p>";
     }
-    display(3);        
-} 
+    display(3);      $ugidacAm=1;  
+}  else {$ugidacAm=0; }
 /* special message for ikAra of kvip, kvin etc. */
 if (arr($text,'/[+][v][i]$/')&& in_array($so,array("kvip","kvin")) && $taddhita === 0  && $sarva === 0 )
 {
@@ -2290,24 +2394,47 @@ if ( sub(array("a","A","i","I","u","U","f","F","x"),array("+am"),blank(0),0))
     echo "<p class = sa >अमि पूर्वः (६.१.१०७) :</p>";  $ato = 1;
     display(0); $amipUrva = 1;
 }   else { $amipUrva = 0; }
-/* napuMsakasya jhalacaH (7.1.72) */ 
-if ( $gender==="n" && $sarvanamasthana1===1 && arr($text,'/['.pc('ac').'][+]/') && $amipUrva === 0)
+/* bahUrji exception to napuMsakasya jhalacaH (7.1.72) */ 
+if ( $gender==="n" && $sarvanamasthana1===1 && sub(array("bahUrj"),blank(0),blank(0),0) && arr($text,'/['.pc('Jl').'][+]/') && $amipUrva === 0)
 {
-    $text = three($ac,array(""),array("+"),$ac,array("n"),array("+"),0);
+    $text = two(array("bahUrj"),array("+"),array("bahUrnj"),array("+"),1);
+    echo "<p class = sa >By bahUrji numpratiSedhaH (vA 4331) and antyAtpUrvo vA num (vA 4332) :</p>";
+    echo "<p class = sa >बहूर्जि नुम्प्रतिषेधः (वा ४३३१) तथा अन्त्यात्पूर्वो वा नुम्‍ (वा ४३३२) :</p>";
+    display(3); $bahurj=1;
+} else { $bahurj=0; }
+/* beBid, cecCid exception to napuMsakasya jhalacaH (7.1.72) */ 
+if ( $gender==="n" && $sarvanamasthana1===1 && $kvip===1 && sub(prat('Jl'),array("+"),blank(0),0) && in_array($so,array("jas","Sas")) && arr($text,'/['.pc('Jl').'][+]/') && $amipUrva === 0)
+{
+    echo "<p class = pa >allopa behaves like sthAnivad, therefore num (because of jhalantatva) doesn't happen. sthAnivadbhAva doesn't happen in svavidhi. Therefore num (because of ajantatva) doesn't happen. </p>";
+    echo "<p class = pa >शावल्लोपस्य स्थानिवत्त्वादझलन्तत्वान्न नुम्‌ । अजन्तलक्षणस्तु नुम्‌ न । स्वविधौ स्थानिवत्त्वाभावात्‌ । </p>";
+    display(0); $bebhid=1;
+} else { $bebhid=0; } 
+/* svap patch */
+if ( $gender==="n" && $sarvanamasthana1===1 && arr($text,'/[A][n][p][+]/') && arr(array($fo),'/[a][p]$/') && $amipUrva === 0 && $nAbhyasta===0)
+{
+    $text = two(array("Anp"),array("+"),array("anp"),array("+"),1);
+    echo "<p class = sa >'niravakAzatvaM pratipadoktatvam' mandates non application of dIrghatva here.  :</p>";
+    echo "<p class = sa >'niरवकाशं प्रतिपदोक्तत्वम्‌' इति पक्षे तु प्रकृते तद्विरहात्‌ नुमेव । :</p>";
+    display(3);
+}
+/* napuMsakasya jhalacaH (7.1.72) */ 
+if ( $gender==="n" && $sarvanamasthana1===1 && arr($text,'/['.pc('ac').'][+]/') && $amipUrva === 0 && $nAbhyasta===0)
+{
+    $text = mit('/['.pc('ac').'][+]/','n',0);
     echo "<p class = sa >By napuMsakasya jhalacaH (7.1.72) :</p>";
     echo "<p class = sa >नपुंसकस्य झलचः (७.१.७२) :</p>";
     display(3);
 }
-if ( $gender==="n" && $sarvanamasthana1===1 && arr($text,'/['.pc('Jl').'][+]/') && $amipUrva === 0)
+if ( $gender==="n" && $sarvanamasthana1===1 && arr($text,'/['.pc('Jl').'][+]/') && $amipUrva === 0 && $bahurj===0 && $bebhid===0 && $ugidacAm===0 && $nAbhyasta===0 && $vAnapuMsaka===0)
 {
-    $text = three(array(""),prat("Jl"),array("+"),array("n"),prat("Jl"),array("+"),0);
+    $text = mit('/['.pc('Jl').'][+]/','n',0);
     echo "<p class = sa >By napuMsakasya jhalacaH (7.1.72) :</p>";
     echo "<p class = sa >नपुंसकस्य झलचः (७.१.७२) :</p>";
     display(3);
 }
 /* sarvanAmasthAne cAsambuddhau (6.4.8) */
 $acdir = array("A","A","I","I","U","U","F","F","F","F","e","o","E","O",);
-if (arr($text,'/['.flat($ac).'][n][+]/') && !arr($text,'/['.flat($ac).'][n][+]$/') && $sarvanamasthana1===1 && $sambuddhi===0 && $inhan===0 && $inhan1===0)
+if (arr($text,'/['.flat($ac).'][n][+]/') && !arr($text,'/['.flat($ac).'][n][+]$/') && !sub(array("Ahan"),blank(0),blank(0),0) && $sarvanamasthana1===1 && $sambuddhi===0 && $inhan===0 && $inhan1===0)
 {
     $text = two($ac,array("n+"),$acdir,array("n+"),0);
     echo "<p class = sa >By sarvanAmasthAne cAsambuddhau (6.4.8) :</p>";
@@ -2817,7 +2944,7 @@ if ($prathamayoh ===1 && $so === "Sas" && $gender==="m")
     display(0); $tasmat = 1; $second = "an";
 } else { $tasmat = 0; }
 /* ato guNe (6.1.17) */
-if (sub(array("a"),array("a","e","o"),blank(0),0) && !sub(array("pra","upa"),array("a","e","o"),blank(0),0) && $pada === "pratyaya" )
+if (sub(array("a"),array("a","e","o"),blank(0),0) && !sub(array("pra","upa"),array("a","e","o"),blank(0),0) && $pada === "pratyaya" && $gogo===0)
 {
     $text = two(array("a"),array("a","e","o"),blank(1),array("a","e","o"),0);
     echo "<p class = sa >By ato guNe (6.1.17) :</p>";
@@ -2887,6 +3014,14 @@ echo "<p class = sa >By akaH savarNe dIrghaH (6.1.101) :</p>";
 echo "<p class = sa >अकः सवर्णे दीर्घः (६.१.१०१) :</p>";
 display(0);
 }
+/* dazca (7.2.109) */
+if (sub(array("ida","idaka","idA","idAn"),array("+"),blank(0),0) && in_array($fo,array("idam","idakam")) && in_array($so,$sup))
+{
+    $text = one(array("ida+","idaka+","idA+","idAn+"),array("ima+","imaka+","imA+","imAn+"),0);
+    echo "<p class = sa >By dazca (7.2.109) :</p>";
+    echo "<p class = sa >दश्च (७.२.१०९) :</p>";
+    display(3);
+}
 /* iko yaNaci (6.1.77) */
 if(sub(array('i','I','u','U'),prat('ac'),blank(0),0))
 {
@@ -2907,9 +3042,9 @@ else
 {
 $sthanivadbhav = 0; 
 }
-/* sarvatra vibhASA goH (6.1.122) */
+/* sarvatra vibhASA goH (6.1.122) */ 
 $go = array("go"); $aonly = array("a");
-if(sub($go,$aonly,blank(0),0) && $pada ==="pada")
+if(sub($go,$aonly,blank(0),0) && ( $pada==="pada" || $bham===1 || sub(array("goanc"),blank(0),blank(0),0)))
 {
 $text = two($go,$aonly,array("go "),$aonly,1);
 echo "<p class = sa >By sarvatra vibhASA goH (6.1.122)</p>
@@ -2919,7 +3054,7 @@ echo "<p class = sa >सर्वत्र विभाषा गोः (६.१
 display(0); $gogo = 1;
 } else { $gogo = 0; } 
 /* avaG sphoTAyanasya (6.1.123) */
-if (sub($go,prat('ac'),blank(0),0)  && $pada ==="pada")
+if (sub($go,prat('ac'),blank(0),0) && ( $pada==="pada" || $bham===1 || sub(array("goanc"),blank(0),blank(0),0))  )
 {
 $text = two($go,prat('ac'),array('gava'),prat('ac'),1);
 echo "<p class = sa >By avaG sphoTAyanasya (6.1.123) </p>
@@ -2929,7 +3064,7 @@ echo "<p class = sa >अवङ्‌ स्फोटायनस्य (६.१.
 display(0); $gogo1 = 1;
 } else { $gogo1 = 0; }
 /* indre ca (6.1.124) */
-if (sub($go,array("indra"),blank(0),0)  && $pada ==="pada")
+if (sub($go,array("indra"),blank(0),0)  && ( $pada==="pada" || $bham===1 || sub(array("goanc"),blank(0),blank(0),0)))
 {
 $text = two($go,array("indra"),array('gava'),array("indra"),0);
 echo "<p class = sa >by indre ca (6.1.124) :</p>";
@@ -2937,7 +3072,7 @@ echo "<p class = sa >इन्द्रे च (६.१.१२४) :</p>";
 display(0); $gogo2 = 1;
 } else { $gogo2 = 0; }
 /* eGaH padAntAdati (6.1.109) */
-if (sub(array("e","o"),array("a"),blank(0),0)  && $pada ==="pada")
+if (sub(array("e","o"),array("a"),blank(0),0)  && ( $pada==="pada" || $bham===1 || sub(array("goanc"),blank(0),blank(0),0)))
 {
     $text = two(prat('eN'),array("a"),prat('eN'),array("'"),0);
     echo "<p class = sa >By eGaH padAntAdati (6.1.109) : </p>";
@@ -3077,14 +3212,21 @@ if (arr($text,'/['.pc('hl').'][s]$/') )
    display(0);
 }
 /* patch for asiddhatva of SakAra of pratyaya as in pipaThiS */
-if (sub(array("pipaWiz","doz"),blank(0),blank(0),0) && $pada==="pada")
+if (arr($text,'/[z][+]/') && $pada==="pada")
 {
-   $text = two(array("pipaWiz","doz"),array("+"),array("pipaWir@","dor@"),array("+"),0); $R=array_merge($R,array(1));
+   $text = two(array("z"),array("+"),array("r@"),array("+"),0); $R=array_merge($R,array(1));
     echo "<p class = sa >Satva is asiddha to rutva. Therefore sasajuSo ruH applies. </p>";
     echo "<p class = sa >रुत्वं प्रति षत्वस्यासिद्धत्वात्‌ ससजुषो रुः इति रुत्वम्‌ ।</p>";
    display(0);
 }
 /* sasajuSo ruH (8.2.66) */
+if ((arr($text,'/[s][a][j][u][z][+]/') && $start===1  && $pada ==="pada" ))//&& $eg !== 1) )
+{
+    $text = one(array("z+",),array("r@+",),0); $R=array_merge($R,array(1));
+    echo " <p class = hn >You have entered a visarga at the end of the first word. Usually it is derived from a sakAra at the end of the word.</p>";
+    echo " <p class = hn >आपने प्रथम शब्द के अन्त में विसर्ग का प्रयोग किया है । सामान्यतः यह सकारान्त शब्द से उद्भव होता है ।</p>";
+       display(0);
+}
 if ((arr($text,'/[H][+]/') && $start===1  && $pada ==="pada" ))//&& $eg !== 1) )
 {
     $text = one(array("H+",),array("r@+",),0); $R=array_merge($R,array(1));
@@ -3126,28 +3268,35 @@ if (arr($text,'/[H]$/') && $start===1  && $pada ==="pada" )//&& $eg !==1 )
 }
 /* ahan(8.2.68) and ro'supi (8.2.69) and rUparAtrirathantareSu vAcyam (vA 4847) */ 
 $noahan = array("vftrahan");
-if (sub(array("ahan"),array("+"),blank(0),0) && !sub($noahan,blank(0),blank(0),0) && $first === "ahan" && !(in_array($so,$sup)) && $pada==="pada")
+if (sub(array("ahan","AhaAn"),array("+"),blank(0),0) && !sub($noahan,blank(0),blank(0),0) && $first === "ahan" && !(in_array($so,$sup)) && $pada==="pada")
 { 
     if ((strpos($so,"rUp")===0)||(strpos($so,"rAtr")===0)||(strpos($so,"raTantar")===0))
     {
-    $text = one(array("ahan"),array("ahar@"),0); $R=array_merge($R,array(1));
+    $text = one(array("ahan","Ahan"),array("ahar@","Ahar@"),0); $R=array_merge($R,array(1));
     echo "<p class = sa >By ahan (8.2.68) and rUparAtrirathantareSu vAcyam (vA 4847).</p>";
      echo "<p class = sa >अहन्‌ (८.२.६८) तथा रूपरात्रिरथन्तरेषु वाच्यम्‌ (वा ४८४७) ।</p>";
      display(0);
     }
     else 
     {
-    $text = one(array("ahan"),array("ahar"),0);
+    $text = one(array("ahan","Ahan"),array("ahar","Ahan"),0);
         echo "<p class = sa >ro'supi (8.2.69) :</p>";
      echo "<p class = sa >रोऽसुपि (८.२.६९) :</p>";
      display(0);
     }
 }
-if (arr($text,'/[a][h][a][n]$/') && !sub($noahan,blank(0),blank(0),0) &&(in_array($so,$sup)) && $pada === "pada")
+if ( (arr($text,'/[aA][h][a][n]$/')||arr($text,'/[aA][h][a][n][+]/') )&& !sub($noahan,blank(0),blank(0),0) && (in_array($so,$sup)) && $pada === "pada")
 {
-    $text = one(array("ahan"),array("ahar@"),0); $R=array_merge($R,array(1));
-    echo "<p class = sa >By ahan (8.2.68) :</p>";
+     echo "<p class = sa >By ahan (8.2.68) :</p>";
+     echo "<p class = hn >This creates a nipAta for ahan, and shows that the na lopaH prAtipadikAntasya doesn't apply here.</p>";
      echo "<p class = sa >अहन्‌ (८.२.६८) :</p>";
+     echo "<p class = hn >अनेन नलोपाभावं निपात्यते ।</p>";
+     display(0);
+    $text = one(array("ahan","Ahan"),array("ahar@","Ahar@"),0); $R=array_merge($R,array(1));
+     echo "<p class = sa >By ahan (8.2.68) :</p>";
+     echo "<p class = hn >This mandates rutva here.</p>";
+     echo "<p class = sa >अहन्‌ (८.२.६८) :</p>";
+     echo "<p class = hn >अनेन रुर्विधेयः ।</p>";
    display(0); $r3 = 1;
 } else { $r3 = 0; }
 /* samaH suTi (8.3.5) */ // have used @ as mark of anunAsika u of ru. 
@@ -3450,9 +3599,9 @@ if (sub(array("maGavAn"),blank(0),blank(0),0) && arr($text,'/[v][a][n][+]$/') &&
     echo "<p class = sa >न लोपः प्रातिपदिकान्तस्य (८.२.७) :</p>";
     display(0);        
 }
-if (sub(array("maGavan"),blank(0),blank(0),0)  && !arr($text,'/['.flat($ac).'][n][+]$/') && arr($text,'/[v][a][n][+]$/') && in_array($so,$sup) && $bham===0 && $shi===0 && $ikoci===0 && $Gisambu===0 && $sambuddhi===0)
+if (sub(array("maGavan","Ahar@","Ahan"),blank(0),blank(0),0) && in_array($so,$sup) && $bham===0 && $shi===0 && $ikoci===0 && $Gisambu===0 && $sambuddhi===0)
 {
-    $text = two(array("maGavan"),array("+"),array("maGavAn"),array("+"),0);
+    $text = two(array("maGavan","Ahar@","Ahan"),array("+"),array("maGavAn","AhAr@","AhAn"),array("+"),0);
     echo "<p class = sa >By sarvanAmasthAne cAsambuddhau (6.4.8) :</p>";
     echo "<p class = hn >Because of bahulagrahaNa in maghavan, saMyogAntasya lopaH is not asiddha here. :</p>";
     echo "<p class = sa >सर्वनामस्थाने चासम्बुद्धौ (६.४.८)  :</p>";
@@ -3461,30 +3610,41 @@ if (sub(array("maGavan"),blank(0),blank(0),0)  && !arr($text,'/['.flat($ac).'][n
 }
 /* NAvuttarapade pratiSedho vaktavyaH (vA 4785) */
 // Pending because involves samAsa. Out of purview right now.
+
+/* sambuddhau napuMsakAnAM nalopo vA vAcyaH (vA 4786) */
+$napumsakanalopa=array();
+if (arr($text,'/[n][+]$/') && in_array($so,$sup) && $bham===0 && $shi===0 && $ikoci===0 && $so==="su!" && $sambuddhi===1 && $gender==="n")
+{
+    $text = two(array("n"),array("+"),array(""),array("+"),1);
+    echo "<p class = sa >By sambuddhau napuMsakAnAM nalopo vA vAcyaH (vA 4786) :</p>";
+    echo "<p class = sa >सम्बुद्धौ नपुंसकानां नलोपो वा वाच्यः (वा ४७८६) :</p>";
+    display(0); $napumsakanalopa=array_merge($napumsakanalopa,array(1));
+}
+
 /* na lopaH prAtipadikAntasya (8.2.7) */
 // parame vyoman is pending. Vedic in nature.
-if (arr($text,'/[n][+]$/') && $nopadha===1 )
+if (arr($text,'/[n][+]$/') && $nopadha===1 && !in_array(1,$napumsakanalopa) )
 {
     $text = two(array("n"),array("+"),array(""),array("+"),0);
     echo "<p class = sa >By na lopaH prAtipadikAntasya (8.2.7) :</p>";
     echo "<p class = sa >न लोपः प्रातिपदिकान्तस्य (८.२.७) :</p>";
     display(0);        
 }
-elseif (arr($text,'/[n][+]$/') && in_array($so,$sup) && $bham===0 && $shi===0 && $ikoci===0 && $Gisambu===0)
+elseif (arr($text,'/[n][+]$/') && in_array($so,$sup) && $bham===0 && $shi===0 && $ikoci===0 && $Gisambu===0  && !in_array(1,$napumsakanalopa))
 {
     $text = two(array("n"),array("+"),array(""),array("+"),0);
     echo "<p class = sa >By na lopaH prAtipadikAntasya (8.2.7) :</p>";
     echo "<p class = sa >न लोपः प्रातिपदिकान्तस्य (८.२.७) :</p>";
     display(0);        
 }
-if (arr($text,'/[n][+]['.pc('hl').']/') && ( $astana===1 || $Satcatur===1) )
+if (arr($text,'/[n][+]['.pc('hl').']/') && ( $astana===1 || $Satcatur===1)  && !in_array(1,$napumsakanalopa))
 {
     $text = two(array("n"),array("+"),array(""),array("+"),0);
     echo "<p class = sa >By na lopaH prAtipadikAntasya (8.2.7) :</p>";
     echo "<p class = sa >न लोपः प्रातिपदिकान्तस्य (८.२.७) :</p>";
     display(0);        
 }
-elseif (arr($text,'/[n][+]['.pc('hl').']/')  && !arr($text,'/[n][+][e]/') && ($pada==="pada"|| $so==="Am" ) && in_array($so,$sup) && $bham===0 && $shi===0 && $ikoci===0 && $Gisambu===0)
+elseif (arr($text,'/[n][+]['.pc('hl').']/')  && !arr($text,'/[n][+][e]/') && ($pada==="pada"|| $so==="Am" ) && in_array($so,$sup) && $bham===0 && $shi===0 && $ikoci===0 && $Gisambu===0  && !in_array(1,$napumsakanalopa))
 {
     $text = two(array("n"),array("+"),array(""),array("+"),0);
     echo "<p class = sa >By na lopaH prAtipadikAntasya (8.2.7) :</p>";
@@ -3500,7 +3660,7 @@ if (arr($text,'/[n][a][S][+]/') && $dhatu===1 && $pada==="pada")
     display(0);
 }
 /* kvinpratyayasya kuH (8.2.62) */
-if (sub(array("S","z","s"),array("+"),blank(0),0) && $kvin===1 && $pada==="pada" && $Asarva===1)
+if (sub(array("S","z","s"),array("+"),blank(0),0) && ( $kvin===1 || ($kvip===1 && $fo==="diS") )&& $pada==="pada" && $Asarva===1)
 {
     $text1 = $text;        
     $text2 = two(array("S","z","s"),array("+"),array("K","k","k"),array("+"),0); // check for z and s.
@@ -3511,12 +3671,13 @@ if (sub(array("S","z","s"),array("+"),blank(0),0) && $kvin===1 && $pada==="pada"
     $text= $text1;
     $kvinku=1;    
 } else { $kvinku=0; }
-if (sub($hl,array("+"),blank(0),0) && $kvin===1 && $pada==="pada" && !sub(array("S","z","s"),array("+"),blank(0),0))
+if (sub($hl,array("+"),blank(0),0) && ( $kvin===1 || ($kvip===1 && $fo==="diS") ) && $pada==="pada" && !sub(array("S","z","s"),array("+"),blank(0),0))
 {   
     $text = two($cu,array("+"),$ku,array("+"),0);
     $text = two($Tu,array("+"),$ku,array("+"),0);
     $text = two($tu,array("+"),$ku,array("+"),0);
     $text = two($pu,array("+"),$ku,array("+"),0);
+    $text = two(array("h"),array("+"),array("g"),array("+"),0);
     echo "<p class = sa >By kvinpratyayasya kuH (8.2.62) :</p>";
     echo "<p class = sa >क्विन्प्रत्ययस्य कुः (८.२.६२) :</p>";
     display(0);
@@ -3696,6 +3857,7 @@ if ( sub(array("M"),$hl,array("+"),0) && $bham===0 && $pada==="pada" && $vriddhi
     $text = three(array("M"),array("+"),$Tu,array("R"),array("+"),$Tu,0);
     $text = three(array("M"),array("+"),$tu,array("n"),array("+"),$tu,0);
     $text = three(array("M"),array("+"),$pu,array("m"),array("+"),$pu,0);
+    $text = two(array("M"),array("+"),array("m"),array("+"),0);
     echo "<p class = sa >By nimittApAye naimittikasyApyapAyaH (pa) :</p>";
     echo "<p class = sa >निमित्तापाये नैमित्तिकस्याप्यपायः (प) :</p>";
     display(0);
@@ -3800,7 +3962,7 @@ if (arr($text,'/['.pc('Jl').']$/') )
             echo "<p class = sa >झलां जशोऽन्ते (८.२.३९) :</p>";
             display(0);
 }
-if (arr($text,'/['.pc('Jl').'][+]/') && ( $pada === "pada" && $so!=="su!")&& $atobhis===0)
+if (arr($text,'/['.pc('Jl').'][+]/') && ( $pada === "pada" && !arr(array($fo),'/[s]$/'))&& $atobhis===0)
 {     
     if ($r1 === 1 ) 
         {
@@ -3815,7 +3977,7 @@ if (arr($text,'/['.pc('Jl').'][+]/') && ( $pada === "pada" && $so!=="su!")&& $at
         }
 } 
 /* kvinpratyayasya kuH (8.2.62) */
-if (sub($hl,array("+"),blank(0),0) && $kvin===1 && $pada==="pada" && !sub(array("S","z","s"),array("+"),blank(0),0) && ( $kvinku===1 || $Asarva===0))
+if (sub($hl,array("+"),blank(0),0) && ( $kvin===1 || ($kvip===1 && $fo==="diS") ) && $pada==="pada" && !sub(array("S","z","s"),array("+"),blank(0),0) && ( $kvinku===1 || $Asarva===0))
 {   
     $text = two($cu,array("+"),$ku,array("+"),0);
     $text = two($Tu,array("+"),$ku,array("+"),0);
@@ -3826,7 +3988,15 @@ if (sub($hl,array("+"),blank(0),0) && $kvin===1 && $pada==="pada" && !sub(array(
     $text = array_merge($text,$text2);        
     }
     echo "<p class = sa >By kvinpratyayasya kuH (8.2.62) :</p>";
+    if ($kvip===1)
+    {
+    echo "<p class = hn >As 'tyadAdiSu dRSo'nAlocane kaYca (3.2.60) mandates kvin for dRS, others also take kutvam. </p>";       
+    }
     echo "<p class = sa >क्विन्प्रत्ययस्य कुः (८.२.६२) :</p>";
+    if ($kvip===1)
+    {
+    echo "<p class = hn >त्यदादिषु दृशोऽनालोचने कञ्च (३.२.६०) इति दृशेः क्विन्विधानादन्यत्रापि कुत्वम्‌ ।</p>";        
+    }
     display(0);
 }
 /* vizvasya vasurAToH (6.3.128) */
@@ -3881,7 +4051,7 @@ if (arr($text,'/[m][+]/') && $dhatu===1 && $pada==="pada")
     display(0);
 }
 /* rvorupadhAyA dIrgha ikaH (8.2.76) */
-if ($dhatu===1 && ((sub(array("i","I","u","U","f","F","x","X",),array("r+","v+"),$hl,0) && $pada==="pada" )||arr($text,'/[iIuUfFxX][rv]$/')||sub(array("i","I","u","U","f","F","x","X",),array("r","v"),array("+"),0)) )
+if ($dhatu===1 && ((sub(array("i","I","u","U","f","F","x","X",),array("r+","v+"),$hl,0) && $pada==="pada" )||arr($text,'/[iIuUfFxX][rv]$/')||sub(array("i","I","u","U","f","F","x","X",),array("r","v"),array("+"),0)) && $pada==="pada")
 {
     $text = three(array("i","I","u","U","f","F","x","X",),array("r","v"),array("+"),array("I","I","U","U","F","F","F","F",),array("r","v"),array("+"),0);
     echo "<p class = sa >By rvorupadhAyA dIrgha ikaH (8.2.76) :</p>";
@@ -3901,11 +4071,14 @@ if ($dhatu===1 && sub($ik,array("r","v"),$hl,0) && arr(array($fo),'/[rv]$/'))
     }
     display(0); $r4 = 1;
 }
-/* adaso'serdAdu do maH (8.2.80) */ 
+/* adaso'serdAdu do maH (8.2.80) */
 // For proper adas forms. 
-if (sub(array("adO","ada+m","adA+n","adA+ByAm","ada+smE","ada+sm","ada+sya","aday+or"),blank(0),blank(0),0) && $fo==="adas")
+$acmu = array("u","U","u","U","u","U","u","U","u","U","U","U","U","U",);
+//if (sub(array("adO","ada+m","adA+n","adA+ByAm","ada+smE","ada+sm","ada+sya","aday+or"),blank(0),blank(0),0) && $fo==="adas")
+if (sub(array("ad"),blank(0),blank(0),0) && $fo==="adas" && !arr($text,'/[a][r][+]/') )
 {
-     $text=one(array("adO","ada+m","adA+n","adA+ByAm","ada+smE","ada+sm","ada+sya","aday+or"),array("amU","amum","amUn","amU+ByAm","amu+smE","amu+sm","amu+sya","amuy+or"),0);
+//     $text=one(array("adO","ada+m","adA+n","adA+ByAm","ada+smE","ada+sm","ada+sya","aday+or"),array("amU","amum","amUn","amU+ByAm","amu+smE","amu+sm","amu+sya","amuy+or"),0);
+     $text=two(array("ad"),$ac,array("am"),$acmu,0);
      echo "<p class = sa >adaso'serdAdu do maH (8.2.80) :</p>";
      echo "<p class = sa >अदसोऽसेर्दादु दो मः (८.२.८०) :</p>";
      display(0);
@@ -4092,12 +4265,7 @@ $text = two(array("N","R"),prat('Sr'),array("Nk","Rw"),prat('Sr'),1);
 echo "<p class = sa >By GNoH kukTukzari (8.3.28) :</p>";
 echo "<p class = sa >ङ्णोः कुक्टुक्शरि (८.३.२८) :</p>";
 display(0);
-/* cayo dvitIyAH zari pauSkarasAderiti vAcyam (vA 5023) */
-$text = two(array("Nk","Rw"),prat('Sr'),array("NK","RW"),prat('Sr'),1);
-echo "<p class = sa >By cayo dvitIyAH zari pauSkarasAderiti vAcyam (vA 5023) :</p>";
-echo "<p class = sa >चयोः द्वितीयाः शरि पौष्करसादेरिति वाच्यम्‌ (वा ५०२३) :</p>";
-display(0); $cayo=1;
-} else {$cayo = 0; }
+}
 /* DaH si dhuT (8.3.29) */
 if (sub(array("q"),array("s"),blank(0),0))
 {
@@ -4355,9 +4523,9 @@ display(0);
 /* apadAntasya mUrdhanyaH (8.3.55), iNkoH (8.3.57) and AdezapratyayayoH (8.3.59) */
 // Not coded perfectly, only according to the need of vibhaktis. 
 $iN1 = array("i","I","u","U","f","F","x","X","e","o","E","O","h","y","v","r","l","k","K","g","G","N"); 
-if((sub(array("i","I","u","U","f","F","x","X","e","o","E","O","h","y","v","r","l","k","K","g","G","N"),array("su","sAm","s+"),blank(0),0)) &&  (in_array($so,array("Am","sup"))|| in_array(1,$samp)) || ($fo==="adas" && in_array($so,array("Ne","Nasi!","Nas","Am"))) )
+if((sub(array("i","I","u","U","f","F","x","X","e","o","E","O","h","y","v","r","l","k","K","g","G","N"),array("+s"),blank(0),0)) &&  (in_array($so,array("Am","sup"))|| in_array(1,$samp)) || ($fo==="adas" && in_array($so,array("Ne","Nasi!","Nas","Am","Ni"))) )
 {
-$text = two($iN1,array("+su","+sAm","+s+","+smE","+smAd","+sya","+sAm"),$iN1,array("+zu","+zAm","+z+","+zmE","+zmAd","+zya","+zAm"),0);
+$text = two($iN1,array("+s"),$iN1,array("+z"),0);
 echo "<p class = sa >By apadAntasya mUrdhanyaH (8.3.55), iNkoH (8.3.57) and AdezapratyayayoH (8.3.59) :</p>";
 echo "<p class = sa >अपदान्तस्य मूर्धन्यः (८.३.५५), इण्कोः (८.३.५७) तथा आदेशप्रत्यययोः (८.३.५९) :</p>";
 display(0);
@@ -4432,11 +4600,28 @@ echo "<p class = sa >By ekAjuttarapade NaH (8.4.12) :</p>";
 echo "<p class = sa >एकाजुत्तरपदे णः (८.४.१२) :</p>";
 display(0);   
 }
+/* Patch to remove the + sign */
+if (arr($text,'/['.pc('hl').' ][+]['.pc('hl').']/') || arr($text,'/[HM!][+]['.pc('hl').']/'))
+{
+$text = three($hl,array("+"," +"),$hl,$hl,array(""," "),$hl,0);    
+$text = three(array("H","M","!"),array("+"),$hl,array("H","M","!"),array(""),$hl,0);    
+}
+if ( arr($text,'/['.pc('ac').'HM! ][+]['.pc('ac').']/') || arr($text,'/[HM!][+]['.pc('ac').']/') )
+{  
+$text = one(array("+"),array(" "),0);
+}
+if ( arr($text,'/['.pc('ac').' ][+]['.pc('hl').'MH]/') || arr($text,'/[+]$/') )
+{  
+$text = one(array("+"),array(""),0);
+}
+if ( arr($text,'/['.pc('hl').'][+]['.pc('ac').']/') )
+{  
+$text = one(array("+"),array(""),0);
+}
 
 /* aTkupvAGnumvyavAye'pi (8.4.2) and na padAntasya (8.4.37) */
 /* RvarNAnnasya NatvaM vAcyam (vA 4969) */
 /* na padAntasya 8.4.37) */
-
 // The issue is identifying samAnapada. Can't be coded properly as of now.
 $ras = '/([rzfF])([aAiIuUfFxXeoEOhyvrkKgGNpPbBmM+]*)([n])/';
 $rasend = '/([rzfF])([aAiIuUfFxXeoEOhyvrkKgGNpPbBmM+]*)([n])$/';
@@ -4468,30 +4653,12 @@ if(arr($text,'/([rz])([aAiIuUfFxXeoEOhyvrkKgGNpPbBmM+]*)([R])/') && $hohante===0
 echo "<p class = sa >By aTkupvAGnumvyavAye'pi (8.4.2) :</p>";
 echo "<p class = sa >अट्कुप्वाङ्नुम्व्यवायेऽपि (८.४.२) :</p>";     
 }
-if(arr($text,'/([fF])([aAiIuUfFxXeoEOhyvrkKgGNpPbBmM+]*)([R])/') && $honante===0)
+if(arr($text,'/([fF])([aAiIuUfFxXeoEOhyvrkKgGNpPbBmM+]*)([R])/') && $hohante===0)
 {
 echo "<p class = sa >By RvarNAnnasya NatvaM vAcyam (vA 4969) :</p>";
 echo "<p class = sa >ऋवर्णान्नस्य णत्वं वाच्यम्‌ (वा ४९६९) :</p>";     
 }
 display(0);
-}
-/* Patch to remove the + sign */
-if (arr($text,'/['.pc('hl').' ][+]['.pc('hl').']/') || arr($text,'/[HM!][+]['.pc('hl').']/'))
-{
-$text = three($hl,array("+"," +"),$hl,$hl,array(""," "),$hl,0);    
-$text = three(array("H","M","!"),array("+"),$hl,array("H","M","!"),array(""),$hl,0);    
-}
-if ( arr($text,'/['.pc('ac').'HM! ][+]['.pc('ac').']/') || arr($text,'/[HM!][+]['.pc('ac').']/') )
-{  
-$text = one(array("+"),array(" "),0);
-}
-if ( arr($text,'/['.pc('ac').' ][+]['.pc('hl').'MH]/') || arr($text,'/[+]$/') )
-{  
-$text = one(array("+"),array(""),0);
-}
-if ( arr($text,'/['.pc('hl').'][+]['.pc('ac').']/') )
-{  
-$text = one(array("+"),array(""),0);
 }
 /* stoH zcunA zcuH (8.4.40) */
 $stu = array("s","t","T","d","D","n");
@@ -4612,6 +4779,14 @@ echo "<p class = sa >By vA hatajagdhayoH (vA 5022) :</p>";
 echo "<p class = sa >वा हतजग्धयोः (वा ५०२२) :</p>";
 display(0);
 }
+/* cayo dvitIyAH zari pauSkarasAderiti vAcyam (vA 5023) */
+if (sub(array("N","R"),prat('Sr'),blank(0),0))
+{
+$text = two(array("Nk","Rw"),prat('Sr'),array("NK","RW"),prat('Sr'),1);
+echo "<p class = sa >By cayo dvitIyAH zari pauSkarasAderiti vAcyam (vA 5023) :</p>";
+echo "<p class = sa >चयोः द्वितीयाः शरि पौष्करसादेरिति वाच्यम्‌ (वा ५०२३) :</p>";
+display(0); $cayo=1;
+} else {$cayo = 0; }
 /*anaci ca (8.4.47)*/ // Here the sudhI + upAsya - what about the Asy - Assy is possbile ? Code gives it. But there are 4 options. Code gives two only.
 // The cause for using $hrasva instead of $ac is that the dIrgha vowels are debarred by dIrghAdAcAyANAm.
 // Here instead of using pratyAhAra hl, we shall do manual enumeration of all the members. Bexause of "anusvAravisargajihvAmUlIyopadhmAnIyayamAnAmakAropari zarSu ca pAThasyopasaGkhyAtatvenAnusvArasyApyactvAt (in derivation of samskAra) 
@@ -4791,7 +4966,7 @@ if ($cayo===0)
 {
     while(sub($Jl2,prat('Kr'),blank(0),0) !== false)
     {
-        if (sub($Jl1,prat('Kr'),blank(0),0) || $dhut === 1)
+        if ( (sub($Jl1,prat('Kr'),blank(0),0) || $dhut === 1))
         {
         $text = two($Jl1,prat('Kr'),savarna(prat('Jl'),prat('cr')),prat('Kr'),0);
         echo "<p class = sa >By khari ca (8.4.55) :</p>";
@@ -4799,7 +4974,8 @@ if ($cayo===0)
         display(0);
         }
     }
-    if (sub(prat('cr'),prat('Kr'),blank(0),0) || $dhut === 1)
+}
+if (sub(prat('cr'),prat('Kr'),blank(0),0) || $dhut === 1)
     {
     echo "<p class = sa >By khari ca (8.4.55) :</p>";
     echo "<p class = hn >N.B. By khari ca (8.4.55), 'car' varNas give 'car' varNas only as their savarNa :</p>";
@@ -4807,7 +4983,6 @@ if ($cayo===0)
     echo "<p class = hn >खरि च (८.४.५५) से चर्‌ वर्णों का सवर्ण चर्‌ ही रहता है ।</p>";
     display(0);
     }
-}
 /* aNo'pragRhyasyAnunAsikaH (8.4.57) */
 if (arr($text,'/[aAiIuUfFxX]$/'))
 {
