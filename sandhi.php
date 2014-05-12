@@ -58,7 +58,7 @@ $bhyas = 4; // 4 for caturthI, 5 for paJcamI. Default 4.
 $asmadpada = 2; // 0 for niSedha, 1 for nitya, 2 for vibhASA. Default 2. 
 $bhavat = 0; // 0 for bhAterDavatu, 1 for bhU+zatR.
 $abhyasta = 0; // 0 for not abhyasta, 1 for abhyasta.
-$shatR = 1; // 0 for not shatR, 1 for shatR.
+$shatR = 0; // 0 for not shatR, 1 for shatR.
 $Nyanta = 0; // 0 for aNyanta, 1 for Nyanta.
 $san = 0; // 0 for non san, 1 for san.
 $vasu = 0; // 0 for no vasvanta, 1 for vasvanta.
@@ -1019,7 +1019,9 @@ if (sub($paddanno,array("+"),blank(0),0) && in_array($so,$zasadi))
 {
     $text = two($paddanno,array("+"),$paddanno1,array("+"),1);
     echo "<p class = sa >By paddannomAshRnnizasanyUSandoSanyakaJChakannudannAsaJChasprabhRtiSu (6.1.63) :</p>";
+    echo "<p class = hn >prabhRtigrahaNaM prakArArtham. tena 'padaGghrIcaraNo'striyAm', 'svAntaM hRnmAnasaM manaH' etc are valid.</p>";
     echo "<p class = sa >पद्दन्नोमास्‍हृन्निशसन्यूषन्दोषन्यकञ्छकन्नुदन्नासञ्छस्प्रभृतिषु (६.१.६३) :</p>";
+    echo "<p class = hn >प्रभृतिग्रहणं प्रकारार्थम्‌ । तेन 'पदङ्घ्रिचरणोऽस्त्रियाम्‌', 'स्वान्तं हृन्मानसं मनः' इत्यादि च सङ्गच्छते ।</p>";
     display(0);
 }
 /* mAMsapRtanAsAnUnAM mAMspRtsnavo vAcyAH SasAdau vA (vA 3416) */
@@ -1432,16 +1434,22 @@ if (arr(array($fo),'/[a][p]$/') && arr($text,'/[a][p][+][B]/') && in_array($so,a
     echo "<p class = sa >अपो भि (७.४.४८) :</p>";
     display(3);
 }
-
 /* Ato dhAtoH (6.4.140) */
-// Right now we have presumed that all are AkArAnta dhAtus. Abanta etc will have to be dealt with later on.
-// AtaH yogavibhAga is pending.
 $haha = array("hAhA");
-if ($bham === 1 && arr($text,'/[A][+]/') && !in_array($fo,$haha) && $dhatu===1 && $Ap===0)
+if ($bham === 1 && arr($text,'/[A][+]/') && !in_array($fo,$haha) && $_GET['cond1_2']==="1"  && $Ap===0)
 {
     $text = two(array("A"),array("+"),array(""),array("+"),0);
     echo "<p class = sa >By Ato dhAtoH (6.4.140) :</p>";
     echo "<p class = sa >आतो धातोः (६.४.१४०) :</p>";
+    display(6);
+}
+if ($bham === 1 && arr($text,'/[A][+]/') &&  in_array($fo,array('ktvA','SnA')) && $Ap===0)
+{
+    $text = two(array("A"),array("+"),array(""),array("+"),1);
+    echo "<p class = sa >By Ato dhAtoH (6.4.140) :</p>";
+    echo "<p class = hn >AtaH iti yogavibhAgAdadhAtorapi AkAralopaH kvacit |</p>";       
+    echo "<p class = sa >आतो धातोः (६.४.१४०) :</p>";
+    echo "<p class = hn ></p>";       
     display(6);
 }
 /* na saMyogAdvamantAt (6.4.137) */
@@ -1513,6 +1521,16 @@ if (arr($text,'/[+][SI]/') && in_array($so,array("O","Ow")))
     echo "<p class = pa >औङः श्यां प्रतिषेधो वाच्यः (वा) :</p>";
     display(0); $auGazyA = 1;
 } else { $auGazyA = 0; }
+/* paddannomAshRnnizasanyUSandoSanyakaJChakannudannAsaJChasprabhRtiSu (6.1.63) special case kakuddoSaNI */
+if (sub(array("doz"),array("+"),array("SI"),0) && in_array($so,array("O","Ow")))
+{
+    $text = two(array("doz"),array("+"),array("dozan"),array("+"),0);
+    echo "<p class = sa >By paddannomAshRnnizasanyUSandoSanyakaJChakannudannAsaJChasprabhRtiSu (6.1.63) :</p>";
+    echo "<p class = hn >prabhRtigrahaNaM prakArArtham. tathA ca auGaH zyAmapi dozannAdezaH. </p>";
+    echo "<p class = sa >पद्दन्नोमास्‍हृन्निशसन्यूषन्दोषन्यकञ्छकन्नुदन्नासञ्छस्प्रभृतिषु (६.१.६३) :</p>";
+    echo "<p class = hn >प्रभृतिग्रहणं प्रकारार्थम्‌ । तथा च औङः श्यामपि दोषन्नादेशः ।</p>";
+    display(0);
+}
 /* bhasya (6.4.129) and allopo'naH (6.4.134) and vibhASA GizyoH (6.4.236) and na saMyogAdvamantAt (6.4.137) */        
 if ($bham === 1 && $vamanta===0 && arr($text,'/[a][n][+]/') && $shat===0 ) 
 {
@@ -2308,14 +2326,14 @@ if (arr($text,'/[aA][t][+[S][I]/') && $shatR===1 && itcheck(array("f"),1) )
     echo "<p class = sa >आच्छीनद्योर्नुम्‌ (७.१.८०) :</p>";
     display(0);
 }
-/* ugidacAM sarvanAmasthAne'dhAtoH (7.1.70) */
+/* ugidacAM sarvanAmasthAne'dhAtoH (7.1.70) */ 
 if ($sarvanamasthana1===1 && ( ($ancu===0 && $dhatu===1)  ) && $kruJca===0 && arr(array($fo),'/[a][t]$/'))
     {
     echo "<p class = pa >'ac' is for restricting the application of 'ugidacAm...' to aYcu if the word is a dhAtu. </p>";
     echo "<p class = pa >धातोश्चेदुगित्कार्यं तर्ह्यञ्चतेरेव ।</p>";      
     display(0);
     }
-if ($sarvanamasthana1===1 && $nAbhyasta===0 &&  (( $dhatu===0 && itcheck(array("u","U","f","F","x","X"),1) ) ||  ($ancu===1 && $dhatu===1) ||  ( ($kvip===1 || $kvin===1)&& $dhatu===1 && arr(array($fo),'/[a][t]$/')) || $bhavat===1 ) && $kruJca===0 && $vAnapuMsaka===0)
+if ($sarvanamasthana1===1 && $nAbhyasta===0 &&  (( $dhatu===0 && itcheck(array("u","U","f","F","x","X"),1) )  ||  ($ancu===1 && $dhatu===1) ||  ( ($kvip===1 || $kvin===1)&& $dhatu===1 && arr(array($fo),'/[a][t]$/')) || $bhavat===1 ) && $kruJca===0 && $vAnapuMsaka===0)
 {
     $text = mit('/['.pc('hl').'][+]/','n',0); $num=array_merge($num,array(1));
     $text = one(array("annc"),array("anc"),0);
@@ -3828,8 +3846,8 @@ if ((arr($text,('/[r][+][s]$/')) && $pada === "pratyaya") || (arr($text,('/[r][s
     echo "<p class = sa >By rAtsasya (8.2.24) :</p>"; 
     echo "<p class = sa >रात्सस्य (८.२.२४) :</p>";
     display(0); 
-}
-if ((arr($text,('/[r][+][^s]$/')) && $pada === "pratyaya") || (arr($text,('/[r][^s@][+]/')) && $pada === "pada") )
+}echo $pada;
+if ((arr($text,('/[r][+][hyvrlYmGRnJBGQDjbgqdKPCWTcwtkpzS]$/')) && $pada === "pratyaya") || (arr($text,('/[r][hyvrlYmGRnJBGQDjbgqdKPCWTcwtkpzS@][+]/')) && $pada === "pada") )
 {
     echo "<p class = pa >rAtsasya (8.2.24) prevents application of saMyogAntasya lopaH.</p>"; 
     echo "<p class = pa >रात्सस्य (८.२.२४) से संयोगान्तस्य लोपः का प्रतिषेध होता है ।</p>";
@@ -4578,9 +4596,9 @@ display(0);
 }
 /* raSAbhyAM no NaH samAnapade (8.4.1) */
 // pUrvasmAdapi vidhau sthAnivadbhAvaH , pUrvatrAsiddhe na sthAnivat (vA 433) and tasya doSaH saMyogAdilopalatvaNatveSu (vA 440) are pending to code.
-if($pada === "pratyaya" && sub(array("r","z"),array("n"),blank(0),0))
+if($pada === "pratyaya" && arr($text,'/[rz][n](['.pc('al').']*)[+]/'))
 {
-$text = two(array("r","z"),array("n"),array("r","z"),array("R"),0);
+$text = one(array("rn","zn"),array("rR","zR"),0);
 echo "<p class = sa >By raSAbhyAM no NaH samAnapade (8.4.1) :</p>";
 echo "<p class = sa >रषाभ्यां नो णः समानपदे (८.४.१) :</p>";
 display(0);   

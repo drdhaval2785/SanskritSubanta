@@ -60,7 +60,7 @@ $sup = array("su!","Ow","jas","am","O","Sas","wA","ByAm","Bis","Ne","ByAm","Byas
 $acsup = array("O","jas","am","Ow","Sas","wA","Ne","Nasi!","Nas","os","Am","Ni","os");
 $hlsup = array("su!","ByAm","Bis","Byas","sup");
 $prathama = array("su!","O","jas","am","Ow","Sas");
-$sarvanama = array("sarva","viSva","uBa","uBaya","atara","atama","anya","anyatara","itara","tvat","tva","nema","sima","pUrva","para","avara","dakziRa","uttara","apara","aDara","sva","antara","tyad","tad","yad","etad","idam","adas","eka","dvi","yuzmad","asmad","Bavat","kim","idakam");
+$sarvanama = array("sarva","viSva","uBa","uBaya","atara","atama","anya","anyatara","itara","tvat","tva","nema","sima","tyad","tad","yad","etad","idam","adas","eka","dvi","yuzmad","asmad","Bavat","kim","idakam","etara");
 $zasadi = array("Sas","wA","ByAm","Bis","Ne","ByAm","Byas","Nasi!","ByAm","Byas","Nas","os","Am","Ni","os","sup");
 $sarvanamasthana = array("su!","O","jas","am","Ow","Si");
 $yacibham = array("Sas","wA","Ne","Nasi!","Nas","os","Am","os","Ni");
@@ -1357,7 +1357,7 @@ function samprasarana($a,$merge)
 }
 /* function samprasarana */
 // $a to contain the array of it markers to check.
-// $b. 0 for it. 1 for itpratipadika. 2 for itpratyaya
+// $b. 0 for it. 1 for itprakriti. 2 for itpratyaya
 function itcheck($a,$b)
 {
     global $text; global $it; global $itprakriti; global $itpratyaya;
