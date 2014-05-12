@@ -426,13 +426,19 @@ elseif ($_GET['cond1_4_5'] === "2")
     $dhatu=1;
     $GI=0;
 }
+elseif ($_GET['cond1_4'] === "5")
+{
+    $eranekaca=0;
+    $nadi=0;
+    $dhatu=1;
+    $GI=0;
+}
 elseif ($_GET['cond1_4'] === "6")
 {
     $eranekaca=0;
     $nadi=1;
     $dhatu=1;
 }
-
 
 /* defining kRt pratyayas */
 /* kRdatiG (3.1.93) */
@@ -562,6 +568,10 @@ elseif ( $gender==="f" && !in_array($fo,array("stri","strI")) && $dhatu===1 && a
     echo "<p class = pa >नेयङुवङ्स्थानावस्त्री (१.४.४) :</p>";
     display(0);
     $nadi = 0;
+}
+elseif ( $nadi===1)
+{
+    $nadi = 1;
 }
 elseif ( (( arr($text,'/[IU][+]/') && $nityastri===1) || in_array($fo,array("bahuSreyasI","aticamU"))))
 {
@@ -1258,7 +1268,7 @@ if (sub(array("saKi","saKI"),$sarvanamasthana,blank(0),0) && $sambuddhi===0 && $
     echo "<p class = hn >इस से सख्युरसम्बुद्धौ का प्रतिषेध होता है ।</p>";
     display(3);
 }            
-if (sub(array("saKi","saKI"),$sarvanamasthana,blank(0),0) && $sambuddhi===0 && $_GET['cond1_3_1'] !== "3" && $gender!=="f")
+if (sub(array("saKi","saKI"),$sarvanamasthana,blank(0),0) && $_GET['cond1_4_3']!=="3" && $sambuddhi===0 && $_GET['cond1_3_1'] !== "3" && $gender!=="f")
 {   $Nidvat = 1; 
     echo "<p class = pa >By sakhyurasambuddhau (7.1.92) :</p>";
     echo "<p class = pa >सख्युरसम्बुद्धौ (७.१.९२) :</p>";
@@ -1278,7 +1288,7 @@ if (sub(array("saKi","saKI"),array("+"),array("su!"),0) && $so==="su!" && $sambu
     echo "<p class = hn >इस से अनङ्‌ सौ का प्रतिषेध होता है ।</p>";
     display(3);
 }            
-if (sub(array("saKi","saKI"),array("+"),array("su!"),0) && $so==="su!" && $_GET['cond1_3_1'] !== "3" && $sambuddhi===0 && $gender!=="f")
+if (sub(array("saKi","saKI"),array("+"),array("su!"),0) && $_GET['cond1_4_3']!=="3" && $so==="su!" && $_GET['cond1_3_1'] !== "3" && $sambuddhi===0 && $gender!=="f")
 {
     $text = two(array("saKi","saKI"),array("+"),array("saKan","saKan"),array("+"),0);
     echo "<p class = sa >By anaG sau (7.1.93) and Gicca (1.1.53)  :</p>";
@@ -2731,8 +2741,8 @@ if ( $dhatu===1 && (arr($text,'/[B][U][+]/')||$fo==="suDI") && arr($text,'/[iuIU
 /* kvau luptaM na sthAnivat (vA 431) */
 // Not displayed because it is difficult to teach sthnanivadbhav to machine now. Will come back to it if I can teach it some day.
 /* aci znudhAtubhruvAM yvoriyaGuvaGau (6.4.77) */
-// znu pending. 
-if (($dhatu===1||$fo==="BrU") && arr($text,'/[iuIU][+]['.flat($ac).']/') && $pada==="pratyaya" && ($eranekaca===0 || ($eranekaca===1 && anekAca($fo)===false )))
+// znu pending.  
+if (($dhatu===1||$fo==="BrU") && arr($text,'/[iuIU][+]['.flat($ac).']/') && $pada==="pratyaya" && ($eranekaca===0 || ($eranekaca===1 && anekAca($fo)===false ) || (arr($text,'/[B][U][+]/')||$fo==="suDI") ))
 {
     $text = three(array("i","I","u","U"),array("+"),$ac,array("iy","iy","uv","uv"),array("+"),$ac,0);
     echo "<p class = sa >By aci znudhAtubhruvAM yvoriyaGuvaGau (6.4.77) :</p>";
@@ -2744,7 +2754,14 @@ if (($dhatu===1||$fo==="BrU") && arr($text,'/[iuIU][+]['.flat($ac).']/') && $pad
 /* gatikAraketarapUrvapadasya yaN neSyate (vA 5034) */
 // This is attached with eranekAco... So, trying to put a note and making the iyaG and yaN optional.
 /* eranekAco'saMyogapUrvasya (6.4.82) */
-if ($dhatu===1 && arr($text,'/['.flat($ac).']['.flat($hl).'][iI][+]['.flat($ac).']/') && $pada==="pratyaya" && anekAca($fo) && $eranekaca===1 && $nabhusu===0)
+//echo $dhatu;echo $pada;echo $eranekaca;echo $nabhusu;
+if ($dhatu===1 && in_array($fo,array("unnI")) && $pada==="pratyaya" && anekAca($fo) && $eranekaca===1 && $nabhusu===0)
+{
+    echo "<p class = pa >As the vizeSaNa 'dhAtunA saMyogasya' mandates that the saMyoga has to belong to dhAtu only for prohibiting 'eranekAco..', the prohibition doesn't apply here.</p>";
+    echo "<p class = pa >धातुना संयोगस्य विशेषणादिह स्यादेव यण्‌ (एरनेकाचो इत्यनेन सूत्रेण) </p>";
+    display(0); $unni=1;
+} else { $unni=0; }
+if ($dhatu===1 && (arr($text,'/['.flat($ac).']['.flat($hl).'][iI][+]['.flat($ac).']/')||$unni===1) && $pada==="pratyaya" && anekAca($fo) && $eranekaca===1 && $nabhusu===0)
 {
     $text = two(array("i","I"),array("+"),array("y","y"),array("+"),0);
     echo "<p class = sa >By eranekAco'saMyogapUrvasya (6.4.82) :</p>";
@@ -3421,6 +3438,13 @@ if (sub(array("kre"),array("ya"),blank(0),0)  && $pada ==="pratyaya" && $start =
 if (arr($text,'/[Kt][y][+][a]/')  && arr(array($fo),'/[Kt][iI]$/') && in_array($so,array("Nasi!","Nas")) && $pada==="pratyaya")
 {
     $text = three(array("Ky","ty"),array("+"),array("a"),array("Ky","ty"),array("+"),array("u"),0);
+    echo "<p class = sa >By khyatyAtparasya (6.1.112) :</p>";
+    echo "<p class = sa >ख्यत्यात्परस्य (६.१.११२) :</p>";
+    display(0);
+}
+if (sub(array("lUny","kzAmy","prastImy"),array("+"),blank(0),0) && in_array($so,array("Nasi!","Nas")) && $pada==="pratyaya")
+{
+    $text = three(array("lUny","kzAmy","prastImy"),array("+"),array("a"),array("lUny","kzAmy","prastImy"),array("+"),array("u"),0);
     echo "<p class = sa >By khyatyAtparasya (6.1.112) :</p>";
     echo "<p class = sa >ख्यत्यात्परस्य (६.१.११२) :</p>";
     display(0);
