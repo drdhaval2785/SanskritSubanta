@@ -105,7 +105,7 @@ $second = convert1($second);
 $fo = $first;
 $so = $second; ;
 // displaying the data back to the user
-echo "<p class = red >You entered: ".convert($fo)." + ".convert($so)." <a href = sandhi.html>Go Back</a></p>";
+echo "<p class = red >You entered: ".convert($fo)." + ".convert($so)." <a href = subanta.html>Go Back</a></p>";
 echo "</br>";
 
 /* preprocessing for the sup pratyayas. */
@@ -191,7 +191,7 @@ if (in_array($fo,$tyadadi) && $so==="su!" && $sambuddhi===1)
     display(0);
 }
 /* defining sarvanama status */
-// 1 for obligatory. 2 for optional. 3 for no sarvanamasaJjJA.
+// 1 for obligatory. 2 for optional. 0 for no sarvanamasaJjJA.
 /* vibhASAprakaraNe tIyasya GitsUpasaMkhyAnam (vA 242) */ 
 if (in_array($fo,array("dvitIyA","tftIyA")) && in_array($so,array("Ne","Nasi!","Nas","Ni")))
 {
@@ -352,6 +352,88 @@ if ($sarvafinal !==0)
         display(0); 
     }
 }
+/* defininig eranekAca */
+if ($_GET['cond1_4'] === "1")
+{
+    $nadi = 0;
+    $eranekaca=0;
+}
+elseif ($_GET['cond1_4_2'] === "1")
+{
+    $eranekaca=0;
+    $nadi=1;
+    $GI=1;
+}
+elseif ($_GET['cond1_4_2'] === "2")
+{
+    $eranekaca=0;
+    $nadi=1;
+    $GI=0;
+}
+elseif ($_GET['cond1_4_3'] === "1")
+{
+    $eranekaca=1;
+    $nadi=0;
+    $nI=1;
+    $dhatu=1;
+}
+elseif ($_GET['cond1_4_3'] === "2")
+{
+    $eranekaca=1;
+    $nadi=0;
+    $dhatu=1;
+    // anaGNitva, uttvam extra.
+}
+elseif ($_GET['cond1_4_3'] === "3")
+{
+    $eranekaca=1;
+    $nadi=0;
+    $dhatu=1;
+    // khyatyAtparasya extra.
+}
+elseif ($_GET['cond1_4_3'] === "4")
+{
+    $eranekaca=1;
+    $nadi=0;
+    $dhatu=1;
+}
+elseif ($_GET['cond1_4_4'] === "1")
+{
+    $eranekaca=1;
+    $nadi=1;
+    $GI=1;
+    $dhatu=1;
+}
+elseif ($_GET['cond1_4_4'] === "2")
+{
+    $eranekaca=1;
+    $nadi=1;
+    $GI=0;
+    $dhatu=1;
+}
+elseif ($_GET['cond1_4_5'] === "1")
+{
+    $eranekaca=0;
+    $nadi=0;
+    $nI=1;
+    $dhatu=1;
+}
+elseif ($_GET['cond1_4_5'] === "2")
+{
+    $eranekaca=0;
+    $nadi=0;
+    $nI=0;
+    $dhatu=1;
+    $GI=0;
+}
+elseif ($_GET['cond1_4'] === "6")
+{
+    $eranekaca=0;
+    $nadi=1;
+    $dhatu=1;
+}
+
+
 /* defining kRt pratyayas */
 /* kRdatiG (3.1.93) */
 if ($pada === "pratyaya" && !in_array($so,$tiG) && $dhatu===1)
@@ -481,7 +563,7 @@ elseif ( $gender==="f" && !in_array($fo,array("stri","strI")) && $dhatu===1 && a
     display(0);
     $nadi = 0;
 }
-elseif ( $gender==="f" && (( arr($text,'/[IU][+]/') && $nityastri===1) || in_array($fo,array("bahuSreyasI","aticamU"))))
+elseif ( (( arr($text,'/[IU][+]/') && $nityastri===1) || in_array($fo,array("bahuSreyasI","aticamU"))))
 {
     if (in_array($fo,array("bahuSreyasI","aticamU")))
     {
@@ -1176,7 +1258,7 @@ if (sub(array("saKi","saKI"),$sarvanamasthana,blank(0),0) && $sambuddhi===0 && $
     echo "<p class = hn >इस से सख्युरसम्बुद्धौ का प्रतिषेध होता है ।</p>";
     display(3);
 }            
-if (sub(array("saKi","saKI"),$sarvanamasthana,blank(0),0) && $sambuddhi===0 && $_GET['cond1_3'] !== "3" && $gender!=="f")
+if (sub(array("saKi","saKI"),$sarvanamasthana,blank(0),0) && $sambuddhi===0 && $_GET['cond1_3_1'] !== "3" && $gender!=="f")
 {   $Nidvat = 1; 
     echo "<p class = pa >By sakhyurasambuddhau (7.1.92) :</p>";
     echo "<p class = pa >सख्युरसम्बुद्धौ (७.१.९२) :</p>";
@@ -1196,7 +1278,7 @@ if (sub(array("saKi","saKI"),array("+"),array("su!"),0) && $so==="su!" && $sambu
     echo "<p class = hn >इस से अनङ्‌ सौ का प्रतिषेध होता है ।</p>";
     display(3);
 }            
-if (sub(array("saKi","saKI"),array("+"),array("su!"),0) && $so==="su!" && $_GET['cond1_3'] !== "3" && $sambuddhi===0 && $gender!=="f")
+if (sub(array("saKi","saKI"),array("+"),array("su!"),0) && $so==="su!" && $_GET['cond1_3_1'] !== "3" && $sambuddhi===0 && $gender!=="f")
 {
     $text = two(array("saKi","saKI"),array("+"),array("saKan","saKan"),array("+"),0);
     echo "<p class = sa >By anaG sau (7.1.93) and Gicca (1.1.53)  :</p>";
@@ -1706,9 +1788,18 @@ if (sub(array("adas"),array("+"),array("su!"),0) && $so==="su!" && $fo==="adas")
 }
 /* tyadAdInAmaH (7.2.102) */
 // It is not possible to decide the prAdhAnya or gauNatva because it depends on speaker's choice.
-$tyadadinamah = array("dva+a","tya+a","ta+a","ya+a","eta+a","ida+a","ada+a","eka+a","idaka+a");
+if (sub(array("dvi"),array("+"),blank(0),0) && in_array($so,$sup) && ends(array($fo),array("dvi"),1) && $_GET['cond1_3_2']==="2" && $idamoma===0 && $idamoma1===0 && $svamo===0)
+{
+    $text = one(array("dvi"),array("dv+a"),0);
+    echo "<p class = sa >By tyadAdInAmaH (7.2.102) :</p>";
+    echo "<p class = hn >Only the words till 'dvi' are included. (vA 4468) :</p>";
+    echo "<p class = sa >त्यदादीनामः (७.२.१०२) :</p>";
+    echo "<p class = hn >द्विपर्यन्तानामेवेष्टिः (वा ४४६८) :</p>";
+    display(3);
+}
+$tyadadinamah = array("dv+a","tya+a","ta+a","ya+a","eta+a","ida+a","ada+a","eka+a","idaka+a");
 $tyadadinamah1 = array("dva","tya","ta","ya","eta","ida","ada","eka","idaka");
-if (sub($tyadadi,array("+"),blank(0),0) && in_array($so,$sup) && in_array($fo,$tyadadi) && $idamoma===0 && $idamoma1===0 && $svamo===0)
+if (sub($tyadadi,array("+"),blank(0),0) && !sub(array("dvi"),array("+"),blank(0),0) && in_array($so,$sup) && in_array($fo,$tyadadi) && $idamoma===0 && $idamoma1===0 && $svamo===0)
 {
     $text = one($tyadadi,$tyadadinamah,0);
     echo "<p class = sa >By tyadAdInAmaH (7.2.102) :</p>";
@@ -1719,7 +1810,8 @@ if (sub($tyadadi,array("+"),blank(0),0) && in_array($so,$sup) && in_array($fo,$t
     $text = one($tyadadinamah,$tyadadinamah1,0);
     echo "<p class = sa >By ato guNe (6.1.96) :</p>";
     echo "<p class = sa >अतो गुणे (६.१.९६) :</p>";
-    display(0);
+    display(0);    
+
 }
 /* ajAdyataSTAp (4.1.4) */
 if ($gender==="f" && $Ap===1 && sub(array("ida","tya","ta","ya","eta","ada"),array("+"),blank(0),0) && in_array($fo,array("idam","idakam","tyad","tad","yad","etad","adas")) && in_array($so,$sup))
@@ -1929,7 +2021,7 @@ if (sub(array("ambAqA","ambAlA","ambikA"),array("+"),blank(0),0) && $sambuddhi==
     echo "<p class = pa >asaMyuktA ye DalakAstadvatAM hrasvo na (vA 4592) :</p>";
     echo "<p class = pa >असंयुक्ता ये डलकास्तद्वतां ह्रस्वो न (वा ४५९२) :</p>";
     display(0);
-} 
+}
 if ($sambuddhi===1 &&  ($nadi===1 || ends(array($fo),array("ambA","akkA","alakA"),1)) && $so==="su!")
 {
     $text = two(array("A","I","U"),array("+"),array("a","i","u"),array("+"),0);
@@ -2555,14 +2647,6 @@ if ( $so === "Am" && $numacira===0 && $Ap===1 && !in_array($fo,$sarvanama) && $s
     echo "<p class = sa >ह्रस्वनद्यापो नुट्‌ (७.१.५४) :</p>";
     display(3);
 }
-/* ami pUrvaH (6.1.107) */
-if ( sub(array("a","A","i","I","u","U","f","F","x"),array("+am"),blank(0),0))
-{
-    $text = two(array("a","A","i","I","u","U","f","F","x"),array("am"),array("a","A","i","I","u","U","f","F","x"),array("m"),0);
-    echo "<p class = sa >By ami pUrvaH (6.1.107) :</p>";
-    echo "<p class = sa >अमि पूर्वः (६.१.१०७) :</p>";  $ato = 1;
-    display(0); $amipUrva = 1;
-}   else { $amipUrva = 0; }
 /* bahUrji exception to napuMsakasya jhalacaH (7.1.72) */ 
 if ( $gender==="n" && $sarvanamasthana1===1 && sub(array("bahUrj"),blank(0),blank(0),0) && arr($text,'/['.pc('Jl').'][+]/') && $amipUrva === 0)
 {
@@ -2659,7 +2743,7 @@ if (($dhatu===1||$fo==="BrU") && arr($text,'/[iuIU][+]['.flat($ac).']/') && $pad
 }
 /* gatikAraketarapUrvapadasya yaN neSyate (vA 5034) */
 // This is attached with eranekAco... So, trying to put a note and making the iyaG and yaN optional.
-/* eranekAco'saMyogapUrvasya (6.4.82) */ 
+/* eranekAco'saMyogapUrvasya (6.4.82) */
 if ($dhatu===1 && arr($text,'/['.flat($ac).']['.flat($hl).'][iI][+]['.flat($ac).']/') && $pada==="pratyaya" && anekAca($fo) && $eranekaca===1 && $nabhusu===0)
 {
     $text = two(array("i","I"),array("+"),array("y","y"),array("+"),0);
@@ -2679,6 +2763,14 @@ if ($dhatu===1 && arr($text,'/[uU][+]['.flat($ac).']/') && $pada==="pratyaya" &&
     echo "<p class = hn >गतिकारकेतरपूर्वपदस्य यण्‌ नेष्यते (वा ५०३४) से गति / कारक से भिन्न पूर्वपद होने पर यह सूत्र नहीं लागू होता । इयङ्‌ या उवङ्‌ की प्रवृत्ति होती है । :</p>";
     display(3);
 }
+/* ami pUrvaH (6.1.107) */
+if ( sub(array("a","A","i","I","u","U","f","F","x"),array("+am"),blank(0),0))
+{
+    $text = two(array("a","A","i","I","u","U","f","F","x"),array("am"),array("a","A","i","I","u","U","f","F","x"),array("m"),0);
+    echo "<p class = sa >By ami pUrvaH (6.1.107) :</p>";
+    echo "<p class = sa >अमि पूर्वः (६.१.१०७) :</p>";  $ato = 1;
+    display(0); $amipUrva = 1;
+}   else { $amipUrva = 0; }
 /* halGyAbbhyo dIrghAtsutisyapRktaM hal (6.1.68) and apRkta ekAlpratyayaH (1.2.41) */
 // GyAp pending. only hal handled now.
 if ((arr($text,'/['.pc('hl').'][+][sts]$/') || $GI===1 || $Ap===1 )&& in_array($so,array("su!","ti","si")))

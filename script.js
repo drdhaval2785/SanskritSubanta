@@ -45,6 +45,22 @@ $(document).ready(function() {
 			$('#step3').html('');
 		}
 	});
-	
+	$( document ).on( "click", "input:radio[name=cond1_4]", function() {
+		if($('input:radio[name=cond1_4]:checked').val() == '2'){
+			$('#step').val('1_4_2');
+			$.getData();
+			$('#step2').html(response);
+		}else if($('input:radio[name=cond1_4]:checked').val() == '3'){
+			$('#step').val('1_4_3');
+			$.getData();
+			$('#step2').html(response);
+		}else if($('input:radio[name=cond1_4]:checked').val() == '4'){
+			$('#step').val('1_4_4');
+			$.getData();
+			$('#step2').html(response);
+		}else{
+			$('#step2').html('');
+		}
+	});
 	
 });
