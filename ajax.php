@@ -161,7 +161,18 @@ elseif($last === 'I' )
             $html .= '</div>';
         } 
 }
-
+elseif ($last==="U")
+{
+    if($_POST['step'] === '1')
+    {
+        $html .= '<div id="step11">';
+        $html .= '<input type="radio" value="1" name="cond1_5" > अनदीसञ्ज्ञकः अधातुः';
+        $html .= '<input type="radio" value="2" name="cond1_5" > नदीसञ्ज्ञकः अधातुः';
+        $html .= '<input type="radio" value="3" name="cond1_5" > धातुः (असंयोगपूर्वकः ऊवर्णः, अनेकाच् अङ्गम्, गतिकारकपूर्वकः)';
+        $html .= '<input type="radio" value="4" name="cond1_5" > धातुः (संयोगपूर्वकः ऊवर्णः, एकाच् अङ्गम्, गतिकारकेतरपूर्वकः)';
+        $html .= '</div>';
+    }        
+}
 //display the output
 echo $html;
 exit;
