@@ -68,17 +68,18 @@ $it = array();
 $itprakriti = array();
 $itpratyaya = array();
 $samp = array();
-if ($_GET['sambuddhi'] === "a")
+/*if ($_GET['sambuddhi'] === "a")
 {
 $sambuddhi = 1;    
 }
 else
 {
 $sambuddhi = 0;
-}
+}*/
 $gender = $_GET['gender'];
 
-$sup1= array("su!","O","jas","am","Ow","Sas","wA","ByAm","Bis","Ne","ByAm","Byas","Nasi!","ByAm","Byas","Nas","os","Am","Ni","os","sup");
+// a for loop for entering all sup pratyayas one by one. Sambuddhi is at the last after sup.
+$sup1= array("su!","O","jas","am","Ow","Sas","wA","ByAm","Bis","Ne","ByAm","Byas","Nasi!","ByAm","Byas","Nas","os","Am","Ni","os","sup","su!","O","jas");
 for ($w=0;$w<count($sup1);$w++)
 {
 $second=$sup1[$w];    
@@ -114,6 +115,17 @@ $so = $second; ;
 echo "<p class = red >You entered: ".convert($fo)." + ".convert($so)." <a href = subanta.html>Go Back</a></p>";
 echo "</br>";
 
+// for sambuddhi display
+if ($w>20)
+{
+    echo "<p class = red >This is sambuddhi form.</p>";
+    echo "</br>";
+    $sambuddhi=1;
+} 
+else 
+{
+    $sambuddhi=0;
+}
 /* preprocessing for the sup pratyayas. */
 // Datara / Datama are pratyayas. Pending . apuri vaktavyam pending.
 
@@ -2816,7 +2828,7 @@ if (($dhatu===1||$fo==="BrU") && arr($text,'/[iuIU][+]['.flat($ac).']/') && $pad
 // This is attached with eranekAco... So, trying to put a note and making the iyaG and yaN optional.
 /* eranekAco'saMyogapUrvasya (6.4.82) */
 //echo $dhatu;echo $pada;echo $eranekaca;echo $nabhusu;
-if ($dhatu===1 && in_array($fo,array("unnI")) && $pada==="pratyaya" && anekAca($fo) && $eranekaca===1 && $nabhusu===0)
+if ($dhatu===1 && arr($text,'/[iI][+]['.pc('ac').']/') && in_array($fo,array("unnI")) && $pada==="pratyaya" && anekAca($fo) && $eranekaca===1 && $nabhusu===0)
 {
     echo "<p class = pa >As the vizeSaNa 'dhAtunA saMyogasya' mandates that the saMyoga has to belong to dhAtu only for prohibiting 'eranekAco..', the prohibition doesn't apply here.</p>";
     echo "<p class = pa >धातुना संयोगस्य विशेषणादिह स्यादेव यण्‌ (एरनेकाचो इत्यनेन सूत्रेण) </p>";
@@ -3231,7 +3243,7 @@ if ((arr($text,'/[AIUFeEoO][+]['.flat($ic).']/')||((sub($dirgha,array("+"),array
       echo "<p class = pa >दीर्घाज्जसि च (६.१.१०५) :</p>
         <p class = hn >यह नियम प्रथमयोः पूर्वसवर्णः का अपवाद है ।</p>";
     display (0); $nadici1 = 1;
-} else { $nadici1 = 0; }
+} else { $nadici1 = 0; } 
 /* prathamayoH pUrvasavarNaH (6.1.102) */ 
 // Not coded well. Please revisit.
 $ak = array("a","A","i","I","u","U","f","F","x","X"); 
@@ -5437,6 +5449,8 @@ echo "<p class = sa >Final forms are :</p>";
 echo "<p class = sa >आखिरी रूप हैं :</p>";
 display(0);
 
+/* setting the $pada back to pratyaya for next use */
+$pada="pratyaya";
 }
 ?>
 </body>
