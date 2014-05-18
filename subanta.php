@@ -120,7 +120,14 @@ if ($w>20)
 {
     echo "<p class = red >This is sambuddhi form.</p>";
     echo "</br>";
-    $sambuddhi=1;
+    if ($w===21)
+    {
+    $sambuddhi=1;        
+    }
+    else 
+    {
+        $sambuddhi=0;
+    }
 } 
 else 
 {
@@ -4447,7 +4454,7 @@ if ($dhatu===1 && ((sub(array("i","I","u","U","f","F","x","X",),array("r+","v+")
     display(0); $r4 = 1;
 }
 /* hali ca (8.2.77) */
-if ($dhatu===1 && sub($ik,array("r","v"),$hl,0) && arr(array($fo),'/[rv]$/'))
+if ($dhatu===1 && sub($ik,array("r","v"),$hl,0) && arr($text,'/[rv][+]/'))
 {
     $text = three(array("i","I","u","U","f","F","x","X",),array("r","v"),$hl,array("I","I","U","U","F","F","F","F",),array("r","v"),$hl,0);
     echo "<p class = sa >By hali ca (8.2.77) :</p>";
