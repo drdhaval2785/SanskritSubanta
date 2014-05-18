@@ -58,6 +58,10 @@ $(document).ready(function() {
 			$('#step').val('1_4_4');
 			$.getData();
 			$('#step2').html(response);
+		}else if($('input:radio[name=cond1_4]:checked').val() == '6'){
+			$('#step').val('1_4_6');
+			$.getData();
+			$('#step2').html(response);
 		}else{
 			$('#step2').html('');
 		}

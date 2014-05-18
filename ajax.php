@@ -159,7 +159,14 @@ elseif($last === 'I' )
             $html .= '<input type="radio" value="1" name="cond1_4_4" > ङ्‍यन्त';
             $html .= '<input type="radio" value="2" name="cond1_4_4" > अङ्‍यन्त';
             $html .= '</div>';
-        } 
+        }
+        if($_POST['step'] === '1_4_6')
+        {
+            $html .= '<div id="step22">';
+            $html .= '<input type="radio" value="1" name="cond1_4_6" > ङ्‍यन्त';
+            $html .= '<input type="radio" value="2" name="cond1_4_6" > अङ्‍यन्त';
+            $html .= '</div>';
+        }
 }
 elseif ($last==="U")
 {
