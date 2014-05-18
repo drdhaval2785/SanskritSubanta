@@ -1508,7 +1508,7 @@ if ( arr($text,'/['.flat($ac).'][n][+]/')  && !arr($text,'/['.flat($ac).'][n][+]
     display(3);
 }
 /* tRjvatkroSTuH (7.1.95), vibhASA tRtIyAdiSvaci (7.1.97) and numaciratRjvadbhAvebhyo nuT pUrvavipratiSedhena (vA 4374) */
-if ((sub(array("krozwu"),array("+"),$sarvanamasthana,0)||sub(array("krozwu"),array("+"),$tRtIyAdiSvaci,0) ) && $pada==="pratyaya" && $sambuddhi===0)
+if ((sub(array("krozwu"),array("+"),$sarvanamasthana,0)||sub(array("krozwu"),array("+"),$tRtIyAdiSvaci,0) ) && $pada==="pratyaya" && ($sambuddhi===0 || ($sambuddhi===1 && $so!=="su!")))
 {
     if (sub(array("krozwu"),array("+"),$sarvanamasthana,0))
     {
@@ -1670,7 +1670,7 @@ if (arr($text,'/[fx][+]/') && ( $sarvanamasthana1===1 || $so==="Ni") && $pada===
 // Not coded perfectly for tRn and tRc. naptrAdigrahaNaM vyutpattipakSe niyamArtham is pending.
 $svasR = array("svasf","naptf","nezwf","tvazwf","kzattf","hotf","potf","praSAstf");
 $excludesvasR = array("pitf","BrAtf","jAmAtf","mantf","hantf");
-if (((sub(array("tar+","war+"),blank(0),blank(0),0) && !in_array($fo,$excludesvasR) )|| ($tRcvat===1 )||in_array($fo,$svasR) || $Rduza===1 || in_array($fo,$svasrAdi)) && in_array($so,$sarvanamasthana) && $pada==="pratyaya")
+if (((sub(array("tar+","war+"),blank(0),blank(0),0) && !in_array($fo,$excludesvasR) )|| ($tRcvat===1 )||in_array($fo,$svasR) || $Rduza===1 || in_array($fo,$svasrAdi)) && in_array($so,$sarvanamasthana) && $pada==="pratyaya" )
 {
     $text = three($ac,array("r","n"),array("+"),dirgha($ac),array("r","n"),array("+"),0);
     echo "<p class = sa >By aptRntRcsvasRnaptRneSTRtvaSTRkSattRhotRpotRprazAstRRNAm (6.4.11) :</p>";
@@ -5174,7 +5174,7 @@ $text = two(array("Nk","Rw"),prat('Sr'),array("NK","RW"),prat('Sr'),1);
 echo "<p class = sa >By cayo dvitIyAH zari pauSkarasAderiti vAcyam (vA 5023) :</p>";
 echo "<p class = sa >चयोः द्वितीयाः शरि पौष्करसादेरिति वाच्यम्‌ (वा ५०२३) :</p>";
 display(0); $cayo=1; 
-} else {$cayo = 0; } print_r($text);
+} else {$cayo = 0; }
 /*anaci ca (8.4.47)*/ // Here the sudhI + upAsya - what about the Asy - Assy is possbile ? Code gives it. But there are 4 options. Code gives two only.
 // The cause for using $hrasva instead of $ac is that the dIrgha vowels are debarred by dIrghAdAcAyANAm.
 // Here instead of using pratyAhAra hl, we shall do manual enumeration of all the members. Bexause of "anusvAravisargajihvAmUlIyopadhmAnIyayamAnAmakAropari zarSu ca pAThasyopasaGkhyAtatvenAnusvArasyApyactvAt (in derivation of samskAra) 
