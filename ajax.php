@@ -99,7 +99,7 @@ if($last === 'a' && $_POST['first']!=="anyatama")
 		
 	}
 }
-elseif($last === 'A' && $_POST['step'] !== '1_2')
+elseif($last === 'A' && $_POST['step'] !== '1_2' && $_POST['gender']==='m')
 {		
     $html .= '<div class="step11">';
     $html .= '<input type="radio" value="1" name="cond1_2" > क्या यह आकारान्त धातु है ?';
@@ -180,6 +180,87 @@ elseif ($last==="U")
         $html .= '</div>';
     }        
 }
+
+// strIliGga
+if ($last==="A" && $_POST['step'] === '2')
+{
+        $html .= '<div id="step11">';
+        $html .= '<input type="radio" value="1" name="cond2_1" > शब्द आबन्त नहीं है';
+        $html .= '<input type="radio" value="2" name="cond2_1" > शब्द आबन्त है';
+        $html .= '</div>';
+}
+        $sarvanamastri = array("sarvA","viSvA","uBA","uBayA","atarA","atamA","anyA","anyatarA","itarA","tvA","nemA","simA","pUrvA","parA","avarA","dakziRA","uttarA","aparA","aDarA","svA","antarA","ekA","dvA",);
+        $diksamAsa = array('uttarapUrvA','dakziRapUrvA','uttarapaScimA','dakziRapaScimA');
+    if($_POST['step'] === '2_1_2' && ends($arrWord,$sarvanamastri,1) && ends($arrWord,$diksamAsa,1))
+    {
+        $html .= '<div id="step22">';
+        $html .= '<input type="radio" value="1" name="cond2_1_2_1_1" > दिक्समास बहुव्रीहि है ? जैसे कि - उत्तरपूर्वा (उत्तर व पूर्व के बीच की दिशा)';
+        $html .= '<input type="radio" value="2" name="cond2_1_2_1_1" > दिक्समास बहुव्रीहि नहीं है । जैसे कि - उत्तरपूर्वा (जिस के लिए उत्तर ही पूर्व है)';
+        $html .= '</div>';
+    }   
+    if($_POST['step'] === '2_1_2' && ends($arrWord,$sarvanamastri,1) && ends($arrWord,array("antarA"),1))
+    {
+        $html .= '<div id="step22">';
+        $html .= '<input type="radio" value="1" name="cond2_1_2_1_2" > बहिर्योग या उपसंव्यान के अर्थ में प्रयुक्त हुआ है ।';
+        $html .= '<input type="radio" value="2" name="cond2_1_2_1_2" > बहिर्योग या उपसंव्यान के अर्थ में प्रयुक्त नहीं हुआ है ।';
+        $html .= '</div>';
+    }   
+        if($_POST['step'] === '2_1_2_1_2_1')
+        {
+            $html .= '<div id="step33">';
+            $html .= '<input type="radio" value="1" name="cond2_1_2_1_2_1" > बाद का शब्द पुरि है ।';
+            $html .= '<input type="radio" value="2" name="cond2_1_2_1_2_1" > बाद का शब्द पुरि नहीं है ।';
+            $html .= '</div>';
+        }   
+if ($last==="i" && ends($arrWord,array("tri"),0))
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_2" > त्रिशब्द स्त्रीलिङ्ग में है ।';
+            $html .= '<input type="radio" value="2" name="cond2_2" > त्रिशब्द स्त्रीलिङ्ग में नहीं है ।';
+            $html .= '</div>';    
+}
+if ($last==="I" && $_POST['step']==='2')
+{
+            $html .= '<div id="step11">';
+            if (ends($arrWord,array("praDI"),1))
+            {
+            $html .= '<input type="radio" value="1" name="cond2_3_5" > प्रध्यायतीति प्रधी';                    
+            $html .= '<input type="radio" value="2" name="cond2_3_5" > प्रकृष्टा धीः';                    
+            }
+            elseif (ends($arrWord,array("suDI"),1))
+            {
+            $html .= '<input type="radio" value="1" name="cond2_3_6" > सुष्ठु धीः यस्याः सा / सुष्ठु ध्यायतीति';                    
+            $html .= '<input type="radio" value="2" name="cond2_3_6" > सुष्ठु धीः';                                    
+            }
+            elseif (ends($arrWord,array("grAmaRI"),1))
+            {
+            }
+            else
+            {
+            $html .= '<input type="radio" value="1" name="cond2_3" > ङ्‍यन्त, नदीसञ्ज्ञक (गौरी)';
+            $html .= '<input type="radio" value="2" name="cond2_3" > अङ्‍यन्त, नदीसञ्ज्ञक (लक्ष्मी)';
+            $html .= '<input type="radio" value="3" name="cond2_3" > ङ्‍यन्त, इयङ्स्थानिक (स्त्री)';
+            $html .= '<input type="radio" value="4" name="cond2_3" > अङ्‍यन्त, इयङ्स्थानिक (श्री)';                
+            }
+            $html .= '</div>';    
+}
+if ($last==="U" && $_POST['step']==='2')
+{
+            $html .= '<div id="step11">';
+            if (ends($arrWord,array("punarBU","dfnBU","karaBU","kAraBU"),1) && $so==="Am")
+            {
+            $html .= '<input type="radio" value="1" name="cond2_4_4_1" > समास है ।';                    
+            $html .= '<input type="radio" value="2" name="cond2_4_4_1" > समास नहीं है ।';                    
+            }
+            else
+            {
+            $html .= '<input type="radio" value="1" name="cond2_4" > नदीसञ्ज्ञक (वधूः)';
+            $html .= '<input type="radio" value="2" name="cond2_4" > इयङ्स्थानिक (भ्रूः)';
+            $html .= '<input type="radio" value="3" name="cond2_4" > न नदीसञ्ज्ञक (खलपूः)';
+            }
+            $html .= '</div>';    
+}
+
 //display the output
 echo $html;
 exit;

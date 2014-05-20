@@ -487,6 +487,42 @@ elseif ($_GET['cond1_5'] === "4")
     $dhatu=1;
 }
 
+/* GI definition */
+if ($_GET['cond2_3']==="1")
+{
+    $GI=1;
+    $nadi=1;
+}
+elseif ($_GET['cond2_3']==="2")
+{
+    $GI=0;
+    $nadi=1;
+}
+elseif ($_GET['cond2_3']==="3")
+{
+    $GI=1;
+    $eranekaca=0;
+}
+elseif ($_GET['cond2_3']==="4")
+{
+    $GI=0;
+    $eranekaca=0;
+}
+else
+{
+    $GI=0;
+}
+/* defining Abantatva */
+if (ends(array($fo),array("A"),1) && $gender==="f" && $_GET['cond2_1']==="1")
+{
+    $Ap=0;
+}
+else
+{
+    $Ap=1;
+}
+
+
 /* defining kRt pratyayas */
 /* kRdatiG (3.1.93) */
 if ($pada === "pratyaya" && !in_array($so,$tiG) && $dhatu===1)
@@ -2188,7 +2224,7 @@ if ($ghi===1 && $noghe===0 && arr($text,'/[iu][+]/') && in_array($so,array("Ne",
 if ($Ap===1 && arr($text,'/[A][+][O]$/') && in_array($so,array("O")))
 {
     $text = two(array("A+"),array("O"),array("A+"),array("SI",),0);
-    echo "<p class = sa >By auGaH ApaH (7.1.18) :</p>";
+    echo "<p class = sa >By auGa ApaH (7.1.18) :</p>";
     echo "<p class = sa >औङ आपः (७.१.१८) :</p>";
     display(3);
 }
@@ -2225,7 +2261,7 @@ if ($Ap===1  && in_array($so,array("Ne","Nas","Nasi!","Ni")) && in_array(array($
 /* sarvanAmnaH syADDhrasvazca (7.3.114) */ 
 $sarvanamastri = array("sarvA","viSvA","uBA","uBayA","atarA","atamA","anyA","anyatarA","itarA","tvA","nemA","simA","pUrvA","parA","avarA","dakziRA","uttarA","aparA","aDarA","svA","antarA","tyA","tA","yA","etA","idA","adA","ekA","dvA","kA","idakA");
 $sarvanamastri1 = array("sarva","viSva","uBa","uBaya","atara","atama","anya","anyatara","itara","tva","nema","sima","pUrva","para","avara","dakziRa","uttara","apara","aDara","sva","antara","tya","ta","ya","eta","ida","ada","eka","dva","ka","idaka");
-if ($Ap===1 && $sarvafinal !==0 && in_array($so,array("Ne","Nas","Ni")) && ( ends(array($fo),$sarvanama,1)||in_array($fo,array("idam")) ))
+if ($Ap===1 && $sarvafinal !==0 && in_array($so,array("Ne","Nas","Ni")) && ( ends(array($fo),$sarvanamastri,1)||in_array($fo,array("idam")) ))
 { 
     if ( $sarvafinal === 2)
     {
@@ -2243,7 +2279,7 @@ if ($Ap===1 && $sarvafinal !==0 && in_array($so,array("Ne","Nas","Ni")) && ( end
     echo "<p class = sa >सर्वनाम्नः स्याड्ढ्रस्वश्च (७.३.११४) :</p>";
     display(3); $syaddhrasva = 1;
 } else { $syaddhrasva = 0; }
-if ($Ap===1  && $sarvafinal !==0 && in_array($so,array("Nasi!")) && ( ends(array($fo),$sarvanama,1) ))
+if ($Ap===1  && $sarvafinal !==0 && in_array($so,array("Nasi!")) && ( ends(array($fo),$sarvanamastri,1) ))
 {
     if ( $sarvafinal === 2)
     {
@@ -2264,7 +2300,7 @@ if ($Ap===1  && $sarvafinal !==0 && in_array($so,array("Nasi!")) && ( ends(array
 /* yADApaH (7.3.113) */
 if ($Ap===1 && in_array($so,array("Ne","Nas","Ni")) && $syaddhrasva===0)
 {
-    $text = three(array("A+"),array(""),array("Ne","Nas","Ni"),array("A+"),array("yA+"),array("Ne","Nas","Ni"),0);
+    $text = three(array("A+"),array(""),array("Ne","Nas","Ni","Am"),array("A+"),array("yA+"),array("Ne","Nas","Ni","Am"),0);
     $text = one(array("syA+yA+"),array("syA+"),0);
     echo "<p class = sa >By yADApaH (7.3.113) :</p>";
     echo "<p class = sa >याडापः (७.३.११३) :</p>";

@@ -14,7 +14,7 @@ $(document).ready(function() {
 		});
 	}
 	
-	$( "#first" ).blur(function() {
+	$( document ).on( "click", "input:radio[name=gender]", function() {
 		if($('input:radio[name=gender]:checked').val() === "m"){
 			$('#step').val('1');
 			$.getData();
@@ -67,4 +67,30 @@ $(document).ready(function() {
 		}
 	});
 	
+    	$( document ).on( "click", "input:radio[name=gender]", function() {
+		if($('input:radio[name=gender]:checked').val() === 'f'){
+			$('#step').val('2');
+			$.getData();
+			$('#step1').html(response);
+		}
+	});
+	$( document ).on( "click", "input:radio[name=cond2_1]", function() {
+		if($('input:radio[name=cond2_1]:checked').val() == '2'){
+			$('#step').val('2_1_2');
+			$.getData();
+			$('#step2').html(response);
+		}else{
+			$('#step2').html('');
+		}
+	});
+	$( document ).on( "click", "input:radio[name=cond2_1_2_1_2]", function() {
+		if($('input:radio[name=cond2_1_2_1_2]:checked').val() == '1'){
+			$('#step').val('2_1_2_1_2_1');
+			$.getData();
+			$('#step3').html(response);
+		}else{
+			$('#step3').html('');
+		}
+	});
+        
 });
