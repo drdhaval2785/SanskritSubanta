@@ -238,120 +238,120 @@ elseif (ends(array($fo),$diksamAsa,1) && in_array($so,array("Ne","Nasi!","Nas","
 {
     $sarvafinal = 2;
 }
-elseif ( in_array($_GET['cond1_1_1'],array("1","2")) )
+elseif ( in_array($_GET['cond1_1_1'],array("1","2")) || in_array($_GET['cond2_1_2_1'],array("1","2")))
 {
     $sarvafinal = 0;
     echo "<p class = pa >saJjJopasarjanIbhUtAstu na sarvAdayaH (vA 225) :</p>";
     echo "<p class = pa >सञ्ज्ञोपसर्जनीभूतास्तु न सर्वादयः (वा २२५) :</p>";   
     display(0);
 }
-elseif ( $_GET['cond1_1_1']==="3")
+elseif ( $_GET['cond1_1_1']==="3" || $_GET['cond2_1_2_1']==="3")
 {
     $sarvafinal = 0;
     echo "<p class = pa >tRtIyAsamAse (1.1.30) :</p>";
     echo "<p class = pa >तृतीयासमासे (१.१.३०) :</p>";        
     display(0);
 }
-elseif ( $_GET['cond1_1_1']==="4")
+elseif ( $_GET['cond1_1_1']==="4" || $_GET['cond2_1_2_1']==="4")
 {
     $sarvafinal = 0;
     echo "<p class = pa >dvandve ca (1.1.31) :</p>";
     echo "<p class = pa >द्वन्द्वे च (१.१.३१) :</p>";        
     display(0); $dvandveca=1;
 }
-elseif ( $_GET['cond1_1_1_5']==="1" )
+elseif ( $_GET['cond1_1_1_5']==="1" || $_GET['cond2_1_2_1_5']==="1" )
 {
     $sarvafinal = 2;
     echo "<p class = pa >vibhASA diksamAse bahuvrIhau (1.1.28) :</p>";
     echo "<p class = pa >विभाषा दिक्समासे बहुव्रीहौ (१.१.२८) :</p>";            
     display(0);
 }
-elseif ( $_GET['cond1_1_1_5']==="2" )
+elseif ( $_GET['cond1_1_1_5']==="2" || $_GET['cond2_1_2_1_5']==="2" )
 {
     $sarvafinal = 0;
     echo "<p class = pa >na bahuvrIhau (1.1.29) :</p>";
     echo "<p class = pa >न बहुव्रीहौ (१.१.२९) :</p>";            
     display(0);
 }
-elseif ( $_GET['cond1_1_1_6_1']==="2" )
+elseif ( $_GET['cond1_1_1_6_1']==="2" || $_GET['cond2_1_2_1_6_1']==="2" )
 {
     $sarvafinal = 1;
     echo "<p class = pa >pUrvaparAvaradakSiNottarAparAdharANi vyavasthAyAmasaJjJAyAm (ga sU 1) :</p>";
     echo "<p class = pa >पूर्वपरावरदक्षिणोत्तरापराधराणि व्यवस्थायामसञ्ज्ञायाम्‌ (ग सू १) :</p>"; $vyavastha=1;           
     display(0); $purvapara=1;
-    $sarvanama=array_merge($sarvanama,array("pUrva","para","avara","dakziRa","uttara","apara","aDara"));
+    $sarvanama=array_merge($sarvanama,array("pUrva","para","avara","dakziRa","uttara","apara","aDara","pUrvA","parA","avarA","dakziRA","uttarA","aparA","aDarA"));
 }
-elseif ( $_GET['cond1_1_1_6_1']==="1" )
+elseif ( $_GET['cond1_1_1_6_1']==="1" || $_GET['cond2_1_2_1_6_1']==="1" )
 {
     $sarvafinal = 0;
     $vyavastha=0;            
 }
-elseif ( $_GET['cond1_1_1_6_2']==="2" )
+elseif ( $_GET['cond1_1_1_6_2']==="2" || $_GET['cond2_1_2_1_6_2']==="2" )
 {
     $sarvafinal = 1;
     echo "<p class = pa >svamajJAtidhanAkhyAyAm (ga sU 2) :</p>";
     echo "<p class = pa >स्वमज्ञातिधनाख्यायाम्‌ (ग सू २) :</p>"; $sva=1;           
     display(0);
-    $sarvanama=array_merge($sarvanama,array("sva"));
+    $sarvanama=array_merge($sarvanama,array("sva","svA"));
 }
-elseif ( $_GET['cond1_1_1_6_2']==="1" )
+elseif ( $_GET['cond1_1_1_6_2']==="1" || $_GET['cond2_1_2_1_6_2']==="1" )
 {
     $sarvafinal = 0;
     $sva=0;           
 }
-elseif ( $_GET['cond1_1_1_6_3_1']==="1" )
+elseif ( $_GET['cond1_1_1_6_3_1']==="1" || $_GET['cond2_1_2_1_6_3_1']==="1" )
 {
     $sarvafinal = 0;
     echo "<p class = pa >'antaraM bahiryogopasaMvyanayoH' (ga sU 3) iti gaNasUtre 'apuri' iti vaktavyam (vA 240) :</p>";
     echo "<p class = pa >'अन्तरं बहिर्योगोपसंव्यानयोः' (ग सू ३) इति गणसूत्रे 'अपुरि' इति वक्तव्यम्‌ (वा २४०) :</p>"; $antara=0;           
     display(0);
 }
-elseif ( $_GET['cond1_1_1_6_3_1']==="2" )
+elseif ( $_GET['cond1_1_1_6_3_1']==="2" || $_GET['cond2_1_2_1_6_3_1']==="2" )
 {
     $sarvafinal = 1;
     echo "<p class = pa >antaraM bahiryogopasaMvyAnayoH (ga sU 3) :</p>";
     echo "<p class = pa >अन्तरं बहिर्योगोपसंव्यानयोः (ग सू ३) :</p>"; $antara=1;           
     $antara=1;     
     display(0);
-    $sarvanama=array_merge($sarvanama,array("antara"));
+    $sarvanama=array_merge($sarvanama,array("antara","antarA"));
 }
-elseif ( $_GET['cond1_1_1_6_3']==="2" )
+elseif ( $_GET['cond1_1_1_6_3']==="2" || $_GET['cond2_1_2_1_6_3']==="2" )
 {
     $sarvafinal = 0;
     $antara=0;           
 }
-elseif ( $_GET['cond1_1_1_6_4']==="1" )
+elseif ( $_GET['cond1_1_1_6_4']==="1" || $_GET['cond2_1_2_1_6_4']==="1" )
 {
     $sarvafinal = 1;
 }
-elseif ( $_GET['cond1_1_1_6_4']==="2" && $fo!=="anyatara")
+elseif ( $_GET['cond1_1_1_6_4']==="2" && !in_array($fo,array("anyatara","anyatarA")) && $_GET['cond2_1_2_1_6_4']==="2")
 {
     $sarvafinal = 0; 
-    $sarvanama=array_diff($sarvanama,array("atara","atama")); echo "hi";
+    $sarvanama=array_diff($sarvanama,array("atara","atama","atarA","atamA")); echo "hi";
 }
-elseif (ends(array($fo),array("anyatama"),1))
+elseif (ends(array($fo),array("anyatama","anyatamA"),1))
 {
     $sarvafinal = 0;
     echo "<p class = pa >As anyatama is not enumerated in sarvAdi and anyatara is specifically enumerated, anyatama doesn't have sarvanAma saJjJA. </p>";
     echo "<p class = pa >सर्वादिगण में अन्यतर का गणन हुआ है और अन्यतम का नहीं है, इसलिए अन्यतम की सर्वनाम सञ्ज्ञा नहीं है ।</p>";        
-    display(0);   $sarvanama=array_diff($sarvanama,array("atama"));
+    display(0);   $sarvanama=array_diff($sarvanama,array("atama","atamA"));
 }
-elseif ( $_GET['cond1_1_1_6_5']==="1" )
+elseif ( $_GET['cond1_1_1_6_5']==="1" || $_GET['cond2_1_2_1_6_5']==="1" )
 {
     $sarvafinal = 1;
     echo "<p class = pa >samaH sarvaparyAyaH.</p>";
     echo "<p class = pa >समः सर्वपर्यायः ।</p>";        
     display(0);   
-    $sarvanama=array_merge($sarvanama,array("sama"));
+    $sarvanama=array_merge($sarvanama,array("sama","samA"));
 }
-elseif ( $_GET['cond1_1_1_6_5']==="2" )
+elseif ( $_GET['cond1_1_1_6_5']==="2" || $_GET['cond2_1_2_1_6_5']==="2" )
 {
     $sarvafinal = 0;
     echo "<p class = pa >tulyaparyAyastu neha gRhyate.</p>";
     echo "<p class = pa >तुल्यपर्यायस्तु नेह गृह्यते ।</p>";        
     display(0);   
 }
-elseif ( $_GET['cond1_1_1']==="6" )
+elseif ( $_GET['cond1_1_1']==="6" || $_GET['cond2_1_2_1']==="6" )
 {
     $sarvafinal = 1;
     display(0);   
@@ -360,6 +360,7 @@ else
 {
     $sarvafinal = 0;
 }
+
 /* sarvAdIni sarvanAmAni (1.1.27) */
 if ($sarvafinal !==0)
 {
@@ -3667,7 +3668,8 @@ if ( arr($text,'/['.pc('ac').'][s]$/') && $start===1 )
 }
 elseif ( arr($text,'/['.pc('ac').'][+][s]$/') && $start===1 )//&& $eg !==1 )
 {
-    $text = three($ac,array("+"),array("s"),$ac,array("+"),array("r@"),0); $R=array_merge($R,array(1));
+    $text=last(array("s"),array("r@"),0);
+//    $text = three($ac,array("+"),array("s"),$ac,array("+"),array("r@"),0); $R=array_merge($R,array(1));
      echo "<p class = sa >By sasajuSo ruH (8.2.66) :</p>"; 
      echo "<p class = sa >ससजुषो रुः (८.२.६६) :</p>";$r2 = 1;
      display(0);

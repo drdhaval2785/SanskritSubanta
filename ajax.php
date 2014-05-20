@@ -90,12 +90,12 @@ if($last === 'a' && $_POST['first']!=="anyatama")
 			}
 			
 		}
-		if($_POST['step'] === '1_1_1_6_3_1'){
-				$html .= '<div id="step33">';
-				$html .= '<input type="radio" value="1" name="cond1_1_1_6_3_1" > उसके बाद का शब्द पुरि है ?';
-				$html .= '<input type="radio" value="2" name="cond1_1_1_6_3_1" > नहीं';
-				$html .= '</div>';
-		}
+                    if($_POST['step'] === '1_1_1_6_3_1'){
+                                    $html .= '<div id="step33">';
+                                    $html .= '<input type="radio" value="1" name="cond1_1_1_6_3_1" > उसके बाद का शब्द पुरि है ?';
+                                    $html .= '<input type="radio" value="2" name="cond1_1_1_6_3_1" > नहीं';
+                                    $html .= '</div>';
+                    }
 		
 	}
 }
@@ -191,28 +191,66 @@ if ($last==="A" && $_POST['step'] === '2')
 }
         $sarvanamastri = array("sarvA","viSvA","uBA","uBayA","atarA","atamA","anyA","anyatarA","itarA","tvA","nemA","simA","pUrvA","parA","avarA","dakziRA","uttarA","aparA","aDarA","svA","antarA","ekA","dvA",);
         $diksamAsa = array('uttarapUrvA','dakziRapUrvA','uttarapaScimA','dakziRapaScimA');
-    if($_POST['step'] === '2_1_2' && ends($arrWord,$sarvanamastri,1) && ends($arrWord,$diksamAsa,1))
+    if($_POST['step'] === '2_1_2' && ends($arrWord,$sarvanamastri,1) )
     {
-        $html .= '<div id="step22">';
-        $html .= '<input type="radio" value="1" name="cond2_1_2_1_1" > दिक्समास बहुव्रीहि है ? जैसे कि - उत्तरपूर्वा (उत्तर व पूर्व के बीच की दिशा)';
-        $html .= '<input type="radio" value="2" name="cond2_1_2_1_1" > दिक्समास बहुव्रीहि नहीं है । जैसे कि - उत्तरपूर्वा (जिस के लिए उत्तर ही पूर्व है)';
+        $html .= '<div id="step11">';
+        $html .= '<input type="radio" value="1" name="cond2_1_2_1" > सर्वादयः सञ्ज्ञा के तौर पे प्रयुक्त हुए हैं ?';
+        $html .= '<input type="radio" value="2" name="cond2_1_2_1" > सर्वादयः उपसर्जनीभूत हैं';
+        $html .= '<input type="radio" value="3" name="cond2_1_2_1" > सर्वादयः तृतीया तत्पुरुष समास में प्रयुक्त हुए हैं ?';
+        $html .= '<input type="radio" value="4" name="cond2_1_2_1" > सर्वादयः द्वन्द्व समास में प्रयुक्त हुए हैं ?';
+        $html .= '<input type="radio" value="5" name="cond2_1_2_1" > सर्वादयः बहुव्रीहि समास में प्रयुक्त हुए हैं ?';
+        $html .= '<input type="radio" value="6" name="cond2_1_2_1" > उपर से किसी में नहीं प्रयुक्त हुए हैं';
         $html .= '</div>';
     }   
-    if($_POST['step'] === '2_1_2' && ends($arrWord,$sarvanamastri,1) && ends($arrWord,array("antarA"),1))
-    {
-        $html .= '<div id="step22">';
-        $html .= '<input type="radio" value="1" name="cond2_1_2_1_2" > बहिर्योग या उपसंव्यान के अर्थ में प्रयुक्त हुआ है ।';
-        $html .= '<input type="radio" value="2" name="cond2_1_2_1_2" > बहिर्योग या उपसंव्यान के अर्थ में प्रयुक्त नहीं हुआ है ।';
-        $html .= '</div>';
-    }   
-        if($_POST['step'] === '2_1_2_1_2_1')
-        {
-            $html .= '<div id="step33">';
-            $html .= '<input type="radio" value="1" name="cond2_1_2_1_2_1" > बाद का शब्द पुरि है ।';
-            $html .= '<input type="radio" value="2" name="cond2_1_2_1_2_1" > बाद का शब्द पुरि नहीं है ।';
-            $html .= '</div>';
-        }   
-if ($last==="i" && ends($arrWord,array("tri"),0))
+		if($_POST['step'] === '2_1_2_1_5'){
+			$html .= '<div id="step22">';
+			$html .= '<input type="radio" value="1" name="cond2_1_2_1_5" > दिक्समास है';
+			$html .= '<input type="radio" value="2" name="cond2_1_2_1_5" > दिक्समास नहीं है';
+			$html .= '</div>';
+		}
+		if($_POST['step'] === '2_1_2_1_6'){
+			$purva = array("pUrvA","parA","avarA","dakziRA","uttarA","aparA","aDarA");
+			$sva = array("svA");
+			$antara = array("antarA");
+			$datara = array("atarA", "atamA");
+			$sama = array("samA");
+			$anyatama = array("anyatamA");
+			
+			if(ends($arrWord,$purva,1)){
+				$html .= '<div id="step22">';
+				$html .= '<input type="radio" value="1" name="cond2_1_2_1_6_1" > सञ्ज्ञा है या व्यवस्था के अर्थ में नहीं है';
+				$html .= '<input type="radio" value="2" name="cond2_1_2_1_6_1" > सञ्ज्ञा नहीं है और व्यवस्था के अर्थ में प्रयुक्त हुए हैं ।';
+				$html .= '</div>';
+			}elseif(ends($arrWord,$sva,1)){
+				$html .= '<div id="step22">';
+				$html .= '<input type="radio" value="1" name="cond2_1_2_1_6_2" > ज्ञाति या धन के अर्थ में प्रयुक्त हुआ है ';
+				$html .= '<input type="radio" value="2" name="cond2_1_2_1_6_2" > ज्ञाति या धन के अर्थ में प्रयुक्त नहीं हुआ है';
+				$html .= '</div>';
+			}elseif(ends($arrWord,$antara,1)){
+				$html .= '<div id="step22">';
+				$html .= '<input type="radio" value="1" name="cond2_1_2_1_6_3" > बहिर्योग या उपसंव्यान के अर्थ में प्रयुक्त हुआ है';
+				$html .= '<input type="radio" value="2" name="cond2_1_2_1_6_3" > बहिर्योग या उपसंव्यान के अर्थ में प्रयुक्त नहीं हुआ है';
+				$html .= '</div>';
+			}elseif(ends($arrWord,$datara,1) && !ends($arrWord,$anyatama,1)){
+				$html .= '<div id="step22">';
+				$html .= '<input type="radio" value="1" name="cond2_1_2_1_6_4" > डतर / डतम प्रत्यय से शब्द की सिद्धि हुई है ';
+				$html .= '<input type="radio" value="2" name="cond2_1_2_1_6_4" > नहीं';
+				$html .= '</div>';
+			}elseif(ends($arrWord,$sama,1)){
+				$html .= '<div id="step22">';
+				$html .= '<input type="radio" value="1" name="cond2_1_2_1_6_5" > सम शब्द सर्व के पर्याय में प्रयुक्त हुआ है';
+				$html .= '<input type="radio" value="2" name="cond2_1_2_1_6_5" > सम शब्द तुल्य के पर्याय में प्रयुक्त हुआ है';
+				$html .= '</div>';
+			}
+                }
+                                    if($_POST['step'] === '2_1_2_1_6_3_1'){
+                                    $html .= '<div id="step33">';
+                                    $html .= '<input type="radio" value="1" name="cond2_1_2_1_6_3_1" > उसके बाद का शब्द पुरि है ?';
+                                    $html .= '<input type="radio" value="2" name="cond2_1_2_1_6_3_1" > नहीं';
+                                    $html .= '</div>';
+                                    }
+
+    if ($last==="i" && ends($arrWord,array("tri"),0))
 {
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond2_2" > त्रिशब्द स्त्रीलिङ्ग में है ।';

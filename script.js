@@ -83,14 +83,30 @@ $(document).ready(function() {
 			$('#step2').html('');
 		}
 	});
-	$( document ).on( "click", "input:radio[name=cond2_1_2_1_2]", function() {
-		if($('input:radio[name=cond2_1_2_1_2]:checked').val() == '1'){
-			$('#step').val('2_1_2_1_2_1');
+        
+        	$( document ).on( "click", "input:radio[name=cond2_1_2_1]", function() {
+		if($('input:radio[name=cond2_1_2_1]:checked').val() === '5'){
+			$('#step').val('2_1_2_1_5');
+			$.getData();
+			$('#step3').html(response);
+		}else if($('input:radio[name=cond2_1_2_1]:checked').val() === '6'){
+			$('#step').val('2_1_2_1_6');
 			$.getData();
 			$('#step3').html(response);
 		}else{
 			$('#step3').html('');
 		}
 	});
+	
+	$( document ).on( "click", "input:radio[name=cond2_1_2_1_6_3]", function() {
+		if($('input:radio[name=cond2_1_2_1_6_3]:checked').val() == '1'){
+			$('#step').val('2_1_2_1_6_3_1');
+			$.getData();
+			$('#step4').html(response);
+		}else{
+			$('#step4').html('');
+		}
+	});
+
         
 });
