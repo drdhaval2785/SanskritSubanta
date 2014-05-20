@@ -234,10 +234,6 @@ elseif (in_array($fo,array("dvitIya","tftIya")) && in_array($so,array("Ne","Nasi
     echo "<p class = pa >विभाषाप्रकरणे तीयस्य ङित्सूपसङ्ख्यानम्‌ (वा २४२) :</p>";        
     display(0);
 }
-elseif (ends(array($fo),$diksamAsa,1) && in_array($so,array("Ne","Nasi!","Nas","Ni")))
-{
-    $sarvafinal = 2;
-}
 elseif ( in_array($_GET['cond1_1_1'],array("1","2")) || in_array($_GET['cond2_1_2_1'],array("1","2")))
 {
     $sarvafinal = 0;
@@ -2129,7 +2125,7 @@ if (sub(array("ambAqA","ambAlA","ambikA"),array("+"),blank(0),0) && $sambuddhi==
     echo "<p class = pa >असंयुक्ता ये डलकास्तद्वतां ह्रस्वो न (वा ४५९२) :</p>";
     display(0);
 }
-if ($sambuddhi===1 &&  ($nadi!==0 || ends(array($fo),array("ambA","akkA","alakA"),1)) && $so==="su!")
+if ($sambuddhi===1 &&  ($nadi!==0 || ends(array($fo),array("ambA","akkA","allA"),1)) && $so==="su!")
 {
     if ($nadi===1 || ends(array($fo),array("ambA","akkA","alakA"),1))
     {
@@ -2266,15 +2262,11 @@ if ($Ap===1 && $sarvafinal !==0 && in_array($so,array("Ne","Nas","Ni")) && ( end
 { 
     if ( $sarvafinal === 2)
     {
-    $text = one($sarvanamastri,$sarvanamastri1,0);
-    $text = last(array("Ne","Nas","Am"),array("syA+Ne","syA+Nas","syA+Am"),1);        
-    $text = one(array("tIyA+syA+Ne","tIyA+syA+Nas","tIyA+syA+Ni"),array("tIya+syA+Ne","tIya+syA+Nas","tIya+syA+Ni"),0);            
+    $text = one(array("A+Ne","A+Nas","A+Am"),array("a+syA+Ne","a+syA+Nas","a+syA+Am"),1);        
     }
     else
     {
-    $text = one($sarvanamastri,$sarvanamastri1,0);
-    $text = last(array("Ne","Nas","Am"),array("syA+Ne","syA+Nas","syA+Am"),0);        
-    $text = one(array("tIyA+syA+Ne","tIyA+syA+Nas","tIyA+syA+Ni"),array("tIya+syA+Ne","tIya+syA+Nas","tIya+syA+Ni"),0);            
+    $text = one(array("A+Ne","A+Nas","A+Am"),array("a+syA+Ne","a+syA+Nas","a+syA+Am"),0);        
     }
     echo "<p class = sa >By sarvanAmnaH syADDhrasvazca (7.3.114) :</p>";
     echo "<p class = sa >सर्वनाम्नः स्याड्ढ्रस्वश्च (७.३.११४) :</p>";
@@ -2284,22 +2276,18 @@ if ($Ap===1  && $sarvafinal !==0 && in_array($so,array("Nasi!")) && ( ends(array
 {
     if ( $sarvafinal === 2)
     {
-    $text = one($sarvanamastri,$sarvanamastri1,0);
-    $text = last(array("Nasi!"),array("syA+Nasi!"),1);        
-    $text = one(array("tIyA+syA+Nasi!"),array("tIya+syA+Nasi!"),1);        
+    $text = one(array("A+Nasi!"),array("a+syA+Nasi!"),1);        
     }
     else
     {
-    $text = one($sarvanamastri,$sarvanamastri1,0);
-    $text = last(array("Nasi!"),array("syA+Nasi!"),0);        
-    $text = one(array("tIyA+syA+Nasi!"),array("tIya+syA+Nasi!"),0);        
+    $text = one(array("A+Nasi!"),array("a+syA+Nasi!"),0);        
     }
     echo "<p class = sa >By sarvanAmnaH syADDhrasvazca (7.3.114) :</p>";
     echo "<p class = sa >सर्वनाम्नः स्याड्ढ्रस्वश्च (७.३.११४) :</p>";
     display(3); $syaddhrasva1 = 1;
 } else {$syaddhrasva1=0; }
 /* yADApaH (7.3.113) */
-if ($Ap===1 && in_array($so,array("Ne","Nas","Ni")) && $syaddhrasva===0)
+if ($Ap===1 && (( in_array($so,array("Ne","Nas","Ni")) && $syaddhrasva===0 ) || ( in_array($so,array("Ne","Nas","Ni")) && $sarvafinal===2 ) ))
 {
     $text = three(array("A+"),array(""),array("Ne","Nas","Ni","Am"),array("A+"),array("yA+"),array("Ne","Nas","Ni","Am"),0);
     $text = one(array("syA+yA+"),array("syA+"),0);
@@ -2307,7 +2295,7 @@ if ($Ap===1 && in_array($so,array("Ne","Nas","Ni")) && $syaddhrasva===0)
     echo "<p class = sa >याडापः (७.३.११३) :</p>";
     display(3);
 }
-if ($Ap===1 && in_array($so,array("Nasi!")) && $syaddhrasva1===0 )
+if ($Ap===1 && (( in_array($so,array("Nasi!")) && $syaddhrasva===0 ) || ( in_array($so,array("Nasi!")) && $sarvafinal===2 ) ))
 {
     $text = three(array("A+"),array(""),array("Nasi!"),array("A+"),array("yA+"),array("Nasi!"),0);
     $text = one(array("syA+yA+"),array("syA+"),0);
