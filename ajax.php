@@ -250,11 +250,11 @@ if ($last==="A" && $_POST['step'] === '2')
                                     $html .= '</div>';
                                     }
 
-    if ($last==="i" && ends($arrWord,array("tri"),0))
+if ($last==="i" && ends($arrWord,array("tri"),1) && !ends($arrWord,array("stri"),1) )
 {
             $html .= '<div id="step11">';
-            $html .= '<input type="radio" value="1" name="cond2_2" > त्रिशब्द स्त्रीलिङ्ग में है ।';
-            $html .= '<input type="radio" value="2" name="cond2_2" > त्रिशब्द स्त्रीलिङ्ग में नहीं है ।';
+            $html .= '<input type="radio" value="1" name="cond2_2_1" > त्रिशब्द स्त्रीलिङ्ग में है ।';
+            $html .= '<input type="radio" value="2" name="cond2_2_1" > त्रिशब्द स्त्रीलिङ्ग में नहीं है ।';
             $html .= '</div>';    
 }
 if ($last==="I" && $_POST['step']==='2')

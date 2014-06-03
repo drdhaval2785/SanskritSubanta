@@ -477,12 +477,11 @@ function display($n)
     for($i=1;$i<count($text)+1;$i++)
     {
         echo "<p class = form>$i - ".convert($text[$i-1])."</p>";
-      //echo "$i - ".$text[$i-1]."</br>";
     }
     echo "<hr>";
     if ($n === 2) { $text1 = $text; $text = $text2; } 
     
-    }
+}
 
 
 /* function dvitva will be used to duplicate a letter */
