@@ -2120,9 +2120,9 @@ if ((arr($text,'/['.flat($ac).'][+][JR]/')||arr($text,'/[a][+][*][JR]$/')||$Nidv
     echo "<p class = sa >अचो ञ्णिति (७.२.११५) :</p>";
     display(3);
 }
-if (arr($text,'/[aiufx][+][j]/') && $so==="jas")
+if (arr($text,'/[iufx][+][j]/') && $so==="jas")
 {
-    $text = two(array("a","i","u","f","x"),array("+"),array("a","e","o","ar","al"),array("+"),0);
+    $text = two(array("i","u","f","x"),array("+"),array("e","o","ar","al"),array("+"),0);
     echo "<p class = sa >By jasi ca (7.3.109) :</p>";
     echo "<p class = sa >जसि च (७.३.१०९) :</p>";
     display(3);
