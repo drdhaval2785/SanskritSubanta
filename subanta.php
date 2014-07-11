@@ -246,7 +246,9 @@ elseif ( $_GET['cond1_1_1']==="3" || $_GET['cond2_1_2_1']==="3")
 {
     $sarvafinal = 0;
     echo "<p class = pa >tRtIyAsamAse (1.1.30) :</p>";
+    echo "<p class = hn >This prevents application of sarvAdIni sarvanAmAni. Therefore, there is no sarvanAmasaJjJA applicable here.</p>";
     echo "<p class = pa >तृतीयासमासे (१.१.३०) :</p>";        
+    echo "<p class = hn >अत्र प्रथमं सर्वादीनि सर्वनामानि इति सर्वनामसंज्ञायां प्राप्तायां तृतीयासमासे इति सर्वनामसंज्ञानिषेधः ।</p>";        
     display(0);
 }
 elseif ( $_GET['cond1_1_1']==="4" || $_GET['cond2_1_2_1']==="4")
@@ -255,7 +257,7 @@ elseif ( $_GET['cond1_1_1']==="4" || $_GET['cond2_1_2_1']==="4")
     echo "<p class = pa >dvandve ca (1.1.31) :</p>";
     echo "<p class = hn >This prohibits application of sarvAdIni sarvanAmAni. </p>";
     echo "<p class = pa >द्वन्द्वे च (१.१.३१) :</p>";        
-    echo "<p class = hn >सर्वनामानि इति सर्वनामसज्ञायां प्राप्तायाम् अनेन निषेधः ।</p>";        
+    echo "<p class = hn >सर्वादीनि सर्वनामानि इति सर्वनामसज्ञायां प्राप्तायाम् अनेन निषेधः ।</p>";        
     display(0); $dvandveca=1;
 }
 elseif ( $_GET['cond1_1_1_5']==="1" || $_GET['cond2_1_2_1_5']==="1" )
@@ -2380,7 +2382,7 @@ if ($so === "jas" && $purvapara===1 && in_array($fo,array("pUrva","para","avara"
 {
     $text = last(array("SI"),array("jas"),1);
     echo "<p class = sa >By pUrvaparAvaradakSiNottarAparAdharANi vyavasthAyAmasaJjJAyAm (1.1.34) :</p>";
-    echo "<p class = sa >पूर्वपरावरदक्षिणोत्तरापराधराणि व्यवस्थायामसंज्ञायाम्‌ (७.१.९) :</p>";
+    echo "<p class = sa >पूर्वपरावरदक्षिणोत्तरापराधराणि व्यवस्थायामसंज्ञायाम्‌ (१.१.३४) :</p>";
     display(0); $purva=1;
 } else {$purva=0;}
 /* svamajJAtidhanAkhyAyAm (1.1.35) */
