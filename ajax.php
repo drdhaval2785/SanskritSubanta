@@ -285,10 +285,13 @@ if ($last==="I" && $_POST['step']==='2')
 if ($last==="U" && $_POST['step']==='2')
 {
             $html .= '<div id="step11">';
-            if (ends($arrWord,array("punarBU","dfnBU","karaBU","kAraBU"),1) && $so==="Am")
+            if (ends($arrWord,array("punarBU","dfnBU","karaBU","kAraBU"),1) )
             {
             $html .= '<input type="radio" value="1" name="cond2_4_4_1" > समास है ।';                    
             $html .= '<input type="radio" value="2" name="cond2_4_4_1" > समास नहीं है ।';                    
+            }
+            elseif (ends($arrWord,array("varzABU","svayamBU"),1) )
+            {
             }
             else
             {
@@ -296,6 +299,15 @@ if ($last==="U" && $_POST['step']==='2')
             $html .= '<input type="radio" value="2" name="cond2_4" > इयङ्स्थानिक (भ्रूः)';
             $html .= '<input type="radio" value="3" name="cond2_4" > न नदीसञ्ज्ञक (खलपूः)';
             }
+            $html .= '</div>';    
+}
+
+/* napuMsakaliGga */
+if (in_array($last,array("i","I","u","U","f","F","x","X")) && $_POST['step']==='3')
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond3" > भाषितपुंस्क है';                    
+            $html .= '<input type="radio" value="2" name="cond3" > नहीं';                    
             $html .= '</div>';    
 }
 
