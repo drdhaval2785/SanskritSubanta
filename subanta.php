@@ -1610,12 +1610,18 @@ if ($sarvanamasthana1 ===0 && in_array($so,$sup) && $bham!==1 )
     display(0);    
 }
 /* SaTcaturbhyazca (7.1.55) */ 
-if ( ($shat===1 || arr(array($fo),'/[c][a][t][u][r]$/')) && $so === "Am" && !in_array($fo,$sarvanama) && ($samasa===0 || $samasa===1 && $pradhana===1))
+if (  $_GET['cond1_6_1']==="1")
+{
+    echo "<p class = pa >'nuT' Agama doesn't happen in case of gauNatva.</p>";
+    echo "<p class = pa >गौणत्वे तु नुट्‌ नेष्यते ।</p>";
+    display(0); 
+}
+elseif ( ($shat===1 || arr(array($fo),'/[c][a][t][u][r]$/')) && $so === "Am" && !in_array($fo,$sarvanama) && ($samasa===0 || $samasa===1 && $pradhana===1) && $_GET['cond1_6_1']!=="1")
 {
     $text = one(array("+Am"),array("+nAm"),0);
     echo "<p class = sa >By SaTcaturbhyazca (7.1.55) :</p>";
     echo "<p class = sa >षट्चतुर्भ्यश्च (७.१.५५) :</p>";
-    display(3); $Satcatur=1; $pada="pada";
+    display(3); $Satcatur=1; 
 } else { $Satcatur=0; }
 /* pAdaH pat (6.4.130) */
 if (sub(array("pAd"),array("+"),$sup,0) && $bham===1)

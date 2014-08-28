@@ -30,6 +30,7 @@ $word = convert1($word);
 $arrWord[] = $word;
 $last = substr($word, -1);    // returns "last word"
 $last_4 = substr($word, -4);    // returns "last 4 word"
+$last_5 = substr($word, -5);
 $html = '';
 
 if($last === 'a' && $_POST['first']!=="anyatama")
@@ -308,6 +309,13 @@ if (in_array($last,array("i","I","u","U","f","F","x","X")) && $_POST['step']==='
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond3" > भाषितपुंस्क है';                    
             $html .= '<input type="radio" value="2" name="cond3" > नहीं';                    
+            $html .= '</div>';    
+}
+if ( ends($arrWord,array("catur"),0) && $_POST['step']==='1')
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond1_6_1" > चतुर्‌ उपसर्जनीभूत है ?';                    
+            $html .= '<input type="radio" value="2" name="cond1_6_1" > चतुर्‌ प्रधान है ।';                    
             $html .= '</div>';    
 }
 
