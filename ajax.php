@@ -181,6 +181,20 @@ elseif ($last==="U")
         $html .= '</div>';
     }        
 }
+if ( ends($arrWord,array("catur"),0) && $_POST['step']==='1')
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond1_6_1" > चतुर्‌ उपसर्जनीभूत है ?';                    
+            $html .= '<input type="radio" value="2" name="cond1_6_1" > चतुर्‌ प्रधान है ।';                    
+            $html .= '</div>';    
+}
+if ( $last==="m" && $_POST['step']==='1')
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond1_16" > धातु';                    
+            $html .= '<input type="radio" value="2" name="cond1_16" > अधातु';                    
+            $html .= '</div>';    
+}
 
 // strIliGga
 if ($last==="A" && $_POST['step'] === '2')
@@ -309,13 +323,6 @@ if (in_array($last,array("i","I","u","U","f","F","x","X")) && $_POST['step']==='
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond3" > भाषितपुंस्क है';                    
             $html .= '<input type="radio" value="2" name="cond3" > नहीं';                    
-            $html .= '</div>';    
-}
-if ( ends($arrWord,array("catur"),0) && $_POST['step']==='1')
-{
-            $html .= '<div id="step11">';
-            $html .= '<input type="radio" value="1" name="cond1_6_1" > चतुर्‌ उपसर्जनीभूत है ?';                    
-            $html .= '<input type="radio" value="2" name="cond1_6_1" > चतुर्‌ प्रधान है ।';                    
             $html .= '</div>';    
 }
 

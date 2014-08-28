@@ -357,6 +357,10 @@ elseif ( $_GET['cond1_1_1']==="6" || $_GET['cond2_1_2_1']==="6" )
 {
     $sarvafinal = 1;
 }
+elseif ( $_GET['cond1_16']==="2" && in_array($fo,$sarvanama) )
+{
+    $sarvafinal = 1;
+}
 else
 {
     $sarvafinal = 0;
@@ -512,6 +516,12 @@ elseif ($_GET['cond2_3']==="4")
     $eranekaca=0;
     //$nadi=1; // Not sure
     $dhatu=1; // for zrI.
+}
+
+/* makArAnta pulliGga dhAtu definition */
+if (ends(array($fo),array("m"),1) && $_GET['cond1_16']==="1")
+{
+    $dhatu=1;
 }
 
 /* defining Abantatva */
@@ -1219,7 +1229,16 @@ if (sub(array("idam","idakam"),array("+"),blank(0),0) && $so==="su!")
 {
     echo "<p class = sa >By idamo maH (7.2.108) :</p>";
     echo "<p class = sa >इदमो मः (७.२.१०८) :</p>";
-    display(3); $idamoma=1;
+    display(3); 
+    /* ido'y puMsi (7.2.111) */
+    if (sub(array("idam","idakam"),array("+"),blank(0),0) && $so==="su!" && $gender==="m")
+    {
+        $text = two(array("idam","idakam"),array("+"),array("ayam","ayakam"),array("+"),0);
+        echo "<p class = sa >By ido'y puMsi (7.2.111) :</p>";
+        echo "<p class = sa >इदोऽय्‌ पुंसि (७.२.१११) :</p>";
+        display(3); 
+    } 
+    $idamoma=1;
 } else { $idamoma=0; }
 /* yaH sau (7.2.110) */
 if (sub(array("idam","idakam"),array("+"),blank(0),0) && $so==="su!" && $gender==="m")
@@ -1229,14 +1248,6 @@ if (sub(array("idam","idakam"),array("+"),blank(0),0) && $so==="su!" && $gender=
     echo "<p class = sa >यः सौ (७.२.११०) :</p>";
     display(3);
 }
-/* ido'y puMsi (7.2.111) */
-if (sub(array("idam","idakam"),array("+"),blank(0),0) && $so==="su!" && $gender==="m")
-{
-    $text = two(array("idam","idakam"),array("+"),array("ayam","ayakam"),array("+"),0);
-    echo "<p class = sa >By ido'y puMsi (7.2.111) :</p>";
-    echo "<p class = sa >इदोऽय्‌ पुंसि (७.२.१११) :</p>";
-    display(3); $idamoma1=1;
-} else { $idamoma1=0; }
 /* anvAdeze napuMsake enadvaktavyaH (vA 1569) */
 if ($gender==="n" && sub(array("idam+","etad+","idakam+",),blank(0),blank(0),0) && in_array($fo,array("idam","etad","idakam")) && $anvadesha===1 && in_array($so,array("am")))
 {
@@ -2054,9 +2065,9 @@ if (sub(array("adas"),array("+"),array("su!"),0) && $so==="su!" && $fo==="adas")
     echo "<p class = sa >अदस औ सुलोपश्च (७.२.१०७) :</p>";
     display(3);
 }
-/* tyadAdInAmaH (7.2.102) */
+/* tyadAdInAmaH (7.2.102) */ 
 // It is not possible to decide the prAdhAnya or gauNatva because it depends on speaker's choice.
-if (sub(array("dvi"),array("+"),blank(0),0) && in_array($so,$sup) && ends(array($fo),array("dvi"),1) && $_GET['cond1_3_2']==="2" && $idamoma===0 && $idamoma1===0 && $svamo===0)
+if (sub(array("dvi"),array("+"),blank(0),0) && in_array($so,$sup) && ends(array($fo),array("dvi"),1) && $_GET['cond1_3_2']==="2" && $idamoma===0 && $svamo===0)
 {
     $text = one(array("dvi"),array("dv+a"),0);
     echo "<p class = sa >By tyadAdInAmaH (7.2.102) :</p>";
@@ -2067,7 +2078,7 @@ if (sub(array("dvi"),array("+"),blank(0),0) && in_array($so,$sup) && ends(array(
 }
 $tyadadinamah = array("dv+a","tya+a","ta+a","ya+a","eta+a","ida+a","ada+a","eka+a","idaka+a");
 $tyadadinamah1 = array("dva","tya","ta","ya","eta","ida","ada","eka","idaka");
-if (sub($tyadadi,array("+"),blank(0),0) && !sub(array("dvi"),array("+"),blank(0),0) && in_array($so,$sup) && in_array($fo,$tyadadi) && $idamoma===0 && $idamoma1===0 && $svamo===0)
+if (sub($tyadadi,array("+"),blank(0),0) && !sub(array("dvi"),array("+"),blank(0),0) && in_array($so,$sup) && in_array($fo,$tyadadi) && $idamoma===0 && $svamo===0)
 {
     $text = one($tyadadi,$tyadadinamah,0);
     echo "<p class = sa >By tyadAdInAmaH (7.2.102) :</p>";
@@ -2507,7 +2518,7 @@ if (sub(array("ida+","idA+"),blank(0),blank(0),0) && $fo==="idam" && in_array($s
     display(3);
 }
 /* jasaH zI (7.1.17) */ 
-if (arr($text,'/[a][+]/') && $pada=== "pratyaya" && $so === "jas" && ends(array($fo),$sarvanama,1) && $nojas===0 && !sub(array("ida"),blank(0),blank(0),0) && $sarvafinal!==0 )
+if (arr($text,'/[a][+]/') && $pada=== "pratyaya" && $so === "jas" && ends(array($fo),$sarvanama,1) && $nojas===0  && $sarvafinal!==0 )
     {
     if ($sarvafinal===2)
     {
@@ -3228,6 +3239,12 @@ if ((in_array($so,array("Byas","sup","Bis")) || ($sut===1 && $sAmaAkam===0)) && 
 /* supi ca (7.3.102) */
 if (in_array($so,$sup) && arr($text,'/[a][+]['.pc('yY').']/') && $amipUrva===0 && $start === 1 && $bahuvacane === 0 && $nami === 0 && $Ne!==1)
 {
+    if (arr($text,'/[a][+]['.pc('yY').']/') && $fo==="idam" )
+    {
+    echo "<p class = pa >Adyantavadekasmin (1.1.21) :</p>";
+    echo "<p class = pa >आद्यन्तवदेकस्मिन्‌ (१.१.२१) :</p>";
+    display(0);
+    }
     $text = two(array("a"),array("+"),array("A"),array("+"),0);
     echo "<p class = sa >By supi ca (7.3.102) :</p>";
     echo "<p class = sa >सुपि च (७.३.१०२) :</p>";
