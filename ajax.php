@@ -188,7 +188,14 @@ if ( ends($arrWord,array("catur"),0) && $_POST['step']==='1')
             $html .= '<input type="radio" value="2" name="cond1_6_1" > चतुर्‌ प्रधान है ।';                    
             $html .= '</div>';    
 }
-if ( $last==="m" && $_POST['step']==='1')
+if ( ($word==="idam" || $word==="idakam") && $_POST['step']==='1')
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond1_7" > अन्वादेश है';                    
+            $html .= '<input type="radio" value="2" name="cond1_7" > अन्वादेश नहीं';                    
+            $html .= '</div>';    
+}
+elseif ( $last==="m" && $_POST['step']==='1')
 {
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond1_16" > धातु';                    

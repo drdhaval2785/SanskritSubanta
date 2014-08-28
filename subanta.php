@@ -357,7 +357,7 @@ elseif ( $_GET['cond1_1_1']==="6" || $_GET['cond2_1_2_1']==="6" )
 {
     $sarvafinal = 1;
 }
-elseif ( $_GET['cond1_16']==="2" && in_array($fo,$sarvanama) )
+elseif ( ($_GET['cond1_16']==="2" || $_GET['cond1_7']==="2") && in_array($fo,$sarvanama) )
 {
     $sarvafinal = 1;
 }
@@ -523,6 +523,13 @@ if (ends(array($fo),array("m"),1) && $_GET['cond1_16']==="1")
 {
     $dhatu=1;
 }
+/* idam, idakam anvAdeza definition */
+if ( $_GET['cond1_7']==="1")
+{
+    $sarvafinal=1;
+    $anvadesha=1;
+}
+
 
 /* defining Abantatva */
 if (ends(array($fo),array("A"),1) && $gender==="f" && $_GET['cond2_1']==="1")
@@ -3239,7 +3246,7 @@ if ((in_array($so,array("Byas","sup","Bis")) || ($sut===1 && $sAmaAkam===0)) && 
 /* supi ca (7.3.102) */
 if (in_array($so,$sup) && arr($text,'/[a][+]['.pc('yY').']/') && $amipUrva===0 && $start === 1 && $bahuvacane === 0 && $nami === 0 && $Ne!==1)
 {
-    if (arr($text,'/[a][+]['.pc('yY').']/') && $fo==="idam" )
+    if (arr($text,'/[a][+]['.pc('yY').']/') && in_array($fo,array("idam","idakam")) )
     {
     echo "<p class = pa >Adyantavadekasmin (1.1.21) :</p>";
     echo "<p class = pa >आद्यन्तवदेकस्मिन्‌ (१.१.२१) :</p>";
@@ -3624,9 +3631,9 @@ if ($sambuddhi === 1 && $so === "su!" && (sub($hrasva,array("+"),array("s","m"),
 
 
 /* dazca (7.2.109) */
-if (sub(array("ida","idaka","idA","idAn"),array("+"),blank(0),0) && in_array($fo,array("idam","idakam")) && in_array($so,$sup))
+if (sub(array("ida","idak","idA","idAn",),blank(0),blank(0),0) && in_array($fo,array("idam","idakam")) && in_array($so,$sup))
 {
-    $text = one(array("ida+","idaka+","idA+","idAn+"),array("ima+","imaka+","imA+","imAn+"),0);
+    $text = one(array("ida+","idak","idA+","idAn+","idakA+"),array("ima+","imak","imA+","imAn+","imakA+"),0);
     echo "<p class = sa >By dazca (7.2.109) :</p>";
     echo "<p class = sa >दश्च (७.२.१०९) :</p>";
     display(3);
