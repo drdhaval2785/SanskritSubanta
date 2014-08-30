@@ -67,6 +67,15 @@ $(document).ready(function() {
 		}
 	});
 	
+	$( document ).on( "click", "input:radio[name=cond1_9]", function() {
+		if($('input:radio[name=cond1_9]:checked').val() === '1'){
+			$('#step').val('1_9_1');
+			$.getData();
+			$('#step2').html(response);
+		}
+        });
+                
+                
     	$( document ).on( "click", "input:radio[name=gender]", function() {
 		if($('input:radio[name=gender]:checked').val() === 'f'){
 			$('#step').val('2');

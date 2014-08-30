@@ -181,6 +181,7 @@ elseif ($last==="U")
         $html .= '</div>';
     }        
 }
+
 if ( ends($arrWord,array("catur"),0) && $_POST['step']==='1')
 {
             $html .= '<div id="step11">';
@@ -208,6 +209,27 @@ if ( ends($arrWord,$pancan,0) && $_POST['step']==='1')
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond1_8" > उपसर्जनीभूत';                    
             $html .= '<input type="radio" value="2" name="cond1_8" > प्रधान';                    
+            $html .= '</div>';    
+}
+if ( ends($arrWord,array("BrAj"),1) && $_POST['step']==='1')
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond1_9_3" > भ्राज्‌ धातु फणादि है';                    
+            $html .= '<input type="radio" value="2" name="cond1_9_3" > नहीं';                    
+            $html .= '</div>';    
+}
+elseif ( $last==="j" && $_POST['step']==='1')
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond1_9" > क्विन्‌ प्रत्ययान्त है';                    
+            $html .= '<input type="radio" value="2" name="cond1_9" > नहीं';                    
+            $html .= '</div>';    
+}
+if ( ends($arrWord,array("yuj"),1) && $_POST['step']==='1_9_1' )
+{
+            $html .= '<div id="step22">';
+            $html .= '<input type="radio" value="1" name="cond1_9_1" > युजि';                    
+            $html .= '<input type="radio" value="2" name="cond1_9_1" > युजिर्‌';                    
             $html .= '</div>';    
 }
 
