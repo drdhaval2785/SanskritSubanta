@@ -66,10 +66,16 @@ $(document).ready(function() {
 			$('#step2').html('');
 		}
 	});
-	
 	$( document ).on( "click", "input:radio[name=cond1_9]", function() {
 		if($('input:radio[name=cond1_9]:checked').val() === '1'){
 			$('#step').val('1_9_1');
+			$.getData();
+			$('#step2').html(response);
+		}
+        });
+	$( document ).on( "click", "input:radio[name=cond1_10]", function() {
+		if($('input:radio[name=cond1_10]:checked').val() === '2'){
+			$('#step').val('1_10_2');
 			$.getData();
 			$('#step2').html(response);
 		}

@@ -225,11 +225,18 @@ elseif ( $last==="j" && $_POST['step']==='1')
             $html .= '<input type="radio" value="2" name="cond1_9" > नहीं';                    
             $html .= '</div>';    
 }
-if ( ends($arrWord,array("yuj"),1) && $_POST['step']==='1_9_1' )
+if ( ends($arrWord,array("tyad","tad","yad","etad","idam","adas","eka","dvi","idakam",),1) && $_POST['step']==='1' )
 {
-            $html .= '<div id="step22">';
-            $html .= '<input type="radio" value="1" name="cond1_9_1" > युजि';                    
-            $html .= '<input type="radio" value="2" name="cond1_9_1" > युजिर्‌';                    
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond1_10" > त्यदादि सञ्ज्ञा या उपसर्जनीभूत के तौर पर प्रयुक्त हुए हैं ';                    
+            $html .= '<input type="radio" value="2" name="cond1_10" > नहीं';                    
+            $html .= '</div>';    
+}
+if ( ends($arrWord,array("etad","idam","idakam",),1) && $_POST['step']==='1_10_2' )
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond1_10_2" > अन्वादेश ';                    
+            $html .= '<input type="radio" value="2" name="cond1_10_2" > नहीं';                    
             $html .= '</div>';    
 }
 

@@ -361,6 +361,10 @@ elseif ( ($_GET['cond1_16']==="2" || $_GET['cond1_7']==="2") && in_array($fo,$sa
 {
     $sarvafinal = 1;
 }
+elseif ( $_GET['cond1_10']==="2"  )
+{
+    $sarvafinal = 1;
+}
 else
 {
     $sarvafinal = 0;
@@ -524,7 +528,7 @@ if (ends(array($fo),array("m"),1) && $_GET['cond1_16']==="1")
     $dhatu=1;
 }
 /* idam, idakam anvAdeza definition */
-if ( $_GET['cond1_7']==="1")
+if ( $_GET['cond1_7']==="1" || $_GET['cond1_10_2']==="1")
 {
     $sarvafinal=1;
     $anvadesha=1;
@@ -559,6 +563,16 @@ else
 {
     $yuj=0;
 }
+/* tyadAdi gauNatva definition */
+if ( $_GET['cond1_10']==="1"  )
+{
+    $noatvasatva=1;
+}
+else
+{
+    $noatvasatva=0;
+}
+
 
 
 /* strIliGga definitions */
@@ -2131,9 +2145,9 @@ if (sub(array("adas"),array("+"),array("su!"),0) && $so==="su!" && $fo==="adas")
     echo "<p class = sa >अदस औ सुलोपश्च (७.२.१०७) :</p>";
     display(3);
 }
-/* tyadAdInAmaH (7.2.102) */ 
-// It is not possible to decide the prAdhAnya or gauNatva because it depends on speaker's choice.
-if (sub(array("dvi"),array("+"),blank(0),0) && in_array($so,$sup) && ends(array($fo),array("dvi"),1) && $_GET['cond1_3_2']==="2" && $idamoma===0 && $svamo===0)
+/* tyadAdInAmaH (7.2.102) */
+// It is not possible to decide the prAdhAnya or gauNatva because it depends on speaker's choice. 
+if (sub(array("dvi"),array("+"),blank(0),0) && in_array($so,$sup) && ends(array($fo),array("dvi"),1) && $_GET['cond1_3_2']==="2" && $idamoma===0 && $svamo===0 && $noatvasatva===0)
 {
     $text = one(array("dvi"),array("dv+a"),0);
     echo "<p class = sa >By tyadAdInAmaH (7.2.102) :</p>";
@@ -2144,7 +2158,7 @@ if (sub(array("dvi"),array("+"),blank(0),0) && in_array($so,$sup) && ends(array(
 }
 $tyadadinamah = array("dv+a","tya+a","ta+a","ya+a","eta+a","ida+a","ada+a","eka+a","idaka+a");
 $tyadadinamah1 = array("dva","tya","ta","ya","eta","ida","ada","eka","idaka");
-if (sub($tyadadi,array("+"),blank(0),0) && !sub(array("dvi"),array("+"),blank(0),0) && in_array($so,$sup) && in_array($fo,$tyadadi) && $idamoma===0 && $svamo===0)
+if (sub($tyadadi,array("+"),blank(0),1) && !sub(array("dvi"),array("+"),blank(0),1) && in_array($so,$sup) && $idamoma===0 && $svamo===0 && $noatvasatva===0 )
 {
     $text = one($tyadadi,$tyadadinamah,0);
     echo "<p class = sa >By tyadAdInAmaH (7.2.102) :</p>";
@@ -2153,6 +2167,7 @@ if (sub($tyadadi,array("+"),blank(0),0) && !sub(array("dvi"),array("+"),blank(0)
     echo "<p class = hn >द्विपर्यन्तानामेवेष्टिः (वा ४४६८) :</p>";
     display(3);
     $text = one($tyadadinamah,$tyadadinamah1,0);
+    $text=one(array("etam"),array("eta+am"),0);
     echo "<p class = sa >By ato guNe (6.1.96) :</p>";
     echo "<p class = sa >अतो गुणे (६.१.९६) :</p>";
     display(0);    
@@ -2190,10 +2205,10 @@ if (sub(array("adakas"),array("+"),array("su!"),0) && $so==="su!" && $fo==="adak
     echo "<p class = sa >अदस औ सुलोपश्च (७.२.१०७) तथा औत्वप्रतिषेधः साकच्कस्य वा वक्तव्यः सादुत्वं च (वा ४४८२) :</p>";
     display(3);
 }
-/* tadoH saH sAvanantyayoH (7.2.106) */
+/* tadoH saH sAvanantyayoH (7.2.106) */ print_r($text);
 $tyadadinamah3 = array("dva","tya","eta","ta","ida","ada","eka","idaka","tyA","tA","etA");
 $tyadadinamah2 = array("dva","sya","eza","sa","isa","asa","eka","isaka","syA","sA","esA");
-if (sub($tyadadinamah3,array("su!"),blank(0),0) && $sarvafinal!==0)
+if (sub($tyadadinamah3,array("su!"),blank(0),0) && $sarvafinal!==0 && $noatvasatva===0)
 {
     $text = two($tyadadinamah3,array("su!"),$tyadadinamah2,array("su!"),0);
     echo "<p class = sa >By tadoH saH sAvanantyayoH (7.2.106) :</p>";
@@ -2295,7 +2310,7 @@ if (sub(array("asma","yuzma"),array("+"),array("sAm"),0) && in_array($so,array("
     echo "<p class = sa >साम आकम्‌ (७.१.३३) :</p>";
     display(3); $sAmaAkam=1;
 } else { $sAmaAkam=0; }
-/* dvitIyATaussvenaH (2.4.34) */
+/* dvitIyATaussvenaH (2.4.34) */ print_r($text);
 if (sub(array("ida+","eta+","idaka+","idA+",),blank(0),blank(0),0) && in_array($fo,array("idam","etad","idakam")) && $anvadesha===1 && in_array($so,array("am","Ow","Sas","wA","os")))
 {
     $text = one(array("ida+","eta+","idaka+","idA+",),array("ena+","ena+","ena+","enA+"),0);
