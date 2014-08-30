@@ -202,6 +202,14 @@ elseif ( $last==="m" && $_POST['step']==='1')
             $html .= '<input type="radio" value="2" name="cond1_16" > अधातु';                    
             $html .= '</div>';    
 }
+$pancan=array("paYcan","saptan","zwan","navan","daSan");
+if ( ends($arrWord,$pancan,0) && $_POST['step']==='1')
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond1_8" > उपसर्जनीभूत';                    
+            $html .= '<input type="radio" value="2" name="cond1_8" > प्रधान';                    
+            $html .= '</div>';    
+}
 
 // strIliGga
 if ($last==="A" && $_POST['step'] === '2')

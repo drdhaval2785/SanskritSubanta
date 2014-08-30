@@ -12,7 +12,7 @@
 include 'function.php';
 $verbslist = file("verbsslp.txt");
 //print_r($a);
-foreach ($a as $value)
+/*foreach ($a as $value)
 {
         $text = $value;
         $text1 = preg_split('/['.pc('ac').']/',$text);
@@ -25,5 +25,14 @@ foreach ($a as $value)
             }
         }
 }
-$verbsamyoga = array_unique($set);
+$verbsamyoga = array_unique($set);*/
+foreach ($verbslist as $value)
+{
+    if(preg_match('/[iIuUfFxX][vr]$/',$value))
+    {
+        $value=trim($value);
+        $set[] = $value;
+        echo '"'.$value.'",';
+    }
+}
 ?>
