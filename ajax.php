@@ -234,11 +234,66 @@ if ( ends($arrWord,array("tyad","tad","yad","etad","idam","adas","eka","dvi","id
 }
 if ( ends($arrWord,array("etad","idam","idakam",),1) && $_POST['step']==='1_10_2' )
 {
-            $html .= '<div id="step11">';
+            $html .= '<div id="step22">';
             $html .= '<input type="radio" value="1" name="cond1_10_2" > अन्वादेश ';                    
             $html .= '<input type="radio" value="2" name="cond1_10_2" > नहीं';                    
             $html .= '</div>';    
 }
+if ( ends($arrWord,array("asmad","Asmad","yuzmad"),0) && $_POST['step']==='1' )
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond1_11" > अस्मद् / युष्मद् एकत्ववाची है ';                    
+            $html .= '<input type="radio" value="2" name="cond1_11" > अस्मद् / युष्मद् द्वित्ववाची है';                    
+            $html .= '<input type="radio" value="3" name="cond1_11" > अस्मद् / युष्मद् बहुत्ववाची है';                    
+            $html .= '</div>';    
+}
+if ( ends($arrWord,array("asmad","Asmad","yuzmad"),1) && $_POST['step']==='1' )
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond1_12" > अस्मद् / युष्मद् का प्रयोग पद के बाद में नहीं हुआ है । ';                    
+            $html .= '<input type="radio" value="2" name="cond1_12" > अस्मद् / युष्मद् का प्रयोग पाद के प्रारम्भ में हुआ है । ';                    
+            $html .= '<input type="radio" value="3" name="cond1_12" > अस्मद्/ युष्मद् का च, वा, हा, अह या एव से साक्षात् योग है । ';                    
+            $html .= '<input type="radio" value="4" name="cond1_12" > अस्मद्/ युष्मद् का अचाक्षुष ज्ञानार्थ धातु से योग है । ';                    
+            $html .= '<input type="radio" value="5" name="cond1_12" > उपर में से कोई नहीं ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='1_12_5' )
+{
+            $html .= '<div id="step22">';
+            $html .= '<input type="radio" value="1" name="cond1_12_5" > अन्वादेश है ';                    
+            $html .= '<input type="radio" value="2" name="cond1_12_5" > अन्वादेश नहीं है ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='1_12_5_1' )
+{
+            $html .= '<div id="step33">';
+            $html .= '<input type="radio" value="1" name="cond1_12_5_1" > अस्मद् / युष्मद् विद्यमानपूर्व प्रथमान्त शब्द के परे हैं ';                    
+            $html .= '<input type="radio" value="2" name="cond1_12_5_1" > अस्मद् / युष्मद्‌ विद्यमानपूर्व प्रथमान्त शब्द के परे नहीं हैं ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='1_12_5_1_1' )
+{
+            $html .= '<div id="step44">';
+            $html .= '<input type="radio" value="1" name="cond1_12_5_1_1" > आमन्त्रित से परे हैं ';                    
+            $html .= '<input type="radio" value="2" name="cond1_12_5_1_1" > आमन्त्रित से परे नहीं है ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='1_12_5_1_1_1' )
+{
+            $html .= '<div id="step55">';
+            $html .= '<input type="radio" value="1" name="cond1_12_5_1_1_1" > विशेष्य से परे समानाधिकरण विशेषण है ';                    
+            $html .= '<input type="radio" value="2" name="cond1_12_5_1_1_1" > विशेष्य से परे समानाधिकरण विशेषण नहीं है ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='1_12_5_1_1_1_1' )
+{
+            $html .= '<div id="step66">';
+            $html .= '<input type="radio" value="1" name="cond1_12_5_1_1_1_1" > बहुवचन है ';                    
+            $html .= '<input type="radio" value="2" name="cond1_12_5_1_1_1_1" > बहुवचन नहीं है ';                    
+            $html .= '</div>';    
+}
+
+
 
 // strIliGga
 if ($last==="A" && $_POST['step'] === '2')

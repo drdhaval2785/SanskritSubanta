@@ -80,8 +80,45 @@ $(document).ready(function() {
 			$('#step2').html(response);
 		}
         });
-                
-                
+	$( document ).on( "click", "input:radio[name=cond1_12]", function() {
+		if($('input:radio[name=cond1_12]:checked').val() === '5'){
+			$('#step').val('1_12_5');
+			$.getData();
+			$('#step2').html(response);
+		}
+        });
+	$( document ).on( "click", "input:radio[name=cond1_12_5]", function() {
+		if($('input:radio[name=cond1_12_5]:checked').val() === '1'){
+			$('#step').val('1_12_5_1');
+			$.getData();
+			$('#step3').html(response);
+		}
+        });
+	$( document ).on( "click", "input:radio[name=cond1_12_5_1]", function() {
+		if($('input:radio[name=cond1_12_5_1]:checked').val() === '1'){
+			$('#step').val('1_12_5_1_1');
+			$.getData();
+			$('#step4').html(response);
+		}
+        });
+	$( document ).on( "click", "input:radio[name=cond1_12_5_1_1]", function() {
+		if($('input:radio[name=cond1_12_5_1_1]:checked').val() === '1'){
+			$('#step').val('1_12_5_1_1_1');
+			$.getData();
+			$('#step5').html(response);
+		}
+        });
+	$( document ).on( "click", "input:radio[name=cond1_12_5_1_1_1]", function() {
+		if($('input:radio[name=cond1_12_5_1_1_1]:checked').val() === '1'){
+			$('#step').val('1_12_5_1_1_1_1');
+			$.getData();
+			$('#step6').html(response);
+		}
+        });
+               
+        
+        
+/* strIliGga */                
     	$( document ).on( "click", "input:radio[name=gender]", function() {
 		if($('input:radio[name=gender]:checked').val() === 'f'){
 			$('#step').val('2');
