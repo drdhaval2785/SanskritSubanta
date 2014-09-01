@@ -292,6 +292,42 @@ if ( $_POST['step']==='1_12_5_1_1_1_1' )
             $html .= '<input type="radio" value="2" name="cond1_12_5_1_1_1_1" > बहुवचन नहीं है ';                    
             $html .= '</div>';    
 }
+if ( $_POST['step']==='1' && ends($arrWord,array("aYc","AYc","anc","Anc"),1) )
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond1_13" > क्विन्‌ प्रत्ययान्त है ';                    
+            $html .= '<input type="radio" value="2" name="cond1_13" > क्विन्‌ प्रत्ययान्त नहीं है ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='1_13_1' && ends($arrWord,array("aYc","AYc","anc","Anc"),1) )
+{
+            $html .= '<div id="step22">';
+            $html .= '<input type="radio" value="1" name="cond1_13_1" > पूजा के अर्थ में प्रयुक्त है ';                    
+            $html .= '<input type="radio" value="2" name="cond1_13_1" > पूजा के अर्थ में नहीं है ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='1' && ends($arrWord,array("at"),0) && !ends($arrWord,array("Bavat"),1) )
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond1_17" > अत्वन्त है ';                    
+            $html .= '<input type="radio" value="2" name="cond1_17" > अत्वन्त नहीं है ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='1_17_2' )
+{
+            $html .= '<div id="step22">';
+            $html .= '<input type="radio" value="1" name="cond1_17_2" > अभ्यस्त है ';                    
+            $html .= '<input type="radio" value="2" name="cond1_17_2" > अभ्यस्त नहीं है ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='1' && ends($arrWord,array("Bavat"),1) )
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond1_14" > भातेर्डवतुः ';                    
+            $html .= '<input type="radio" value="2" name="cond1_14" > भूधातोः शतृप्रत्ययः ';                    
+            $html .= '</div>';    
+}
+
 
 
 

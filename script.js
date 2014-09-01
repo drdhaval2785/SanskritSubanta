@@ -115,6 +115,20 @@ $(document).ready(function() {
 			$('#step6').html(response);
 		}
         });
+	$( document ).on( "click", "input:radio[name=cond1_13]", function() {
+		if($('input:radio[name=cond1_13]:checked').val() === '1'){
+			$('#step').val('1_13_1');
+			$.getData();
+			$('#step2').html(response);
+		}
+        });
+	$( document ).on( "click", "input:radio[name=cond1_17]", function() {
+		if($('input:radio[name=cond1_17]:checked').val() === '2'){
+			$('#step').val('1_17_2');
+			$.getData();
+			$('#step2').html(response);
+		}
+        });
                
         
         
