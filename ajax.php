@@ -247,7 +247,7 @@ if ( ends($arrWord,array("asmad","Asmad","yuzmad"),0) && $_POST['step']==='1' )
             $html .= '<input type="radio" value="3" name="cond1_11" > अस्मद् / युष्मद् बहुत्ववाची है';                    
             $html .= '</div>';    
 }
-if ( ends($arrWord,array("asmad","Asmad","yuzmad"),1) && $_POST['step']==='1' )
+if ( ends($arrWord,array("asmad","Asmad","yuzmad"),2) && $_POST['step']==='1' )
 {
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond1_12" > अस्मद् / युष्मद् का प्रयोग पद के बाद में नहीं हुआ है । ';                    
@@ -325,6 +325,20 @@ if ( $_POST['step']==='1' && ends($arrWord,array("Bavat"),1) )
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond1_14" > भातेर्डवतुः ';                    
             $html .= '<input type="radio" value="2" name="cond1_14" > भूधातोः शतृप्रत्ययः ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='1' && ends($arrWord,array("zaz"),0) )
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond1_18" > प्राधान्य ';                    
+            $html .= '<input type="radio" value="2" name="cond1_18" > उपसर्जनीभूतः ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='1' && ends($arrWord,array("takz","rakz"),1) )
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond1_15" > ण्यन्त ';                    
+            $html .= '<input type="radio" value="2" name="cond1_15" > अण्यन्त ';                    
             $html .= '</div>';    
 }
 

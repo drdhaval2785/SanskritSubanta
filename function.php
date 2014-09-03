@@ -1245,6 +1245,7 @@ function anekAca($a)
 }
 /* (ends) function */
 // to find if there is any member of array which end in a particular member of another array.
+// 0 -> doesn't start with but ends with it. 1 -> ends with it or is equal to it. 2 -> is equal to it.
 function ends($a,$b,$n)
 {
     foreach ($a as $aa)
@@ -1274,9 +1275,20 @@ function ends($a,$b,$n)
                     $can[] = 0;
                 }                
             }
+            if ($n===2)
+            {
+                if ($aa===$bb)
+                {
+                    
+		    $can[] = 1;
+                }
+                else
+                {
+                    $can[] = 0;
+                }                
+            }
         }
     }
-	
     if (in_array(1,$can))
     {
         return true;
