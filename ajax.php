@@ -465,6 +465,13 @@ if ($last==="U" && $_POST['step']==='2')
             }
             $html .= '</div>';    
 }
+if (ends($arrWord,array("idam"),2) && $_POST['step']==='2')
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_5" > अन्वादेश है ';
+            $html .= '<input type="radio" value="2" name="cond2_5" > अन्वादेश नहीं है ।';
+            $html .= '</div>';        
+}
 
 /* napuMsakaliGga */
 if (in_array($last,array("i","I","u","U","f","F","x","X")) && $_POST['step']==='3')
