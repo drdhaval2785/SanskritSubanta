@@ -189,14 +189,14 @@ if ( ends($arrWord,array("catur"),0) && $_POST['step']==='1')
             $html .= '<input type="radio" value="2" name="cond1_6_1" > चतुर्‌ प्रधान है ।';                    
             $html .= '</div>';    
 }
-if ( ($word==="idam" || $word==="idakam") && $_POST['step']==='1')
+/*if ( ($word==="idam" || $word==="idakam") && $_POST['step']==='1') // bracketed because it is anyways covered in 1_10
 {
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond1_7" > अन्वादेश है';                    
             $html .= '<input type="radio" value="2" name="cond1_7" > अन्वादेश नहीं';                    
             $html .= '</div>';    
 }
-elseif ( $last==="m" && $_POST['step']==='1')
+else*/if ( $last==="m" && $_POST['step']==='1' && !ends($arrWord,array("idam","idakam"),2))
 {
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond1_16" > धातु';                    
@@ -225,7 +225,7 @@ elseif ( $last==="j" && $_POST['step']==='1')
             $html .= '<input type="radio" value="2" name="cond1_9" > नहीं';                    
             $html .= '</div>';    
 }
-if ( ends($arrWord,array("tyad","tad","yad","etad","idam","adas","eka","dvi","idakam",),1) && $_POST['step']==='1' )
+if ( ends($arrWord,array("tyad","tad","yad","etad","idam","adas","eka","dvi","idakam",),1) && $_POST['step']!=='1_10_2' )
 {
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond1_10" > त्यदादि सञ्ज्ञा या उपसर्जनीभूत के तौर पर प्रयुक्त हुए हैं ';                    
@@ -417,8 +417,8 @@ if ($last==="A" && $_POST['step'] === '2')
 if ($last==="i" && ends($arrWord,array("tri"),1) && !ends($arrWord,array("stri"),1) )
 {
             $html .= '<div id="step11">';
-            $html .= '<input type="radio" value="1" name="cond2_2_1" > त्रिशब्द स्त्रीलिङ्ग में है ।';
-            $html .= '<input type="radio" value="2" name="cond2_2_1" > त्रिशब्द स्त्रीलिङ्ग में नहीं है ।';
+            $html .= '<input type="radio" value="1" name="cond2_2_1" > त्रिशब्द स्त्रीलिङ्ग में है । ';
+            $html .= '<input type="radio" value="2" name="cond2_2_1" > त्रिशब्द स्त्रीलिङ्ग में नहीं है । ';
             $html .= '</div>';    
 }
 if ($last==="I" && $_POST['step']==='2')
@@ -426,13 +426,13 @@ if ($last==="I" && $_POST['step']==='2')
             $html .= '<div id="step11">';
             if (ends($arrWord,array("praDI"),1))
             {
-            $html .= '<input type="radio" value="1" name="cond2_3_5" > प्रध्यायतीति प्रधी';                    
-            $html .= '<input type="radio" value="2" name="cond2_3_5" > प्रकृष्टा धीः';                    
+            $html .= '<input type="radio" value="1" name="cond2_3_5" > प्रध्यायतीति प्रधी ';                    
+            $html .= '<input type="radio" value="2" name="cond2_3_5" > प्रकृष्टा धीः ';                    
             }
             elseif (ends($arrWord,array("suDI"),1))
             {
-            $html .= '<input type="radio" value="1" name="cond2_3_6" > सुष्ठु धीः यस्याः सा / सुष्ठु ध्यायतीति';                    
-            $html .= '<input type="radio" value="2" name="cond2_3_6" > सुष्ठु धीः';                                    
+            $html .= '<input type="radio" value="1" name="cond2_3_6" > सुष्ठु धीः यस्याः सा / सुष्ठु ध्यायतीति ';                    
+            $html .= '<input type="radio" value="2" name="cond2_3_6" > सुष्ठु धीः ';                                    
             }
             elseif (ends($arrWord,array("grAmaRI"),1))
             {
@@ -451,8 +451,8 @@ if ($last==="U" && $_POST['step']==='2')
             $html .= '<div id="step11">';
             if (ends($arrWord,array("punarBU","dfnBU","karaBU","kAraBU"),1) )
             {
-            $html .= '<input type="radio" value="1" name="cond2_4_4_1" > समास है ।';                    
-            $html .= '<input type="radio" value="2" name="cond2_4_4_1" > समास नहीं है ।';                    
+            $html .= '<input type="radio" value="1" name="cond2_4_4_1" > समास है । ';                    
+            $html .= '<input type="radio" value="2" name="cond2_4_4_1" > समास नहीं है । ';                    
             }
             elseif (ends($arrWord,array("varzABU","svayamBU"),1) )
             {
@@ -465,13 +465,13 @@ if ($last==="U" && $_POST['step']==='2')
             }
             $html .= '</div>';    
 }
-if (ends($arrWord,array("idam"),2) && $_POST['step']==='2')
+/*if (ends($arrWord,array("idam"),2) && $_POST['step']==='2')
 {
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond2_5" > अन्वादेश है ';
             $html .= '<input type="radio" value="2" name="cond2_5" > अन्वादेश नहीं है ।';
             $html .= '</div>';        
-}
+}*/ // right now testing with 1_10
 
 /* napuMsakaliGga */
 if (in_array($last,array("i","I","u","U","f","F","x","X")) && $_POST['step']==='3')
@@ -481,13 +481,13 @@ if (in_array($last,array("i","I","u","U","f","F","x","X")) && $_POST['step']==='
             $html .= '<input type="radio" value="2" name="cond3" > नहीं';                    
             $html .= '</div>';    
 }
-if (ends($arrWord,array("idam","etad"),2) && $_POST['step']==='3')
+/*if (ends($arrWord,array("idam","etad"),2) && $_POST['step']==='3')
 {
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond3_2" > अन्वादेश है ';
             $html .= '<input type="radio" value="2" name="cond3_2" > अन्वादेश नहीं है ।';
             $html .= '</div>';        
-}
+}*/ // testing with 1_10
 if (ends($arrWord,array("at","At"),1) && $_POST['step']==='3')
 {
             $html .= '<div id="step11">';
