@@ -13,7 +13,7 @@
  /* This code is developed by Dr. Dhaval Patel (drdhaval2785@gmail.com) of www.sanskritworld.in and Ms. Sivakumari Katuri.
   * Layout assistance by Mr Marcis Gasuns.
   * Available under GNU licence.
-  * Version 1.2 date 5/12/2013
+  * Version 2.0 date 4 September 2014
   * The latest source code is available at https://github.com/drdhaval2785/sanskrit
   * For setup, copy and paste sandhi.html, sandhi.php, function.php, mystyle.css, slp-dev.php and dev-slp.php to your localhost and server and run sandhi.html.
   * sandhi.html is the frontend for the code.
