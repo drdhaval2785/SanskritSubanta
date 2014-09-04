@@ -356,7 +356,7 @@ elseif ( $_GET['cond1_10']==="2"  )
 {
     $sarvafinal = 1;
 }
-elseif ( ends(array($fo),array("asmad","yuzmad","idam","adas"),1)  ) // prAdhAnya and gauNatva pending.
+elseif ( ends(array($fo),array("tvat","tyad","tad","yad","etad","idam","adas","yuzmad","asmad","kim","idakam"),1)  ) // prAdhAnya and gauNatva pending.
 {
     $sarvafinal = 1;
 }
@@ -647,13 +647,13 @@ elseif($_GET['cond1_12_5']==="2" && in_array($w,array(3,4,5,9,10,11,15,16,17)))
     display(0);
 }
 /* ancu definitions */
-if ($_GET['cond1_13_1']==="1")
+if ($_GET['cond1_13_1']==="1" )
 {
     $kvin=1;
     $nance=1;
     $ancu=1;
 }
-elseif ($_GET['cond1_13_1']==="2")
+elseif ($_GET['cond1_13_1']==="2" )
 {
     $kvin=1;
     $nance=0;
@@ -664,6 +664,18 @@ elseif ($_GET['cond1_13']==="2")
     $kvin=0;
     $ancu=0;
 }
+/* defining goanc */
+if (in_array($fo,array("goanc","goaYc")) )
+{
+    $kvin=1;
+    $nance=1;
+    $goanc=1;
+}
+else
+{
+    $goanc=0;
+}
+
 /* defining Nyanta */
 if ($_GET['cond1_15']==="1")
 {
@@ -679,6 +691,10 @@ if (sub(array("DvaMs"),blank(0),blank(0),0))
 {
     $kvip=1;
     $dhatu=1;
+}
+if (sub(array("beBid","cecCid"),blank(0),blank(0),0))
+{
+    $kvip=1;
 }
 
 /* strIliGga definitions */
@@ -2990,7 +3006,7 @@ if (sub(array("hiMs"),array("+"),blank(0),0))
 /* aniditAM hala upadhAyAH kGiti (6.4.24) */ 
 if ( !itcheck(array("i"),1) && arr($text,'/[nM]['.pc('hl').'][+]/') && ( itcheck(array("k","N"),1)|| $ancu===1 ) && $kruJca===0  )
 {
-    if ($nAJce===1)
+    if ($nance===1)
     {
     $text = three(array("n","M"),$hl,array("+"),array("",""),$hl,array("+"),1);        
     }
@@ -3041,7 +3057,7 @@ elseif ( ( $atu===1  )  && $so==="su!" && $sambuddhi===0 )
     echo "<p class = sa >अत्वसन्तस्य चाधातोः (६.४.१४) :</p>";
     display(3);
 }
-/* ugidacAM sarvanAmasthAne'dhAtoH (7.1.70) */ 
+/* ugidacAM sarvanAmasthAne'dhAtoH (7.1.70) */  print_r($text);
 if ($atu===1 && !itcheck(array("u"),1) && $sarvanamasthana1===1 )
     {
     echo "<p class = pa >Because the word is not ugit; ugidacAM doesn't apply. </p>";
@@ -3070,6 +3086,7 @@ if ($sarvanamasthana1===1 &&  (( $dhatu===0 && itcheck(array("u","U","f","F","x"
     }
     if ($nance===1)
     {
+        $text = one(array("goannc"),array("goanc"),0); // patch to remove duplication of nakAra.
         echo "<p class = hn >As there is no lopa of nakAra, 'ugidacAm..' doesn't apply.</p>";
         echo "<p class = hn >अलुप्तनकारत्वात्‌ न नुम्‌ ।</p>";
     }
@@ -3095,7 +3112,7 @@ if ( preg_match('/[aA][n][c]/',$fo) && $aniditAm === 1 && sub(array("ac","Ac"),a
     $text = two(array("yac","ac","Ac"),array("+"),array("ic","c","ac"),array("+"),0);
     echo "<p class = sa >acaH (6.4.138) :</p>";
     echo "<p class = sa >अचः (६.४.१३८) :</p>";
-    if ($nAJce===1)
+    if ($nance===1)
     {
     echo "<p class = hn >As there is no lopa of nakAra in nAJceH pUjAyAm, there is not akAralopa.</p>";
     echo "<p class = hn >नलोपाभावादकारलोपो न ।</p>";        
@@ -4583,11 +4600,11 @@ if (arr($text,'/[n][a][S][+]/') && $pada==="pada")
     display(0);
 }
 /* kvinpratyayasya kuH (8.2.62) */
-if (sub(array("S","z","s"),array("+"),blank(0),0) && ( $kvin===1 || ($kvip===1 && $fo==="dfS") ) && $pada==="pada" && $Asarva===1)
+if (sub(array("S","z","s"),array("+"),blank(0),0) && ( $kvin===1 || ($kvip===1 && $fo==="dfS") ) && $pada==="pada" && $Asarva===1 && $goanc===0)
 {
     $kvinku=1;
 }
-elseif(sub($hl,array("+"),blank(0),0) && ( $kvin===1 || ($kvip===1 && $fo==="dfS") ) && $pada==="pada" && !sub(array("S","z","s"),array("+"),blank(0),0))
+elseif(sub($hl,array("+"),blank(0),0) && ( $kvin===1 || ($kvip===1 && $fo==="dfS") ) && $pada==="pada" && !sub(array("S","z","s"),array("+"),blank(0),0) && $goanc===0)
 {
     $kvinku=1;
 }
@@ -4976,8 +4993,8 @@ if ($fo==="asfj" && in_array($so,array("su!","am")) && $gender==="n")
     echo "<p class = sa >झलां जशोऽन्ते (८.२.३९) :</p>";
     display(0); $asRj=1;
 } else {$asRj=0; }
-/* kvinpratyayasya kuH (8.2.62) */ echo $kvinku;
-if (sub($hl,array("+"),blank(0),0) && ( $kvin===1 || ($kvip===1 && $fo==="diS") ) && $pada==="pada" && !sub(array("S","z","s"),array("+"),blank(0),0)  && ( $kvinku===1 || $Asarva===0 ) && $coku!==1 && $asRj===0)
+/* kvinpratyayasya kuH (8.2.62) */
+if (sub($hl,array("+"),blank(0),0) && ( $kvin===1 || ($kvip===1 && $fo==="diS") ) && $pada==="pada" && !sub(array("S","z","s"),array("+"),blank(0),0)  && ( $kvinku===1 || $Asarva===0 ) && ($coku!==1||$goanc===1) && $asRj===0)
 {   
     $text = two($cu,array("+"),$ku,array("+"),0);
     $text = two($Tu,array("+"),$ku,array("+"),0);

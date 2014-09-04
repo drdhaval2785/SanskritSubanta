@@ -481,7 +481,7 @@ if (in_array($last,array("i","I","u","U","f","F","x","X")) && $_POST['step']==='
             $html .= '<input type="radio" value="2" name="cond3" > नहीं';                    
             $html .= '</div>';    
 }
-if (ends($arrWord,array("idam"),2) && $_POST['step']==='3')
+if (ends($arrWord,array("idam","etad"),2) && $_POST['step']==='3')
 {
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond3_2" > अन्वादेश है ';
