@@ -1666,7 +1666,7 @@ if (arr($text,'/(jar)([aA])[+]/') && in_array($so,$acsup) )
     // kakuddoSaNI etc are pending. 
 $paddanno = array("pAda","danta","nAsikA","mAsa","hfdaya","niSA","asfj","yUza","doz","yakft","Sakft","udaka","Asya");
 $paddanno1 = array("pad","dat","nas","mAs","hfd","niS","asan","yUzan","dozan","yakan","Sakan","udan","Asan");
-if (sub($paddanno,array("+"),blank(0),0) && in_array($so,$zasadi))
+if (sub($paddanno,array("+"),blank(0),0) && in_array($so,$zasadi) && in_array($fo,$paddanno))
 {
     $text = two($paddanno,array("+"),$paddanno1,array("+"),1);
     echo "<p class = sa >By paddannomAshRnnizasanyUSandoSanyakaJChakannudannAsaJChasprabhRtiSu (6.1.63) :</p>";
@@ -1678,7 +1678,7 @@ if (sub($paddanno,array("+"),blank(0),0) && in_array($so,$zasadi))
 /* mAMsapRtanAsAnUnAM mAMspRtsnavo vAcyAH SasAdau vA (vA 3416) */
 $mAMsa = array("mAMsa","pftanA","sAnu");
 $mAMsa1 = array("mAMs","pft","snu");
-if (sub($mAMsa,array("+"),array_merge($zasadi,array("Si")),0) && in_array($so,$zasadi))
+if (sub($mAMsa,array("+"),array_merge($zasadi,array("Si")),0) && in_array($so,$zasadi) && in_array($fo,$mAMsa))
 {
     $text = two($mAMsa,array_merge($zasadi,array("Si")),$mAMsa1,array_merge($zasadi,array("Si")),1);
     echo "<p class = sa >By mAMsapRtanAsAnUnAM mAMspRtsnavo vAcyAH SasAdau vA (vA 3416) :</p>";
@@ -3208,7 +3208,7 @@ if ( $gender==="n" && $sarvanamasthana1===1 && sub(array("bahUrj"),blank(0),blan
 {
     $text = two(array("bahUrj"),array("+"),array("bahUrnj"),array("+"),1);
     echo "<p class = sa >By bahUrji numpratiSedhaH (vA 4331) and antyAtpUrvo vA num (vA 4332) :</p>";
-    echo "<p class = sa >बहूर्जि नुम्प्रतिषेधः (वा ४३३१) तथा अन्त्यात्पूर्वो वा नुम्‍ (वा ४३३२) :</p>";
+    echo "<p class = sa >बहूर्जि नुम्प्रतिषेधः (वा ४३३१) तथा अन्त्यात्पूर्वो वा नुम् (वा ४३३२) :</p>";
     display(3); $bahurj=1;
 } else { $bahurj=0; }
 /* beBid, cecCid exception to napuMsakasya jhalacaH (7.1.72) */ 
@@ -4625,7 +4625,7 @@ else { $kvinku=0; }
 // parau vrajeH SaH padAnte (u 217) pending. 
 $vrasca = array("vfSc","sfj","mfj","yaj","rAj","BrAj","devej","parivrAj","Bfj","ftvij");
 $vrashca = array("vfSz","sfz","mfz","yaz","rAz","BrAz","devez","parivrAz","Bfz","ftviz");
-if ( (sub($vrasca,array("+"),prat("Jl"),0) ||  ( sub($vrasca,array("+"),blank(0),0) && $pada==="pada")) && $_GET['cond1_9_3']!=="2" && $kvinku===0)
+if ( (sub($vrasca,array("+"),prat("Jl"),0) ||  ( sub($vrasca,array("+"),blank(0),0) && $pada==="pada")) && $_GET['cond1_9_3']!=="2" && ($kvinku===0 || ($fo==="asfj" && in_array($so,array("su!","am")))) )
 {
     if (sub($vrasca,prat('Jl'),blank(0),0))
     {
@@ -4964,15 +4964,27 @@ if (arr($text,'/['.pc('Jl').'][+]/') && ( $pada === "pada" && !arr(array($fo),'/
             display(0);    
         }
 } 
-/* kvinpratyayasya kuH (8.2.62) */
-if (sub($hl,array("+"),blank(0),0) && ( $kvin===1 || ($kvip===1 && $fo==="diS") ) && $pada==="pada" && !sub(array("S","z","s"),array("+"),blank(0),0)  && ( $kvinku===1 || $Asarva===0) && $coku!==1)
+/* kvinpratyaya patch for asRj */
+if ($fo==="asfj" && in_array($so,array("su!","am")) && $gender==="n")
+{
+    $text=two(array("z"),array("+"),array("K"),array("+"),0);
+    echo "<p class = sa >By kvinpratyayasya kuH (8.2.62) :</p>";
+    echo "<p class = sa >क्विन्प्रत्ययस्य कुः (८.२.६२) :</p>";
+    display(0);
+    $text=two(array("K"),array("+"),array("g"),array("+"),0);
+    echo "<p class = sa >By jhalAM jazo'nte (8.2.39) :</p>";
+    echo "<p class = sa >झलां जशोऽन्ते (८.२.३९) :</p>";
+    display(0); $asRj=1;
+} else {$asRj=0; }
+/* kvinpratyayasya kuH (8.2.62) */ echo $kvinku;
+if (sub($hl,array("+"),blank(0),0) && ( $kvin===1 || ($kvip===1 && $fo==="diS") ) && $pada==="pada" && !sub(array("S","z","s"),array("+"),blank(0),0)  && ( $kvinku===1 || $Asarva===0 ) && $coku!==1 && $asRj===0)
 {   
     $text = two($cu,array("+"),$ku,array("+"),0);
     $text = two($Tu,array("+"),$ku,array("+"),0);
     $text = two($tu,array("+"),$ku,array("+"),0);
     $text = two($pu,array("+"),$ku,array("+"),0);
-    $text = two(array("h"),array("+"),array("G"),array("+"),0);
-//    $text = two(array("S","z","s","y","r","v","l"),array("+"),array("S","z","s","y","r","v","l"),array("+"),0);  // Pending to find kutva of S,z,s.
+    $text = two(array("h","z"),array("+"),array("G","K"),array("+"),0);
+//    $text = two(array("S","s","y","r","v","l"),array("+"),array("S","s","y","r","v","l"),array("+"),0);  // Pending to find kutva of S,z,s.
 
     echo "<p class = sa >By kvinpratyayasya kuH (8.2.62) :</p>";
     if ($kvip===1)
