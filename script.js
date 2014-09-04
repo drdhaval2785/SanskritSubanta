@@ -183,6 +183,20 @@ $(document).ready(function() {
 			$('#step1').html(response);
 		}
   	});
+	$( document ).on( "click", "input:radio[name=cond3_3]", function() {
+		if($('input:radio[name=cond3_3]:checked').val() == '2'){
+			$('#step').val('3_3_2');
+			$.getData();
+			$('#step2').html(response);
+                }
+	});
+	$( document ).on( "click", "input:radio[name=cond3_3_2]", function() {
+		if($('input:radio[name=cond3_3_2]:checked').val() == '1'){
+			$('#step').val('3_3_2_1');
+			$.getData();
+			$('#step3').html(response);
+                }
+	});
         
         
 });

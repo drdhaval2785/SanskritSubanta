@@ -292,7 +292,7 @@ if ( $_POST['step']==='1_12_5_1_1_1_1' )
             $html .= '<input type="radio" value="2" name="cond1_12_5_1_1_1_1" > बहुवचन नहीं है ';                    
             $html .= '</div>';    
 }
-if ( $_POST['step']==='1' && ends($arrWord,array("aYc","AYc","anc","Anc"),1) )
+if ( in_array($_POST['step'],array("1","3")) && ends($arrWord,array("aYc","AYc","anc","Anc"),1) )
 {
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond1_13" > क्विन्‌ प्रत्ययान्त है ';                    
@@ -486,6 +486,27 @@ if (ends($arrWord,array("idam","etad"),2) && $_POST['step']==='3')
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond3_2" > अन्वादेश है ';
             $html .= '<input type="radio" value="2" name="cond3_2" > अन्वादेश नहीं है ।';
+            $html .= '</div>';        
+}
+if (ends($arrWord,array("at","At"),1) && $_POST['step']==='3')
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond3_3" > अभ्यास के परे शतृप्रत्ययान्त शब्द है ';
+            $html .= '<input type="radio" value="2" name="cond3_3" > नहीं ';
+            $html .= '</div>';        
+}
+if ( $_POST['step']==='3_3_2')
+{
+            $html .= '<div id="step22">';
+            $html .= '<input type="radio" value="1" name="cond3_3_2" > अवर्णान्त अङ्ग के परे शतृ प्रत्यय का अवयव है ';
+            $html .= '<input type="radio" value="2" name="cond3_3_2" > नहीं ';
+            $html .= '</div>';        
+}
+if ( $_POST['step']==='3_3_2_1')
+{
+            $html .= '<div id="step33">';
+            $html .= '<input type="radio" value="1" name="cond3_3_2_1" > शप् / श्यन् प्रत्यय के अवर्ण के परे शतृ प्रत्यय का अवयव है ';
+            $html .= '<input type="radio" value="2" name="cond3_3_2_1" > नहीं ';
             $html .= '</div>';        
 }
 
