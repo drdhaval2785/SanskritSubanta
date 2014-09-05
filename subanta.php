@@ -1792,7 +1792,8 @@ if (sub(array("saKi","saKI"),array("+"),array("O","jas","am","Ow"),0) && $sambud
     display(0);
 }            
 if (sub(array("saKi","saKI"),$sarvanamasthana,blank(0),0) && $_GET['cond1_4_3']!=="3" && $sambuddhi===0 && $_GET['cond1_3_1'] !== "3" && $gender!=="f")
-{   $Nidvat = 1; 
+{   
+    $Nidvat = 1; // 0 - no NidvadbhAva. 1 - NidvadbhAva.
     echo "<p class = pa >By sakhyurasambuddhau (7.1.92) :</p>";
     echo "<p class = pa >सख्युरसम्बुद्धौ (७.१.९२) :</p>";
     if (!in_array($fo,array("saKi","saKI")))
@@ -1851,7 +1852,7 @@ if ($nadi!==1 && arr($text,'/[iu][+]/') && $fo!=="saKi" && !arr($text,'/[iu][+]$
 {
     if (arr(array($fo),'/[p][a][t][i]$/') && $fo==='pati')
     {
-        $ghi = 0;
+        $ghi = 0; // 0 - no ghi saJjJA. 1 - ghi saJjJA.
         echo "<p class = pa >By patiH samAsa eva (1.4.8), the ghi saJjJA is not ascribed. </p>";
         echo "<p class = pa >पतिः समास एव (१.४.८) से घिसञ्ज्ञा नहीं है । </p>";
         display(0);        
@@ -1888,12 +1889,13 @@ if ($sarvanamasthana1 === 0 && in_array($so,$acsup) && $luk===0 && $svamo===0 )
 {
     echo "<p class = pa >By yaci bham (1.4.14) and A kaDArAdekA saJjJA (1.4.1) :</p>";
     echo "<p class = pa >यचि भम्‌ (१.४.१४) तथा आ कडारादेका सञ्ज्ञा (१.४.१) :</p>";
-    display(0); $bham=1; 
+    display(0); 
+    $bham=1; // 0 - no bha saJjJA. 1 - bha saJjJA.
 } else {$bham = 0; }  
 /* svAdiSvasarvanAmasthAne (1.4.17) */
 if ($sarvanamasthana1 ===0 && in_array($so,$sup) && $bham!==1 )
 {
-    $pada="pada";
+    $pada="pada"; // this sUtra mandates pada saJjJA in these cases.
     echo "<p class = pa >By svAdiSvasarvanAmasthAne (1.4.17) :</p>";
     echo "<p class = pa >स्वादिष्वसर्वनामस्थाने (१.४.१७) :</p>";
     display(0);    
@@ -1910,7 +1912,9 @@ elseif ( ($shat===1 || arr(array($fo),'/[c][a][t][u][r]$/')) && $so === "Am" && 
     $text = one(array("+Am"),array("+nAm"),0);
     echo "<p class = sa >By SaTcaturbhyazca (7.1.55) :</p>";
     echo "<p class = sa >षट्चतुर्भ्यश्च (७.१.५५) :</p>";
-    display(3); $Satcatur=1; $pada="pada";
+    display(3); 
+    $Satcatur=1; // 0 - SaTcaturbhyazca has not applied. 1 - SaTcaturbhyazca has applied.
+    $pada="pada"; // word gets pada saJjJA.
 } else { $Satcatur=0; }
 /* patch for aSTana A vibhaktau */
 if ( sub(array("azwan"),array("nAm"),blank(0),1) && $so === "Am" && ($samasa===0 || ($samasa===1 && $pradhana===1)))
@@ -1928,7 +1932,8 @@ if ( arr($text,'/[n][+]/') && $so === "Am" && !in_array($fo,$sarvanama) && ($sam
     $text = three($ac,array("n"),array("+nAm"),$acdir,array("n"),array("+nAm"),0); // for function three, please see function.php.
     echo "<p class = sa >By nopadhAyAH (6.4.7) :</p>";
     echo "<p class = sa >नोपधायाः (६.४.७) :</p>";
-    display(3); $nopadha=1;
+    display(3); 
+    $nopadha=1; // 0 - word doesn't have 'n' as upadhA. 1 - word has 'n' as upadhA.
 } else { $nopadha=0; }
 
 /* pAdaH pat (6.4.130) */
@@ -1942,7 +1947,7 @@ if (sub(array("pAd"),array("+"),$sup,0) && $bham===1)
 /* TeH (6.4.143) */
 if ($Dit===1 && $bham===1 )
 {   
-    $text = Ti(0);
+    $text = Ti(0); // function Ti removes Ti. see function.php for details.
     echo "<p class = sa >By TeH (6.4.143) :</p>";
     echo "<p class = sa >टेः (६.४.१४३) :</p>";
     display(3); 
@@ -1969,7 +1974,8 @@ if (sub(array("paTin","maTin","fBukzin"),array("+"),blank(0),0) && $so==="su!" &
     $text = two(array("paTin","maTin","fBukzin"),array("+"),array("paTiA","maTiA","fBukziA"),array("+"),0);
     echo "<p class = sa >By pathimathyRbhukSAmAt (7.1.85) :</p>";
     echo "<p class = sa >पथिमथ्यृभुक्षामात्‌ (७.१.८५) :</p>";
-    display(3); $pathi=1;
+    display(3); 
+    $pathi=1; // 0 - this sUtra has not applied. 1 - this sUtra has applied. Useful for tho'nthaH (7.1.87).
 } else {$pathi=0; } 
 /* ito'tsarvanAmasthAne (7.1.85) */
 if (sub(array("paTi","maTi","fBukzi"),blank(0),blank(0),0) && $sarvanamasthana1===1 )
@@ -1977,7 +1983,8 @@ if (sub(array("paTi","maTi","fBukzi"),blank(0),blank(0),0) && $sarvanamasthana1=
     $text = one(array("paTi","maTi","fBukzi"),array("paTa","maTa","fBukza"),0);
     echo "<p class = sa >By ito'tsarvanAmasthAne (7.1.85) :</p>";
     echo "<p class = sa >इतोऽत्सर्वनामस्थाने (७.१.८५) :</p>";
-    display(3); $pathi1=1;
+    display(3); 
+    $pathi1=1; // 0 - this sUtra has not applied. 1 - this sUtra has applied. Useful for tho'nthaH (7.1.87).
 } else {$pathi=0;}
 /* tho'nthaH (7.1.87) */
 if (sub(array("paTa","maTa"),blank(0),blank(0),0) && ($pathi===1 || $pathi1===1))
