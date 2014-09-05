@@ -3065,10 +3065,10 @@ if ((arr($text,'/['.flat($hl).']$/') && $pada=== "pratyaya" && !in_array($so,$su
     echo "<p class = sa >तस्य लोपः (१.३.९) :</p>";
     display(0); 
 }
-/* it additions */
+/* it additions in case of kvin and kvip */
 if ($kvin===1)
 {
-    $itpratyaya=array_merge($itpratyaya,array("k","n","i"));
+    $itpratyaya=array_merge($itpratyaya,array("k","n","i")); // still ambiguous whether these should be added to pratyayas only or sometimes to prakRtis also.
     $it=array_merge($it,array("k","n","i"));
 }
 if ($kvip===1)
@@ -3078,7 +3078,7 @@ if ($kvip===1)
 }
 /* nAJceH pUjAyAm (6.4.30) */ 
 //if ( !itcheck(array("i"),1) && arr($text,'/[n]['.pc('hl').'][+]/') && ( itcheck(array("k","G"),2)|| $ancu===1 )) // blocked because gives wrong result in 'yuj'->'yunj'. 
-if ( !itcheck(array("i"),1) && arr($text,'/[n][c][+]/') && $nance===1 )
+if ( !itcheck(array("i"),1) && arr($text,'/[n][c][+]/') && $nance===1 ) // for function itcheck please see function.php.
 {
     echo "<p class = sa >nAJceH pUjAyAm (6.4.30) :</p>";
     echo "<p class = sa >नाञ्चेः पूजायाम्‌ (६.४.३०) :</p>";
@@ -3103,7 +3103,8 @@ if ( !itcheck(array("i"),1) && arr($text,'/[nM]['.pc('hl').'][+]/') && ( itcheck
     $text = three(array("n","M"),$hl,array("+"),array("",""),$hl,array("+"),0);        
     echo "<p class = sa >aniditAM hala upadhAyAH kGiti (6.4.24) :</p>";
     echo "<p class = sa >अनिदितां हल उपधायाः क्ङिति (६.४.२४) :</p>";
-    display(0); $aniditAm = 1;
+    display(0); 
+    $aniditAm = 1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
 } else { $aniditAm = 0; }
 /* samaH sami (6.3.93) */ 
 if (preg_match('/[s][a][m][a][n][c]/',$fo) && sub(array("anc","Anc"),array("+"),blank(0),0) && $ancu===1)
@@ -3177,7 +3178,8 @@ if ($sarvanamasthana1===1 &&  (( $dhatu===0 && itcheck(array("u","U","f","F","x"
         echo "<p class = hn >As there is no lopa of nakAra, 'ugidacAm..' doesn't apply.</p>";
         echo "<p class = hn >अलुप्तनकारत्वात्‌ न नुम्‌ ।</p>";
     }
-    display(3);      $ugidacAm=1;  
+    display(3);      
+    $ugidacAm=1;  // 0 - this sUtra has not applied. 1 - this sUtra has applied.
 }  else {$ugidacAm=0; }
 /* uda It (6.4.139) */ 
 if (preg_match('/[u][d][a][n][c]/',$fo) && $aniditAm === 1 && sub(array("ac","Ac"),array("+"),blank(0),0) && $bham===1 && $ancu===1)
@@ -3204,7 +3206,8 @@ if ( preg_match('/[aA][n][c]/',$fo) && $aniditAm === 1 && sub(array("ac","Ac"),a
     echo "<p class = hn >As there is no lopa of nakAra in nAJceH pUjAyAm, there is not akAralopa.</p>";
     echo "<p class = hn >नलोपाभावादकारलोपो न ।</p>";        
     }
-    display(3); $acaH=1;
+    display(3); 
+    $acaH=1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
 } else { $acaH=0; }
 /* cau (6.3.138) */ 
 if ( $acaH===1)
@@ -3225,7 +3228,8 @@ if ($abhyasta===1 && $shatR===1 && itcheck(array("f"),1) && $gender!=="n")
 {
     echo "<p class = sa >By nAbhyastAcChatuH (7.1.78) :</p>";
     echo "<p class = sa >नाभ्यास्ताच्छतुः (7.1.78) :</p>";
-    display(0); $nAbhyasta=1;
+    display(0); 
+    $nAbhyasta=1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
 } else { $nAbhyasta=0; }
 /* vA napuMsakasya (7.1.79) */  
 if ($abhyasta===1 && $shatR===1 && itcheck(array("f"),1) && $gender==="n")
@@ -3234,12 +3238,13 @@ if ($abhyasta===1 && $shatR===1 && itcheck(array("f"),1) && $gender==="n")
     $text = one(array("annc"),array("anc"),0);
     echo "<p class = sa >By vA napuMsakasya (7.1.79) :</p>";
     echo "<p class = sa >वा नपुंसकस्य (७.१.७९) :</p>";
-    display(0); $vAnapuMsaka=1;
+    display(0); 
+    $vAnapuMsaka=1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
 } else { $vAnapuMsaka=0; }
 /* zapzyanornityam (7.1.81) */ 
 if (arr($text,'/[aA][t][+[S][I]/') && ($shap===1|| $shyan===1 ) )
 {
-    $text = mit('/['.pc('hl').'][+]/','n',0); $num=array_merge($num,array(1));
+    $text = mit('/['.pc('hl').'][+]/','n',0); $num=array_merge($num,array(1)); // function mit adds a mit Agama according to midaco'ntyAtparaH. See function.php
     $text = one(array("annc"),array("anc"),0);
     echo "<p class = sa >By zapzyanornityam (7.1.81) :</p>";
     echo "<p class = sa >शप्श्यनोर्नित्यम्‌ (७.१.८१) :</p>";
@@ -3313,14 +3318,15 @@ if ( $gender==="n" && $sarvanamasthana1===1 && sub(array("bahUrj"),blank(0),blan
     $text = two(array("bahUrj"),array("+"),array("bahUrnj"),array("+"),1);
     echo "<p class = sa >By bahUrji numpratiSedhaH (vA 4331) and antyAtpUrvo vA num (vA 4332) :</p>";
     echo "<p class = sa >बहूर्जि नुम्प्रतिषेधः (वा ४३३१) तथा अन्त्यात्पूर्वो वा नुम् (वा ४३३२) :</p>";
-    display(3); $bahurj=1;
+    display(3); 
+    $bahurj=1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
 } else { $bahurj=0; }
 /* beBid, cecCid exception to napuMsakasya jhalacaH (7.1.72) */ 
 if ( $gender==="n" && $sarvanamasthana1===1 && $kvip===1 && sub(prat('Jl'),array("+"),blank(0),0) && in_array($so,array("jas","Sas")) && arr($text,'/['.pc('Jl').'][+]/') && $amipUrva === 0)
 {
     echo "<p class = pa >allopa behaves like sthAnivad, therefore num (because of jhalantatva) doesn't happen. sthAnivadbhAva doesn't happen in svavidhi. Therefore num (because of ajantatva) doesn't happen. </p>";
     echo "<p class = pa >शावल्लोपस्य स्थानिवत्त्वादझलन्तत्वान्न नुम्‌ । अजन्तलक्षणस्तु नुम्‌ न । स्वविधौ स्थानिवत्त्वाभावात्‌ । </p>";
-    display(0); $bebhid=1;
+    display(0); $bebhid=1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
 } else { $bebhid=0; } 
 /* svap patch */
 if ( $gender==="n" && $sarvanamasthana1===1 && arr($text,'/[A][n][p][+]/') && arr(array($fo),'/[a][p]$/') && $amipUrva === 0 && $nAbhyasta===0)
@@ -3386,7 +3392,7 @@ if ($dhatu===1 && $first==="varzABU" && in_array($so,$acsup))
 
 if ($fo==="dfmBU")
 {
-    $dfmBU=1;
+    $dfmBU=1; // 0 - the word is not dRmbhU. 1 - the word is dRmbhU.
 } else { $dfmBU=0; }
 /* na bhUsudhiyoH (6.4.85) */
 if (in_array($fo,array("suDI","praDI")) && $gender==="n")
@@ -3402,7 +3408,7 @@ if ( $dhatu===1 && (arr($text,'/[B][U][+]/')||$fo==="suDI") && arr($text,'/[iuIU
     echo "<p class = sa >By na bhUsudhiyoH (6.4.85) :</p>";
     echo "<p class = sa >न भूसुधियोः (६.४.८५) :</p>";
     display(3);
-    $nabhusu = 1;
+    $nabhusu = 1; // 0 - the word neither ends with bhU, nor is it sudhI. 1 - The word ends with bhU or is sudhI.
 } else { $nabhusu = 0; }
 /* kvau luptaM na sthAnivat (vA 431) */
 // Not displayed because it is difficult to teach sthnanivadbhav to machine now. Will come back to it if I can teach it some day.
@@ -3424,7 +3430,8 @@ if ($dhatu===1 && arr($text,'/[iI][+]['.pc('ac').']/') && in_array($fo,array("un
 {
     echo "<p class = pa >As the vizeSaNa 'dhAtunA saMyogasya' mandates that the saMyoga has to belong to dhAtu only for prohibiting 'eranekAco..', the prohibition doesn't apply here.</p>";
     echo "<p class = pa >धातुना संयोगस्य विशेषणादिह स्यादेव यण्‌ (एरनेकाचो इत्यनेन सूत्रेण) </p>";
-    display(0); $unni=1;
+    display(0); 
+    $unni=1; // 0 - the word is not unnI. 1 - the word is unnI
 } else { $unni=0; } 
 if ($dhatu===1 && (arr($text,'/['.flat($ac).']['.flat($hl).'][iI][+]['.flat($ac).']/')||$unni===1) && $pada==="pratyaya" && anekAca($fo) && $eranekaca!==0 && $nabhusu===0)
 {
@@ -3440,7 +3447,8 @@ if ($dhatu===1 && in_array($fo,array("ullU")) && $pada==="pratyaya" && anekAca($
 {
     echo "<p class = pa >As the vizeSaNa 'dhAtunA saMyogasya' mandates that the saMyoga has to belong to dhAtu only for prohibiting 'oH supi', the prohibition doesn't apply here.</p>";
     echo "<p class = pa >धातुना संयोगस्य विशेषणादिह स्यादेव यण्‌ (ओः सुपि इत्यनेन सूत्रेण) </p>";
-    display(0); $ullU=1;
+    display(0); 
+    $ullU=1; // 0 - word is not ullU. 1 - word is ullU.
 } else { $ullU=0; }
 if ($dhatu===1 && ( arr($text,'/[uU][+]['.flat($ac).']/') || $ullU===1 )&& $pada==="pratyaya" && anekAca($fo) && $eranekaca===1 && $nabhusu===0 && in_array($so,$sup) && $dfmBU===0)
 {
@@ -3457,7 +3465,8 @@ if ( sub(array("a","A","i","I","u","U","f","F","x"),array("+am"),blank(0),0))
     $text = two(array("a","A","i","I","u","U","f","F","x"),array("am"),array("a","A","i","I","u","U","f","F","x"),array("m"),0);
     echo "<p class = sa >By ami pUrvaH (6.1.107) :</p>";
     echo "<p class = sa >अमि पूर्वः (६.१.१०७) :</p>";  $ato = 1;
-    display(0); $amipUrva = 1;
+    display(0); 
+    $amipUrva = 1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
 }   else { $amipUrva = 0; } 
 /* sAntamahataH saMyogasya (6.4.10) */
 if ( ( (arr($text,'/['.flat($ac).'][nM][s][+]/') && $dhatu===1)|| $fo==="mahat" )&& $sarvanamasthana1===1 && $sambuddhi===0)
