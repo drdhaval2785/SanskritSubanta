@@ -15,108 +15,125 @@
   * Available under GNU licence.
   * Version 2.0 date 4 September 2014
   * The latest source code is available at https://github.com/drdhaval2785/sanskrit
-  * For setup, copy and paste sandhi.html, sandhi.php, function.php, mystyle.css, slp-dev.php and dev-slp.php to your localhost and server and run sandhi.html.
-  * sandhi.html is the frontend for the code.
-  * function.php stores the frequently used functions in this code (The description on how to use the code is there in function.php.
-  * slp-dev.php is for converting SLP1 data to Devanagari. dev-slp.php is for converting Devanagari data to SLP1.
+  * For setup, copy and paste subanta.php, subanta.html, script.js, ajax.php, function.php, mystyle.css, slp-dev.php and dev-slp.php to your localhost and server and run subanta.html.
+  * subanta.html is the frontend for the code.
+  * ajax.php and script.js are codes which asks for user feedback for particular words. 
+  * function.php stores the frequently used functions in this code (The description on how to use the code is there in function.php).
+  * subanta.php is the code which actually gives the output of the word derivation.
+  * slp-dev.php is for converting SLP1 data to Devanagari. 
+  * dev-slp.php is for converting Devanagari data to SLP1.
   * Mystyle.css is stylesheet where you can change your preferences.
+  * The code uses jquery.
+  * The description part uses Howard Kyoto protocol.
+  * The coding uses SLP1 transliteration.
   */
  
-// Including arrays and functions 
-include "function.php";
-include "slp-dev.php";
-include "dev-slp.php";
-// hides error reports.
+/* Including arrays and functions */
+include "function.php"; // includes the file function.php which is collection of functions used in this code.
+include "slp-dev.php"; // includes code for conversion from SLP to devanagari,
+include "dev-slp.php"; // includes code for devanagari to SLP.
+
+/* hides error reports. */
 error_reporting(0);
-// set execution time to an hour
+/* set execution time to an hour */
 ini_set('max_execution_time', 36000);
-// set memory limit to 1000 MB
+/* set memory limit to 1000 MB */
 ini_set("memory_limit","1000M");
-// Reading from the HTML input.
-$first = $_GET["first"];
-//$second = $_GET['second'];
-$tran = $_GET['tran'];
-$pada = "pratyaya";
-$nadi = 0;
-$GI = 0;
-$Ap = 0;
-$taddhita = 0;
-$dhatu = 0;
-$eranekaca = 0; // Not clear how to differentiate between iyaG and yaN
-$tri = "m";
-$nityastri = 0;
-$ekajuttarapada = 0;
-$bhashitapumska = 0;
-$anvadesha = 0;
-$samasa = 0; // nalopaH supsvara... 8.2.2
-$pradhana = 0;
-$Jit = 0; // ho hanterJNinneSu 7.3.54
-$Nit = 0;
-$kvin = 0;
-$kvip = 0;
-$asmadpada = 2; // 0 for niSedha, 1 for nitya, 2 for vibhASA. Default 2. 
-$bhavat = 0; // 0 for bhAterDavatu, 1 for bhU+zatR.
-$abhyasta = 0; // 0 for not abhyasta, 1 for abhyasta.
-$shatR = 0; // 0 for not shatR, 1 for shatR.
-$Nyanta = 0; // 0 for aNyanta, 1 for Nyanta.
-$san = 0; // 0 for non san, 1 for san.
-$vasu = 0; // 0 for no vasvanta, 1 for vasvanta.
-$shap = 0; 
-$shyan = 0;
-$tRcvat=0;
-$R = array();
-$num = array();
-$it = array();
-$itprakriti = array();
-$itpratyaya = array();
-$samp = array();
-$gender = $_GET['gender'];
 
-// a for loop for entering all sup pratyayas one by one. Sambuddhi is at the last after sup.
-$sup1= array("su!","O","jas","am","Ow","Sas","wA","ByAm","Bis","Ne","ByAm","Byas","Nasi!","ByAm","Byas","Nas","os","Am","Ni","os","sup","su!","O","jas");
-for ($w=0;$w<count($sup1);$w++)
+/* Reading from the HTML input. */
+$first = $_GET["first"]; // word entered by the user.
+//$second = $_GET['second']; // This has been bracketed because we are taking second member automatically.
+$tran = $_GET['tran']; // "Devanagari" - devanagari, "IAST" - IAST, "SLP1" - SLP1 transliteration.
+$gender = $_GET['gender']; // "m" - male. "f" - female. "n" - neuter.
+
+/* Defining the variables used in the code and their default values .
+ * If there is no change in the execution of subanta.php, the default values are operated.
+ */
+$pada = "pratyaya"; // "pada" - pada saJjJA. "pratyaya" - not pada.
+$nadi = 0; // 0 - no nadI saJjJA. 1 - nadI saJjJA
+$GI = 0; // 0 - no Gyantatva. 1 - Gyantantva.
+$Ap = 0; // 0 - no Abantatva. 1 - Abantatva.
+$taddhita = 0; // 0 - not taddhita. 1 - taddhita.
+$dhatu = 0; // 0 - no dhAtu. 1 - dhAtu.
+$eranekaca = 0; // 0 - no application of eranekAco. 1 - application of eranekAco.
+$tri = "m"; // for tricaturoH striyAM tisRcatasR (7.2.99). "m" - word tri is pulliGga. "f" - word tri is strIliGga.
+$nityastri = 0; // for nitya strIliGga. 0 - not nityastrIliGga. 1 - nityastrIliGga.
+$ekajuttarapada = 0; // 0 - no application of ekAjuttarapade NaH. 1 - application of ekAjuttarapade NaH.
+$bhashitapumska = 0; // 0 - not bhASitapuMska. 1 - bhASitapuMska.
+$anvadesha = 0; // 0 - no anvAdeza. 1 - anvAdeza.
+$samasa = 0; // 0 - no samAsa. 1 - samAsa
+$pradhana = 0; // 0 - no pradhAnatva in samAsa. 1 - pradhAnatva in samAsa 
+$Jit = 0; // 0 - no 'J' as it marker. 1 - 'J' as it marker. e.g. ho hanterJNinneSu 7.3.54
+$Nit = 0; // 0 - no 'N' as it marker. 1 - 'N' as it marker.
+$kvin = 0; // 0 - no kvin pratyaya. 1 - kvin pratyaya.
+$kvip = 0; // 0 - no kvip pratyaya. 1 - kvip pratyaya.
+$asmadpada = 2; // 0 - niSedha. 1 - nitya. 2 - vibhASA. used to decide whether the conversion of asmad / yuSmad -> me / te, nau / vAm etc will happen or not.
+$bhavat = 0; // 0 - bhAterDavatu. 1 - bhU+zatR.
+$abhyasta = 0; // 0 - not abhyasta. 1 - abhyasta.
+$shatR = 0; // 0 - not zatR pratyaya. 1 - zatR pratyaya.
+$Nyanta = 0; // 0 - not Nyanta, 1 - Nyanta.
+$san = 0; // 0 - non san, 1 - san. 'san' is used to create nAmadhAtus. 
+$vasu = 0; // 0 - no vasvanta, 1 - vasvanta.
+$shap = 0; // 0 - no zap pratyaya. 1 - zap pratyaya.
+$shyan = 0; // 0 - no zyan pratyaya. 1 - zyan pratyaya.
+$tRcvat=0; // 0 - not tRjvat. 1 - tRjvat. e.g. tRjvat kroSTuH.
+$R = array(); // creating an array where we can store whether the word has 'R' as it marker.
+$num = array(); // creating an array where we can store whether the word has 'num' Agama. 
+$it = array(); // Creating an array where we can store it markers.
+$itprakriti = array(); // creating an array where we can store it markers of prakRti.
+$itpratyaya = array(); // creating an array where we can store it markers of pratyayas.
+$samp = array(); // creating an array where we can store whethere samprasAraNa has happened or not.
+// rest of the variables will be defined at their particular occurence in the code.
+
+/* a for loop for entering all sup pratyayas one by one. Sambuddhi is at the last after sup. */
+$sup1= array("su!","O","jas","am","Ow","Sas","wA","ByAm","Bis","Ne","ByAm","Byas","Nasi!","ByAm","Byas","Nas","os","Am","Ni","os","sup","su!","O","jas"); // the last three members are for sambodhana forms.
+for ($w=0;$w<count($sup1);$w++) // running the loop till $sup1 is exhausted.
 {
-$second=$sup1[$w];    
+$second=$sup1[$w];    // defining the second word as su!, O, jas etc.
 
-// Code for converting from IAST to SLP
+/* Code for converting from IAST to SLP1 */
+// defining IAST letters.
 $iast = array("a","ā","i","ī","u","ū","ṛ","ṝ","ḷ","ḹ","e","ai","o","au","ṃ","ḥ","kh","ch","ṭh","th","ph","gh","jh","ḍh","dh","bh","ṅ","ñ","ṇ","k","c","ṭ","t","p","g","j","ḍ","d","b","n","m","y","r","l","v","s","h","ś","ṣ",);
+// defining SLP1 letters.
 $slp = array("a","A","i","I","u","U","f","F","x","X","e","E", "o","O", "M","H","K", "C",  "W", "T", "P","G", "J",  "Q", "D","B", "N","Y","R","k","c","w","t","p","g","j","q","d","b","n","m","y","r","l","v","s","h","S","z",);
-  if (preg_match('/[āĀīĪūŪṛṚṝṜḷḶḹḸṃṂḥḤṭṬḍḌṅṄñÑṇṆśŚṣṢV]/',$first) || preg_match('/[āĀīĪūŪṛṚṝṜḷḶḹḸṃṂḥḤṭṬḍḌṅṄñÑṇṆśŚṣṢV]/',$second))
+  if (preg_match('/[āĀīĪūŪṛṚṝṜḷḶḹḸṃṂḥḤṭṬḍḌṅṄñÑṇṆśŚṣṢV]/',$first) || preg_match('/[āĀīĪūŪṛṚṝṜḷḶḹḸṃṂḥḤṭṬḍḌṅṄñÑṇṆśŚṣṢV]/',$second)) // if there is IAST letters in the input, change them to SLP1
 {
     $first = str_replace($iast,$slp,$first);
     $second = str_replace($iast,$slp,$second);
 }
-if ($tran === "IAST")
+if ($tran === "IAST") // if the user says that the input is IAST - change it to SLP1.
 {
      $first = str_replace($iast,$slp,$first);
     $second = str_replace($iast,$slp,$second);
 }
-// Devanagari handling. This is innocuous. Therefore even running without the selection in dropdown menu. 
+/* Code for converting from devanagari - SLP1 */ 
+//This is innocuous. Therefore even running without the selection in dropdown menu. 
 $first = json_encode($first);
-$first = str_replace("\u200d","",$first);
-$first = str_replace("\u200c","",$first);
+$first = str_replace("\u200d","",$first); // removing whitespace
+$first = str_replace("\u200c","",$first); // removing whitespace
 $first = json_decode($first);
 $second = json_encode($second);
-$second = str_replace("\u200d","",$second);
-$second = str_replace("\u200c","",$second);
+$second = str_replace("\u200d","",$second); // removing whitespace
+$second = str_replace("\u200c","",$second); // removing whitespace
 $second = json_decode($second);
-$first = convert1($first);
-$second = convert1($second);
+$first = convert1($first); // converting to SLP1
+$second = convert1($second); // converting to SLP1
 
-$fo = $first;
-$so = $second; ;
-// displaying the data back to the user
+$fo = $first; // remembering the original prakRti. Sometimes we need to know what was the original prakRti.
+$so = $second; ; // remembering the original pratyayas. Sometimes we need to know what was the original pratyaya.
+
+/* displaying the data back to the user */
 echo "<p class = red >You entered: ".convert($fo)." + ".convert($so)." <a href = subanta.html>Go Back</a></p>";
 echo "</br>";
 
-// for sambuddhi display
+/* for sambodhana vibhaktis display */
 if ($w>20)
 {
     echo "<p class = red >This is sambuddhi form.</p>";
     echo "</br>";
     if ($w===21)
     {
-    $sambuddhi=1;        
+    $sambuddhi=1;        // 0 - no sambuddhi. 1 - sambuddhi.
     }
     else 
     {
@@ -127,21 +144,22 @@ else
 {
     $sambuddhi=0;
 }
-/* preprocessing for the sup pratyayas. */
 
+/* preprocessing for the sup pratyayas. */
 // Joining the two input words 
-if ($second === "")
+if ($second === "") // if there is no pratyaya. This doesn't happen in subanta generation. But kept it for other uses.
 {
     $input = $input = ltrim(chop($first));
 }
-elseif ($first === "")
+elseif ($first === "") // if there is no prakRti. This doesn't happen in subanta generation. But kept it for other uses, like sandhi etc.
 {
     $input = ltrim(chop($second));
 }
-else
+else // this option is used for subanta generation. $input is 'prakRti'+'pratyaya'.
 {
 $input = ltrim(chop($first."+".$second));    
 }
+
  /* main coding part starts from here. Based on Siddhantakaumudi text. */
     
 // Defining an array $text    
