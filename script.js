@@ -3,23 +3,21 @@ $(document).ready(function() {
 	var response = '';
 	$.getData = function(){
 		$.ajax({
-				type: "POST",
-				url: "ajax.php",
+				type: "POST", // data is transferred by POST
+				url: "ajax.php", // data is sent to ajax.php
 				async   : false,
 				data: $( "form" ).serialize()
 				})
 				.done(function( data ) {
-					response = data;
-					//$('#response').html(data);
+					response = data; // serialises data got from form of subanta.html
 		});
 	}
 	
-	$( document ).on( "click", "input:radio[name=gender]", function() {
-		if($('input:radio[name=gender]:checked').val() === "m"){
-			$('#step').val('1');
-			$.getData();
-			//$('.innerStep').html('');
-			$('#step1').html(response);
+	$( document ).on( "click", "input:radio[name=gender]", function() {// if the user clicks on gender radio button.
+		if($('input:radio[name=gender]:checked').val() === "m"){ // if the checked gender is "m"
+			$('#step').val('1'); // send value of 'step' as '1' to ajax.php
+			$.getData(); // sends data to ajax.php
+			$('#step1').html(response); // gets the output from ajax.php and displays it on subanta.html in div class 'step1'. Similar for all the rest of code.
 		}
   	});
 	$( document ).on( "click", "input:radio[name=cond1_1_1]", function() {
@@ -32,7 +30,7 @@ $(document).ready(function() {
 			$.getData();
 			$('#step2').html(response);
 		}else{
-			$('#step2').html('');
+			$('#step2').html(''); // output in div class step2
 		}
 	});
 	
@@ -42,7 +40,7 @@ $(document).ready(function() {
 			$.getData();
 			$('#step3').html(response);
 		}else{
-			$('#step3').html('');
+			$('#step3').html(''); // output in div class step3. These steps are levels of user feedback.
 		}
 	});
 	$( document ).on( "click", "input:radio[name=cond1_4]", function() {
@@ -174,7 +172,7 @@ $(document).ready(function() {
 		}
 	});
 
-
+/* napuMsakaliGga */
 	$( document ).on( "click", "input:radio[name=gender]", function() {
 		if($('input:radio[name=gender]:checked').val() === "n"){
 			$('#step').val('3');
