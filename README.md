@@ -15,7 +15,7 @@ For using the code offline on your computer:
 7. Click start for Apache, MySQL, Filezilla. (This you have to do all time you start your computer. This functions as server for your html and php files.)
 
 For Sandhi generation -
-This is an attemt to create an open source sandhi joiner.
+This is an attempt to create an open source sandhi joiner.
 The text used is siddhAntakaumudI.
 Install sandhi.html, sandhi.php, dev-slp.php, slp-dev.php, function.php and the mystyle.css in your localhost and run the sandhi.html.
 Input your words - it will fetch the output from the PHP files and display it there.
