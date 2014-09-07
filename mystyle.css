@@ -1,3 +1,4 @@
+/* This code is borrowed from Mr. Marcis Gasuns. */
 body {
 font-family: "Arial Unicode MS, Sans-Serif";
 font-size: 16pt;
@@ -28,6 +29,41 @@ font-family: "Siddhanta";
  padding-right: 40px;
    left: 20px;
 }
+/* vidhi sUtra */
+/* We use this to style vidhi sUtras. */
+p.sa {
+    color: #8b0000; 
+ background-color: #d0d0d0;
+ font-size: 16pt;
+font-family: "Siddhanta"; /* Default font is kept Siddhanta for proper display of upadhmAnIya and jihvAmUlIya. */
+ padding-right: 40px;
+   left: 20px;
+}
+/* notes */ 
+/* We use this to style notes */
+p.hn {
+ color: black;
+ background-color: #ffffcc;
+ font-family: "Siddhanta";
+ padding-left: 0px;
+}
+/* sutras etc except vidhi sutra */
+/* most probably paribhASAs, saJjJA sUtra etc are recorded in this */
+p.pa {
+    background: #ccffcc;
+  font-family: "Siddhanta";
+}
+/* Error message */
+/* using red color to give error messages to user */
+p.red {
+ color: black;
+ background-color: #ff0033;
+ font-family: "Siddhanta";
+ padding-top: 2px;
+padding-bottom: 2px;
+ }
+ 
+/* the next styles are not used in code. kept reserved for future usages. */
 /* rv01.001.01 */
 p.stamp {
 font-size: 14pt;
@@ -39,35 +75,6 @@ padding-bottom: 2px;
 p.comm {
 font-style: italic;
 }
-/* vidhi sUtra */
-p.sa {
-    color: #8b0000; 
- background-color: #d0d0d0;
- font-size: 16pt;
-font-family: "Siddhanta";
- padding-right: 40px;
-   left: 20px;
-}
-/* notes */ 
-p.hn {
- color: black;
- background-color: #ffffcc;
- font-family: "Siddhanta";
- padding-left: 0px;
-}
-/* sutras etc except vidhi sutra */
-p.pa {
-    background: #ccffcc;
-  font-family: "Siddhanta";
-}
-/* Error message */
-p.red {
- color: black;
- background-color: #ff0033;
- font-family: "Siddhanta";
- padding-top: 2px;
-padding-bottom: 2px;
- }
 /* elizarenkova */
 p.form {
 padding-top: 4px;

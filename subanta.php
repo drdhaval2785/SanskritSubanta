@@ -15,6 +15,8 @@
   * Available under GNU licence.
   * Version 2.0 date 4 September 2014
   * The latest source code is available at https://github.com/drdhaval2785/sanskrit
+  * Acknowledgements: I extend my heartfelt thanks to Ananda Loponen for the code to convert devanagari and various sanskrit transliterations. That can be accessed at http://www.ingmardeboer.nl/php/diCrunch.php?act=help.
+  * I also extend my gratitude to gloomy.penguin of stackoverflow.com, who helped me create dvitva and lopa functions, without which I would be handicapped.
   * For setup, copy and paste subanta.php, subanta.html, script.js, ajax.php, function.php, mystyle.css, slp-dev.php and dev-slp.php to your localhost and server and run subanta.html.
   * subanta.html is the frontend for the code.
   * ajax.php and script.js are codes which asks for user feedback for particular words. 
