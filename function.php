@@ -637,8 +637,8 @@ return $output;
          {
              foreach ($c as $cc)
              {
-                 $needle[]=$aa.$bb.$cc;
-                 $needle[]=$aa."+".$bb.$cc;
+                 $needle[]=$aa.$bb.$cc; // creating all permutations and combinations.
+                 $needle[]=$aa."+".$bb.$cc; // adding "+" at all possible locations.
                  $needle[]=$aa.$bb."+".$cc;
                  $needle[]=$aa."+".$bb."+".$cc;
              }
@@ -650,8 +650,8 @@ return $output;
     {
         for($i=0;$i<count($a);$i++)
         {
-            $needle[] = $a[$i].$b[$i].$c[$i];
-            $needle[] = $a[$i]."+".$b[$i].$c[$i];
+            $needle[] = $a[$i].$b[$i].$c[$i]; // creating linear patterns.
+            $needle[] = $a[$i]."+".$b[$i].$c[$i]; // adding "+" at all possible locations.
             $needle[] = $a[$i].$b[$i]."+".$c[$i];
             $needle[] = $a[$i]."+".$b[$i]."+".$c[$i];
         }
@@ -664,12 +664,12 @@ return $output;
     { 
         if (($repeat <2 && count(preg_grep("/$pattern/", $text)) >0) || ($repeat ===2 && strpos(strrev($first), strrev($pattern)) === 0) || ($repeat ===3 && strpos($first,$pattern) === 0) || ($repeat ===4 && strpos(strrev($second), strrev($pattern)) === 0) || ($repeat ===5 && strpos($second,$pattern) === 0))
         {
-        $can = 1;
+        $can = 1; // match found
         break;
         }  
         else
         {
-            $can = 0;
+            $can = 0; // match not found
         }
     }
 if ($can === 1)
@@ -682,236 +682,43 @@ else
 }
 
 }
-
-/* Function to find savarna of a given letter from the given array. */
-function sl($text,$array) // Known issue - words having two Asyas.
-{
-    global $kantha,$talu,$murdha,$danta,$oshtha,$nasika,$kanthatalu,$kanthoshtha,$dantoshtha,$sprushta,$ishatsprushta,$vivruta,$samvruta,$aghosha,$alpaprana,$ghosha,$mahaprana,$ac,$udatta,$anudatta,$svarita,$shvasa,$nada,$vivara,$samvara,$hl,$ru,$e;
-    // defining an array for sthAna
-$i=0;
-if (in_array($text,$kantha)) { $sthana[$i] = $kantha; $i++; }
-if (in_array($text,$talu)) { $sthana[$i] =  $talu; $i++; }
-if (in_array($text,$murdha)) { $sthana[$i] = $murdha; $i++; }
-if (in_array($text,$danta)) { $sthana[$i] = $danta; $i++; }
-if (in_array($text,$oshtha)) { $sthana[$i] = $oshtha; $i++; }
-if (in_array($text,$nasika)) { $sthana[$i] = $nasika; $i++; }
-if (in_array($text,$kanthatalu)) { $sthana[$i] = $kanthatalu; $i++; }
-if (in_array($text,$kanthoshtha)) { $sthana[$i] = $kanthoshtha; $i++;}
-if (in_array($text,$dantoshtha)) { $sthana[$i] = $dantoshtha; $i++; }
-// defining an array for Abhyantara prayatna for consonants
-$j=0;
-if (in_array($text,$sprushta)) { $abhyantara[$j] = $sprushta; $j++; }
-if (in_array($text,$ishatsprushta)) { $abhyantara[$j] = $ishatsprushta; $j++; }
-if (in_array($text,$vivruta)) { $abhyantara[$j] = $vivruta; $j++; }
-if (in_array($text,$samvruta)) { $abhyantara[$j] = $samvruta; $j++; }
-// defining an array for bAhya prayatna for consonants
-$k=0;
-if (in_array($text,$aghosha)) { $ghosh[$k] = $aghosha; $k++; }
-if (in_array($text,$alpaprana)) { $prana[$k] = $alpaprana; $k++; }
-if (in_array($text,$ghosha)) { $ghosh[$k] = $ghosha; $k++; }
-if (in_array($text,$mahaprana)) { $prana[$k] = $mahaprana; $k++; }
-// defining an array for bAhya prayatna of vowels
-$u=0;
-if (in_array($text,$ac)) { $svar[$u] = $udatta; $u++; }
-
-// Finding out intersections of sthAna, Abhyantara prayatna and bAhya prayatnas of the given letter and the given array. 
-if(empty($sthana)===FALSE)
-{
-$sthanasamya = array_intersect(flatten($sthana),$array); 
-//echo "The letters in the pratyAhAra with same sthAna (Asya) as the letter input are: ".implode(",",$sthanasamya)."</br>";    
-}
-if(empty($abhyantara)===false)
-{
-$abhyantarasamya = array_intersect(flatten($abhyantara),$array);
-//echo "The letters in the pratyAhAra with the same Abhyantara prayatna as the letter input are: ".implode(",",$abhyantarasamya)."</br>";    
-}
-if(empty($ghosh)===FALSE)
-{
-$ghoshasamya = array_intersect(flatten($ghosh),$array);
-//echo "The letters in the pratyAhAra with the same ghoSa as the letter input are: ".implode(",",$ghoshasamya)."</br>";    
-}
-if(empty($prana)===FALSE)
-{
-$pranasamya = array_intersect(flatten($prana),$array);
-//echo "The letters in the pratyAhAra with the same prANa as the letter input are: ".implode(",",$pranasamya)."</br>";    
-}
-if(empty($svar)===false)
-{
-if(in_array($text,$ac)) 
-        { $svarasamya = array_intersect(flatten($svar),$array,$ac); 
-//echo "The letters in the pratyAhAra with the same udAtta/anudAtta/svarita as the letter input are: ".implode(",",$svarasamya)."</br>";
-        }    
-}
-if(empty($sthanasamya)===false && empty($abhyantarasamya)===false && empty($ghoshasamya)===false && empty($pranasamya)===false)
-{ $l = array_intersect($sthanasamya,$abhyantarasamya,$ghoshasamya,$pranasamya); }
-if(empty($sthanasamya)===false && empty($abhyantarasamya)===false && empty($ghoshasamya)===false)
-{ $m = array_intersect($sthanasamya,$abhyantarasamya,$ghoshasamya); }
-if(empty($sthanasamya)===false && empty($abhyantarasamya)===false)
-{ $n = array_intersect($sthanasamya,$abhyantarasamya); }
-if(empty($sthanasamya)===false && empty($abhyantarasamya)===false && empty($pranasamya)===false)
-{ $o = array_intersect($sthanasamya,$abhyantarasamya,$pranasamya); }
-if(empty($sthanasamya)===false && empty($ghoshasamya)===false)
-{ $p = array_intersect($sthanasamya,$ghoshasamya); }
-if(empty($sthanasamya)===false && empty($pranasamya)===false)
-{ $q = array_intersect($sthanasamya,$pranasamya); }
-// Defining savarNas for consonants
-if(in_array($text,$hl))
-{
-    if(empty($sthanasamya)===false&&empty($abhyantarasamya)===false&&empty($ghoshasamya)===false&&empty($pranasamya)===FALSE&&empty($l)===false) 
-    {//echo "four match";
-            $savarna = implode(", ",$l);     
-    }
-    elseif (empty($sthanasamya)===false&&empty($abhyantarasamya)===false&&empty($ghoshasamya)===false&&empty($m)===false)
-    {//echo "three match";
-            $savarna = implode(", ",$m);     
-    }
-    elseif (empty($sthanasamya)===false&&empty($abhyantarasamya)===false&&empty($pranasamya)===false&&empty($o)===false)
-    {//echo "three match";
-            $savarna = implode(", ",$o);     
-    }
-    elseif (empty($sthanasamya)===false&&empty($abhyantarasamya)===false&&empty($n)===false)
-    {//echo "Two match";
-            $savarna = implode(", ",$n);     
-    }
-     elseif (empty($sthanasamya)===false&&empty($ghoshasamya)===false&&empty($p)===false)
-    {//echo "Two match";
-            $savarna = implode(", ",$p);     
-    } elseif (empty($sthanasamya)===false&&empty($pranasamya)===false&&empty($q)===false)
-    {//echo "Two match";
-            $savarna = implode(", ",$q);     
-    }
-    else
-    {//echo "no match";
-    $savarna = implode(", ",$sthanasamya);    
-    }
-} 
-// defining savarNas for vowels
-else
-{  
-    if (in_array($text,$ru)||in_array($text,$e))
-    {// patch for $ru
-        for($i=0;$i<4;$i++)
-        {
-        if ($text === $ru[$i])
-        {
-            if (in_array($text,$array))
-            { $savarna = "f, F, x, X"; }
-            else
-            { $savarna = ""; }
-        }
-        // patch for non sAvarNya of e,E,o,O
-        elseif ($text === $e[$i])
-        {
-            if (in_array($text,$array))
-            { $savarna = $text; }
-            else
-            { $savarna = ""; }
-        }
-        }
-    }
-    
-    
-    else 
-    {// In case of other vowels.
-        $savarna = implode(", ",$sthanasamya);
-    }
-    
-    if (in_array($text,$array))
-    {
-        $savarna = $text;
-    }
-}
-// giving output to the browser for savarNa letter
-//echo "The savarna letter of '".$text."' among the given pratyAhAra is: ".$savarna;    
-// stores that savarNa letter in memory.
-return $savarna;
-}
-
-
-/* Function one is for replacing one letter in the whole array of $text with another letter */
-// There are three arguments, $a is the array which you want to change, $b is the array which will be put in place of the replaced one.
-// $merge can take two values. 0 will mean that the whole $text will be replaced with the new replaced values. Used in case of mandatory Adezas.
-// 1 will mean that $text will not be replaced, but the replaced values will be added to it. Used in case of optional Adezas.
-function one1($text,$a,$b,$merge)
-{
-        for($i=0;$i<count($a);$i++)
-        {
-            $text =  str_replace($a[$i],$b[$i],$text);    
-        }
-return $text;  
-}
-/* Function two is for replacing one letter in the whole array of $text with another letter */
-// There are five arguments, $a,$b are the arrays which you want to change, $c,$d are the arrays which will be put in place of the replaced one.
-// $merge can take two values. 0 will mean that the whole $text will be replaced with the new replaced values. Used in case of mandatory Adezas.
-// 1 will mean that $text will not be replaced, but the replaced values will be added to it. Used in case of optional Adezas.
-function two1($text,$a,$b,$c,$d,$merge)
-{
-    for($i=0;$i<count($a);$i++)
-          {
-    for($j=0;$j<count($b);$j++)
-            {
-      $text =  str_replace($a[$i].$b[$j],$c[$i].$d[$j],$text);   
-            }
-          }
-    return $text;
-}
-
-/* Function three is for replacing one letter in the whole array of $text with another letter */
-// There are seven arguments, $a,$b,$c are the arrays which you want to change, $d,$e,$f are the arrays which will be put in place of the replaced one.
-// $merge can take two values. 0 will mean that the whole $text will be replaced with the new replaced values. Used in case of mandatory Adezas.
-// 1 will mean that $text will not be replaced, but the replaced values will be added to it. Used in case of optional Adezas.
-function three1($text,$a,$b,$c,$d,$e,$f,$merge)
-{
-     for($i=0;$i<count($a);$i++)
-    {
-    for($j=0;$j<count($b);$j++)
-        {
-        for($k=0;$k<count($c);$k++)
-            {
-         $text =  str_replace($a[$i].$b[$j].$c[$k],$d[$i].$e[$j].$f[$k],$text);       
-            }
-        }
-    }
-    return $text;
-}
-
 /* function to search the occurence of a pattern in any of the member of an array */
+// $text - the array to search for the occurence of pattern
+// $a - pattern in regular expression.
 function arr($text,$a)
 {
     foreach ($text as $value)
     {
-        if (preg_match($a,$value))
+        if (preg_match($a,$value)) // if the regular expression matches the value of array member.
         {
-            $count[] = 1;
+            $count[] = 1; // match found
             break;
         }
         else 
         {
-            $count[] = 0;
+            $count[] = 0; // match not found
         }
     }
     if (in_array(1,$count))
     {
-        return true;
+        return true; // if match found
     }
     else
     {
-        return false;
+        return false; // if match not found
     }
 }
-
 /* function to remove the last n letters from a word in the $text array and replace them with another word */
-// Write this function with a fresh mind. It is going all wrong.
 function last($a,$b,$merge)
 {
-    global $text;
+    global $text; // bringing $text from subanta.php.
     foreach ($text as $value)
     {
         for($i=0;$i<count($a);$i++)
         { $c = str_replace("\\","",$a[$i]);
             if (preg_match('/('.$a[$i].')$/',$value) || preg_match('/('.$c.')$/',$value))
             {
-                $value1[] = substr($value,0,-strlen($a[$i])).$b[$i];
+                $value1[] = substr($value,0,-strlen($a[$i])).$b[$i]; // removing the last letter and substituting it with the corresponding letter of $b.
                 if ($merge === 1)
                 {
                     $value1[] = $value;
@@ -924,24 +731,23 @@ function last($a,$b,$merge)
         }
         if (array_unique($value1)===array($value))
         {
-            $value2[] = array_unique($value1);
+            $value2[] = array_unique($value1); // in case there is no change.
         }
         elseif ($merge === 1)
         {
-            $value2[] = array_unique($value1);
+            $value2[] = array_unique($value1); // in case there is optional Adeza.
         }
         else
         {
-            $value2[] = array_diff($value1,array($value));
+            $value2[] = array_diff($value1,array($value)); // in case there is mandatory Adeza.
         }
-        $value1 = array();
+        $value1 = array(); // reseting the $value1 for future use.
     }
-    $text = flatten($value2);
-    $text = array_unique($text);
-    $text = array_values($text);
-    return $text;
+    $text = flatten($value2); // storing the result of $value2 in $text.
+    $text = array_unique($text); // keeping only unique members
+    $text = array_values($text); // reserialize the numbers.
+    return $text; // return to the user.
 }
-
 /* function to remove the first n letters from a word in the $text array and replace them with another word */
 function first($a,$b,$merge)
 {
@@ -952,7 +758,7 @@ function first($a,$b,$merge)
         {
             if (preg_match('/('.$a[$i].')$/',$value))
             {
-                $value1[] = $b[$i].substr($value,strlen($a[$i]));
+                $value1[] = $b[$i].substr($value,strlen($a[$i])); // This function is the same as last function, except that the replacement here is preceded by the member of $b, unlike followed by member of $b in last function.
                 if ($merge === 1)
                 {
                     $value1[] = $value;
@@ -988,7 +794,7 @@ function vriddhi($a)
   $acreplace = array("A","A","E","E","O","O","Ar","Ar","Al","Al","E","O","E","O",);
     foreach ($a as $value)
     {
-        $out[] = str_replace($ac,$acreplace,$value);
+        $out[] = str_replace($ac,$acreplace,$value); // replacing the vowels with their corresponding vRddhi letters.
     }
     return $out;
 }
@@ -998,7 +804,7 @@ function guna($a)
   $acreplace = array("a","a","e","e","o","o","ar","ar","al","al","e","o","e","o",);
     foreach ($a as $value)
     {
-        $out[] = str_replace($ac,$acreplace,$value);
+        $out[] = str_replace($ac,$acreplace,$value); // replacing the vowels with their corresponding guNa letters.
     }
     return $out;
 }
@@ -1008,28 +814,27 @@ function dirgha($a)
   $acreplace = array("A","A","I","I","U","U","F","F","F","F","e","o","E","O",);
     foreach ($a as $value)
     {
-        $out[] = str_replace($ac,$acreplace,$value);
+        $out[] = str_replace($ac,$acreplace,$value); // replacing the vowels with their corresponding dIrgha letters.
     }
     return $out;
 }
 
 /* anekAca function */
+// function to test whether the word is ekAc or anekAc i.e. whether there is only one vowel in it or more than one vowel in it.
 function anekAca($a)
 {
-    $ac = array("a","A","i","I","u","U","f","F","x","X","e","o","E","O",);
-    $b = preg_split('/['.flat($ac).']/',$a);
-    if (count($b)>2)
+    $ac = array("a","A","i","I","u","U","f","F","x","X","e","o","E","O",); // vowel list.
+    $b = preg_split('/['.flat($ac).']/',$a); // splitting the word by vowels.
+    if (count($b)>2) // if there are more than 2 pieces, that means there are more than one vowel mandatorily.
     {
-        return true; 
-        //echo "1";
+        return true; // returns true to the user.
     }
     else
     {
-        return false; 
-        //echo "0";
+        return false;  // returns false to the user.
     }
 }
-/* (ends) function */
+/* ends function */
 // to find if there is any member of array which end in a particular member of another array.
 // 0 -> doesn't start with but ends with it. 1 -> ends with it or is equal to it. 2 -> is equal to it.
 function ends($a,$b,$n)
@@ -1038,9 +843,9 @@ function ends($a,$b,$n)
     {
         foreach ($b as $bb)
         {
-            if ($n===0)
+            if ($n===0) 
             {
-                if (strpos($aa,$bb)>0 && strpos(strrev($aa),strrev($bb)) ===0)
+                if (strpos($aa,$bb)>0 && strpos(strrev($aa),strrev($bb)) ===0) // strpos($aa,$bb)>0 means that it doesn't start with it. the next means that it ends with it.
                 {
                     $can[] = 1;
                 }
@@ -1051,7 +856,7 @@ function ends($a,$b,$n)
             }
             if ($n===1)
             {
-                if (strpos($aa,$bb) >= 0 && strpos(strrev($aa),strrev($bb)) ===0)
+                if (strpos($aa,$bb) >= 0 && strpos(strrev($aa),strrev($bb)) ===0) // strpos($aa,$bb) >= 0 means that it starts with it or is included in it. the next means that it ends with it.
                 {
                     
 		    $can[] = 1;
@@ -1063,7 +868,7 @@ function ends($a,$b,$n)
             }
             if ($n===2)
             {
-                if ($aa===$bb)
+                if ($aa===$bb) // they are the same.
                 {
                     
 		    $can[] = 1;
@@ -1077,38 +882,37 @@ function ends($a,$b,$n)
     }
     if (in_array(1,$can))
     {
-        return true;
+        return true; // if any time $can becomes 1, it means that match is found.
     }
     else
     {
-        return false;
+        return false; // match not found.
     }
 }
-
 /* function Ti to remove the Ti */
+// $merge 0 - mandatory Adezas, 1 - optional Adezas.
 function Ti($merge)
 {   
     global $text;
-    $te1 = '/(['.pc('ac').'])(['.pc('hl').']*)([+])/';
-    $te2 = '$3';
+    $te1 = '/(['.pc('ac').'])(['.pc('hl').']*)([+])/'; // vowel - unlimited combinations of consonants - '+' combination.
+    $te2 = '$3'; // keep only "+" and remove the first two members.
         foreach ($text as $value)
         {
-            $val[] = preg_replace($te1,$te2,$value);
+            $val[] = preg_replace($te1,$te2,$value); // removing the first two members.
         }
-        if ($merge===0)
+        if ($merge===0) // mandatory Adezas
         {
             $text = $val;
         }
-        if ($merge === 1)
+        if ($merge === 1) // optional Adezas
         {
             $text = array_merge($text,$val);
         }        
     $val=array();
     $text = array_unique($text);
     $text = array_values($text);
-    return $text;
+    return $text; // giving the result to the user.
 }
-
 /* function mit */
 // $pattern is the pattern to search in the word to add mit pratyaya.
 // $b is the addition to upadha
@@ -1116,12 +920,12 @@ function Ti($merge)
 function mit($pattern,$b,$merge)
 {   global $text;
     $te1 = '/(['.pc('ac').'])(['.pc('hl').']*)([+])/';
-    $te2 = '$1'.$b.'$2$3';
+    $te2 = '$1'.$b.'$2$3'; // Adding the mit Agama after the last vowel. 'midaco'ntyAtparaH'.
         foreach ($text as $value)
         {
             if (preg_match($pattern,$value))
             {
-                $val[] = preg_replace($te1,'$1n$2$3',$value); 
+                $val[] = preg_replace($te1,'$1n$2$3',$value); // executing mit Agama.
             }
             else
             {
@@ -1145,14 +949,14 @@ function mit($pattern,$b,$merge)
 function samprasarana($a,$merge)
 {
     $yan = array("y","v","r","l");
-    $yanik = array("i","u","f","x");
+    $yanik = array("i","u","f","x"); // list of samprasAraNa for yaN.
     foreach ($a as $value)
     {
-    $b[] = str_replace($yan,$yanik,$a);        
+    $b[] = str_replace($yan,$yanik,$a);        // doing samprasARaNa.
     }    
     return $b;
 }
-/* function samprasarana */
+/* function itcheck */
 // $a to contain the array of it markers to check.
 // $b. 0 for it. 1 for itprakriti. 2 for itpratyaya
 function itcheck($a,$b)
@@ -1160,7 +964,7 @@ function itcheck($a,$b)
     global $text; global $it; global $itprakriti; global $itpratyaya;
     if ($b===0)
     {
-        if(count(array_intersect($it,$a))>0)
+        if(count(array_intersect($it,$a))>0) // finds in $it.
         {
             return TRUE;
         }
@@ -1171,7 +975,7 @@ function itcheck($a,$b)
     }
     if ($b===1)
     {
-        if(count(array_intersect($itprakriti,$a))>0)
+        if(count(array_intersect($itprakriti,$a))>0) // finds in $itprakriti
         {
             return TRUE;
         }
@@ -1182,7 +986,7 @@ function itcheck($a,$b)
     }
     if ($b===2)
     {
-        if(count(array_intersect($itpratyaya,$a))>0)
+        if(count(array_intersect($itpratyaya,$a))>0) // finds in $itpratyaya
         {
             return TRUE;
         }
@@ -1192,7 +996,6 @@ function itcheck($a,$b)
         }
     }
 }
-
 /* function it (to find an it marker). The function adds the marker to its arrays. */
 // $pattern is the pattern to look for
 // $a 0 for finding it in the whole word. 1 for it in prakriti. 2 for it in pratyaya.
@@ -1201,12 +1004,12 @@ function it($pattern)
     global $text; global $it; global $itprakriti; global $itpratyaya;
         foreach ($text as $value)
         {
-            $b = preg_split($pattern,$value,null,PREG_SPLIT_DELIM_CAPTURE);
+            $b = preg_split($pattern,$value,null,PREG_SPLIT_DELIM_CAPTURE); // spliting the string by the pattern.
             for($i=1;$i<((count($b)+1)/2);$i++)
             {
-                $b[$i*2-1]= str_replace("!","",$b[$i*2-1]);
-                $b[$i*2-1]= str_replace("+","",$b[$i*2-1]);
-                $it = array_merge($it,array($b[$i*2-1]));
+                $b[$i*2-1]= str_replace("!","",$b[$i*2-1]); // removing !
+                $b[$i*2-1]= str_replace("+","",$b[$i*2-1]); // removing +
+                $it = array_merge($it,array($b[$i*2-1])); // adding the it marker to the array $it.
                 $it = array_unique($it);
                 $it = array_values($it);                
             }                   
@@ -1219,7 +1022,7 @@ function it($pattern)
             {
                 $b[$i*2-1]= str_replace("!","",$b[$i*2-1]);
                 $b[$i*2-1]= str_replace("+","",$b[$i*2-1]);
-                $itprakriti = array_merge($itprakriti,array($b[$i*2-1]));
+                $itprakriti = array_merge($itprakriti,array($b[$i*2-1])); // adding it to array $itprakriti
                 $itprakriti = array_unique($itprakriti);
                 $itprakriti = array_values($itprakriti);         
             }                   
@@ -1228,19 +1031,16 @@ function it($pattern)
         {
             $c = explode("+",$value);
             $pattern = str_replace("[+]","^",$pattern); 
-            $b = preg_split($pattern,$c[1],null,PREG_SPLIT_DELIM_CAPTURE);
+            $b = preg_split($pattern,$c[1],null,PREG_SPLIT_DELIM_CAPTURE); 
             for($i=1;$i<((count($b)+1)/2);$i++)
             {
                 $b[$i*2-1]= str_replace("!","",$b[$i*2-1]);
                 $b[$i*2-1]= str_replace("+","",$b[$i*2-1]);
-                $itpratyaya = array_merge($itpratyaya,array($b[$i*2-1]));
+                $itpratyaya = array_merge($itpratyaya,array($b[$i*2-1])); // adding it to array $itpratyaya
                 $itpratyaya = array_unique($itpratyaya);
                 $itpratyaya = array_values($itpratyaya);         
             }                   
         }
-//        print_r($it);
-//        print_r($itprakriti);
-//        print_r($itpratyaya);
 }
 /* function to find out it markers when they can occur only in the pratayayas. */
 function itprat($pattern)
@@ -1254,17 +1054,14 @@ function itprat($pattern)
             {
                 $b[$i*2-1]= str_replace("!","",$b[$i*2-1]);
                 $b[$i*2-1]= str_replace("+","",$b[$i*2-1]);
-                $itpratyaya = array_merge($itpratyaya,array($b[$i*2-1]));
+                $itpratyaya = array_merge($itpratyaya,array($b[$i*2-1])); // adding it to array $itpratyaya
                 $itpratyaya = array_unique($itpratyaya);
                 $itpratyaya = array_values($itpratyaya);         
             }                   
         }
-//        print_r($it);
-//        print_r($itprakriti);
-//        print_r($itpratyaya);
 }
-
 /* function antya to do antyAdeza */
+// $a - array where we want to do antyAdeza. $rep - replacement in place of the last letter.
 function antya($a,$rep)
 {
     foreach ($a as $value)
@@ -1273,7 +1070,9 @@ function antya($a,$rep)
     }
     return $value1;
 }
-/* Function to find the nth letter in the word */
+
+/* Functions which are not used in the code */
+/* Function f to find the nth letter in the word */
 function f($text,$n) // Not used in code.
 {
 $p = str_split($text); // splits the word in its letters.
@@ -1459,6 +1258,195 @@ function nosavarna($c)
      }
      return $array;
  }
+/* Function to find savarna of a given letter from the given array. Not used in code. */
+function sl($text,$array) // Known issue - words having two Asyas.
+{
+    global $kantha,$talu,$murdha,$danta,$oshtha,$nasika,$kanthatalu,$kanthoshtha,$dantoshtha,$sprushta,$ishatsprushta,$vivruta,$samvruta,$aghosha,$alpaprana,$ghosha,$mahaprana,$ac,$udatta,$anudatta,$svarita,$shvasa,$nada,$vivara,$samvara,$hl,$ru,$e;
+    // defining an array for sthAna
+$i=0;
+if (in_array($text,$kantha)) { $sthana[$i] = $kantha; $i++; }
+if (in_array($text,$talu)) { $sthana[$i] =  $talu; $i++; }
+if (in_array($text,$murdha)) { $sthana[$i] = $murdha; $i++; }
+if (in_array($text,$danta)) { $sthana[$i] = $danta; $i++; }
+if (in_array($text,$oshtha)) { $sthana[$i] = $oshtha; $i++; }
+if (in_array($text,$nasika)) { $sthana[$i] = $nasika; $i++; }
+if (in_array($text,$kanthatalu)) { $sthana[$i] = $kanthatalu; $i++; }
+if (in_array($text,$kanthoshtha)) { $sthana[$i] = $kanthoshtha; $i++;}
+if (in_array($text,$dantoshtha)) { $sthana[$i] = $dantoshtha; $i++; }
+// defining an array for Abhyantara prayatna for consonants
+$j=0;
+if (in_array($text,$sprushta)) { $abhyantara[$j] = $sprushta; $j++; }
+if (in_array($text,$ishatsprushta)) { $abhyantara[$j] = $ishatsprushta; $j++; }
+if (in_array($text,$vivruta)) { $abhyantara[$j] = $vivruta; $j++; }
+if (in_array($text,$samvruta)) { $abhyantara[$j] = $samvruta; $j++; }
+// defining an array for bAhya prayatna for consonants
+$k=0;
+if (in_array($text,$aghosha)) { $ghosh[$k] = $aghosha; $k++; }
+if (in_array($text,$alpaprana)) { $prana[$k] = $alpaprana; $k++; }
+if (in_array($text,$ghosha)) { $ghosh[$k] = $ghosha; $k++; }
+if (in_array($text,$mahaprana)) { $prana[$k] = $mahaprana; $k++; }
+// defining an array for bAhya prayatna of vowels
+$u=0;
+if (in_array($text,$ac)) { $svar[$u] = $udatta; $u++; }
+
+// Finding out intersections of sthAna, Abhyantara prayatna and bAhya prayatnas of the given letter and the given array. 
+if(empty($sthana)===FALSE)
+{
+$sthanasamya = array_intersect(flatten($sthana),$array); 
+//echo "The letters in the pratyAhAra with same sthAna (Asya) as the letter input are: ".implode(",",$sthanasamya)."</br>";    
+}
+if(empty($abhyantara)===false)
+{
+$abhyantarasamya = array_intersect(flatten($abhyantara),$array);
+//echo "The letters in the pratyAhAra with the same Abhyantara prayatna as the letter input are: ".implode(",",$abhyantarasamya)."</br>";    
+}
+if(empty($ghosh)===FALSE)
+{
+$ghoshasamya = array_intersect(flatten($ghosh),$array);
+//echo "The letters in the pratyAhAra with the same ghoSa as the letter input are: ".implode(",",$ghoshasamya)."</br>";    
+}
+if(empty($prana)===FALSE)
+{
+$pranasamya = array_intersect(flatten($prana),$array);
+//echo "The letters in the pratyAhAra with the same prANa as the letter input are: ".implode(",",$pranasamya)."</br>";    
+}
+if(empty($svar)===false)
+{
+if(in_array($text,$ac)) 
+        { $svarasamya = array_intersect(flatten($svar),$array,$ac); 
+//echo "The letters in the pratyAhAra with the same udAtta/anudAtta/svarita as the letter input are: ".implode(",",$svarasamya)."</br>";
+        }    
+}
+if(empty($sthanasamya)===false && empty($abhyantarasamya)===false && empty($ghoshasamya)===false && empty($pranasamya)===false)
+{ $l = array_intersect($sthanasamya,$abhyantarasamya,$ghoshasamya,$pranasamya); }
+if(empty($sthanasamya)===false && empty($abhyantarasamya)===false && empty($ghoshasamya)===false)
+{ $m = array_intersect($sthanasamya,$abhyantarasamya,$ghoshasamya); }
+if(empty($sthanasamya)===false && empty($abhyantarasamya)===false)
+{ $n = array_intersect($sthanasamya,$abhyantarasamya); }
+if(empty($sthanasamya)===false && empty($abhyantarasamya)===false && empty($pranasamya)===false)
+{ $o = array_intersect($sthanasamya,$abhyantarasamya,$pranasamya); }
+if(empty($sthanasamya)===false && empty($ghoshasamya)===false)
+{ $p = array_intersect($sthanasamya,$ghoshasamya); }
+if(empty($sthanasamya)===false && empty($pranasamya)===false)
+{ $q = array_intersect($sthanasamya,$pranasamya); }
+// Defining savarNas for consonants
+if(in_array($text,$hl))
+{
+    if(empty($sthanasamya)===false&&empty($abhyantarasamya)===false&&empty($ghoshasamya)===false&&empty($pranasamya)===FALSE&&empty($l)===false) 
+    {//echo "four match";
+            $savarna = implode(", ",$l);     
+    }
+    elseif (empty($sthanasamya)===false&&empty($abhyantarasamya)===false&&empty($ghoshasamya)===false&&empty($m)===false)
+    {//echo "three match";
+            $savarna = implode(", ",$m);     
+    }
+    elseif (empty($sthanasamya)===false&&empty($abhyantarasamya)===false&&empty($pranasamya)===false&&empty($o)===false)
+    {//echo "three match";
+            $savarna = implode(", ",$o);     
+    }
+    elseif (empty($sthanasamya)===false&&empty($abhyantarasamya)===false&&empty($n)===false)
+    {//echo "Two match";
+            $savarna = implode(", ",$n);     
+    }
+     elseif (empty($sthanasamya)===false&&empty($ghoshasamya)===false&&empty($p)===false)
+    {//echo "Two match";
+            $savarna = implode(", ",$p);     
+    } elseif (empty($sthanasamya)===false&&empty($pranasamya)===false&&empty($q)===false)
+    {//echo "Two match";
+            $savarna = implode(", ",$q);     
+    }
+    else
+    {//echo "no match";
+    $savarna = implode(", ",$sthanasamya);    
+    }
+} 
+// defining savarNas for vowels
+else
+{  
+    if (in_array($text,$ru)||in_array($text,$e))
+    {// patch for $ru
+        for($i=0;$i<4;$i++)
+        {
+        if ($text === $ru[$i])
+        {
+            if (in_array($text,$array))
+            { $savarna = "f, F, x, X"; }
+            else
+            { $savarna = ""; }
+        }
+        // patch for non sAvarNya of e,E,o,O
+        elseif ($text === $e[$i])
+        {
+            if (in_array($text,$array))
+            { $savarna = $text; }
+            else
+            { $savarna = ""; }
+        }
+        }
+    }
+    
+    
+    else 
+    {// In case of other vowels.
+        $savarna = implode(", ",$sthanasamya);
+    }
+    
+    if (in_array($text,$array))
+    {
+        $savarna = $text;
+    }
+}
+// giving output to the browser for savarNa letter
+//echo "The savarna letter of '".$text."' among the given pratyAhAra is: ".$savarna;    
+// stores that savarNa letter in memory.
+return $savarna;
+}
+/* Function one1 is for replacing one letter in the whole array of $text with another letter. Not used in code */
+// There are three arguments, $a is the array which you want to change, $b is the array which will be put in place of the replaced one.
+// $merge can take two values. 0 will mean that the whole $text will be replaced with the new replaced values. Used in case of mandatory Adezas.
+// 1 will mean that $text will not be replaced, but the replaced values will be added to it. Used in case of optional Adezas.
+function one1($text,$a,$b,$merge)
+{
+        for($i=0;$i<count($a);$i++)
+        {
+            $text =  str_replace($a[$i],$b[$i],$text);    
+        }
+return $text;  
+}
+/* Function two is for replacing one letter in the whole array of $text with another letter. Not used in code */
+// There are five arguments, $a,$b are the arrays which you want to change, $c,$d are the arrays which will be put in place of the replaced one.
+// $merge can take two values. 0 will mean that the whole $text will be replaced with the new replaced values. Used in case of mandatory Adezas.
+// 1 will mean that $text will not be replaced, but the replaced values will be added to it. Used in case of optional Adezas.
+function two1($text,$a,$b,$c,$d,$merge)
+{
+    for($i=0;$i<count($a);$i++)
+          {
+    for($j=0;$j<count($b);$j++)
+            {
+      $text =  str_replace($a[$i].$b[$j],$c[$i].$d[$j],$text);   
+            }
+          }
+    return $text;
+}
+
+/* Function three1 is for replacing one letter in the whole array of $text with another letter. Not used in code */
+// There are seven arguments, $a,$b,$c are the arrays which you want to change, $d,$e,$f are the arrays which will be put in place of the replaced one.
+// $merge can take two values. 0 will mean that the whole $text will be replaced with the new replaced values. Used in case of mandatory Adezas.
+// 1 will mean that $text will not be replaced, but the replaced values will be added to it. Used in case of optional Adezas.
+function three1($text,$a,$b,$c,$d,$e,$f,$merge)
+{
+     for($i=0;$i<count($a);$i++)
+    {
+    for($j=0;$j<count($b);$j++)
+        {
+        for($k=0;$k<count($c);$k++)
+            {
+         $text =  str_replace($a[$i].$b[$j].$c[$k],$d[$i].$e[$j].$f[$k],$text);       
+            }
+        }
+    }
+    return $text;
+}
 
 /* An attempt to create an all encompassing function 
  * name is panini
