@@ -252,11 +252,25 @@ function three($a,$b,$c,$d,$e,$f,$merge) // comments are the same as one functio
 /* function flatten is a function to flatten a multidimentional array */
 // I have borrowed this function from examples in php.net site.
 // e.g. array([0]=> a [1]=> array([0] => b [1] => c)) this is flattened in array([0]=>a [1]=>b [2]=>c).
-function flatten(array $array) // $array is the multidimentional array which you want to flatten.
+/*function flatten(array $array) // $array is the multidimentional array which you want to flatten.
 {
     $return = array();
-    array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; }); // uses PHP 5.4 or above. May not function properly in older PHP version.
+    array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
     return $return;
+}*/ // This code is immeculate. But unfortunately the servers don't support PHP5.4.
+function flatten($array) {
+    if (!is_array($array)) {
+        // nothing to do if it's not an array
+        return array($array);
+    }
+
+    $result = array();
+    foreach ($array as $value) {
+        // explode the sub-array, and add the parts
+        $result = array_merge($result, flatten($value));
+    }
+
+    return $result;
 }
 /* function savarna is to find out savarNa of a character from the given pratyAhAra */
 // $inarray is the array for which you are looking for savarNa.
