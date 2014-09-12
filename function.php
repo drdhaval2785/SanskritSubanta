@@ -1084,6 +1084,27 @@ function antya($a,$rep)
     }
     return $value1;
 }
+/* adding a specific letter/word at the end of all members of array */
+function addlast($a,$b,$merge)
+{
+    foreach($a as $value)
+    {
+        $value1[] = $value.$b;
+    }
+    if ($merge===0)
+    {
+        $text = $value1;
+    }
+    if ($merge === 1)
+    {
+        $text = array_merge($a,$value1);
+    }
+    $output = flatten($text);
+    $output = array_unique($output);
+    $output = array_values($output);
+return $output;    
+}
+
 
 /* Functions which are not used in the code */
 /* Function f to find the nth letter in the word */
