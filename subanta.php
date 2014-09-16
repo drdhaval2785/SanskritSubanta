@@ -990,7 +990,7 @@ if ($gender === "f" && sub(array("krozwu"),array("+"),blank(0),0))
     echo "<p class = sa >स्त्रियां च (७.१.९७) :</p>";        
     display(3);
 }
-/* Rnnebhyo Gip (4.1.5) */
+/* Rnnebhyo GIp (4.1.5) */
 if ($gender === "f" && sub(array("f","n"),array("+"),blank(0),0) && $SaTsvasrAdi===0)
 {
     $text = two(array("f","n"),array("+"),array("f+I","n+I"),array("+"),0);
@@ -1158,7 +1158,6 @@ if (sub(array("atara","atama","anya","anyatara","itara"),array("+"),array("su!",
     $Dit = 1; // 0 - 'D' is not it. 1 - 'D' is it.
     $adD=1; // 0 - adD suffix has not been applied. 1 - adD suffix is applied.
 } else {$adD = 0; $Dit =0;}
-
 /* maghavA bahulam (6.4.128) */
 if (sub(array("maGavan"),array("+"),blank(0),0) && in_array($so,$sup))
 {
@@ -1546,7 +1545,7 @@ if (sub(array("kim","kaka"),array("+"),blank(0),0) && !arr($text,'/[k][i][m][+]$
     display(3); $sarvafinal=1;
 }
 if (sub(array("kim","kaka"),array("+"),blank(0),0) && arr($text,'/[k][i][m][+]$/') && in_array($so,$sup))
-{
+    {
     echo "<p class = pa >na lumatA'Ggasya prevents application of kimaH kaH (7.2.103) :</p>";
     echo "<p class = pa >न लुमताऽङ्गस्य से किमः कः (७.२.१०३) का बाध होता है ।</p>";
     display(0);
@@ -2160,8 +2159,6 @@ if (sub(array("Oqulomi"),array("+"),$bahusup,0) && in_array($so,$bahusup))
     echo "<p class = sa >लोम्नोऽपत्येषु बहुष्वकारो वक्तव्यः (वा २५६०) :</p>";
     display(0);
 }
-
-
 /* aci ra RtaH (7.2.100) */
 if (sub(array("tisf","catasf"),array("+"),$acsup,0))
 {
