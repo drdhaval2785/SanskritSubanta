@@ -38,6 +38,7 @@ $mahaprana = array("K","G","C","J","W","Q","T","D","P","B","S","z","s","h"); // 
 $ru = array("f","F","x","X"); // R, RR, lR and lRR
 $ac = array("a","A","i","I","u","U","f","F","x","X","e","o","E","O",); // vowels - 'ac' letters
 $hl = array("k","K","g","G","N","c","C","j","J","Y","w","W","q","Q","R","t","T","d","D","n","p","P","b","B","m","y","r","l","v","S","z","s","h"); // consonants - hal letters
+$al = array("a","A","i","I","u","U","f","F","x","X","e","o","E","O","k","K","g","G","N","c","C","j","J","Y","w","W","q","Q","R","t","T","d","D","n","p","P","b","B","m","y","r","l","v","S","z","s","h","M","H");
 $e = array("e","E","o","O"); // 'ec' letters
 $dirgha = array("A","I","U","F","X","e","E","o","O"); // dIrgha letters
 $hrasva = array("a","i","u","f","x"); // hrasva letters
@@ -415,6 +416,9 @@ return $arr; // returning the desired savarNa array.
 function display($n)
 {
     global $text;  // bringing $text from subanta.php
+    /* removal of two ++ signs */
+    $text = one(array("++"),array("+"),0);
+
     if ($n === 1) // sending special messages.
         {
         echo "<p class = hn>Please note: Wherever there is dvitva, it is optionally negated by sarvatra zAkalyasya. (8.4.51)</p>";
@@ -675,7 +679,7 @@ return $output;
     /*** loop of the array to get the search pattern ***/
     global $first;
     foreach ($needle as $pattern)
-    { 
+    {
         if (($repeat <2 && count(preg_grep("/$pattern/", $text)) >0) || ($repeat ===2 && strpos(strrev($first), strrev($pattern)) === 0) || ($repeat ===3 && strpos($first,$pattern) === 0) || ($repeat ===4 && strpos(strrev($second), strrev($pattern)) === 0) || ($repeat ===5 && strpos($second,$pattern) === 0))
         {
         $can = 1; // match found
@@ -1104,7 +1108,75 @@ function addlast($a,$b,$merge)
     $output = array_values($output);
 return $output;    
 }
+/* function anubandha to remove it markers */
+function anubandha()
+{ 
+    global $text; global $first; global $pada; global $itprakriti; global $wa1; global $sarva2; global $purva; global $taddhita; global $sarva; global $sup; global $so; global $al; global $hl;
+    /* AdirGiTuDavaH (1.3.5) */
+    if ((substr($first,0,2) === "Yi" || substr($first,0,2) === "wu" || substr($first,0,2) === "qu") && $pada=== "pratyaya")
+    {
+        if(substr($first,0,2) === "Yi") { $itprakriti = array_merge($itprakriti,array("Yi")); }
+        if(substr($first,0,2) === "wu") { $itprakriti = array_merge($itprakriti,array("wu")); }
+        if(substr($first,0,2) === "qu") { $itprakriti = array_merge($itprakriti,array("qu")); }
+        echo "<p class = pa >By AdirGiTuDavaH (1.3.5) :</p>";
+        echo "<p class = pa >आदिर्ञिटुडवः (१.३.५) :</p>";
+        display(0);
+        $text = first(array("Yi","wu","qu"),array("","",""),0); // function first removes and replaces specific strings from the words. For details see function.php.
+        echo "<p class = sa >tasya lopaH (1.3.9) :</p>";
+        echo "<p class = sa >तस्य लोपः (१.३.९) :</p>";
+        display(0);
+    }
+    /* cuTU (1.3.7) */ 
+    if (arr($text,'/[+][cCjJYwWqQR]/') )
+    {
+        echo "<p class = pa >By cuTU (1.3.7) :</p>";
+        echo "<p class = pa >चुटू (१.३.७) :</p>";
+        display(0);
+        $text = two(array("+"),array("c","C","j","J","Y","w","W","q","Q","R"),array("+"),blank(10),0);
+        $text = last(array("jas","wA"),array("as","A"),0);
+        echo "<p class = sa >tasya lopaH (1.3.9) :</p>";
+        echo "<p class = sa >तस्य लोपः (१.३.९) :</p>";
+        display(0);
+    }
+    /* SaH pratyayasya (1.3.6) */
+    if (arr($text,'/[+][z]/') && $pada=== "pratyaya")
+    {
+        it('/([+][z])/');
+        echo "<p class = pa >By SaH pratyayasya (1.3.6) :</p>";
+        echo "<p class = pa >षः प्रत्ययस्य (१.३.६) :</p>";
+        display(0);
+        $text = two(array("+"),array("z"),array("+"),array(""),0);
+        echo "<p class = sa >By tasya lopaH (1.3.9) :</p>";
+        echo "<p class = sa >तस्य लोपः (१.३.९) :</p>";
+        display(0);
+    }
+    /* lazakvataddhite (1.3.8) */
+    if (((arr($text,'/[+][lSkKgGN]/'))||$sarva2===1||$purva===1) && $taddhita === 0 )
+    {
+        it('/([+][lSkKgGN])/');
+        echo "<p class = pa >By lazakvataddhite (1.3.8) :</p>";
+        echo "<p class = pa >लशक्वतद्धिते (१.३.८) :</p>";
+        display(0);
+        $text = two(array("+"),array("l","S","k","K","g","G","N"),array("+"),array("","","","","","",""),0);
+        echo "<p class = sa >By tasya lopaH (1.3.9) :</p>";
+        echo "<p class = sa >तस्य लोपः (१.३.९) :</p>";
+        display(0);
+    }
+    if (arr($text,'/['.flat($ac).'][!]/')  )
+    {
+        it('/(['.flat($ac).'][!])/');
+        echo "<p class = pa >By upadeze'janunAsika it (1.3.2) :</p>";
+        echo "<p class = pa >उपदेशेऽजनुनासिक इत्‌ (१.३.२) :</p>";
+        display(0);
+        $text = two($ac,array("!"),blank(count($ac)),array(""),0);
+        echo "<p class = sa >By tasya lopaH (1.3.9) :</p>";
+        echo "<p class = sa >तस्य लोपः (१.३.९) :</p>";
+        display(0);    
+    }
 
+return $text;
+
+}
 
 /* Functions which are not used in the code */
 /* Function f to find the nth letter in the word */

@@ -45,7 +45,7 @@ $first = $_GET["first"]; // word entered by the user.
 //$second = $_GET['second']; // This has been bracketed because we are taking second member automatically.
 $tran = $_GET['tran']; // "Devanagari" - devanagari, "IAST" - IAST, "SLP1" - SLP1 transliteration.
 //$gender = $_GET['gender']; // "m" - male. "f" - female. "n" - neuter.
-
+$gender = "f";
 /* Defining the variables used in the code and their default values .
  * If there is no change in the execution of subanta.php, the default values are operated.
  */
@@ -187,7 +187,7 @@ elseif ( ends($text,addlast($ajAdi,"+",0),1) )
     display(0); $ajAdyataSTAp = 1;
 }
 /* ajAdyataSTAp (4.1.4) for adanta words */
-elseif (arr($text,'/[a][+]$/') ) 
+elseif (arr($text,'/[a][+]$/') && $gender==="f") 
 {
     $text = addlast($text,"wAp",0);
     echo "<p class = sa >ajAdyataSTAp (4.1.4)  :</p>";
@@ -196,7 +196,77 @@ elseif (arr($text,'/[a][+]$/') )
 }
 // completed ajAdyataSTAp.
 
-/* Rnnebhyo Gip (4.1.5) */
+/* bahuguNavatuDati saGkhyA (1.1.28) */
+/* Dati ca (1.1.25) */
+if (in_array($fo,array("bahu","guRa")))
+{
+    $sankhya = 1; // 0 - no saGkhyA saJjJA. 1 - saGkhyA saJjJA.
+    echo "<p class = pa >By bahuguNavatuDati saGkhyA (1.1.28) :</p>";
+    echo "<p class = pa >बहुगुणवतुडति सङ्ख्या (१.१.२८) :</p>";
+    display(0);
+}
+else 
+{
+    $sankhya = 0;
+}
+if (in_array($fo,array("kati")))
+{
+    $sankhya = 1;
+    $shat = 1; // 0 - no SaT saJjJA. 1 - SaT saJjJA.
+    echo "<p class = pa >By bahuguNavatuDati saGkhyA (1.1.28) and Dati ca (1.1.25) :</p>";
+    echo "<p class = pa >बहुगुणवतुडति सङ्ख्या (१.१.२८) तथा डति च (१.१.२५) :</p>";
+    display(0);
+}
+else 
+{
+    $sankhya = 0;
+    $shat = 0;
+}
+/* SNAntA Sat (1.1.24) */
+if (arr($text,'/[zn][+]/') && ($sankhya===1 || ends(array($fo),array("paYcan","zaz","saptan","zwan","navan","daSan"),1)) && ($samasa===0 || $samasa===1 && $pradhana===1) && $_GET['cond1_18']!=="2")
+// for function arr see function.php.        
+{
+    $shat = 1;
+    echo "<p class = pa >By SNAntA Sat (1.1.24) :</p>";
+    echo "<p class = pa >ष्णान्ता षट्‌ (१.१.२४) :</p>";
+    display(0);
+}/* na SaTsvasrAdibhyaH (4.1.10) */
+// bracketed because deals with strIpratyayas.
+if ($shat===1 || in_array($fo,$svasrAdi))
+{
+    echo "<p class = sa >na SaTsvasrAdibhyaH (4.1.10) :</p>";
+    echo "<p class = sa >न षट्स्वस्रादिभ्यः (४.१.१०) :</p>";
+    display(0); $Ap === 0; $GI === 0; $SaTsvasrAdi=1;
+} else {$SaTsvasrAdi=0; }
+/* striyAM ca (7.1.96) */
+if ($gender === "f" && sub(array("krozwu"),array("+"),blank(0),0))
+{
+    $text = two(array("krozwu"),array("+"),array("krozwf"),array("+"),0); // for function two - please see function.php.
+    echo "<p class = sa >striyAM ca (7.1.96) :</p>";
+    echo "<p class = sa >स्त्रियां च (७.१.९७) :</p>";        
+    display(3);
+}
+/* Rnnebhyo GIp (4.1.5) */
+if ($gender === "f" && sub(array("f","n"),array("+"),blank(0),0) && $SaTsvasrAdi===0)
+{
+    $text = addlast($text,"NIp",0);
+    echo "<p class = sa >By Rnnebhyo Gip (4.1.5) :</p>";
+    echo "<p class = sa >ऋन्नेभ्यो ङीप्‌ (४.१.५) :</p>";        
+    display(3);
+    $GI=1;
+    $nadi=1;
+}
+/* ugitazca (4.1.6) */
+$ugitprAtipadika = array("Bavat","pacat");
+if ($gender === "f" && sub($ugitprAtipadika,array("+"),blank(0),0) )
+{
+    $text = addlast($text,"NIp",0);
+    echo "<p class = sa >By Rnnebhyo Gip (4.1.5) :</p>";
+    echo "<p class = sa >ऋन्नेभ्यो ङीप्‌ (४.१.५) :</p>";        
+    display(3);
+    $GI=1;
+    $nadi=1;
+}
 
 
     
