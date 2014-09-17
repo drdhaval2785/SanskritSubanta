@@ -2449,7 +2449,7 @@ if ( $gender==="n" && in_array($so,array("O","Ow")))
     $napuMsakAcca=1; // 0 - napuMsakAcca has not applied. 1 - napuMsakAcca has applied.
 } else { $napuMsakAcca=0; }
 /* auGaH zyAM pratiSedho vAcyaH (vA) */
-if (arr($text,'/[+][SI]/') && in_array($so,array("O","Ow")))
+if (arr($text,'/[+][S][I]/') && in_array($so,array("O","Ow")))
 {
     echo "<p class = pa >By auGaH zyAM pratiSedho vAcyaH (vA) :</p>";
     echo "<p class = pa >औङः श्यां प्रतिषेधो वाच्यः (वा) :</p>";
