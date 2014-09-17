@@ -1010,36 +1010,6 @@ if ($gender === "f" && sub(array("f","n"),array("+"),blank(0),0) && $SaTsvasrAdi
     echo "<p class = sa >इको यणचि (६.१.७७) :</p>";
     display(3);
 }
-/* ugitazca (4.1.6) */
-$ugitprAtipadika = array("Bavat","pacat");
-if (sub(array("Bavat"),array("+"),blank(0),0))
-{
-    $it=array_merge($it,array("u"));
-    $itprakriti = array_merge($itpratyaya,array("u"));
-}
-if (sub(array("pacat"),array("+"),blank(0),0))
-{
-    $it=array_merge($it,array("f"));
-    $itprakriti = array_merge($itpratyaya,array("f"));
-    $shap = 1;
-    $shatR = 1;
-    $dhatu = 1;
-} 
-if ($gender === "f" && sub($ugitprAtipadika,array("+"),blank(0),0)  )
-{
-    $text = two($ugitprAtipadika,array("+"),$ugitprAtipadika,array("+NIp+","+NIp+"),0);
-    echo "<p class = sa >By ugitazca (4.1.6) :</p>";
-    echo "<p class = sa >उगितश्च (४.१.६) :</p>";        
-    display(3);
-    $text = two(array("NIp"),array("+"),array("I"),array("+"),0); 
-    $it = array_merge($it,array("N","p"));
-    $itprakriti = array_merge($itprakriti,array("p","N"));
-    echo "<p class = sa >GakAra and pakAra are 'it'. They are elided by lazakvataddhite (1.3.8), halantyam (1.3.3) and tasya lopaH (1.3.9) :</p>";
-    echo "<p class = sa >ङपावितौ । लशक्वतद्धिते (१.३.८), हलन्त्यम्‌ (१.३.३) और तस्य लोपः (१.३.९) :</p>";
-    display(0); 
-    $GI=1;
-    $nadi=1;
-}
 /* ajAdyataSTAp (4.1.4) */
 // dIrgha are pending. e.g. mahAja? what will happen? 
 // SUdrA is pending. User feedback needed.
@@ -1268,6 +1238,36 @@ if ($dhatu===1 && in_array($fo,array("dfnBU","karaBU","kAraBU","punarBU")) && (i
     echo "<p class = hn >दीर्घपाठे करपूर्वस्य उवङेव । ह्रस्वपाठे करपूर्वस्य यणेव इति विवेकः ।</p>";        
     }
     display(0); 
+}
+/* ugitazca (4.1.6) */
+$ugitprAtipadika = array("Bavat","pacat");
+if (sub(array("Bavat"),array("+"),blank(0),0))
+{
+    $it=array_merge($it,array("u"));
+    $itprakriti = array_merge($itpratyaya,array("u"));
+}
+if (sub(array("pacat"),array("+"),blank(0),0))
+{
+    $it=array_merge($it,array("f"));
+    $itprakriti = array_merge($itpratyaya,array("f"));
+    $shap = 1;
+    $shatR = 1;
+    $dhatu = 1;
+} 
+if ($gender === "f" && sub($ugitprAtipadika,array("+"),blank(0),0)  )
+{
+    $text = two($ugitprAtipadika,array("+"),$ugitprAtipadika,array("+NIp+","+NIp+"),0);
+    echo "<p class = sa >By ugitazca (4.1.6) :</p>";
+    echo "<p class = sa >उगितश्च (४.१.६) :</p>";        
+    display(3);
+    $text = two(array("NIp"),array("+"),array("I"),array("+"),0); 
+    $it = array_merge($it,array("N","p"));
+    $itprakriti = array_merge($itprakriti,array("p","N"));
+    echo "<p class = sa >GakAra and pakAra are 'it'. They are elided by lazakvataddhite (1.3.8), halantyam (1.3.3) and tasya lopaH (1.3.9) :</p>";
+    echo "<p class = sa >ङपावितौ । लशक्वतद्धिते (१.३.८), हलन्त्यम्‌ (१.३.३) और तस्य लोपः (१.३.९) :</p>";
+    display(0); 
+    $GI=1;
+    $nadi=1;
 }
 
 /* adDDatarAdibhyaH paJcabhyaH (7.1.25) and ekatarAtpratiSedho vaktavyaH (vA 4287) */
@@ -2794,6 +2794,25 @@ if ( $dhatu === 1 && sub(array("F"),array("+"),blank(0),0) && !arr($text,'/[ktg]
     echo "<p class = sa >ॠत इद्धातोः (७.१.१००) :</p>";
     display(3);
 }
+/* zapzyanornityam (7.1.81) */ 
+if (arr($text,'/[aA][t][+[S][I]/') && ($shap===1|| $shyan===1 ) )
+{
+    $text = mit('/['.pc('hl').'][+]/','n',0); $num=array_merge($num,array(1)); // function mit adds a mit Agama according to midaco'ntyAtparaH. See function.php
+    $text = one(array("annc"),array("anc"),0);
+    $text = one(array("+In+","+An+"),array("+I+","+A+"),0);
+    echo "<p class = sa >By zapzyanornityam (7.1.81) :</p>";
+    echo "<p class = sa >शप्श्यनोर्नित्यम्‌ (७.१.८१) :</p>";
+    display(0);
+}
+/* AcChInadyornum (7.1.80) */ 
+if (arr($text,'/[aA][t][+[S][I]/') && $shatR===1 && itcheck(array("f"),1) && $AcCInadyo===1 )
+{
+    $text = mit('/['.pc('hl').'][+]/','n',1); $num=array_merge($num,array(1));
+    $text = one(array("annc"),array("anc"),0);
+    echo "<p class = sa >By AcChInadyornum (7.1.80) :</p>";
+    echo "<p class = sa >आच्छीनद्योर्नुम्‌ (७.१.८०) :</p>";
+    display(0);
+}
 /* ambArthanadyorhrasvaH (7.3.103) */
 if (sub(array("ambAqA","ambAlA","ambikA"),array("+"),blank(0),0) && $sambuddhi===1 && $so==="su!")
 {
@@ -3372,30 +3391,6 @@ if ($abhyasta===1 && $shatR===1 && itcheck(array("f"),1) && $gender==="n")
     display(0); 
     $vAnapuMsaka=1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
 } else { $vAnapuMsaka=0; }
-/* zapzyanornityam (7.1.81) */ 
-if (arr($text,'/[aA][t][+[S][I]/') && ($shap===1|| $shyan===1 ) )
-{
-    $text = mit('/['.pc('hl').'][+]/','n',0); $num=array_merge($num,array(1)); // function mit adds a mit Agama according to midaco'ntyAtparaH. See function.php
-    $text = one(array("annc"),array("anc"),0);
-    $text = one(array("+In+"),array("+I+"),0);
-    echo "<p class = sa >By zapzyanornityam (7.1.81) :</p>";
-    echo "<p class = sa >शप्श्यनोर्नित्यम्‌ (७.१.८१) :</p>";
-    display(0);
-}
-/* AcChInadyornum (7.1.80) */ 
-if (arr($text,'/[aA][t][+[S][I]/') && $shatR===1 && itcheck(array("f"),1) && $AcCInadyo===1 )
-{
-    $text = mit('/['.pc('hl').'][+]/','n',1); $num=array_merge($num,array(1));
-    $text = one(array("annc"),array("anc"),0);
-    echo "<p class = sa >By AcChInadyornum (7.1.80) :</p>";
-    echo "<p class = sa >आच्छीनद्योर्नुम्‌ (७.१.८०) :</p>";
-    display(0);
-}
-/* patch to remove application of jhalAM jazo'nte in case wAp in kruJcA and NIp in bhavantI */
-if ($gender==="f")
-{
-    $text = three($hl,array("+A","+I"),array("+"),$hl,array("A","I"),array("+"),0);    
-}
 /* special message for ikAra of kvip, kvin etc. */
 if (arr($text,'/[+][v][i]$/')&& in_array($so,array("kvip","kvin")) && $taddhita === 0  && $sarva === 0 )
 {
@@ -3421,14 +3416,15 @@ if (arr($text,'/[eo][+]/') && in_array($so,array("Nasi!","Nas")))
     display(0);
 }
 /* hrasvanadyApo nuT (7.1.54) */
+print_r($text);
 if ( $so === "Am" && $numacira===0 && arr($text,'/[aiufx][+][A][m]/') )
 {
     $text = two($hrasva,array("+Am"),$hrasva,array("+nAm"),0);
     echo "<p class = sa >By hrasvanadyApo nuT (7.1.54) :</p>";
     echo "<p class = sa >ह्रस्वनद्यापो नुट्‌ (७.१.५४) :</p>";
     display(3);
-}
-if ( $so === "Am" && $numacira===0 && $nadi!==0 && arr($text,'/[IU][+][A][m]/') )
+} 
+if ( $so === "Am" && $numacira===0 && $nadi!==0 )//&& arr($text,'/[IU][+][A][m]/') )
 {
     if ($nadi===2)
     {
@@ -3595,6 +3591,11 @@ if ($dhatu===1 && ( arr($text,'/[uU][+]['.flat($ac).']/') || $ullU===1 )&& $pada
     echo "<p class = sa >ओः सुपि (६.४.८३) :</p>";
     echo "<p class = hn >गतिकारकेतरपूर्वपदस्य यण्‌ नेष्यते (वा ५०३४) से गति / कारक से भिन्न पूर्वपद होने पर यह सूत्र नहीं लागू होता । इयङ्‌ या उवङ्‌ की प्रवृत्ति होती है । :</p>";
     display(3);
+}
+/* patch to remove application of jhalAM jazo'nte in case wAp in kruJcA and NIp in bhavantI */
+if ($gender==="f")
+{
+    $text = three($hl,array("+A","+I"),array("+"),$hl,array("A","I"),array("+"),0);    
 }
 /* ami pUrvaH (6.1.107) */
 if ( sub(array("a","A","i","I","u","U","f","F","x"),array("+am"),blank(0),0))
