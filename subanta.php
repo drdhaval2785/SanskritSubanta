@@ -1241,7 +1241,7 @@ if ($dhatu===1 && in_array($fo,array("dfnBU","karaBU","kAraBU","punarBU")) && (i
     display(0); 
 }
 /* ugitazca (4.1.6) */
-$ugitprAtipadika = array("Bavat","pacat","praanc","praaYc","prAnc","prAYc","pratianc","pratiaYc","pratyanc","pratyaYc");
+$ugitprAtipadika = array("Bavat","pacat","praanc","praaYc","prAnc","prAYc","pratianc","pratiaYc","pratyanc","pratyaYc","udanc","udaYc",);
 if (sub(array("Bavat"),array("+"),blank(0),0))
 {
     $it=array_merge($it,array("u"));
@@ -3229,7 +3229,7 @@ if (sub(array("hiMs"),array("+"),blank(0),0))
 {
     $it=array_merge($it,array("i"));
     $itprakriti=array_merge($it,array("i"));
-} print_r($itprakriti); print_r($text); echo $ancu; echo $kruJca; echo $nance;
+}
 /* aniditAM hala upadhAyAH kGiti (6.4.24) */ 
 if ( !itcheck(array("i"),1) && arr($text,'/[nM]['.pc('hl').'][+]/') && ( itcheck(array("k","N"),1)|| $ancu===1 ) && !($kruJca===1 && sub(array("krunc","kruYc"),blank(0),blank(0),0) ) && $nance===0  )
 {
@@ -3316,7 +3316,7 @@ if ($sarvanamasthana1===1 &&  (( $dhatu===0 && itcheck(array("u","U","f","F","x"
     $ugidacAm=1;  // 0 - this sUtra has not applied. 1 - this sUtra has applied.
 }  else {$ugidacAm=0; }
 /* uda It (6.4.139) */ 
-if (preg_match('/[u][d][a][n][c]/',$fo) && $aniditAm === 1 && sub(array("ac","Ac"),array("+"),blank(0),0) && $bham===1 && $ancu===1)
+if (preg_match('/[u][d][a][n][c]/',$fo) && $aniditAm === 1 && sub(array("ac","Ac"),array("+"),blank(0),0) && ($bham===1 || sub(array("ac","Ac"),array("+"),array("I+"),0)) && $ancu===1)
 {
     $text = two(array("ac","Ac"),array("+"),array("Ic","Ic"),array("+"),0);
     echo "<p class = sa >uda It (6.4.139) :</p>";
@@ -3324,7 +3324,6 @@ if (preg_match('/[u][d][a][n][c]/',$fo) && $aniditAm === 1 && sub(array("ac","Ac
     display(0);
 }
 /* acaH (6.4.138) */ 
-print_r($text); echo $bham;
 if ( preg_match('/[aA][n][c]/',$fo) && $aniditAm === 1 && sub(array("ac","Ac"),array("+"),blank(0),0) && ($bham===1 || sub(array("ac","Ac"),array("+"),array("I+"),0)) && $ancu===1)
 {
     if (sub(array("i","I","u","U","f","F","x","X","y","v"),prat('ac'),array("c"),0))
