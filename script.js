@@ -171,6 +171,49 @@ $(document).ready(function() {
 			$('#step4').html('');
 		}
 	});
+    	$( document ).on( "click", "input:radio[name=cond2_8]", function() {
+		if($('input:radio[name=cond2_8]:checked').val() === '1'){
+			$('#step').val('2_8_1');
+			$.getData();
+			$('#step2').html(response);
+		}
+	});
+    	$( document ).on( "click", "input:radio[name=cond2_8]", function() {
+		if($('input:radio[name=cond2_8]:checked').val() === '2'){
+			$('#step').val('2_8_2');
+			$.getData();
+			$('#step2').html(response);
+		}
+	});
+    	$( document ).on( "click", "input:radio[name=cond2_8_1]", function() {
+		if($('input:radio[name=cond2_8_1]:checked').val() === '1'){
+			$('#step').val('2_8_1_1');
+			$.getData();
+			$('#step3').html(response);
+		}
+	});        
+    	$( document ).on( "click", "input:radio[name=cond2_8_1]", function() {
+		if($('input:radio[name=cond2_8_1]:checked').val() === '2'){
+			$('#step').val('2_8_1_2');
+			$.getData();
+			$('#step3').html(response);
+		}
+	});
+    	$( document ).on( "click", "input:radio[name=cond2_11]", function() {
+		if($('input:radio[name=cond2_11]:checked').val() === '1'){
+			$('#step').val('2_11_1');
+			$.getData();
+			$('#step2').html(response);
+		}
+	});
+    	$( document ).on( "click", "input:radio[name=cond2_13]", function() {
+		if($('input:radio[name=cond2_13]:checked').val() === '2'){
+			$('#step').val('2_13_2');
+			$.getData();
+			$('#step2').html(response);
+		}
+	});
+        
 
 /* napuMsakaliGga */
 	$( document ).on( "click", "input:radio[name=gender]", function() {

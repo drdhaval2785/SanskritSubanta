@@ -467,6 +467,98 @@ if ($last==="U" && $_POST['step']==='2')
             }
             $html .= '</div>';    
 }
+if (ends($arrWord,array("SUdra","CUdra"),1) && !ends($arrWord,array("mahASUdra","mahatCUdra"),1) && $_POST['step']==='2')
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_7" > जाति ';                    
+            $html .= '<input type="radio" value="2" name="cond2_7" > पुंयोग ';                    
+            $html .= '</div>';    
+}
+if (ends($arrWord,array("van"),1) && $_POST['step']==='2')
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_8" > वन्नन्त / वन्नन्तान्त है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_8" > वन्नन्त / वन्नन्तान्त नहीं है ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='2_8_1' )
+{
+            $html .= '<div id="step22">';
+            $html .= '<input type="radio" value="1" name="cond2_8_1" > हशन्त धातु के परे वन्‌ है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_8_1" > वन्‌ हशन्त धातु के परे नहीं है ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='2_8_2' )
+{
+            $html .= '<div id="step22">';
+            $html .= '<input type="radio" value="1" name="cond2_8_2" > बहुव्रीहि है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_8_2" > बहुव्रीहि नहीं है ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='2_8_1_1' )
+{
+            $html .= '<div id="step33">';
+            $html .= '<input type="radio" value="1" name="cond2_8_1_1" > बहुव्रीहि है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_8_1_1" > बहुव्रीहि नहीं है ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='2_8_1_2' )
+{
+            $html .= '<div id="step33">';
+            $html .= '<input type="radio" value="1" name="cond2_8_1_2" > बहुव्रीहि है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_8_1_2" > बहुव्रीहि नहीं है ';                    
+            $html .= '</div>';    
+}
+if (ends($arrWord,array("pAd"),0) && $_POST['step']==='2')
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_9" > ऋक्‌ है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_9" > ऋक्‌ नहीं है ';                    
+            $html .= '</div>';    
+}
+if (ends($arrWord,array("an"),0) && !ends($arrWord,array("man","van"),0)  && !ends($arrWord,array("paYcan","saptan","zwan","navan","daSan"),1) &&  $_POST['step']==='2')
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_10" > बहुव्रीहि है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_10" > बहुव्रीहि नहीं है ';                    
+            $html .= '</div>';    
+}
+if (ends($arrWord,array("tyaka"),0)  &&   $_POST['step']==='2')
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_12" > त्यक्‌ / त्यप्‌ प्रत्यय है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_12" > त्यकन्‌ प्रत्यय है ';                    
+            $html .= '</div>';    
+}
+elseif (ends($arrWord,array("yaka","kaka"),0)  &&   $_POST['step']==='2')
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_13" > धात्वन्त यकार या ककार के परे प्रत्यय का ककार है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_13" > नहीं ';                    
+            $html .= '</div>';    
+}
+elseif (ends($arrWord,array("aka"),0)  && !ends($arrWord,array("yaka","saka","kzipaka","Druvaka","kanyaka","cawaka","alaka","izwaka","tAraka","varRaka","vartaka","azwaka","sUtaka","putraka","vfndAraka"),2)  &&   $_POST['step']==='2')
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_11" > ककार प्रत्ययस्थ है तथा आप् प्रत्यय सुप् के परे नहीं है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_11" > ककार प्रत्ययस्थ नहीं है या आप् प्रत्यय सुप् के परे है ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='2_11_1' )
+{
+            $html .= '<div id="step22">';
+            $html .= '<input type="radio" value="1" name="cond2_11_1" > आशिष्‌ के अर्थ में वुन्‌ प्रत्यय प्रयुक्त है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_11_1" > उत्तरपदलोप है ';
+            $html .= '<input type="radio" value="3" name="cond2_11_1" > उपर में से कोई नहीं ';
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='2_13_2' )
+{
+            $html .= '<div id="step22">';
+            $html .= '<input type="radio" value="1" name="cond2_13_2" > स्त्रीप्रत्यय के आकार के स्थान पर अकार हुआ है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_13_2" > नहीं ';
+            $html .= '</div>';    
+}
 
 /* napuMsakaliGga */
 if (in_array($last,array("i","I","u","U","f","F","x","X")) && $_POST['step']==='3')
