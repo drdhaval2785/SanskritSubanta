@@ -549,7 +549,8 @@ if ( $_POST['step']==='2_11_1' )
             $html .= '<div id="step22">';
             $html .= '<input type="radio" value="1" name="cond2_11_1" > आशिष्‌ के अर्थ में वुन्‌ प्रत्यय प्रयुक्त है ';                    
             $html .= '<input type="radio" value="2" name="cond2_11_1" > उत्तरपदलोप है ';
-            $html .= '<input type="radio" value="3" name="cond2_11_1" > उपर में से कोई नहीं ';
+            $html .= '<input type="radio" value="3" name="cond2_11_1" > अभाषितपुंस्क है ';
+            $html .= '<input type="radio" value="4" name="cond2_11_1" > उपर में से कोई नहीं ';
             $html .= '</div>';    
 }
 if ( $_POST['step']==='2_13_2' )

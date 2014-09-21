@@ -412,6 +412,7 @@ return $arr; // returning the desired savarNa array.
 // 5 is for sarvAdeza.
 // 6 is for bhasya adhikAra.
 // 7 is for padasya, padAt, anudAttaM sarvamapAdAdau adhikAra.
+// 8 is for anupasarjanAt adhikAra.
 // new messages can be added if the message is of repeated nature.
 function display($n)
 {
@@ -452,6 +453,11 @@ function display($n)
         {
         echo "<p class = pa>padasya (8.1.16), padAt (8.1.17) and anudAttaM sarvamapAdAdau (8.1.18) :</p>";
         echo "<p class = pa>पदस्य (८.१.१६), पदात्‌ (८.१.१७) तथा अनुदात्तं सर्वमपादादौ (८.१.१८) :</p>";
+        }
+    if ($n === 8) 
+        {
+        echo "<p class = pa>anupasarjanAt (4.1.14) :</p>";
+        echo "<p class = pa>अनुपसर्जनात्‌ (४.१.१४) :</p>";
         }
     for($i=1;$i<count($text)+1;$i++) // for all members of the $text array
     {

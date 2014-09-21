@@ -1230,6 +1230,18 @@ if ($gender==="f" && $Ap===1 && sub(array("kzipaka","Druvaka","kanyaka","cawaka"
     echo "<p class = sa >क्षिपकादीनां च न (वा ४५३०) :</p>";
     display(0);
 }
+/* abhASitapuMskAcca (7.3.48) and AdAcAryANAm (7.3.49) */
+elseif ($gender==="f" && $Ap===1 && $_GET['cond2_11_1']==="3" )
+{
+    $text = two(array("aka","ak"),array("+A"),array("ika","ik"),array("+A"),1);
+    echo "<p class = sa >By abhASitapuMskAcca (7.3.48) :</p>";
+    echo "<p class = sa >अभाषितपुंस्काच्च (७.३.४८) :</p>";
+    display(0);
+    $text = two(array("aka","ak"),array("+A"),array("Aka","Ak"),array("+A"),1);
+    echo "<p class = sa >By AdAcAryANAm (7.3.49) :</p>";
+    echo "<p class = sa >आदाचार्याणाम्‌ (७.३.४९) :</p>";
+    display(0);
+}
 /* udIcAmAtaH sthAne yakapUrvAyAH (7.3.46) */
 elseif ($gender==="f" && $Ap===1 && $_GET['cond2_13_2']==="1" )
 {
@@ -1361,6 +1373,12 @@ elseif ($gender==="f" && $Ap===1 && sub(array("aka","ak"),array("+A"),blank(0),0
     echo "<p class = sa >प्रत्ययस्थात्कात्पूर्वस्यात इदाप्यसुपः (७.३.४४) :</p>";
     display(0);
 }
+/* anupasarjanAt adhikAra */
+// anupasarjanAt (4.1.14) is implicitly mentioned in display function.
+/* TiDDhANaJdvayasajdadhnaJmAtractayapThakThaJkaJkvarapaH (4.1.15) */
+
+
+ 
 /* dRnkarapunaHpUrvasya bhuvo yaN vaktavyaH (vA 4118) */ 
 if ($dhatu===1 && in_array($fo,array("dfnBU","karaBU","kAraBU","punarBU")) && in_array($so,$sup))
 {
@@ -3717,7 +3735,7 @@ if ( $so === "Am" && $numacira===0 && $Ap===1 && arr($text,'/[A][+][A][m]/'))
 /* bahUrji exception to napuMsakasya jhalacaH (7.1.72) */ 
 if ( $gender==="n" && $sarvanamasthana1===1 && sub(array("bahUrj"),blank(0),blank(0),0) && arr($text,'/['.pc('Jl').'][+]/') && $amipUrva === 0)
 {
-    $text = two(array("bahUrj"),array("+"),array("bahUrnj"),array("+"),1);
+    $text = two(array("bahUrj"),array("+"),array("bahUnrj"),array("+"),1);
     echo "<p class = sa >By bahUrji numpratiSedhaH (vA 4331) and antyAtpUrvo vA num (vA 4332) :</p>";
     echo "<p class = sa >बहूर्जि नुम्प्रतिषेधः (वा ४३३१) तथा अन्त्यात्पूर्वो वा नुम् (वा ४३३२) :</p>";
     display(3); 
@@ -4307,13 +4325,13 @@ if (sub($ak,array("+"),array("a","O"),0) && in_array($so,$prathama)  && $nadici 
     echo "<p class = sa >प्रथमयोः पूर्वसवर्णः (६.१.१०२) :</p>
         <p class = hn >यह प्रथमा और द्वितीया विभक्तियों में लागू होता है ।</p>";
     display (0); 
-    $prathamayoh = 1; // 0 - this rule has not applied. 1 - this rule has applied. Useful in tasmAcChaso naH puMsi.
+    $prathamayoh = 1; // 0 - this rule has not applied. 1 - this rule has applied. Useful in tasmAcCaso naH puMsi.
 } else { $prathamayoh = 0; }
 /* tasmAcChaso naH puMsi (6.1.103) */
 if ($prathamayoh ===1 && $so === "Sas" && $gender==="m")
 {
     $text = one(array("+s"),array("+n"),0);
-    echo "<p class = sa >By tasmAcChaso naH puMsi (6.1.103) :</p>";
+    echo "<p class = sa >By tasmAcCaso naH puMsi (6.1.103) :</p>";
     echo "<p class = sa >तस्माच्छसो नः पुंसि (६.१.१०३) :</p>";  
     display(0); 
 }
