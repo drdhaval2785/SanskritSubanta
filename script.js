@@ -213,6 +213,13 @@ $(document).ready(function() {
 			$('#step2').html(response);
 		}
 	});
+    	$( document ).on( "click", "input:radio[name=cond2_16]", function() {
+		if($('input:radio[name=cond2_16]:checked').val() === '1'){
+			$('#step').val('2_16_1');
+			$.getData();
+			$('#step2').html(response);
+		}
+	});
         
 
 /* napuMsakaliGga */

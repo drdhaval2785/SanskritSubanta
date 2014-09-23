@@ -560,6 +560,57 @@ if ( $_POST['step']==='2_13_2' )
             $html .= '<input type="radio" value="2" name="cond2_13_2" > नहीं ';
             $html .= '</div>';    
 }
+if (ends($arrWord,array("a"),0) && $_POST['step']==='2' && (ends($arrWord,$TitprAtipadika,1) || (AdivRddhi($arrWord) && ends($arrWord,array("eya","ika","a"),0)) || ends($arrWord,array("dvayasa","daDna","mAtra","taya","AdfSa","itvara","naSvara","sftvara","Itvara","etvara","taruRa","taluna"),1) ) )
+// In this case we have taken every word having Adi vRddhi and ending with akAra. In future, we will have to make it more specific to aN and aJ. All other are recognizable.        
+// Future - make it applicable only to aN and aJ. Remove all AdivRddhi pratyayas like Na, Nya etc.        
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_14" > उपसर्जनीभूत है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_14" > उपसर्जनीभूत नहीं है ';                    
+            $html .= '</div>';    
+}
+if (ends($arrWord,array("triPala","tryanIka"),2) && $_POST['step']==='2'  )
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_15" > द्विगु ';                    
+            $html .= '<input type="radio" value="2" name="cond2_15" > बहुव्रीहि ';                    
+            $html .= '</div>';    
+}
+if (ends($arrWord,array("a"),0) && $_POST['step']==='2'  )
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_16" > द्विगु ';                    
+            $html .= '<input type="radio" value="2" name="cond2_16" > बहुव्रीहि ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='2_16_1' && ends($arrWord,array("kARqa"),0) && dvigu($arrWord) ) 
+{
+            $html .= '<div id="step22">';
+            $html .= '<input type="radio" value="1" name="cond2_16_1_2" > क्षेत्रे ';                    
+            $html .= '<input type="radio" value="2" name="cond2_16_1_2" > न क्षेत्रे ';
+            $html .= '</div>';    
+}
+elseif ( $_POST['step']==='2_16_1' && ends($arrWord,array("puruSa"),0) && dvigu($arrWord) ) 
+{
+            $html .= '<div id="step22">';
+            $html .= '<input type="radio" value="1" name="cond2_16_1_3" > प्रमाणे ';                    
+            $html .= '<input type="radio" value="2" name="cond2_16_1_3" > न प्रमाणे ';
+            $html .= '</div>';    
+}
+elseif ( $_POST['step']==='2_16_1' && (ends($arrWord,array("bista","Acita","kambalya"),0) || !ends($arrWord,array("guYja","mAza","suvarRa","pala","prasfta","kuwaba","prasTa","AQaka"),0)) && dvigu($arrWord) ) 
+{
+            $html .= '<div id="step22">';
+            $html .= '<input type="radio" value="1" name="cond2_16_1_1" > तद्धितलुक्‌ है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_16_1_1" > नहीं ';
+            $html .= '</div>';    
+}
+if (ends($arrWord,array("uDas","oDas"),0) && $_POST['step']==='2'  )
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_17" > बहुव्रीहि ';                    
+            $html .= '<input type="radio" value="2" name="cond2_17" > बहुव्रीहि नहीं ';                    
+            $html .= '</div>';    
+}
 
 /* napuMsakaliGga */
 if (in_array($last,array("i","I","u","U","f","F","x","X")) && $_POST['step']==='3')

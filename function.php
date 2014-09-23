@@ -76,6 +76,8 @@ $svasrAdi = array("svasf","tisf","catasf","nanAndf","duhitf","yAtf","mAtf"); // 
 $tyadadi = array("dvi","tyad","tad","yad","etad","idam","adas","eka","idakam"); // tyadAdi gaNa
 $acdir = array("A","A","I","I","U","U","F","F","F","F","e","o","E","O",); // dIrgha of vowels
 $tiG = array("tip","tas","Ji"); // tiG pratyayas. Not used right now.
+$TitprAtipadika = array("nada","Baza","gara","plava","cara","tara","cora","grAha","sUda","deva","moda"); // this list is carved out of gaNapATha.
+$Titpratyaya = array("aw","Aw","iw","Iw","Uw","Ow","caw","caraw","wa","wak","wac","wan","wA","wAp","wiWan","wizac","wuk","weRyaR","wyaR","wyu","wyul","walaY","qraw","Ruw","Ryuw","tamaw","tuw","nuw","mayaw","yAsuw","yiw","yuw","ruw","lyuw","varaw","viw","sIyuw","suw","syAw","law","lfw","let","liw","low",); // This list is carved out from pratyayakoSa of Harakare.
 
 /* Function to find pratyAhAra from given two letters */ 
 // Enter your letters in the arguments like prat('Jl') will mean pratyAhAra jhal.
@@ -860,7 +862,7 @@ function anekAca($a)
 }
 /* ends function */
 // to find if there is any member of array which end in a particular member of another array.
-// 0 -> doesn't start with but ends with it. 1 -> ends with it or is equal to it. 2 -> is equal to it.
+// 0 -> doesn't start with but ends with it. 1 -> ends with it or is equal to it. 2 -> is equal to it., 3 -> starts with it but doesn't end with it.
 function ends($a,$b,$n)
 {
     foreach ($a as $aa)
@@ -896,6 +898,17 @@ function ends($a,$b,$n)
                 {
                     
 		    $can[] = 1;
+                }
+                else
+                {
+                    $can[] = 0;
+                }                
+            }
+            if ($n===3) 
+            {
+                if (strpos($aa,$bb)===0 && strpos(strrev($aa),strrev($bb)) !==0) 
+                {
+                    $can[] = 1;
                 }
                 else
                 {
@@ -1182,6 +1195,42 @@ function anubandha()
 
 return $text;
 
+}
+/* function AdivRddhi to find AdivRddhi */
+function AdivRddhi($a)
+{
+    foreach ($a as $value)
+    {
+        $b=preg_split('/([aAiIuUfFxXeEoO])/',$value,null,PREG_SPLIT_DELIM_CAPTURE);
+        if(in_array($b[1],array("A","E","O")))
+        {
+            $can[]=1;
+        }
+        else
+        {
+            $can[]=0;
+        }
+    }
+    if (in_array(1,$can))
+    {
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
+}
+/* function dvigu to find whether ther is dvigu */
+function dvigu($a)
+{
+    if (ends($a,array("eka","ekA","eke","dvi","dvI","dvy","tri","trI","try","catur","catuH","catuz","paYc","zaq","zaw","sapt","azw","nav","daS","Sat"),3))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 /* Functions which are not used in the code */
