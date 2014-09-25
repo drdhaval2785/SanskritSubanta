@@ -199,6 +199,13 @@ $(document).ready(function() {
 			$('#step3').html(response);
 		}
 	});
+    	$( document ).on( "click", "input:radio[name=cond2_10]", function() {
+		if($('input:radio[name=cond2_10]:checked').val() === '1'){
+			$('#step').val('2_10_1');
+			$.getData();
+			$('#step2').html(response);
+		}
+	});
     	$( document ).on( "click", "input:radio[name=cond2_11]", function() {
 		if($('input:radio[name=cond2_11]:checked').val() === '1'){
 			$('#step').val('2_11_1');
@@ -216,6 +223,20 @@ $(document).ready(function() {
     	$( document ).on( "click", "input:radio[name=cond2_16]", function() {
 		if($('input:radio[name=cond2_16]:checked').val() === '1'){
 			$('#step').val('2_16_1');
+			$.getData();
+			$('#step2').html(response);
+		}
+	});
+    	$( document ).on( "click", "input:radio[name=cond2_16]", function() {
+		if($('input:radio[name=cond2_16]:checked').val() === '2'){
+			$('#step').val('2_16_2_1');
+			$.getData();
+			$('#step2').html(response);
+		}
+	});
+    	$( document ).on( "click", "input:radio[name=cond2_17]", function() {
+		if($('input:radio[name=cond2_17]:checked').val() === '1'){
+			$('#step').val('2_17_1');
 			$.getData();
 			$('#step2').html(response);
 		}
