@@ -10,22 +10,9 @@
 <?php
  header('Content-type: text/html; charset=utf-8');
 include 'function.php';
+include "slp-dev.php"; // includes code for conversion from SLP to devanagari,
+include "dev-slp.php"; // includes code for devanagari to SLP.
 $verbslist = file("verbsslp.txt");
-//print_r($a);
-/*foreach ($a as $value)
-{
-        $text = $value;
-        $text1 = preg_split('/['.pc('ac').']/',$text);
-        foreach ($text1 as $val1)
-        {
-            $val1 = str_replace(array("1","2","3","4","5","6","7","8","9","0"),blank(0),$val1);
-            if (preg_match('/['.pc('hl').']['.pc('hl').']/',$val1))
-            {
-                $set[] = $val1;
-            }
-        }
-}
-$verbsamyoga = array_unique($set);*/
 foreach ($verbslist as $value)
 {
     if(preg_match('/[iIuUfFxX][vr]$/',$value))

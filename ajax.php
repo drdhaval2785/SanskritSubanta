@@ -646,6 +646,41 @@ if (ends($arrWord,array("kevala","mAmaka","BAgaDeya","pApa","apara","samAna","Ar
             $html .= '<input type="radio" value="2" name="cond2_18" > नहीं ';                    
             $html .= '</div>';    
 }
+if (ends($arrWord,array("pUtakratu","vfzAkapi","agni","kusita","kusida","manu"),2) && $_POST['step']==='2'  )
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_19" > पुंयोग में प्रयुक्त है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_19" > नहीं ';                    
+            $html .= '</div>';    
+}
+if (ends($arrWord,array("u"),0) && !arr($arrWord,'/['.pc('hl').']['.pc('hl').'][u]/') && $_POST['step']==='2'  )
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_20" > गुणवाचि ';                    
+            $html .= '<input type="radio" value="2" name="cond2_20" > नहीं ';                    
+            $html .= '</div>';    
+}
+if (ends($arrWord,array("i"),0) && $_POST['step']==='2'  )
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_21" > क्तिन्नन्त है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_21" > नहीं ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='2' && !ends($arrWord,array("A","I"),0) )
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_22" > पुंयोग ';                    
+            $html .= '<input type="radio" value="2" name="cond2_22" > नहीं ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='2_22_1' && ends($arrWord,array("sUrya"),2) ) 
+{
+            $html .= '<div id="step22">';
+            $html .= '<input type="radio" value="1" name="cond2_22_1_1" > देवता ';                    
+            $html .= '<input type="radio" value="2" name="cond2_22_1_1" > मानुषी ';
+            $html .= '</div>';    
+}
 
 /* napuMsakaliGga */
 if (in_array($last,array("i","I","u","U","f","F","x","X")) && $_POST['step']==='3')
