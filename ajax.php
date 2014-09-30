@@ -474,39 +474,25 @@ if ($last==="U" && $_POST['step']==='2')
             $html .= '<input type="radio" value="2" name="cond2_7" > पुंयोग ';                    
             $html .= '</div>';    
 }*/
-if (ends($arrWord,array("van"),1) && $_POST['step']==='2')
+if ( $_POST['step']==='2' && ends($arrWord,array("ruhvan","avAvan","yuDvan","yajvan","nadvan","padvan",),1) )
 {
             $html .= '<div id="step11">';
-            $html .= '<input type="radio" value="1" name="cond2_8" > वन्नन्त / वन्नन्तान्त है ';                    
-            $html .= '<input type="radio" value="2" name="cond2_8" > वन्नन्त / वन्नन्तान्त नहीं है ';                    
-            $html .= '</div>';    
-}
-if ( $_POST['step']==='2_8_1' )
-{
-            $html .= '<div id="step22">';
-            $html .= '<input type="radio" value="1" name="cond2_8_1" > हशन्त धातु के परे वन्‌ है ';                    
-            $html .= '<input type="radio" value="2" name="cond2_8_1" > वन्‌ हशन्त धातु के परे नहीं है ';                    
-            $html .= '</div>';    
-}
-if ( $_POST['step']==='2_8_2' )
-{
-            $html .= '<div id="step22">';
-            $html .= '<input type="radio" value="1" name="cond2_8_2" > बहुव्रीहि है ';                    
-            $html .= '<input type="radio" value="2" name="cond2_8_2" > बहुव्रीहि नहीं है ';                    
-            $html .= '</div>';    
-}
-if ( $_POST['step']==='2_8_1_1' )
-{
-            $html .= '<div id="step33">';
             $html .= '<input type="radio" value="1" name="cond2_8_1_1" > बहुव्रीहि है ';                    
             $html .= '<input type="radio" value="2" name="cond2_8_1_1" > बहुव्रीहि नहीं है ';                    
             $html .= '</div>';    
 }
-if ( $_POST['step']==='2_8_1_2' )
+elseif ( ends($arrWord,$vanoracawords,1) && $_POST['step']==='2'  )
 {
             $html .= '<div id="step33">';
             $html .= '<input type="radio" value="1" name="cond2_8_1_2" > बहुव्रीहि है ';                    
             $html .= '<input type="radio" value="2" name="cond2_8_1_2" > बहुव्रीहि नहीं है ';                    
+            $html .= '</div>';    
+}
+elseif ( ends($arrWord,array("van"),0) && $_POST['step']==='2')
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_8_2" > बहुव्रीहि है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_8_2" > बहुव्रीहि नहीं है ';                    
             $html .= '</div>';    
 }
 if (ends($arrWord,array("pAd"),0) && $_POST['step']==='2')

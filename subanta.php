@@ -1819,14 +1819,6 @@ elseif ($gender === "f" && sub(array("prAk","pratyak","udIk","prAN","pratyaN","u
     $ajAdyataSTAp=0;
 }
 
-/* vano na haza iti vaktavyam (vA 2405) */
-// This is tough. Please enumerate such words. Seems like they are very few.
-elseif ($gender === "f" && $_GET['cond2_8_1']==="1" )
-{
-    echo "<p class = st >By vano na haza iti vaktavyam (vA 2405) :</p>";
-    echo "<p class = st >वनो न हश इति वक्तव्यम्‌ (वा २४०५) :</p>";        
-    display(0);
-}
 /* dAmahAyanAntAcca (4.1.27) */
 elseif ($gender === "f" && dvigu($text) && sub(array("dAman",),array("+"),blank(0),0))
 {
@@ -1885,26 +1877,19 @@ elseif ($gender === "f" && ($_GET['cond2_8_1_1']==="1" || $_GET['cond2_8_2']==="
     echo "<p class = st >अनो बहुव्रीहेः (४.१.१२) :</p>";        
     display(0); $anobahuvrihe=1;
 }
-/* manaH (4.1.11) */
-elseif ($gender === "f" && sub(array("man"),array("+"),blank(0),0) )
+/* vano na haza iti vaktavyam (vA 2405) */
+// This is tough. Please enumerate such words. Seems like they are very few.
+elseif ($gender === "f" && $_GET['cond2_8_2_1']==="1" )
 {
-    echo "<p class = st >By manaH (4.1.11) :</p>";
-    echo "<p class = st >मनः (४.१.११) :</p>";        
-    display(0); $manah=1;
+    echo "<p class = st >By vano na haza iti vaktavyam (vA 2405) :</p>";
+    echo "<p class = st >वनो न हश इति वक्तव्यम्‌ (वा २४०५) :</p>";        
+    display(0);
 }
 /* vano ra ca (4.1.7) and bahuvrIhau vA (vA 2407) */
 // put here because it is always nakArAnta. So, it should get precedence over Rnnebhyo GIp.
-elseif ($gender === "f" && $_GET['cond2_8_1']==="2"  )
+elseif ($gender === "f" && ($_GET['cond2_8_1']==="2" || sub($vanoracawords,array("+"),blank(0),0) || sub($hrasva,array("tvan"),array("+"),0)  ))
 {
-    if ($_GET['cond2_8_1_2']==="2")
-    {
-    $text = two(array("van"),array("+"),array("var"),array("+NIp+"),0);        
-    echo "<p class = st >By vano ra ca (4.1.7) :</p>";
-    echo "<p class = pa >By pratyayagrahaNe yasmAtsa vihitastadAdestadantasya grahaNam (pa 24) :</p>";
-    echo "<p class = st >वनो र च (४.१.७) :</p>";        
-    echo "<p class = pa >प्रत्ययग्रहणे यस्मात्स विहितस्तदादेस्तदन्तस्य ग्रहणम्‌ (प २४) :</p>";        
-    }
-    elseif ($_GET['cond2_8_1_2']==="1")
+    if ($_GET['cond2_8_1_2']==="1")
     {
     $text = two(array("van"),array("+"),array("var"),array("+NIp+"),1);        
     echo "<p class = st >By vano ra ca (4.1.7) and bahuvrIhau vA (vA 2407) :</p>";
@@ -1912,9 +1897,24 @@ elseif ($gender === "f" && $_GET['cond2_8_1']==="2"  )
     echo "<p class = st >वनो र च (४.१.७) और बहुव्रीहौ वा (वा २४०७) :</p>";        
     echo "<p class = pa >प्रत्ययग्रहणे यस्मात्स विहितस्तदादेस्तदन्तस्य ग्रहणम्‌ (प २४) :</p>"; $bahuvrihauva=1;       
     }
+    elseif ($_GET['cond2_8_1_2']==="2" || (sub($kvanipwords,array("+"),blank(0),0)||sub($Gvanipwords,array("+"),blank(0),0)||sub($vanipwords,array("+"),blank(0),0) ) )
+    {
+    $text = two(array("van"),array("+"),array("var"),array("+NIp+"),0);        
+    echo "<p class = st >By vano ra ca (4.1.7) :</p>";
+    echo "<p class = pa >By pratyayagrahaNe yasmAtsa vihitastadAdestadantasya grahaNam (pa 24) :</p>";
+    echo "<p class = st >वनो र च (४.१.७) :</p>";        
+    echo "<p class = pa >प्रत्ययग्रहणे यस्मात्स विहितस्तदादेस्तदन्तस्य ग्रहणम्‌ (प २४) :</p>";        
+    }
     display(3);
-    $text = two(array("+NIp"),array("+"),array("+I"),array("+"),0); 
     $GIp=1;
+    $bahuvrihauva=1;
+}
+/* manaH (4.1.11) */
+elseif ($gender === "f" && sub(array("man"),array("+"),blank(0),0) )
+{
+    echo "<p class = st >By manaH (4.1.11) :</p>";
+    echo "<p class = st >मनः (४.१.११) :</p>";        
+    display(0); $manah=1;
 }
 /* Rnnebhyo GIp (4.1.5) */
 elseif ($gender === "f" && sub(array("f","n"),array("+"),blank(0),0) && $SaTsvasrAdi===0 && $allopo!==1 && $GIz!==1 && $GIn!==1 && $tiH!==1)
@@ -1926,19 +1926,6 @@ elseif ($gender === "f" && sub(array("f","n"),array("+"),blank(0),0) && $SaTsvas
     $text = two(array("NIp"),array("+"),array("I"),array("+"),0); 
     display(0); 
     $GIp=1;
-}
-/* DAbubhAbhyAmanyatarsyAm (4.1.13) */
-elseif ($anobahuvrihe===1 || $manah===1 || $bahuvrihauva===1)
-{
-    $text = two(array("an"),array("+"),array("an"),array("+qAp+"),1);
-    echo "<p class = st >By DAbubhAbhyAmanyatarsyAm (4.1.13) :</p>";
-    echo "<p class = st >डाबुभाभ्यामन्यतरस्याम्‌ (४.१.१३) :</p>";
-    display(0);
-    $text = two(array("an"),array("+qAp+"),array(""),array("+qAp+"),0);    
-    echo "<p class = sa >By TeH (6.4.143) :</p>";
-    echo "<p class = sa >टेः (६.४.१४३) :</p>";
-    display(3);
-    $DAp=1;
 }
 /* TAbRci (4.1.9) */
 elseif ($gender === "f" && $_GET['cond2_9'] === "1" )
@@ -2102,6 +2089,19 @@ elseif (arr($text,'/[a][+]/') && $gender==="f" && $_GET['cond2_7']!=="2" && $ajA
     $TAp=1;
 }
 
+/* DAbubhAbhyAmanyatarsyAm (4.1.13) */
+if ($anobahuvrihe===1 || $manah===1 || $bahuvrihauva===1)
+{
+    $text = two(array("an"),array("+"),array("an"),array("+qAp+"),1);
+    echo "<p class = st >By DAbubhAbhyAmanyatarsyAm (4.1.13) :</p>";
+    echo "<p class = st >डाबुभाभ्यामन्यतरस्याम्‌ (४.१.१३) :</p>";
+    display(0);
+    $text = two(array("an"),array("+qAp+"),array(""),array("+qAp+"),0);    
+    echo "<p class = sa >By TeH (6.4.143) :</p>";
+    echo "<p class = sa >टेः (६.४.१४३) :</p>";
+    display(3);
+    $DAp=1;
+}
 /* common patch for TAp pratyaya to remove the it markers. */
 if ($TAp===1)
 {
@@ -2244,12 +2244,12 @@ if ($GIn===1 )
         echo "<p class = sa >चौ (६.३.१३८) :</p>";
         display(3);
     }
-    $text = one(array("+I+"),array("I"),0);
+    $text = one(array("+I+"),array("I+"),0);
 }
 /* common removal of G,p and application of 'yasyeti ca' for NIp pratyaya */
 if ($GIp===1 )
 {
-    $text = two(array("NIp"),array("+"),array("I"),array("+"),0); 
+    $text = one(array("+NIp+"),array("+I+"),0); 
     $it = array_merge($it,array("N","p"));
     $itprakriti = array_merge($itprakriti,array("p","N"));
     echo "<p class = sa >GakAra and pakAra are 'it'. They are elided by lazakvataddhite (1.3.8), halantyam (1.3.3) and tasya lopaH (1.3.9) :</p>";
@@ -2325,7 +2325,7 @@ if ($GIp===1 )
         echo "<p class = sa >चौ (६.३.१३८) :</p>";
         display(3);
     }
-    $text = one(array("+I+"),array("I"),0);
+    $text = one(array("+I+"),array("I+"),0);
 }
 /* common removal of G,S and application of 'yasyeti ca' for NIS pratyaya */
 if ($GIz===1 )
@@ -2414,7 +2414,7 @@ if ($GIz===1 )
         echo "<p class = sa >चौ (६.३.१३८) :</p>";
         display(3);
     }
-    $text = one(array("+I+"),array("I"),0);
+    $text = one(array("+I+"),array("I+"),0);
 }
 
 /* kSipakAdInAM ca na (vA 4530) */
