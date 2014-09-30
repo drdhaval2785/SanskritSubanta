@@ -671,7 +671,8 @@ if ( $_POST['step']==='2' && !ends($arrWord,array("A","I"),0) )
 {
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond2_22" > पुंयोग ';                    
-            $html .= '<input type="radio" value="2" name="cond2_22" > नहीं ';                    
+            $html .= '<input type="radio" value="2" name="cond2_22" > जातिवाचि है और अस्त्रीविषय है ';                    
+            $html .= '<input type="radio" value="3" name="cond2_22" > अन्य ';                    
             $html .= '</div>';    
 }
 if ( $_POST['step']==='2_22_1' && ends($arrWord,array("sUrya"),2) ) 
@@ -679,6 +680,42 @@ if ( $_POST['step']==='2_22_1' && ends($arrWord,array("sUrya"),2) )
             $html .= '<div id="step22">';
             $html .= '<input type="radio" value="1" name="cond2_22_1_1" > देवता ';                    
             $html .= '<input type="radio" value="2" name="cond2_22_1_1" > मानुषी ';
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='2' && ends($arrWord,array("ta","nna"),0) )
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_23" > क्तान्त है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_23" > क्तान्त नहीं है ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='2_23_1' ) 
+{
+            $html .= '<div id="step22">';
+            $html .= '<input type="radio" value="1" name="cond2_23_1" > अल्पत्व के अर्थ में प्रयुक्त है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_23_1" > बहुव्रीहि है ';
+            $html .= '<input type="radio" value="3" name="cond2_23_1" > उपर में से कोई नहीं ';
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='2_23_1_2' ) 
+{
+            $html .= '<div id="step33">';
+            $html .= '<input type="radio" value="1" name="cond2_23_1_2" > अन्तोदात्त है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_23_1_2" > नहीं ';
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='2' && ends($arrWord,array("naKa","muKa","RaKa"),0) )
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_24" > सञ्ज्ञा ';                    
+            $html .= '<input type="radio" value="2" name="cond2_24" > नहीं ';                    
+            $html .= '</div>';    
+}
+if ( $_POST['step']==='2' && ends($arrWord,array("bAhu"),0) )
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond2_26" > सञ्ज्ञा ';                    
+            $html .= '<input type="radio" value="2" name="cond2_26" > नहीं ';                    
             $html .= '</div>';    
 }
 

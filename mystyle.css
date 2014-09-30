@@ -62,16 +62,24 @@ p.red {
  padding-top: 2px;
 padding-bottom: 2px;
  }
- 
-/* the next styles are not used in code. kept reserved for future usages. */
-/* rv01.001.01 */
-p.stamp {
-font-size: 14pt;
-font-weight: bold;
-float: none;
-padding-top: 2px;
+/* taddhitas */
+p.st {
+ color: black;
+ background-color:hotpink ;
+ font-family: "Siddhanta";
+ padding-top: 2px;
 padding-bottom: 2px;
 }
+/* taddhitas */
+p.ta {
+ color: black;
+ background-color:cyan ;
+ font-family: "Siddhanta";
+ padding-top: 2px;
+padding-bottom: 2px;
+}
+
+/* the next styles are not used in code. kept reserved for future usages. */
 p.comm {
 font-style: italic;
 }

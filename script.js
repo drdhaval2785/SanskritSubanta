@@ -248,7 +248,21 @@ $(document).ready(function() {
 			$('#step2').html(response);
 		}
 	});
-        
+     	$( document ).on( "click", "input:radio[name=cond2_23]", function() {
+		if($('input:radio[name=cond2_23]:checked').val() === '1'){
+			$('#step').val('2_23_1');
+			$.getData();
+			$('#step2').html(response);
+		}
+	});
+     	$( document ).on( "click", "input:radio[name=cond2_23_1]", function() {
+		if($('input:radio[name=cond2_23_1]:checked').val() === '2'){
+			$('#step').val('2_23_1_2');
+			$.getData();
+			$('#step3').html(response);
+		}
+	});
+       
 
 /* napuMsakaliGga */
 	$( document ).on( "click", "input:radio[name=gender]", function() {
