@@ -994,6 +994,46 @@ elseif ($gender!=="f" && sub(array("UDas","oDas"),array("+"),blank(0),0) )
     echo "<p class = hn >इससे ऊधसोऽनङ्‌ का अनङ्ङादेश मात्र स्त्री विवक्षा में होता है । :</p>";        
     display(0);
 }
+/* ajAdyataSTAp (4.1.4) with explanation for inclusion in ajAdi gaNa */
+elseif ( (sub($ajAdi,array("+"),blank(0),0) || $ajAdyataSTAp===1) && $kevala!==1) 
+{
+    echo "<p class = st >ajAdyataSTAp (4.1.4) :</p>";
+    echo "<p class = st >अजाद्यतष्टाप्‌ (४.१.४) :</p>";
+/* displaying various sub part of ajAdi gaNa and relevant explanation for introduction of word in ajAdi gaNa */
+    if( sub(array("aja","eqaka","aSva","cawaka","mUzika"),array("+"),blank(0),0))
+    {
+    echo "<p class = hn >jAtilakSaNa GIS pratyaya is barred by this sUtra. </p>";
+    echo "<p class = hn >जातिलक्षण ङीष्‌ प्रत्यय का बाध करने के लिए अजादि गण में इनका समावेश किया गया है ।</p>";
+    }
+    if( sub(array("triPala","tryanIka"),array("+"),blank(0),0) && $_GET['cond2_15']==="1")
+    {
+    echo "<p class = hn >This sUtra prevents application of NIp pratyaya by 'dvigoH'.</p>";
+    echo "<p class = hn >'द्विगोः' से प्राप्त ङीप्‌ प्रत्यय का बाध करने के लिए अजादि गण में इनका समावेश किया गया है ।</p>";
+    }
+    if( sub(array("bAla","vatsa","hoQa","manda","bilAta"),array("+"),blank(0),0))
+    {
+    echo "<p class = hn >These have been enumerated in ajAdi gaNa to bar application of GIp pratyaya by 'vayasi prathame'.</p>";
+    echo "<p class = hn >'वयसि प्रथमे' से प्राप्त ङीप्‌ प्रत्यय का बाध करने के लिए अजादि गण में इनका समावेश किया गया है ।</p>";        
+    }    
+    if( sub(array("kruYc","uzRih","devaviS"),array("+"),blank(0),0))
+    {
+    echo "<p class = hn >These are not ending with akAra. Therefore included in ajAdi class for TAp pratyaya.</p>";
+    echo "<p class = hn >अदन्तत्व नहीं होने के कारण टाप्‌ प्रत्यय के लिए समर्थ बनाने के लिए अजादि गण में इनका समावेश किया गया है ।</p>";        
+    }    
+    if( sub(array("jyezWa","kanizWa","maDyama"),array("+"),blank(0),0))
+    {
+    echo "<p class = hn >Even in puMyoga, this word takes TAp pratyaya.</p>";
+    echo "<p class = hn >पुंयोग में भी टाप्‌ प्रत्यय के लिए समर्थ बनाने के लिए अजादि गण में इनका समावेश किया गया है ।</p>";        
+    }    
+    if( sub(array("kokila"),array("+"),blank(0),0))
+    {
+    echo "<p class = hn >Even in jAti, this word takes TAp pratyaya.</p>";
+    echo "<p class = hn >जाति में भी टाप्‌ प्रत्यय के लिए समर्थ बनाने के लिए अजादि गण में इनका समावेश किया गया है ।</p>";        
+    }    
+    $text = last(array($so),array("+wAp+".$so),0);
+    display(0); 
+    $TAp = 1;
+}
 /* saGkhyAvyayAderGIp (4.1.26) */
 elseif ($gender==="f" && sub(array("UDan","oDan"),array("+"),blank(0),0) && $_GET['cond2_17_1']==="1")
 {
@@ -1350,7 +1390,7 @@ elseif ($gender === "f" && sub(array("kadru","kamaRqalu"),array("+"),blank(0),0)
     $ajAdyataSTAp=0;
 }
 /* puMyogAdAkhyAyAm (4.1.48) */
-elseif ($gender === "f" && $_GET['cond2_22']==="1" )
+elseif ($gender === "f" && ($_GET['cond2_22']==="1" || sub(array("mahASUdra"),array("+"),blank(0),0) ))
 {
     $text = one(array("+"),array("+NIz+"),0);
     echo "<p class = st >By puMyogAdAkhyAyAm (4.1.48) :</p>";
@@ -1464,7 +1504,7 @@ elseif( sub(array("satpuzpa","prAkpuzpa","pratyakpuzpa","kARqapuzpa","prAntapuzp
     $TAp=1;
 }
 /* zUdrA cAmahatpUrvA jAtiH (vA 2400-2401) */
-elseif ($_GET['cond2_7']==="1")
+elseif ($_GET['cond2_22']==="2" && sub(array("SUdra"),array("+"),blank(0),0) && !sub(array("mahASUdra","mahacCUdra"),array("+"),blank(0),0))
 {
     $text = one(array("+"),array("+wAp+"),0);
     echo "<p class = st >By zUdrA cAmahatpUrvA jAtiH (vA 2400-2401) :</p>";
@@ -1488,63 +1528,6 @@ elseif( sub(array("amUla"),array("+"),blank(0),0))
     echo "<p class = st >mUlAnnaJaH (vA 2500) :</p>";
     echo "<p class = st >मूलान्नञः (वा २५००) :</p>";        
     display(0); $ajAdyataSTAp = 1;
-    $TAp=1;
-}
-/* ajAdyataSTAp (4.1.4) with explanation for inclusion in ajAdi gaNa */
-elseif ( (sub($ajAdi,array("+"),blank(0),0) || $ajAdyataSTAp===1) && $kevala!==1) 
-{
-    echo "<p class = st >ajAdyataSTAp (4.1.4) :</p>";
-    echo "<p class = st >अजाद्यतष्टाप्‌ (४.१.४) :</p>";
-/* displaying various sub part of ajAdi gaNa and relevant explanation for introduction of word in ajAdi gaNa */
-    if( sub(array("aja","eqaka","aSva","cawaka","mUzika"),array("+"),blank(0),0))
-    {
-    echo "<p class = hn >jAtilakSaNa GIS pratyaya is barred by this sUtra. </p>";
-    echo "<p class = hn >जातिलक्षण ङीष्‌ प्रत्यय का बाध करने के लिए अजादि गण में इनका समावेश किया गया है ।</p>";
-    }
-    if( sub(array("triPala","tryanIka"),array("+"),blank(0),0) && $_GET['cond2_15']==="1")
-    {
-    echo "<p class = hn >This sUtra prevents application of NIp pratyaya by 'dvigoH'.</p>";
-    echo "<p class = hn >'द्विगोः' से प्राप्त ङीप्‌ प्रत्यय का बाध करने के लिए अजादि गण में इनका समावेश किया गया है ।</p>";
-    }
-    if( sub(array("bAla","vatsa","hoQa","manda","bilAta"),array("+"),blank(0),0))
-    {
-    echo "<p class = hn >These have been enumerated in ajAdi gaNa to bar application of GIp pratyaya by 'vayasi prathame'.</p>";
-    echo "<p class = hn >'वयसि प्रथमे' से प्राप्त ङीप्‌ प्रत्यय का बाध करने के लिए अजादि गण में इनका समावेश किया गया है ।</p>";        
-    }    
-    if( sub(array("kruYc","uzRih","devaviS"),array("+"),blank(0),0))
-    {
-    echo "<p class = hn >These are not ending with akAra. Therefore included in ajAdi class for TAp pratyaya.</p>";
-    echo "<p class = hn >अदन्तत्व नहीं होने के कारण टाप्‌ प्रत्यय के लिए समर्थ बनाने के लिए अजादि गण में इनका समावेश किया गया है ।</p>";        
-    }    
-    if( sub(array("jyezWa","kanizWa","maDyama"),array("+"),blank(0),0))
-    {
-    echo "<p class = hn >Even in puMyoga, this word takes TAp pratyaya.</p>";
-    echo "<p class = hn >पुंयोग में भी टाप्‌ प्रत्यय के लिए समर्थ बनाने के लिए अजादि गण में इनका समावेश किया गया है ।</p>";        
-    }    
-    if( sub(array("kokila"),array("+"),blank(0),0))
-    {
-    echo "<p class = hn >Even in jAti, this word takes TAp pratyaya.</p>";
-    echo "<p class = hn >जाति में भी टाप्‌ प्रत्यय के लिए समर्थ बनाने के लिए अजादि गण में इनका समावेश किया गया है ।</p>";        
-    }    
-    $text = last(array($so),array("+wAp+".$so),0);
-    display(0); 
-    $TAp = 1;
-}
-/* ajAdyataSTAp (4.1.4) for adanta words */
-elseif (arr($text,'/[a][+]/') && $gender==="f" && $_GET['cond2_7']!=="2" && $ajAdyataSTAp!==0 ) 
-{
-    /* kanyAyA na. 'kanyAyAH kanIna ca' iti nirdezAt. */
-    if ($gender==="f" && sub(array("kanya"),array("+"),blank(0),0) )
-    {
-        echo "<p class = pa >By kanyAyA na. 'kanyAyAH kanIna ca' iti nirdezAt. :</p>";
-        echo "<p class = pa >'कन्याया न' । 'कन्यायाः कनीन च' इति निर्देशात्‌ ।</p>";        
-        display(0);
-    }
-    $text = last(array($so),array("+wAp+".$so),0);
-    $text = two(array("NIp","NIz","NIn"),array("+wAp"),array("NIp","NIz","NIn"),array(""),0);
-    echo "<p class = st >ajAdyataSTAp (4.1.4)  1:</p>";
-    echo "<p class = st >अजाद्यतष्टाप्‌ (४.१.४) :</p>";
-    display(0); 
     $TAp=1;
 }
 /* pAkakarNaparNapuSpaphalamUlavAlottarapadAcca (4.1.64) */
@@ -2072,6 +2055,23 @@ elseif ($gender==="f" &&  $_GET['cond2_16_1_3']==="1")
     echo "<p class = st >पुरुषात्प्रमाणेऽन्यतरस्याम्‌ (४.१.२४) :</p>";        
     display(8); $ajAdyataSTAp = 0;
     $GIp=1;
+}
+/* ajAdyataSTAp (4.1.4) for adanta words */
+elseif (arr($text,'/[a][+]/') && $gender==="f" && $_GET['cond2_7']!=="2" && $ajAdyataSTAp!==0 ) 
+{
+    /* kanyAyA na. 'kanyAyAH kanIna ca' iti nirdezAt. */
+    if ($gender==="f" && sub(array("kanya"),array("+"),blank(0),0) )
+    {
+        echo "<p class = pa >By kanyAyA na. 'kanyAyAH kanIna ca' iti nirdezAt. :</p>";
+        echo "<p class = pa >'कन्याया न' । 'कन्यायाः कनीन च' इति निर्देशात्‌ ।</p>";        
+        display(0);
+    }
+    $text = last(array($so),array("+wAp+".$so),0);
+    $text = two(array("NIp","NIz","NIn"),array("+wAp"),array("NIp","NIz","NIn"),array(""),0);
+    echo "<p class = st >ajAdyataSTAp (4.1.4) :</p>";
+    echo "<p class = st >अजाद्यतष्टाप्‌ (४.१.४) :</p>";
+    display(0); 
+    $TAp=1;
 }
 
 /* common patch for TAp pratyaya to remove the it markers. */

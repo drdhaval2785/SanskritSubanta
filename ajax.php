@@ -467,13 +467,13 @@ if ($last==="U" && $_POST['step']==='2')
             }
             $html .= '</div>';    
 }
-if (ends($arrWord,array("SUdra","CUdra"),1) && !ends($arrWord,array("mahASUdra","mahatCUdra"),1) && $_POST['step']==='2')
+/*if (ends($arrWord,array("SUdra","CUdra"),1) && !ends($arrWord,array("mahASUdra","mahatCUdra"),1) && $_POST['step']==='2')
 {
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond2_7" > जाति ';                    
             $html .= '<input type="radio" value="2" name="cond2_7" > पुंयोग ';                    
             $html .= '</div>';    
-}
+}*/
 if (ends($arrWord,array("van"),1) && $_POST['step']==='2')
 {
             $html .= '<div id="step11">';
