@@ -1446,7 +1446,9 @@ elseif( sub(array("samPala","BastraPala","ajinaPala","SaRaPala","piRqaPala"),arr
 {
     $text = one(array("+"),array("+wAp+"),0);
     echo "<p class = st >By sambhastrAjinaSaNapiNDebhyaH phalAt (vA 2497) :</p>";
+    echo "<p class = hn >This prevents GIS pratyaya of 'pAkakarNa...'</p>";
     echo "<p class = st >सम्भस्राजिनशणपिण्डेभ्यः फलात्‌ (वा २४९७) :</p>";        
+    echo "<p class = hn >'पाककर्ण' इति ङीष्‌ न भवति, किन्तु टाबेव ।</p>";        
     display(0); $ajAdyataSTAp = 1;
     $TAp=1;
 }
@@ -1455,7 +1457,9 @@ elseif( sub(array("satpuzpa","prAkpuzpa","pratyakpuzpa","kARqapuzpa","prAntapuzp
 {
     $text = one(array("+"),array("+wAp+"),0);
     echo "<p class = st >By sadackARqaprAntaSataikebhyaH puSpAt (vA 1496) :</p>";
+    echo "<p class = hn >This prevents GIS pratyaya of 'pAkakarNa...'</p>";
     echo "<p class = st >सदच्काण्डप्रान्तशतैकेभ्यः पुष्पात्‌ (वा १४९६) :</p>";        
+    echo "<p class = hn >'पाककर्ण' इति ङीष्‌ न भवति, किन्तु टाबेव ।</p>";        
     display(0); $ajAdyataSTAp = 1;
     $TAp=1;
 }
