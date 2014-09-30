@@ -976,7 +976,35 @@ else
 {
     $atu = 0;
 }*/
-
+/* ugitazca (4.1.6) */
+$ugitprAtipadika = array("Bavat","pacat","praanc","praaYc","prAnc","prAYc","pratianc","pratiaYc","pratyanc","pratyaYc","udanc","udaYc",);
+if (sub(array("Bavat"),array("+"),blank(0),0))
+{
+    $it=array_merge($it,array("u"));
+    $itprakriti = array_merge($itpratyaya,array("u"));
+}
+if (sub(array("pacat"),array("+"),blank(0),0))
+{
+    $it=array_merge($it,array("f"));
+    $itprakriti = array_merge($itpratyaya,array("f"));
+    $shap = 1;
+    $shatR = 1;
+    $dhatu = 1;
+} 
+if (sub(array("praanc","praaYc","prAnc","prAYc","pratianc","pratiaYc","pratyanc","pratyaYc","udanc","udaYc",),array("+"),blank(0),0))
+{
+    $it=array_merge($it,array("u"));
+    $itprakriti = array_merge($itpratyaya,array("u"));
+    $dhatu = 1;
+} 
+if ($gender === "f" && sub($ugitprAtipadika,array("+"),blank(count($ugitprAtipadika)),0)  )
+{
+    $text = two($ugitprAtipadika,array("+"),$ugitprAtipadika,array("+NIp+"),0);
+    echo "<p class = st >By ugitazca (4.1.6) :</p>";
+    echo "<p class = st >उगितश्च (४.१.६) :</p>";        
+    display(3);
+    $GIp=1;
+}
 /* Udhaso'naG (5.4.131) */
 if ($gender==="f" && sub(array("UDas","oDas"),array("+"),blank(0),0) && $_GET['cond2_17']==="1")
 {
@@ -1010,12 +1038,12 @@ elseif ( (sub($ajAdi,array("+"),blank(0),0) || $ajAdyataSTAp===1) && $kevala!==1
     echo "<p class = hn >This sUtra prevents application of NIp pratyaya by 'dvigoH'.</p>";
     echo "<p class = hn >'द्विगोः' से प्राप्त ङीप्‌ प्रत्यय का बाध करने के लिए अजादि गण में इनका समावेश किया गया है ।</p>";
     }
-    if( sub(array("bAla","vatsa","hoQa","manda","bilAta"),array("+"),blank(0),0))
+    if( sub(array("bAla","vatsa","hoQa","manda","bilAta","kanya"),array("+"),blank(0),0))
     {
     echo "<p class = hn >These have been enumerated in ajAdi gaNa to bar application of GIp pratyaya by 'vayasi prathame'.</p>";
     echo "<p class = hn >'वयसि प्रथमे' से प्राप्त ङीप्‌ प्रत्यय का बाध करने के लिए अजादि गण में इनका समावेश किया गया है ।</p>";        
     }    
-    if( sub(array("kruYc","uzRih","devaviS"),array("+"),blank(0),0))
+    if( sub(array("kruYc","uzRih","devaviS","diS","dfS","kzuD","vAc","gir",),array("+"),blank(0),0))
     {
     echo "<p class = hn >These are not ending with akAra. Therefore included in ajAdi class for TAp pratyaya.</p>";
     echo "<p class = hn >अदन्तत्व नहीं होने के कारण टाप्‌ प्रत्यय के लिए समर्थ बनाने के लिए अजादि गण में इनका समावेश किया गया है ।</p>";        
@@ -2078,7 +2106,7 @@ elseif (arr($text,'/[a][+]/') && $gender==="f" && $_GET['cond2_7']!=="2" && $ajA
 if ($TAp===1)
 {
     $Ap=1;
-    $text = two(array("+wAp"),array("+"),array("+A"),array("+"),0); 
+    $text = two(array("+wAp"),array("+"),array("A"),array("+"),0); 
     $it = array_merge($it,array("p","w"));
     $itprakriti = array_merge($itprakriti,array("p","w"));
     echo "<p class = sa >TakAra and pakAra are 'it'. They are elided by cuTU(1.3.7), halantyam (1.3.3) and tasya lopaH (1.3.9) :</p>";
@@ -2090,7 +2118,7 @@ if ($TAp===1)
 if ($DAp===1)
 {
     $Ap=1;
-    $text = two(array("+qAp"),array("+"),array("+A"),array("+"),0); 
+    $text = two(array("+qAp"),array("+"),array("A"),array("+"),0); 
     $it = array_merge($it,array("p","q"));
     $itprakriti = array_merge($itprakriti,array("p","q"));
     echo "<p class = sa >DakAra and pakAra are 'it'. They are elided by cuTU(1.3.7), halantyam (1.3.3) and tasya lopaH (1.3.9) :</p>";
@@ -2101,7 +2129,7 @@ if ($DAp===1)
 if ($cAp===1)
 {
     $Ap=1;
-    $text = two(array("+cAp"),array("+"),array("+A"),array("+"),0); 
+    $text = two(array("+cAp"),array("+"),array("A"),array("+"),0); 
     $it = array_merge($it,array("p","c"));
     $itprakriti = array_merge($itprakriti,array("p","c"));
     echo "<p class = sa >cakAra and pakAra are 'it'. They are elided by cuTU(1.3.7), halantyam (1.3.3) and tasya lopaH (1.3.9) :</p>";
@@ -2179,6 +2207,44 @@ if ($GIn===1 )
     echo "<p class = sa >एचोऽयवायावः (७.१.७८) :</p>";
     display(4);
     }
+    /* aniditAM hala upadhAyAH kGiti (6.4.24) */ 
+    if ( !itcheck(array("i"),1) && arr($text,'/[nMNNYRm]['.pc('hl').'][+][I][+]/')  )
+    {
+        $text = three(array("n","M","N","Y","R","m"),$hl,array("+"),array("",""),$hl,array("+"),0);        
+        echo "<p class = sa >aniditAM hala upadhAyAH kGiti (6.4.24) :</p>";
+        echo "<p class = sa >अनिदितां हल उपधायाः क्ङिति (६.४.२४) :</p>";
+        display(0); 
+        $aniditAm = 1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
+    }
+    /* acaH (6.4.138) */ 
+    if ( preg_match('/[aA][nMY][c]/',$fo) && $aniditAm === 1 && sub(array("ac","Ac"),array("+"),blank(0),0) && ($bham===1 || sub(array("ac","Ac"),array("+"),array("I+"),0)) && $ancu===1)
+    {
+        if (sub(array("i","I","u","U","f","F","x","X","y","v"),prat('ac'),array("c"),0))
+        {
+        echo "<p class = pa >Though iko yaNaci is antaraGga than lopa by acaH, its application is barred by 'akRtavyUhAH pANinIyAH (pa 57).</p>";
+        echo "<p class = pa >इको यणचि से प्राप्त यण्‌ अन्तरङ्ग होने पर भी अकृतव्यूहाः पाणिनीयाः (प ५७) से वह अचः का बाध नहीं करता ।</p>";
+        display(0);        
+        }
+        $text = two(array("yac","ac","Ac"),array("+"),array("ic","c","ac"),array("+"),0);
+        echo "<p class = sa >acaH (6.4.138) :</p>";
+        echo "<p class = sa >अचः (६.४.१३८) :</p>";
+        if ($nance===1)
+        {
+        echo "<p class = hn >As there is no lopa of nakAra in nAJceH pUjAyAm, there is not akAralopa.</p>";
+        echo "<p class = hn >नलोपाभावादकारलोपो न ।</p>";        
+        }
+        display(3); 
+        $acaH=1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
+    } else { $acaH=0; }
+    /* cau (6.3.138) */ 
+    if ( $acaH===1)
+    {
+        $text = three($ac,array("c","c"),array("+"),$acdir,array("c","c"),array("+"),0);
+        echo "<p class = sa >cau (6.3.138) :</p>";
+        echo "<p class = sa >चौ (६.३.१३८) :</p>";
+        display(3);
+    }
+    $text = one(array("+I+"),array("I"),0);
 }
 /* common removal of G,p and application of 'yasyeti ca' for NIp pratyaya */
 if ($GIp===1 )
@@ -2222,6 +2288,44 @@ if ($GIp===1 )
     echo "<p class = sa >एचोऽयवायावः (७.१.७८) :</p>";
     display(4);
     }
+    /* aniditAM hala upadhAyAH kGiti (6.4.24) */ 
+    if ( !itcheck(array("i"),1) && arr($text,'/[nMNYRm]['.pc('hl').'][+][I][+]/')  )
+    {
+        $text = three(array("n","M","N","Y","R","m"),$hl,array("+"),array("",""),$hl,array("+"),0);        
+        echo "<p class = sa >aniditAM hala upadhAyAH kGiti (6.4.24) :</p>";
+        echo "<p class = sa >अनिदितां हल उपधायाः क्ङिति (६.४.२४) :</p>";
+        display(0); 
+        $aniditAm = 1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
+    }
+    /* acaH (6.4.138) */ 
+    if ( preg_match('/[aA][nMY][c]/',$fo) && $aniditAm === 1 && sub(array("ac","Ac"),array("+"),blank(0),0) && ($bham===1 || sub(array("ac","Ac"),array("+"),array("I+"),0)) && $ancu===1)
+    {
+        if (sub(array("i","I","u","U","f","F","x","X","y","v"),prat('ac'),array("c"),0))
+        {
+        echo "<p class = pa >Though iko yaNaci is antaraGga than lopa by acaH, its application is barred by 'akRtavyUhAH pANinIyAH (pa 57).</p>";
+        echo "<p class = pa >इको यणचि से प्राप्त यण्‌ अन्तरङ्ग होने पर भी अकृतव्यूहाः पाणिनीयाः (प ५७) से वह अचः का बाध नहीं करता ।</p>";
+        display(0);        
+        }
+        $text = two(array("yac","ac","Ac"),array("+"),array("ic","c","ac"),array("+"),0);
+        echo "<p class = sa >acaH (6.4.138) :</p>";
+        echo "<p class = sa >अचः (६.४.१३८) :</p>";
+        if ($nance===1)
+        {
+        echo "<p class = hn >As there is no lopa of nakAra in nAJceH pUjAyAm, there is not akAralopa.</p>";
+        echo "<p class = hn >नलोपाभावादकारलोपो न ।</p>";        
+        }
+        display(3); 
+        $acaH=1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
+    } else { $acaH=0; }
+    /* cau (6.3.138) */ 
+    if ( $acaH===1)
+    {
+        $text = three($ac,array("c","c"),array("+"),$acdir,array("c","c"),array("+"),0);
+        echo "<p class = sa >cau (6.3.138) :</p>";
+        echo "<p class = sa >चौ (६.३.१३८) :</p>";
+        display(3);
+    }
+    $text = one(array("+I+"),array("I"),0);
 }
 /* common removal of G,S and application of 'yasyeti ca' for NIS pratyaya */
 if ($GIz===1 )
@@ -2273,6 +2377,44 @@ if ($GIz===1 )
     echo "<p class = sa >एचोऽयवायावः (७.१.७८) :</p>";
     display(4);
     }
+    /* aniditAM hala upadhAyAH kGiti (6.4.24) */ 
+    if ( !itcheck(array("i"),1) && arr($text,'/[nMNNYRm]['.pc('hl').'][+][I][+]/')  )
+    {
+        $text = three(array("n","M","N","Y","R","m"),$hl,array("+"),array("",""),$hl,array("+"),0);        
+        echo "<p class = sa >aniditAM hala upadhAyAH kGiti (6.4.24) :</p>";
+        echo "<p class = sa >अनिदितां हल उपधायाः क्ङिति (६.४.२४) :</p>";
+        display(0); 
+        $aniditAm = 1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
+    }
+    /* acaH (6.4.138) */ 
+    if ( preg_match('/[aA][nMY][c]/',$fo) && $aniditAm === 1 && sub(array("ac","Ac"),array("+"),blank(0),0) && ($bham===1 || sub(array("ac","Ac"),array("+"),array("I+"),0)) && $ancu===1)
+    {
+        if (sub(array("i","I","u","U","f","F","x","X","y","v"),prat('ac'),array("c"),0))
+        {
+        echo "<p class = pa >Though iko yaNaci is antaraGga than lopa by acaH, its application is barred by 'akRtavyUhAH pANinIyAH (pa 57).</p>";
+        echo "<p class = pa >इको यणचि से प्राप्त यण्‌ अन्तरङ्ग होने पर भी अकृतव्यूहाः पाणिनीयाः (प ५७) से वह अचः का बाध नहीं करता ।</p>";
+        display(0);        
+        }
+        $text = two(array("yac","ac","Ac"),array("+"),array("ic","c","ac"),array("+"),0);
+        echo "<p class = sa >acaH (6.4.138) :</p>";
+        echo "<p class = sa >अचः (६.४.१३८) :</p>";
+        if ($nance===1)
+        {
+        echo "<p class = hn >As there is no lopa of nakAra in nAJceH pUjAyAm, there is not akAralopa.</p>";
+        echo "<p class = hn >नलोपाभावादकारलोपो न ।</p>";        
+        }
+        display(3); 
+        $acaH=1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
+    } else { $acaH=0; }
+    /* cau (6.3.138) */ 
+    if ( $acaH===1)
+    {
+        $text = three($ac,array("c","c"),array("+"),$acdir,array("c","c"),array("+"),0);
+        echo "<p class = sa >cau (6.3.138) :</p>";
+        echo "<p class = sa >चौ (६.३.१३८) :</p>";
+        display(3);
+    }
+    $text = one(array("+I+"),array("I"),0);
 }
 
 /* kSipakAdInAM ca na (vA 4530) */
@@ -2570,46 +2712,8 @@ if ($dhatu===1 && in_array($fo,array("dfnBU","karaBU","kAraBU","punarBU")) && (i
     }
     display(0); 
 }
-/* ugitazca (4.1.6) */
-$ugitprAtipadika = array("Bavat","pacat","praanc","praaYc","prAnc","prAYc","pratianc","pratiaYc","pratyanc","pratyaYc","udanc","udaYc",);
-if (sub(array("Bavat"),array("+"),blank(0),0))
-{
-    $it=array_merge($it,array("u"));
-    $itprakriti = array_merge($itpratyaya,array("u"));
-}
-if (sub(array("pacat"),array("+"),blank(0),0))
-{
-    $it=array_merge($it,array("f"));
-    $itprakriti = array_merge($itpratyaya,array("f"));
-    $shap = 1;
-    $shatR = 1;
-    $dhatu = 1;
-} 
-if (sub(array("praanc","praaYc","prAnc","prAYc","pratianc","pratiaYc","pratyanc","pratyaYc","udanc","udaYc",),array("+"),blank(0),0))
-{
-    $it=array_merge($it,array("u"));
-    $itprakriti = array_merge($itpratyaya,array("u"));
-    $dhatu = 1;
-} 
-if ($gender === "f" && sub($ugitprAtipadika,array("+"),blank(count($ugitprAtipadika)),0)  )
-{
-    $text = two($ugitprAtipadika,array("+"),$ugitprAtipadika,array("+NIp+"),0);
-    echo "<p class = st >By ugitazca (4.1.6) :</p>";
-    echo "<p class = st >उगितश्च (४.१.६) :</p>";        
-    display(3);
-    $text = two(array("NIp"),array("+"),array("I"),array("+"),0); 
-    $it = array_merge($it,array("N","p"));
-    $itprakriti = array_merge($itprakriti,array("p","N"));
-    echo "<p class = sa >GakAra and pakAra are 'it'. They are elided by lazakvataddhite (1.3.8), halantyam (1.3.3) and tasya lopaH (1.3.9) :</p>";
-    echo "<p class = sa >ङपावितौ । लशक्वतद्धिते (१.३.८), हलन्त्यम्‌ (१.३.३) और तस्य लोपः (१.३.९) :</p>";
-    display(0); 
-    $GIp=1;
-    $GI=1;
-    $nadi=1;
-}
-
 /* adDDatarAdibhyaH paJcabhyaH (7.1.25) and ekatarAtpratiSedho vaktavyaH (vA 4287) */
-elseif (sub(array("ekatara"),array("+"),array("su!","am"),0) && $gender==="n")
+if (sub(array("ekatara"),array("+"),array("su!","am"),0) && $gender==="n")
 {
     echo "<p class = pa >ekatarAtpratiSedho vaktavyaH (vA 4287) :</p>";
     echo "<p class = pa >एकतरात्प्रतिषेधो वक्तव्यः (वा ४२८७) :</p>";        
