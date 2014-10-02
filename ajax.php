@@ -530,7 +530,7 @@ elseif (ends($arrWord,array("yaka","kaka"),0)  &&   $_POST['step']==='2')
             $html .= '<input type="radio" value="2" name="cond2_13" > नहीं ';                    
             $html .= '</div>';    
 }
-elseif (ends($arrWord,array("aka"),0)  && !ends($arrWord,array("yaka","saka","kzipaka","Druvaka","kanyaka","cawaka","alaka","izwaka","tAraka","varRaka","vartaka","azwaka","sUtaka","putraka","vfndAraka"),2)  &&   $_POST['step']==='2')
+elseif (ends($arrWord,array("aka"),0)  && !ends($arrWord,array("yaka","saka","taka","kzipaka","Druvaka","kanyaka","cawaka","alaka","izwaka","tAraka","varRaka","vartaka","azwaka","sUtaka","putraka","vfndAraka"),2)  &&   $_POST['step']==='2')
 {
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond2_11" > ककार प्रत्ययस्थ है तथा आप् प्रत्यय सुप् के परे नहीं है ';                    
