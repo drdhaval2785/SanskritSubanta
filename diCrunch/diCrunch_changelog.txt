@@ -1,65 +1,0 @@
-﻿''' 2.0.1 - 16 August 2010'''* Default conversion changed to IAST Unicode -> Devanagari to prevent confusion with H-K capitalization* Split box interface is now on by default to help improve the result instantly in case of quirky sources* Save preferences function fixed (UTF-8 with BOM as file encoding starts by blurting output, and so breaks cookies)* "Unicode" renamed to IAST Unicode (International Alphabet for Sanskrit Transliteration - "proper diacritics")* IAST Unicode input now converts both .M transliteration variants correctly to Devanagari* Incoming data filtering security patch for system files included on the basis of user input* Shakti and X-Sanskrit have been deprecated (open diCrunch_config.php to reactivate them in the interface)* Changes on help page - fixed transliteration system links and added a note on how to ensure accurate Indic script renderings.''' 2.0 Stable - 14 August 2010'''* The project hasn't been updated for a while, but it's clearly stable - Beta state removed
-* diCrunch file download works - download link added to footer* Corrected some "Help" page links and brought feedback module up to speed
-''' 2.0 Beta 6 - 23 February 2008'''
-* Changed custom replacement into a separate layer available on demand
-* CSX encoding bugs fixed
-* Added .m as an option for 'm (see preferences)
-* Fixed feedback module spam killer
-
-''' 2.0 Beta 5 - 15 December 2008'''
-* Changed custom replacement into a separate layer available on demand* You can now get a capital Unicode letter by adding % before a Harvard-Kyoto diacritic character
-''' 2.0 Beta 4.3 - 15 January 2007'''
-* Added custom replacement preference field
-* Included a changelog-file (this file) into the zip
-
-''' 2.0 Beta 4.2 - 15 January 2007'''
-* Some changes under Help
-* A font size definition box under preferences
-* A few capital characters added to the incomplete Shakti encoding
-* Some minor tweaks that don't merit documenting
-
-''' 2.0 Beta 4.1 - 14 January 2007'''
-* Minor bug fixes
-
-''' 2.0 Beta 4 - 13 January 2007'''
-* Options: A split screen for separate source and target texts.
-* Tools: Feedback Module
-
-''' 2.0 Beta 4 - 13 January 2007'''
-* Options: A split screen for separate source and target texts.
-* Tools: Feedback Module
-
-''' 2.0 Beta 3 - 12 January 2007'''
-* A Tools section featuring a Macro Producer.
-Supporting:
-** Creation of MS Word macros for any of the supported diacritics conversions.
-** Creation of custom macros from templates.
-
-'''2.0 Beta 2 - 11 January 2007'''
-* Swap Y -preference
-* Saving "more options" choices as default under preferences
-* Added conversions: Shakti Mac (partial) and X-Sanskrit (old BBT)
-* Implemented new XHK extensions
-* Completed Velthuis and ITRANS character arrays
-* Updated Help area texts
-* Moved Preferences and Help links to top
-* Changed processing time to 5 seconds
-
-'''2.0 Beta 1 - 10 January 2007'''
-* Style brushed up on
-* File input and output
-* Switches to modify output
-* Devanagari debugged
-* Oriya (experimental - Windows XP doesn't support it that well.)
-* Saving preferences
-* Help-page and license
-
-----
-
-* '''v1.30''' - Bengali debugged, CSX, ITRANS, Velthuis and Devanagari script (experimental) added. - 07:14, 28 December 2006
-* '''v1.20''' - Bengali script to transliteration conversion introduced. - 21:02, 5 June 2006 (EDT)
-* '''v1.11''' - Fixed a small bug with Unicode '''ṛ'''. - 15:54, 4 June 2006 (EDT)
-* '''v1.10''' - Full XHK and experimental Bengali support added. Checkbox for adding italics and indentation for transliteration is there, too, to speed up editors' work. Small bugs fixed.  - 17:38, 1 June 2006 (EDT)
-* '''v1.01''' - Added the possibility to bookmark different defaults. - 05:46, 26 May 2006 (EDT)
-* '''v1.00''' - First release - no changes yet!  - 22:20, 25 May 2006 (EDT)
-
