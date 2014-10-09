@@ -553,7 +553,7 @@ if ( $_POST['step']==='2_13_2' )
             $html .= '<input type="radio" value="2" name="cond2_13_2" > नहीं ';
             $html .= '</div>';    
 }
-if (ends($arrWord,array("a"),0) && $_POST['step']==='2' && (ends($arrWord,$TitprAtipadika,1) || (AdivRddhi($arrWord) && ends($arrWord,array("eya","ika","a"),0)) || ends($arrWord,array("dvayasa","daDna","mAtra","taya","AdfSa","itvara","naSvara","sftvara","Itvara","etvara","taruRa","taluna"),1) ) )
+if (ends($arrWord,array("a"),0) && $_POST['step']==='2' && (ends($arrWord,$TitprAtipadika,1) || (AdivRddhi($arrWord) && ends($arrWord,array("eya","ika","a"),0)) || ends($arrWord,array("dvayasa","daDna","mAtra","taya","AdfSa","itvara","naSvara","sftvara","Itvara","etvara","taruRa","taluna"),1) ) && !ends($arrWord,array("dEvya"),1)  )
 // In this case we have taken every word having Adi vRddhi and ending with akAra. In future, we will have to make it more specific to aN and aJ. All other are recognizable.        
 // Future - make it applicable only to aN and aJ. Remove all AdivRddhi pratyayas like Na, Nya etc.        
 {
@@ -569,7 +569,7 @@ if (ends($arrWord,array("triPala","tryanIka"),2) && $_POST['step']==='2'  )
             $html .= '<input type="radio" value="2" name="cond2_15" > बहुव्रीहि ';                    
             $html .= '</div>';    
 }
-if (ends($arrWord,array("a"),0) && $_POST['step']==='2' && dvigu($arrWord) )
+if (ends($arrWord,array("a"),0) && $_POST['step']==='2' && dvigu($arrWord) && !ends($arrWord,array("triPala","tryanIka"),2))
 {
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond2_16" > द्विगु ';                    
@@ -611,7 +611,7 @@ elseif ( $_POST['step']==='2_16_2_1' && ends($arrWord,array("hAyana"),0) && dvig
             $html .= '<input type="radio" value="2" name="cond2_16_2_1" > नहीं ';
             $html .= '</div>';    
 }
-if (ends($arrWord,array("uDas","oDas"),0) && $_POST['step']==='2'  )
+if (ends($arrWord,array("UDas","oDas"),0) && $_POST['step']==='2'  )
 {
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond2_17" > बहुव्रीहि ';                    
@@ -621,8 +621,8 @@ if (ends($arrWord,array("uDas","oDas"),0) && $_POST['step']==='2'  )
 if ( $_POST['step']==='2_17_1' ) 
 {
             $html .= '<div id="step22">';
-            $html .= '<input type="radio" value="1" name="cond2_16_1_2" > सङ्ख्या या अव्ययादि है ';                    
-            $html .= '<input type="radio" value="2" name="cond2_16_1_2" > नहीं ';
+            $html .= '<input type="radio" value="1" name="cond2_17_1" > सङ्ख्या या अव्ययादि है ';                    
+            $html .= '<input type="radio" value="2" name="cond2_17_1" > नहीं ';
             $html .= '</div>';    
 }
 if (ends($arrWord,array("kevala","mAmaka","BAgaDeya","pApa","apara","samAna","Aryakfta","sumaNgala","Bezaja",),2) && $_POST['step']==='2'  )
@@ -646,7 +646,7 @@ if (ends($arrWord,array("u"),0) && !arr($arrWord,'/['.pc('hl').']['.pc('hl').'][
             $html .= '<input type="radio" value="2" name="cond2_20" > नहीं ';                    
             $html .= '</div>';    
 }
-if (ends($arrWord,array("i"),0) && $_POST['step']==='2'  )
+if (ends($arrWord,array("i"),0) && $_POST['step']==='2' )
 {
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond2_21" > क्तिन्नन्त है ';                    
