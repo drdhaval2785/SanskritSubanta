@@ -985,6 +985,7 @@ else
     $atu = 0;
 }*/
 /* ugitazca (4.1.6) */
+$ugitverbwords=array("Bavat","pacat","kurvat");
 $ugitprAtipadika = array("praanc","praaYc","prAnc","prAYc","pratianc","pratiaYc","pratyanc","pratyaYc","udanc","udaYc",);
 if (sub(array("Bavat"),array("+"),blank(0),0))
 {
@@ -1005,9 +1006,9 @@ if (sub(array("praanc","praaYc","prAnc","prAYc","pratianc","pratiaYc","pratyanc"
     $itprakriti = array_merge($itpratyaya,array("u"));
     //$dhatu = 1;
 } 
-if ($gender === "f" && sub($ugitprAtipadika,array("+"),blank(count($ugitprAtipadika)),0)  )
+if ($gender === "f" && ( sub($ugitprAtipadika,array("+"),blank(count($ugitprAtipadika)),0) || sub($ugitverbwords,array("+"),blank(0),0)) )
 {
-    $text = two($ugitprAtipadika,array("+"),$ugitprAtipadika,array("+NIp+"),0);
+    $text = one(array("+"),array("+NIp+"),0);
     echo "<p class = st >By ugitazca (4.1.6) :</p>";
     echo "<p class = st >उगितश्च (४.१.६) :</p>";        
     display(3);
@@ -1969,7 +1970,7 @@ elseif ($gender === "f" && ($_GET['cond2_8_1_1']==="1" || $_GET['cond2_8_2']==="
 }
 /* vano na haza iti vaktavyam (vA 2405) */
 // This is tough. Please enumerate such words. Seems like they are very few.
-elseif ($gender === "f" && $_GET['cond2_8_2_1']==="1" )
+elseif ($gender === "f" && $_GET['cond2_8_1_1']==="2" )
 {
     echo "<p class = st >By vano na haza iti vaktavyam (vA 2405) :</p>";
     echo "<p class = st >वनो न हश इति वक्तव्यम्‌ (वा २४०५) :</p>";        
@@ -1986,6 +1987,7 @@ elseif ($gender === "f" && ($_GET['cond2_8_1']==="2" || sub($vanoracawords,array
     echo "<p class = pa >By pratyayagrahaNe yasmAtsa vihitastadAdestadantasya grahaNam (pa 24) :</p>";
     echo "<p class = st >वनो र च (४.१.७) और बहुव्रीहौ वा (वा २४०७) :</p>";        
     echo "<p class = pa >प्रत्ययग्रहणे यस्मात्स विहितस्तदादेस्तदन्तस्य ग्रहणम्‌ (प २४) :</p>"; $bahuvrihauva=1;       
+    $bahuvrihauva=1;
     }
     elseif ($_GET['cond2_8_1_2']==="2" || (sub($kvanipwords,array("+"),blank(0),0)||sub($Gvanipwords,array("+"),blank(0),0)||sub($vanipwords,array("+"),blank(0),0) ) )
     {
@@ -1997,7 +1999,6 @@ elseif ($gender === "f" && ($_GET['cond2_8_1']==="2" || sub($vanoracawords,array
     }
     display(3);
     $GIp=1;
-    $bahuvrihauva=1;
 }
 /* manaH (4.1.11) */
 elseif ($gender === "f" && sub(array("man"),array("+"),blank(0),0) )
@@ -2358,6 +2359,7 @@ if ($GIn===1 )
         display(3);
     }
     $text = one(array("+I+"),array("I+"),0);
+    $dhatu=0;
 }
 /* common removal of G,p and application of 'yasyeti ca' for NIp pratyaya */
 if ($GIp===1 )
@@ -2447,6 +2449,7 @@ if ($GIp===1 )
         display(3);
     }
     $text = one(array("+I+"),array("I+"),0);
+    $dhatu=0;
 }
 /* common removal of G,S and application of 'yasyeti ca' for NIS pratyaya */
 if ($GIS===1 )
@@ -2545,6 +2548,7 @@ if ($GIS===1 )
         display(3);
     }
     $text = one(array("+I+"),array("I+"),0);
+    $dhatu=0;
 }
 /* kSipakAdInAM ca na (vA 4530) */
 // This is an AkRtigaNa. Therefore, the occurence from grammar have to be identified. Right now the list in gaNapATha nad gaNaratnamahodadhi is given.
@@ -4377,7 +4381,7 @@ if ( $dhatu === 1 && sub(array("F"),array("+"),blank(0),0) && !arr($text,'/[ktg]
     display(3);
 }
 /* zapzyanornityam (7.1.81) */ 
-if (arr($text,'/[aA][t][+[S][I]/') && ($shap===1|| $shyan===1 ) )
+if ( arr($text,'/[aA][t][+][S][I]/') && ($shap===1|| $shyan===1 ) )
 {
     $text = mit('/['.pc('hl').'][+]/','n',0); $num=array_merge($num,array(1)); // function mit adds a mit Agama according to midaco'ntyAtparaH. See function.php
     $text = one(array("annc"),array("anc"),0);
@@ -4386,10 +4390,27 @@ if (arr($text,'/[aA][t][+[S][I]/') && ($shap===1|| $shyan===1 ) )
     echo "<p class = sa >शप्श्यनोर्नित्यम्‌ (७.१.८१) :</p>";
     display(0);
 }
+if ( arr($text,'/[a][t][I][+]/') && ($shap===1|| $shyan===1 ) )
+{
+    $text = two(array("atI"),array("+"),array("antI"),array("+"),0); $num=array_merge($num,array(1)); // function mit adds a mit Agama according to midaco'ntyAtparaH. See function.php
+    $text = one(array("annc"),array("anc"),0);
+    $text = one(array("+In+","+An+"),array("+I+","+A+"),0);
+    echo "<p class = sa >By zapzyanornityam (7.1.81) :</p>";
+    echo "<p class = sa >शप्श्यनोर्नित्यम्‌ (७.१.८१) :</p>";
+    display(0);
+}
 /* AcChInadyornum (7.1.80) */ 
-if (arr($text,'/[aA][t][+[S][I]/') && $shatR===1 && itcheck(array("f"),1) && $AcCInadyo===1 )
+if (arr($text,'/[aA][t][+[S][I]/') && $shatR===1 && itcheck(array("f"),0) && $AcCInadyo===1 )
 {
     $text = mit('/['.pc('hl').'][+]/','n',1); $num=array_merge($num,array(1));
+    $text = one(array("annc"),array("anc"),0);
+    echo "<p class = sa >By AcChInadyornum (7.1.80) :</p>";
+    echo "<p class = sa >आच्छीनद्योर्नुम्‌ (७.१.८०) :</p>";
+    display(0);
+}
+if (sub(array("atI"),array("+"),blank(0),0) && $shatR===1 && itcheck(array("f"),0) && $AcCInadyo===1 )
+{
+    $text = two(array("atI"),array("+"),array("antI"),array("+"),0); $num=array_merge($num,array(1));
     $text = one(array("annc"),array("anc"),0);
     echo "<p class = sa >By AcChInadyornum (7.1.80) :</p>";
     echo "<p class = sa >आच्छीनद्योर्नुम्‌ (७.१.८०) :</p>";
@@ -4854,6 +4875,10 @@ elseif ( ( $atu===1  )  && $so==="su!" && $sambuddhi===0 )
     display(3);
 }
 /* ugidacAM sarvanAmasthAne'dhAtoH (7.1.70) */ 
+if (sub(array("BavantI"),array("+"),blank(0),0))
+{
+    $sarvanamasthana1 = 0;
+}
 if ($atu===1 && !itcheck(array("u"),1) && $sarvanamasthana1===1 )
     {
     echo "<p class = pa >Because the word is not ugit; ugidacAM doesn't apply. </p>";
@@ -4872,7 +4897,7 @@ if ($sarvanamasthana1===1 &&  (( $dhatu===0 && itcheck(array("u","U","f","F","x"
     $text = one(array("ac+","Ac+"),array("anc+","Anc+"),0);
     $text = three(blank(1),$hl,array("u!+","U!+","f!+","F!+","x!+"),array("n"),$hl,array("u!+","U!+","f!+","F!+","x!+"),0); $num=array_merge($num,array(1));
     $text = mit('/['.pc('hl').']/',"n",0);
-    $text = one(array("annc"),array("anc"),0);
+     $text = one(array("annc"),array("anc"),0);
     $text = one(array("+In+"),array("+I+"),0);
     echo "<p class = sa >By ugidacAM sarvanAmasthAne'dhAtoH (7.1.70) :</p>";
     echo "<p class = sa >उगिदचां सर्वनामस्थानेऽधातोः (७.१.७०) 1:</p>";

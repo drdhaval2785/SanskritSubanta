@@ -713,7 +713,7 @@ if (in_array($last,array("i","I","u","U","f","F","x","X")) && $_POST['step']==='
             $html .= '<input type="radio" value="2" name="cond3" > नहीं ';                    
             $html .= '</div>';    
 }
-if (ends($arrWord,array("at","At"),1) && $_POST['step']==='3')
+if (ends($arrWord,array("at","At"),1) && in_array($_POST['step'],array('2','3')) )
 {
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond3_3" > अभ्यास के परे शतृप्रत्ययान्त शब्द है ';
