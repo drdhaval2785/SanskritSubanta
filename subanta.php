@@ -3759,7 +3759,7 @@ if ($gender==="f" && $vamanta===0 && $anobahuvrihe===1 && arr($text,'/[Aa][n][+]
 }
 /* sarvanAmasthAne cAsambuddhau (6.4.8) */  
 //if ( arr($text,'/['.flat($ac).'][n][+]/')  && !arr($text,'/['.flat($ac).'][n][+]$/') && !sub(array("Ahan"),blank(0),blank(0),0) && $sarvanamasthana1===1 && $sambuddhi===0 && $inhan===0 && $inhan1===0 && !in_array($fo,array("maGavan")) ) // To check for dIrghAhan 
-if ( arr($text,'/['.flat($ac).'][n][+]/')  && !arr($text,'/['.flat($ac).'][n][+]$/') && $sarvanamasthana1===1 && $sambuddhi===0 && $inhan===0 && $inhan1===0 && !in_array($fo,array("maGavan")) )
+if ( arr($text,'/['.flat($ac).'][n][+]/')  && !arr($text,'/['.flat($ac).'][n][+]$/') && !in_array(1,$num) && $sarvanamasthana1===1 && $sambuddhi===0 && $inhan===0 && $inhan1===0 && !in_array($fo,array("maGavan")) )
 {
     $text = two($ac,array("n+"),$acdir,array("n+"),0);
     echo "<p class = sa >By sarvanAmasthAne cAsambuddhau (6.4.8) :</p>";
@@ -4388,7 +4388,7 @@ if ( arr($text,'/[aA][t][+][S][I]/') && ($shap===1|| $shyan===1 ) )
     $text = one(array("+In+","+An+"),array("+I+","+A+"),0);
     echo "<p class = sa >By zapzyanornityam (7.1.81) :</p>";
     echo "<p class = sa >शप्श्यनोर्नित्यम्‌ (७.१.८१) :</p>";
-    display(0);
+    display(0); $zapzyan=1;
 }
 if ( arr($text,'/[a][t][I][+]/') && ($shap===1|| $shyan===1 ) )
 {
@@ -4397,7 +4397,7 @@ if ( arr($text,'/[a][t][I][+]/') && ($shap===1|| $shyan===1 ) )
     $text = one(array("+In+","+An+"),array("+I+","+A+"),0);
     echo "<p class = sa >By zapzyanornityam (7.1.81) :</p>";
     echo "<p class = sa >शप्श्यनोर्नित्यम्‌ (७.१.८१) :</p>";
-    display(0);
+    display(0); $zapzyan=1;
 }
 /* AcChInadyornum (7.1.80) */ 
 if (arr($text,'/[aA][t][+[S][I]/') && $shatR===1 && itcheck(array("f"),0) && $AcCInadyo===1 )
@@ -4875,7 +4875,7 @@ elseif ( ( $atu===1  )  && $so==="su!" && $sambuddhi===0 )
     display(3);
 }
 /* ugidacAM sarvanAmasthAne'dhAtoH (7.1.70) */ 
-if (sub(array("BavantI"),array("+"),blank(0),0))
+if (sub(array("BavantI","BavatI"),array("+"),blank(0),0))
 {
     $sarvanamasthana1 = 0;
 }
@@ -4892,7 +4892,7 @@ if ($sarvanamasthana1===1 && ( ($ancu===0 && $dhatu===1)  ) && $kruJca===0 && ar
     display(0);
     }
 //if ($sarvanamasthana1===1 && $nAbhyasta===0 &&  (( $dhatu===0 && arr($text,'/[uUfFxX][!][+]/') ) ||  ($ancu===1 && $dhatu===1) ||  ( ($kvip===1 || $kvin===1)&& $dhatu===1 && arr(array($fo),'/[a][t]$/')) || $bhavat===1 ) && $kruJca===0 && $vAnapuMsaka===0)
-if ($sarvanamasthana1===1 &&  (( $dhatu===0 && itcheck(array("u","U","f","F","x","X"),1))  ||  ($ancu===1 && $kvin===1) ||  ( ($kvip===1 || $kvin===1)&& $dhatu===1 && arr(array($fo),'/[a][t]$/')) || $bhavat===1 ) && $aniditAm===0) // added aniditAM for prAcI.
+if ($sarvanamasthana1===1 && !in_array(1,$num) && (( $dhatu===0 && itcheck(array("u","U","f","F","x","X"),1))  ||  ($ancu===1 && $kvin===1) ||  ( ($kvip===1 || $kvin===1)&& $dhatu===1 && arr(array($fo),'/[a][t]$/')) || $bhavat===1 ) && $aniditAm===0) // added aniditAM for prAcI.
 {
     $text = one(array("ac+","Ac+"),array("anc+","Anc+"),0);
     $text = three(blank(1),$hl,array("u!+","U!+","f!+","F!+","x!+"),array("n"),$hl,array("u!+","U!+","f!+","F!+","x!+"),0); $num=array_merge($num,array(1));
@@ -5092,7 +5092,7 @@ if ( $gender==="n" && $sarvanamasthana1===1 && arr($text,'/['.pc('Jl').'][+]/') 
 }
 /* sarvanAmasthAne cAsambuddhau (6.4.8) */
 $acdir = array("A","A","I","I","U","U","F","F","F","F","e","o","E","O",);
-if (arr($text,'/['.flat($ac).'][n][+]/') && !arr($text,'/['.flat($ac).'][n][+]$/') && !sub(array("Ahan"),blank(0),blank(0),0) && $sarvanamasthana1===1 && $sambuddhi===0 && $inhan===0 && $inhan1===0 && $aptRn===0 && $casambu!==1)
+if (arr($text,'/['.flat($ac).'][n][+]/') && !arr($text,'/['.flat($ac).'][n][+]$/') && !in_array(1,$num) && !sub(array("Ahan"),blank(0),blank(0),0) && $sarvanamasthana1===1 && $sambuddhi===0 && $inhan===0 && $inhan1===0 && $aptRn===0 && $casambu!==1)
 {
     $text = two($ac,array("n+"),$acdir,array("n+"),0);
     echo "<p class = sa >By sarvanAmasthAne cAsambuddhau (6.4.8) :</p>";
