@@ -732,8 +732,8 @@ if (sub(array("beBid","cecCid","pipaWiz"),blank(0),blank(0),0))
 if ( sub(array("DvaMs","sraMs"),array("+"),blank(0),0) )
 {
     $text = two(array("DvaMs","sraMs"),array("+"),array("DvaMsu!","sraMsu!"),array("+"),0);
-    echo "<p class = pa >This is an udit word.</p>";
-    echo "<p class = pa >यह एक उदित्‌ शब्द है ।</p>";
+    echo "<p class = pa >This is an udit dhAtu.</p>";
+    echo "<p class = pa >यह एक उदित्‌ धातु है ।</p>";
     display(0);
 }
 /* strIliGga definitions */
@@ -1011,10 +1011,10 @@ if ($gender === "f" && ( sub($ugitprAtipadika,array("+"),blank(count($ugitprAtip
     $text = one(array("+"),array("+NIp+"),0);
     echo "<p class = st >By ugitazca (4.1.6) :</p>";
     echo "<p class = st >उगितश्च (४.१.६) :</p>";        
-    display(3);
+    display(0);
     $GIp=1;
 }
-if ($gender==="f" && sub(array("Bavat","pacat","DvaMsu!","sraMsu!"),array("+"),blank(0),0))
+if ($gender==="f" && sub(array("DvaMsu!","sraMsu!"),array("+"),blank(0),0))
 {
     echo "<p class = pa >dhAtozcedugitkAryaM tarhyaJcatereva (vA) :</p>";
     echo "<p class = pa >धातोश्चेदुगित्कार्यं तर्ह्यञ्चतेरेवे (वा) इति नियम्यते । :</p>";        
@@ -4344,7 +4344,7 @@ if (sub(array("o+"),$sarvanamasthana,blank(0),0) && !in_array($so,array("am","Sa
     }
 } else {$Nidvat1 =0; }
 /* aco JNiti (7.2.115) */ 
-if ((arr($text,'/['.flat($ac).'][+][JR]/')||arr($text,'/[a][+][*][JR]$/')||$Nidvat===1||$Nidvat1===1) && arr($text,'/['.pc('ac').'][+]/') )
+if ((arr($text,'/['.flat($ac).'][+][YR]/')||arr($text,'/[a][+][*][YR]$/')||$Nidvat===1||$Nidvat1===1) && arr($text,'/['.pc('ac').'][+]/') )
 { 
     $text = two($ac,array("+"),vriddhi($ac),array("+"),0);
     echo "<p class = sa >By aco JNiti (7.2.115) :</p>";
@@ -4724,9 +4724,9 @@ if ((substr($first,0,2) === "Yi" || substr($first,0,2) === "wu" || substr($first
     display(0);
 }
 /* cuTU (1.3.7) */
-if (arr($text,'/[+][cCjJYwWqQR]/') && $wa1 === 0 && ($sarva2 ===0 || $purva=1))
+if (arr($text,'/[+][cCjYwWqQR]/') && $wa1 === 0 && ($sarva2 ===0 || $purva=1))
 {
-    it('/([+][cCjJYwWqQR])/');
+    it('/([+][cCjYwWqQR])/');
     echo "<p class = pa >By cuTU (1.3.7) :</p>";
     echo "<p class = pa >चुटू (१.३.७) :</p>";
     display(0);
@@ -7939,10 +7939,18 @@ if (arr($text,'/[aAiIuUfFxX]$/'))
     echo "<p class = sa >अणोऽप्रगृह्यस्यानुनासिकः (८.३.५७) :</p>";
 display(0);
 }
-/* anusvArasya yayi parasavarNaH (8.4.58) and vA padAntasya (8.4.59) */
+/* anusvArasya yayi parasavarNaH (8.4.58) */
 $mm = array("My","Mv","Mr","Ml","MY","Mm","MN","MR","Mn","MJ","MB","MG","MQ","MD","Mj","Mb","Mg","Mq","Md","MK","MP","MC","MW","MT","Mc","Mw","Mt","Mk","Mp"); // anusvAra+yay.
 $pa = array("!yy","!vv","!rr","!ll","YY","mm","NN","RR","nn","YJ","mB","NG","RQ","nD","Yj","mb","Ng","Rq","nd","NK","mP","YC","RW","nT","Yc","Rw","nt","Nk","mp"); // its replacement.
-if (sub(array("M"),prat('yy'),blank(0),0))
+if (sub(array("M"),prat('yy'),blank(0),0) && in_array(1,$num))
+{
+$text = one($mm,$pa,0);
+echo "<p class = sa >By anusvArasya yayi parasavarNaH (8.4.58) :</p>";
+echo "<p class = sa >अनुस्वारस्य ययि परसवर्णः (८.४.५८) :</p>";
+display(0);
+}
+/* anusvArasya yayi parasavarNaH (8.4.58) and vA padAntasya (8.4.59) */
+elseif (sub(array("M"),prat('yy'),blank(0),0))
 {
 $text = one($mm,$pa,1);
 echo "<p class = sa >By anusvArasya yayi parasavarNaH (8.4.58) and vA padAntasya (8.4.59) :</p>
