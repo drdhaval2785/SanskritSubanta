@@ -1631,7 +1631,7 @@ elseif ($_GET['cond2_22']==="2" && sub(array("SUdra"),array("+"),blank(0),0) && 
     $TAp=1;
 }
 /* sadackARqaprAntaSataikebhyaH puSpAt (vA 1496) */
-elseif( sub(array("satpuzpa","prAkpuzpa","pratyakpuzpa","kARqapuzpa","prAntapuzpa","Satapuzpa","ekapuzpA"),array("+"),blank(0),0))
+elseif( sub(array("satpuzpa","prAkpuzpa","pratyakpuzpa","kARqapuzpa","prAntapuzpa","Satapuzpa","ekapuzpa"),array("+"),blank(0),0))
 {
     $text = one(array("+"),array("+wAp+"),0);
     echo "<p class = st >sadackARqaprAntaSataikebhyaH puSpAt (vA 1496) :</p>";
@@ -1640,7 +1640,7 @@ elseif( sub(array("satpuzpa","prAkpuzpa","pratyakpuzpa","kARqapuzpa","prAntapuzp
     $TAp=1;
 }
 /* mUlAnnaJaH (vA 2500) */
-elseif( sub(array("amUla"),array("+"),blank(0),0))
+elseif( sub(array("amUla"),array("+"),blank(0),0) && $fo==="amUla")
 {
     $text = one(array("+"),array("+wAp+"),0);
     echo "<p class = st >mUlAnnaJaH (vA 2500) :</p>";
@@ -1649,7 +1649,7 @@ elseif( sub(array("amUla"),array("+"),blank(0),0))
     $TAp=1;
 }
 /* pAkakarNaparNapuSpaphalamUlavAlottarapadAcca (4.1.64) */
-elseif ($gender === "f" && ends(array($fo),array("pAka","karRa","parRa","puzpa","Pala","mUla","vAla"),0) && $_GET['cond2_22']==="2")
+elseif ($gender === "f" && ends(array($fo),array("pAka","karRa","parRa","puzpa","Pala","mUla","vAla"),0) )
 {
     $text = one(array("+"),array("+NIz+"),0);
     echo "<p class = st >By pAkakarNaparNapuSpaphalamUlavAlottarapadAcca (4.1.64) :</p>";
