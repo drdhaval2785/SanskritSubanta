@@ -1877,7 +1877,7 @@ elseif ($gender === "f" && in_array($fo,$aupagava) )
     $ajAdyataSTAp=0;
 }
 /* SidgaurAdibhyazca (4.1.41) */
-elseif ($gender === "f" && sub($Sidwords,array("+"),blank(0),0) && in_array($fo,$Sidwords) && $_GET['cond2_22']!=="2")
+elseif ($gender === "f" && sub($Sidwords,array("+"),blank(0),0) && $_GET['cond2_22']!=="2")
 {
     $text = two($Sidwords,array("+"),$Sidwords,array("+NIz+"),0);
     echo "<p class = st >By SidgaurAdibhyazca (4.1.41) :</p>";
@@ -1901,7 +1901,7 @@ elseif ($gender === "f" && sub(array("anaquh"),array("+"),blank(0),0) && in_arra
     $ajAdyataSTAp=0;
 }
 /* SidgaurAdibhyazca (4.1.41) */
-elseif ($gender === "f" && sub($gaurAdi,array("+"),blank(0),0) && in_array($fo,$gaurAdi) && $_GET['cond2_22']!=="2")
+elseif ($gender === "f" && sub($gaurAdi,array("+"),blank(0),0) && $_GET['cond2_22']!=="2")
 {
     $text = two($gaurAdi,array("+"),$gaurAdi,array("+NIz+"),0);
     echo "<p class = st >By SidgaurAdibhyazca (4.1.41) :</p>";
@@ -4892,7 +4892,7 @@ if ($sarvanamasthana1===1 && ( ($ancu===0 && $dhatu===1)  ) && $kruJca===0 && ar
     display(0);
     }
 //if ($sarvanamasthana1===1 && $nAbhyasta===0 &&  (( $dhatu===0 && arr($text,'/[uUfFxX][!][+]/') ) ||  ($ancu===1 && $dhatu===1) ||  ( ($kvip===1 || $kvin===1)&& $dhatu===1 && arr(array($fo),'/[a][t]$/')) || $bhavat===1 ) && $kruJca===0 && $vAnapuMsaka===0)
-if ($sarvanamasthana1===1 && !in_array(1,$num) && (( $dhatu===0 && itcheck(array("u","U","f","F","x","X"),1))  ||  ($ancu===1 && $kvin===1) ||  ( ($kvip===1 || $kvin===1)&& $dhatu===1 && arr(array($fo),'/[a][t]$/')) || $bhavat===1 ) && $aniditAm===0) // added aniditAM for prAcI.
+if ($sarvanamasthana1===1 && !in_array(1,$num) && (( $dhatu===0 && itcheck(array("u","U","f","F","x","X"),1))  ||  ($ancu===1 && $kvin===1) ||  ( ($kvip===1 || $kvin===1)&& $dhatu===1 && arr(array($fo),'/[a][t]$/')) || $bhavat===1 ) && $aniditAm===0 && $GIS!==1 && $GIn!==1 && $GIp!==1) // added aniditAM for prAcI.
 {
     $text = one(array("ac+","Ac+"),array("anc+","Anc+"),0);
     $text = three(blank(1),$hl,array("u!+","U!+","f!+","F!+","x!+"),array("n"),$hl,array("u!+","U!+","f!+","F!+","x!+"),0); $num=array_merge($num,array(1));
@@ -4900,7 +4900,7 @@ if ($sarvanamasthana1===1 && !in_array(1,$num) && (( $dhatu===0 && itcheck(array
      $text = one(array("annc"),array("anc"),0);
     $text = one(array("+In+"),array("+I+"),0);
     echo "<p class = sa >By ugidacAM sarvanAmasthAne'dhAtoH (7.1.70) :</p>";
-    echo "<p class = sa >उगिदचां सर्वनामस्थानेऽधातोः (७.१.७०) 1:</p>";
+    echo "<p class = sa >उगिदचां सर्वनामस्थानेऽधातोः (७.१.७०) :</p>";
     if ( ($kvip===1 || $kvin===1)&& $dhatu===1)
     {
     echo "<p class = hn >'adhAtoH' extends the application of this rule to the words which had adhAtu in the first place.</p>";
