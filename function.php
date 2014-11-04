@@ -105,7 +105,7 @@ $tiGprathama=array("tip","tas","Ji","ta","AtAm","Ja",);
 $tiGmadhyama=array("sip","Tas","Ta","TAs","ATAm","Dvam",);
 $tiGuttama=array("mip","vas","mas","iw","vahi","mahiN");
 $shitpratyaya=array("Sap","Syan","Snu","Sa","Snam","SnA","SAyac","SAnac");
-$navibhaktau=array("jas","am","Sas","ByAm","Bis","Byas","os","Am","Ni","tas","Tas","vas","mas","AtAm","TAs","ATAm","Dvam","jus");
+$navibhaktau=array("su!","jas","am","Sas","ByAm","Bis","Byas","os","Am","Ni","tas","Tas","vas","mas","AtAm","TAs","ATAm","Dvam","jus");
 $inbetweenpratyaya=array("ap","yan");
 $inbetweeenreplace=array("a","ya");
 // list of 10 gaNas and some upagaNas.

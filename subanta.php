@@ -4784,7 +4784,7 @@ if (arr($text,'/[tTdDnsm]$/') && $pada=== "pratyaya" && in_array($so,$navibhakta
 elseif (arr($text,'/['.flat($hl).']$/'))
 {
     itprat('/(['.flat($hl).']$)/');
-    echo "<p class = pa >By halantyam (1.3.3) 3:</p>";
+    echo "<p class = pa >By halantyam (1.3.3) :</p>";
     echo "<p class = pa >हलन्त्यम्‌ (१.३.३) :</p>";
     display(0);
     $text = last(prat('hl'),blank(count(prat('hl'))),0);
