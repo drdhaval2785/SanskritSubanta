@@ -97,6 +97,10 @@ $sup1= array("su!","O","jas","am","Ow","Sas","wA","ByAm","Bis","Ne","ByAm","Byas
 for ($w=0;$w<count($sup1);$w++) // running the loop till $sup1 is exhausted.
 {
 $second=$sup1[$w];    // defining the second word as su!, O, jas etc.
+if(in_array($second,$tiG)||in_array($second,$sup))
+{
+$vibhakti=1;    
+}
 
 /* Code for converting from IAST to SLP1 */
 // defining IAST letters.
@@ -2356,6 +2360,14 @@ if ($GIn===1 )
         echo "<p class = sa >चौ (६.३.१३८) :</p>";
         display(3);
     }
+    /* allopo'naH (6.4.134) */
+    if ( sub(array("an"),array("+"),array("I"),0) )
+    {
+    $text = one(array("an+I"),array("n+I"),0);
+    echo "<p class = sa >By allopo'naH (6.4.134) :</p>";
+    echo "<p class = sa >अल्लोपोऽनः (६.४.१३४) :</p>";
+    display(6);    
+    } 
     $text = one(array("+I+"),array("I+"),0);
     $dhatu=0;
 }
@@ -2446,6 +2458,14 @@ if ($GIp===1 )
         echo "<p class = sa >चौ (६.३.१३८) :</p>";
         display(3);
     }
+    /* allopo'naH (6.4.134) */
+    if ( sub(array("an"),array("+"),array("I"),0) )
+    {
+    $text = one(array("an+I"),array("n+I"),0);
+    echo "<p class = sa >By allopo'naH (6.4.134) :</p>";
+    echo "<p class = sa >अल्लोपोऽनः (६.४.१३४) :</p>";
+    display(6);    
+    } 
     $text = one(array("+I+"),array("I+"),0);
     $dhatu=0;
 }
@@ -2545,6 +2565,14 @@ if ($GIS===1 )
         echo "<p class = sa >चौ (६.३.१३८) :</p>";
         display(3);
     }
+    /* allopo'naH (6.4.134) */
+    if ( sub(array("an"),array("+"),array("I"),0) )
+    {
+    $text = one(array("an+I"),array("n+I"),0);
+    echo "<p class = sa >By allopo'naH (6.4.134) :</p>";
+    echo "<p class = sa >अल्लोपोऽनः (६.४.१३४) :</p>";
+    display(6);    
+    } 
     $text = one(array("+I+"),array("I+"),0);
     $dhatu=0;
 }
@@ -4774,17 +4802,19 @@ if (((arr($text,'/[+][lSkKgGN]/'))||$sarva2===1||$purva===1) && $taddhita === 0 
     display(0);
 }
 /* na vibhaktau tusmAH (1.3.4) */
-if (arr($text,'/[tTdDnsm]$/') && $pada=== "pratyaya" && in_array($so,$navibhaktau) && $wa === 0 && $wa1 === 0)
+//if (arr($text,'/[tTdDnsm]$/') && $pada=== "pratyaya" && ( in_array($so,$navibhaktau) || sub(array("+"),$navibhaktau,blank(0),0) ) && $wa === 0 && $wa1 === 0)
+if (arr($text,'/[tTdDnsm]$/') && $vibhakti===1)
 {
     echo "<p class = pa >By na vibhaktau tusmAH (1.3.4)  :</p>";
     echo "<p class = pa >न विभक्तौ तुस्माः (१.३.४) :</p>";
     display(0);
+    $tusma=1;
 }
 /* halantyam (1.3.3) ant tasya lopaH (1.3.9) */
 elseif (arr($text,'/['.flat($hl).']$/'))
 {
     itprat('/(['.flat($hl).']$)/');
-    echo "<p class = pa >By halantyam (1.3.3) :</p>";
+    echo "<p class = pa >By halantyam (1.3.3) 3:</p>";
     echo "<p class = pa >हलन्त्यम्‌ (१.३.३) :</p>";
     display(0);
     $text = last(prat('hl'),blank(count(prat('hl'))),0);
