@@ -1,0 +1,6 @@
+Certain fonts don’t display upadhmAnIya or jihvAmUlIya properly. 
+Therefore, for proper display we have chosen Siddhanta  font as our default font.
+A brief note regarding some special characters over and above SLP1 is necessary here. 
+We have used ! to denote anusvAra and & to denote upadhmAnIya or jihvAmUlaIya. 
+We have used r@ to denote rutva.
+We have used # to denote lopa by ‘Dho Dhe lopaH or ‘ro ri’. These are used for coding point of view and not by their importance in grammar.  
