@@ -553,7 +553,7 @@ if ( $_POST['step']==='2_13_2' )
             $html .= '<input type="radio" value="2" name="cond2_13_2" > नहीं ';
             $html .= '</div>';    
 }
-if (ends($arrWord,array("a"),0) && $_POST['step']==='2' && (ends($arrWord,$TitprAtipadika,1) || (AdivRddhi($arrWord) && ends($arrWord,array("eya","ika","ava","vata","mata","tra","mAtura","prasTa","aka"),0)) || ends($arrWord,$TiDDhA,1) || ends($arrWord,$aJwords,1) ) && !ends($arrWord,array("dEvya"),1)  )
+if (ends($arrWord,array("a"),0) && $_POST['step']==='2' && (ends($arrWord,$TitprAtipadika,1) || (AdivRddhi($arrWord) && ends($arrWord,array("eya","ika","ava","vata","mata","tra","mAtura","prasTa","aka"),0)) || ends($arrWord,$TiDDhA,1) || ends($arrWord,$aJwords,1) || ends($arrWord,$aNwords,1) ) && !ends($arrWord,array("dEvya"),1)  )
 // In this case we have taken every word having Adi vRddhi and ending with akAra. In future, we will have to make it more specific to aN and aJ. All other are recognizable.        
 // Future - make it applicable only to aN and aJ. Remove all AdivRddhi pratyayas like Na, Nya etc.        
 {

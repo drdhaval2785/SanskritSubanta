@@ -1111,7 +1111,7 @@ elseif ($gender!=="f" && sub(array("UDas","oDas"),array("+"),blank(0),0) )
 elseif ( (in_array($fo,$ajAdi) || $ajAdyataSTAp===1) && $kevala!==1) 
 {
     echo "<p class = st >ajAdyataSTAp (4.1.4) :</p>";
-    echo "<p class = st >अजाद्यतष्टाप्‌ (४.१.४) :</p>";
+    echo "<p class = st >अजाद्यतष्टाप्‌ (४.१.४) 1:</p>";
 /* displaying various sub part of ajAdi gaNa and relevant explanation for introduction of word in ajAdi gaNa */
     if( sub(array("aja","eqaka","aSva","cawaka","mUzika"),array("+"),blank(0),0))    
     {
@@ -1883,7 +1883,7 @@ elseif ($gender === "f" && sub($Sidwords,array("+"),blank(0),0) && $_GET['cond2_
 {
     $text = two($Sidwords,array("+"),$Sidwords,array("+NIz+"),0);
     echo "<p class = st >By SidgaurAdibhyazca (4.1.41) :</p>";
-    echo "<p class = st >षिद्बौरादिभ्यश्च (४.१.४१) :</p>";        
+    echo "<p class = st >षिद्बौरादिभ्यश्च (४.१.४१) 1:</p>";        
     display(8);
     $GIS=1;
     $ajAdyataSTAp=0;
@@ -1893,7 +1893,7 @@ elseif ($gender === "f" && sub(array("anaquh"),array("+"),blank(0),0) && in_arra
 {
     $text = two(array("anaquh"),array("+"),array("anaquh"),array("+NIz+"),0);
     echo "<p class = st >By SidgaurAdibhyazca (4.1.41) :</p>";
-    echo "<p class = st >षिद्बौरादिभ्यश्च (४.१.४१) :</p>";        
+    echo "<p class = st >षिद्बौरादिभ्यश्च (४.१.४१) 2:</p>";        
     display(8);
     $text = two(array("anaquh"),array("+NIz"),array("anaqvAh"),array("+NIz+"),1);
     echo "<p class = st >By anaDuhaH striyAM Am vA (vA 4378) :</p>";
@@ -1903,11 +1903,11 @@ elseif ($gender === "f" && sub(array("anaquh"),array("+"),blank(0),0) && in_arra
     $ajAdyataSTAp=0;
 }
 /* SidgaurAdibhyazca (4.1.41) */
-elseif ($gender === "f" && sub($gaurAdi,array("+"),blank(0),0) && $_GET['cond2_22']!=="2")
+elseif ($gender === "f" && sub($gaurAdi,array("+"),blank(0),0) && in_array($fo,$gaurAdi) && $_GET['cond2_22']!=="2")
 {
     $text = two($gaurAdi,array("+"),$gaurAdi,array("+NIz+"),0);
     echo "<p class = st >By SidgaurAdibhyazca (4.1.41) :</p>";
-    echo "<p class = st >षिद्बौरादिभ्यश्च (४.१.४१) :</p>";        
+    echo "<p class = st >षिद्बौरादिभ्यश्च (४.१.४१) 3:</p>";        
     display(8);
     $GIS=1;
     $ajAdyataSTAp=0;
@@ -2186,7 +2186,7 @@ if ($gender === "f" && in_array("z",$itprakriti) && $_GET['cond2_22']!=="2" && $
     $text = two(array("Ayana"),array("+"),array("Ayana"),array("+NIz+"),0);
     $text = two(array("anaquh"),array("+NIz"),array("anaqvAh"),array("+NIz+"),1);
     echo "<p class = st >By SidgaurAdibhyazca (4.1.41) :</p>";
-    echo "<p class = st >षिद्बौरादिभ्यश्च (४.१.४१) :</p>";        
+    echo "<p class = st >षिद्बौरादिभ्यश्च (४.१.४१) 4:</p>";        
     display(8);
     $GIS=1;
     $ajAdyataSTAp=0;
@@ -2204,7 +2204,7 @@ if (arr($text,'/[a][+]/') && $gender==="f" && $_GET['cond2_7']!=="2" && $ajAdyat
     $text = last(array($so),array("+wAp+".$so),0);
     $text = two(array("NIp","NIz","NIn"),array("+wAp"),array("NIp","NIz","NIn"),array(""),0);
     echo "<p class = st >ajAdyataSTAp (4.1.4) :</p>";
-    echo "<p class = st >अजाद्यतष्टाप्‌ (४.१.४) :</p>";
+    echo "<p class = st >अजाद्यतष्टाप्‌ (४.१.४) 2:</p>";
     display(0); 
     $TAp=1;
 }
@@ -4197,7 +4197,7 @@ if ($gender==="f" && sub(array("a+"),$sup,blank(0),0) && in_array($so,$sup) && (
 {
     $text = two(array("a+"),$sup,array("A+"),$sup,0);
     echo "<p class = st >By ajAdyataSTAp (4.1.4) :</p>";
-    echo "<p class = st >अजाद्यतष्टाप्‌ (४.१.४) :</p>";
+    echo "<p class = st >अजाद्यतष्टाप्‌ (४.१.४) 3:</p>";
     display(3); 
     $Ap=1;
 }
