@@ -5744,7 +5744,7 @@ if (arr($text,'/[iufx][+]$/') && $so==="su!" && $sambuddhi===1 && $svamo===1)
 }
 /* halGyAbbhyo dIrghAtsutisyapRktaM hal (6.1.68) and apRkta ekAlpratyayaH (1.2.41) */
 // GyAp pending. only hal handled now.
-if ((arr($text,'/['.pc('hl').'][+][sts]$/') || $GI===1 || $Ap===1 )&& in_array($so,array("su!","ti","si",)))
+if ((arr($text,'/['.pc('hl').'][+][sts]$/') || $GI===1 || $Ap===1 )&& in_array($so,array("su!","ti","si",)) && $start===1)
 {
     echo "<p class = pa >By apRkta ekAlpratyayaH (1.2.41) :</p>";
     echo "<p class = pa >अपृक्त एकाल्प्रत्ययः (१.२.४१) :</p>";
