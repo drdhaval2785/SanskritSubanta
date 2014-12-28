@@ -96,6 +96,24 @@ $samp = array(); // creating an array where we can store whethere samprasAraNa h
 $sup1= array("su!","O","jas","am","Ow","Sas","wA","ByAm","Bis","Ne","ByAm","Byas","Nasi!","ByAm","Byas","Nas","os","Am","Ni","os","sup","su!","O","jas"); // the last three members are for sambodhana forms.
 for ($w=0;$w<count($sup1);$w++) // running the loop till $sup1 is exhausted.
 {
+/* nityabahuvacanAnta special messages */
+$nityabahuvacana = array("kati","tri","catur","paYcan","saptan","azwan","navan","daSan","ap"); // list of words which are used in bahuvacanam always. New can be added.
+if (in_array($first,$nityabahuvacana) && !in_array($sup1[$w],$bahusup) )
+{
+	continue;
+}
+/* nityadvivacanAnta special messages */
+$nityadvivacana = array("dvi",); // list of words which are used in dvivacanam always.
+if ( (in_array($first,$nityadvivacana) || (in_array($first,array("uBaya","uBa")) && $_GET['cond1_1_1'] !== '1')) && !in_array($sup1[$w],$dvisup) )
+{
+	continue;
+}
+/* tyadAdi sambodhana special messages */
+if (in_array($first,$tyadadi) && $sup1[$w]==="su!" && $sambuddhi===1)
+{
+	continue;
+}
+
 $second=$sup1[$w];    // defining the second word as su!, O, jas etc.
 if(in_array($second,$tiG)||in_array($second,$sup))
 {
@@ -218,28 +236,28 @@ if ( $sambuddhi === 1 && $so==="su!" && $pada==="pratyaya")
     display(0);
 }
 /* nityabahuvacanAnta special messages */
-$nityabahuvacana = array("kati","tri","catur","paYcan","saptan","azwan","navan","daSan","ap"); // list of words which are used in bahuvacanam always. New can be added.
+/*$nityabahuvacana = array("kati","tri","catur","paYcan","saptan","azwan","navan","daSan","ap"); // list of words which are used in bahuvacanam always. New can be added.
 if (in_array($fo,$nityabahuvacana) && !in_array($so,$bahusup) && in_array($so,$sup))
 {
     echo "<p class = red >the word you entered is a nitya bahuvacanAnta word. Please check again.</p>"; // class red is for potential error messages.
     echo "<p class = red >आपने जो शब्द दिया है, वह नित्य बहुवचनान्त है । कृपया जाँच कीजिए ।</p>";
     display(0);
-}
+}*/
 /* nityadvivacanAnta special messages */
-$nityadvivacana = array("dvi"); // list of words which are used in dvivacanam always.
+/*$nityadvivacana = array("dvi"); // list of words which are used in dvivacanam always.
 if (in_array($fo,$nityadvivacana) && !in_array($so,$dvisup) && in_array($so,$sup))
 {
     echo "<p class = red >the word you entered is a nitya dvivacanAnta word. Please check again.</p>";
     echo "<p class = red >आपने जो शब्द दिया है, वह नित्य द्विवचनान्त है । कृपया जाँच कीजिए ।</p>";
     display(0);
-}
+}*/
 /* tyadAdi sambodhana special messages */
-if (in_array($fo,$tyadadi) && $so==="su!" && $sambuddhi===1)
+/*if (in_array($fo,$tyadadi) && $so==="su!" && $sambuddhi===1)
 {
     echo "<p class = red >tyadAdi don't have sambodhana.</p>";
     echo "<p class = red >त्यदादि का संबोधन नहीं होता है ।</p>";
     display(0);
-}
+}*/
 /* defining sarvanama status */
 // $sarvafinal. 1 - obligatory. 2 - optional. 0 - no sarvanamasaJjJA.
 /* vibhASAprakaraNe tIyasya GitsUpasaMkhyAnam (vA 242) */ 
@@ -291,7 +309,7 @@ elseif ( $_GET['cond1_1_1_5']==="1" || $_GET['cond2_1_2_1_5']==="1" )
     echo "<p class = pa >विभाषा दिक्समासे बहुव्रीहौ (१.१.२८) :</p>";            
     display(0);
 }
-elseif ( $_GET['cond1_1_1_5']==="2" || $_GET['cond2_1_2_1_5']==="2" )
+elseif ( $_GET['cond1_1_1_5']==="2" || $_GET['cond2_1_2_1_5']==="2" || ($_GET['cond1_1_1']==="5" && !$_GET['cond1_1_1_5'] ))
 {
     $sarvafinal = 0;
     echo "<p class = pa >na bahuvrIhau (1.1.29) :</p>";

@@ -45,7 +45,7 @@ $html = ''; // output is $html. If nothing applies, default it ''.
 /* main coding part */
 if($last === 'a' && $_POST['first']!=="anyatama") 
 {
-    $sarvanama1 = array("sarva","viSva","uBa","uBaya","atara","atama","anya","anyatara","itara","tvat","tva","nema","sima","tyad","tad","yad","etad","idam","adas","eka","dvi","yuzmad","asmad","Bavat","kim","idakam","etara","pUrva","para","avara","dakziRa","uttara","apara","aDara","sva","antara","sama"); // sarvanAma list.
+    $sarvanama1 = array("sarva","viSva","uBa","uBaya","UBa","UBaya","oBa","oBaya","atara","atama","anya","anyatara","itara","tvat","tva","nema","sima","tyad","tad","yad","etad","idam","adas","eka","dvi","yuzmad","asmad","Bavat","kim","idakam","etara","pUrva","para","avara","dakziRa","uttara","apara","aDara","sva","antara","sama"); // sarvanAma list.
     /* checking whether $word ends with a member of $sarvanAma1 array */
     // for function ends, see function.php.
     if(ends($arrWord,$sarvanama1,1)){		
