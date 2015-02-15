@@ -1036,7 +1036,7 @@ if ($gender === "f" && ( sub($ugitprAtipadika,array("+"),blank(count($ugitprAtip
     display(0);
     $GIp=1;
 }
-if ($gender==="f" && sub(array("DvaMsu!","sraMsu!"),array("+"),blank(0),0))
+if ($gender==="f" && sub($ugitverbs,array("+"),blank(0),0))
 {
     echo "<p class = pa >dhAtozcedugitkAryaM tarhyaJcatereva (vA) :</p>";
     echo "<p class = pa >धातोश्चेदुगित्कार्यं तर्ह्यञ्चतेरेव (वा) इति नियम्यते । :</p>";        
