@@ -2804,9 +2804,9 @@ elseif ( $gender==="f" && !in_array($fo,array("stri","strI")) && $dhatu===1 && a
     display(0);
     $nadi = 0;
 }
-elseif ( (( arr($text,'/[IU][+]/') && $nityastri===1) || in_array($fo,array("bahuSreyasI","aticamU"))))
+elseif ( (( arr($text,'/[IU][+]/') && $nityastri===1) || in_array($fo,array("bahuSreyasI","aticamU","atilakzmI"))))
 {
-    if (in_array($fo,array("bahuSreyasI","aticamU")))
+    if (in_array($fo,array("bahuSreyasI","aticamU","atilakzmI")))
     {
     echo "<p class = pa >By yU stryAkhyau nadI (1.4.3) and prathamaliGgagrahaNaJca (vA 1036) :</p>";
     echo "<p class = pa >यू स्त्र्याख्यौ नदी (१.४.३) तथा प्रथमलिङ्गग्रहणञ्च (वा १०३६) :</p>";
