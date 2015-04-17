@@ -109,12 +109,17 @@ elseif (in_array($first,$nityabahuvacana) && !in_array($sup1[$w],$bahusup) )
 	continue;
 }
 /* nityadvivacanAnta special messages */
-elseif ( (in_array($first,$nityadvivacana) || (in_array($first,array("uBaya","uBa")) && $_GET['cond1_1_1'] !== '1')) && !in_array($sup1[$w],$dvisup) )
+elseif ( (in_array($first,$nityadvivacana) || (in_array($first,array("uBa")) && $_GET['cond1_1_1'] !== '1')) && !in_array($sup1[$w],$dvisup) )
 {
 	continue;
 }
 /* nityadvivacanAnta special messages */
 elseif ( in_array($first,$nityaekavacana) && $_GET['cond1_1_1_6_6']==="1" && !in_array($sup1[$w],$eksup) )
+{
+	continue;
+}
+/* ubhaya special messages */
+elseif ( in_array($first,array("uBaya")) && in_array($sup1[$w],$dvisup) )
 {
 	continue;
 }
