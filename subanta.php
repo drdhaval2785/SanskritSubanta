@@ -3968,9 +3968,16 @@ if (arr($text,'/[fx][+]$/') && $svamo===1)
     echo "<p class = pa >न लुमताङ्गस्य से अनङ्‌ का प्रतिषेध होता है ।</p>";
     display(0);     
 }
-if ( (arr($text,'/[fx][+]/')|| $fo==="uSanas"|| $fo==="purudaMsas" || $fo==="anehas" ) &&  $so==="su!" && $pada==="pratyaya" && $sambuddhi===0 && $svamo===0)
+if ( (arr($text,'/[x][+]/') ) &&  $so==="su!" && $pada==="pratyaya" && $sambuddhi===0 && $svamo===0)
 {
-    $text = two(array("f","x","uSanas","purudaMsas","anehas"),array("+"),array("an","an","uSanan","purudaMsan","anehan"),array("+"),0);
+    $text = two(array("x"),array("+"),array("an"),array("+"),0);
+    echo "<p class = sa >By RduzanaspurudaMso'nehasAM ca (7.1.94) and RlRvarNayormithaH sAvarNyaM vAcyam (vA) :</p>";
+    echo "<p class = sa >ऋदुशनस्पुरुदंसोऽनेहसां च (७.१.९४) तथा ऋलृवर्णयोर्मिथः सावर्ण्यं वाच्यम्‌ (वा):</p>";
+    display(3); 
+} 
+if ( (arr($text,'/[f][+]/')|| $fo==="uSanas"|| $fo==="purudaMsas" || $fo==="anehas" ) &&  $so==="su!" && $pada==="pratyaya" && $sambuddhi===0 && $svamo===0)
+{
+    $text = two(array("f","uSanas","purudaMsas","anehas"),array("+"),array("an","uSanan","purudaMsan","anehan"),array("+"),0);
     echo "<p class = sa >By RduzanaspurudaMso'nehasAM ca (7.1.94) :</p>";
     echo "<p class = sa >ऋदुशनस्पुरुदंसोऽनेहसां च (७.१.९४) :</p>";
     display(3); 
