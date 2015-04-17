@@ -96,18 +96,25 @@ $samp = array(); // creating an array where we can store whethere samprasAraNa h
 $sup1= array("su!","O","jas","am","Ow","Sas","wA","ByAm","Bis","Ne","ByAm","Byas","Nasi!","ByAm","Byas","Nas","os","Am","Ni","os","sup","su!","O","jas"); // the last three members are for sambodhana forms.
 for ($w=0;$w<count($sup1);$w++) // running the loop till $sup1 is exhausted.
 {
-/* nityabahuvacanAnta special messages */
+
+$nityaekavacana = array("eka");
 $nityabahuvacana = array("kati","tri","catur","paYcan","saptan","azwan","navan","daSan","ap"); // list of words which are used in bahuvacanam always. New can be added.
 $nityadvivacana = array("dvi",); // list of words which are used in dvivacanam always.
 if ($_GET['cond1_1_1']==="1"||$_GET['cond1_19']==="1") // make provision for saJjJA and upasarjanIbhUta.
 {
 }
+/* nityabahuvacanAnta special messages */
 elseif (in_array($first,$nityabahuvacana) && !in_array($sup1[$w],$bahusup) )
 {
 	continue;
 }
 /* nityadvivacanAnta special messages */
 elseif ( (in_array($first,$nityadvivacana) || (in_array($first,array("uBaya","uBa")) && $_GET['cond1_1_1'] !== '1')) && !in_array($sup1[$w],$dvisup) )
+{
+	continue;
+}
+/* nityadvivacanAnta special messages */
+elseif ( in_array($first,$nityaekavacana) && $_GET['cond1_1_1_6_6']==="1" && !in_array($sup1[$w],$eksup) )
 {
 	continue;
 }

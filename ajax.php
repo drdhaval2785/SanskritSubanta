@@ -98,6 +98,11 @@ if($last === 'a' && $_POST['first']!=="anyatama")
 				$html .= '<input type="radio" value="1" name="cond1_1_1_6_5" > सम शब्द सर्व के पर्याय में प्रयुक्त हुआ है ';
 				$html .= '<input type="radio" value="2" name="cond1_1_1_6_5" > सम शब्द तुल्य के पर्याय में प्रयुक्त हुआ है ';
 				$html .= '</div>';
+			}elseif(ends($arrWord,array("eka"),1)){
+				$html .= '<div id="step22">';
+				$html .= '<input type="radio" value="1" name="cond1_1_1_6_6" > एक शब्द सङ्ख्यावाची है ';
+				$html .= '<input type="radio" value="2" name="cond1_1_1_6_6" > नहीं ';
+				$html .= '</div>';
 			}
 			
 		}
