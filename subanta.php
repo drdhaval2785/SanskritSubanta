@@ -3818,9 +3818,10 @@ if ( arr($text,'/['.flat($ac).'][n][+]/')  && !arr($text,'/['.flat($ac).'][n][+]
     $casambu=1; // 0 - This sUtra has not applied. 1 - This sUtra has applied. Useful for preventing repeat application.
 } else {$casambu=0; }
 /* tRjvatkroSTuH (7.1.95), vibhASA tRtIyAdiSvaci (7.1.97) and numaciratRjvadbhAvebhyo nuT pUrvavipratiSedhena (vA 4374) */
+print_r($text); print_r($sarvanamasthana); echo $sarvanamasthana1, $pada, $sambuddhi;
 if ((sub(array("krozwu"),array("+"),$sarvanamasthana,0)||sub(array("krozwu"),array("+"),$tRtIyAdiSvaci,0) ) && $sarvanamasthana1===1 && $pada==="pratyaya" && ($sambuddhi===0 || ($sambuddhi===1 && $so!=="su!")))
 {
-    if ( (in_array($so,$sarvanamasthana)|| in_array($so,$tRtIyAdiSvaci) || arr($text,'/[+][S][i]$/')) ) 
+    if ( (in_array($so,$sarvanamasthana)|| in_array($so,$tRtIyAdiSvaci) || arr($text,'/[+][S][i]$/')) && $gender==="n") 
     {
     echo "<p class = pa >tRjvadbhAva of tRjvatkroSTuH is overruled by 'num' by vRddhyauttvatRjvadbhAvaguNebhyo num pUrvavipratiSedhena (vA 4373). </p>";
     echo "<p class = pa >तृज्वत्क्रोष्टुः से प्राप्त तृज्वद्भाव का वृद्ध्यौत्त्वतृज्वद्भावगुणेभ्यो नुम्‌ पूर्वविप्रतिषेधेन (वा ४३७३) से बाध होता है ।</p>";        
@@ -3995,6 +3996,7 @@ $excludesvasR = array("pitf","BrAtf","jAmAtf","mantf","hantf","nanAndf","duhitf"
 if (((sub(array("tar+","war+"),blank(0),blank(0),0)  )|| ($tRcvat===1&& $gender!=="n" )||in_array($fo,$svasR) || in_array($fo,$svasrAdi)) && $sarvanamasthana1===1 && $pada==="pratyaya" && !in_array($fo,$excludesvasR) && (($sambuddhi===1 && $so!=="su!" ) || $sambuddhi===0)  )
 { 
     $text = three($ac,array("r"),array("+"),dirgha($ac),array("r"),array("+"),0);
+    $text = two(array("krozwan"),array("+"),array("krozwAn"),array("+"),0);
     $text = one(array("svasan","naptan","nezwan","tvazwan","kzattan","hotan","potan","praSAstan"),array("svasAn","naptAn","nezwAn","tvazwAn","kzattAn","hotAn","potAn","praSAstAn"),0);
     echo "<p class = sa >By aptRntRcsvasRnaptRneSTRtvaSTRkSattRhotRpotRprazAstRRNAm (6.4.11) :</p>";
     echo "<p class = sa >अप्तृन्तृच्स्वसृनप्तृनेष्टृत्वष्टृक्षत्तृहोतृपोतृप्रशास्तॄणाम्‌ (६.४.११) :</p>";
@@ -5977,6 +5979,7 @@ if (arr($text,'/[Kt][y][+][a]/')  && arr(array($fo),'/[Kt][iI]$/') && in_array($
     echo "<p class = sa >ख्यत्यात्परस्य (६.१.११२) :</p>";
     display(0);
 }
+print_r($text);
 if (sub(array("lUny","kzAmy","prastImy"),array("+"),blank(0),0) && in_array($so,array("Nasi!","Nas")) && $pada==="pratyaya")
 {
     $text = three(array("lUny","kzAmy","prastImy"),array("+"),array("a"),array("lUny","kzAmy","prastImy"),array("+"),array("u"),0);
