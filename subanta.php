@@ -2804,6 +2804,10 @@ elseif ( $gender==="f" && !in_array($fo,array("stri","strI")) && $dhatu===1 && a
     display(0);
     $nadi = 0;
 }
+elseif ( in_array($_GET['cond1_4'],array("1","3","5")) ) // The user has said that this is not nadI.
+{
+    $nadi = 0;
+}
 elseif ( (( arr($text,'/[IU][+]/') && $nityastri===1) || in_array($fo,array("bahuSreyasI","aticamU","atilakzmI"))))
 {
     if (in_array($fo,array("bahuSreyasI","aticamU","atilakzmI")))
