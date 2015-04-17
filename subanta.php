@@ -98,18 +98,21 @@ for ($w=0;$w<count($sup1);$w++) // running the loop till $sup1 is exhausted.
 {
 /* nityabahuvacanAnta special messages */
 $nityabahuvacana = array("kati","tri","catur","paYcan","saptan","azwan","navan","daSan","ap"); // list of words which are used in bahuvacanam always. New can be added.
-if (in_array($first,$nityabahuvacana) && !in_array($sup1[$w],$bahusup) )
+$nityadvivacana = array("dvi",); // list of words which are used in dvivacanam always.
+if ($_GET['cond1_1_1']==="1"||$_GET['cond1_19']==="1") // make provision for saJjJA and upasarjanIbhUta.
+{
+}
+elseif (in_array($first,$nityabahuvacana) && !in_array($sup1[$w],$bahusup) )
 {
 	continue;
 }
 /* nityadvivacanAnta special messages */
-$nityadvivacana = array("dvi",); // list of words which are used in dvivacanam always.
-if ( (in_array($first,$nityadvivacana) || (in_array($first,array("uBaya","uBa")) && $_GET['cond1_1_1'] !== '1')) && !in_array($sup1[$w],$dvisup) )
+elseif ( (in_array($first,$nityadvivacana) || (in_array($first,array("uBaya","uBa")) && $_GET['cond1_1_1'] !== '1')) && !in_array($sup1[$w],$dvisup) )
 {
 	continue;
 }
 /* tyadAdi sambodhana special messages */
-if (in_array($first,$tyadadi) && $sup1[$w]==="su!" && $sambuddhi===1)
+elseif (in_array($first,$tyadadi) && $sup1[$w]==="su!" && $sambuddhi===1)
 {
 	continue;
 }
@@ -4019,7 +4022,6 @@ if (arr(array($fo),'/[a][p]$/') && arr($text,'/[a][p][+][B]/') && in_array($so,a
 }
 /* Ato dhAtoH (6.4.140) */
 $haha = array("hAhA");
-echo $bham, $_GET['cond1_2'], $_GET['cond2_1'], $Ap;
 if ($bham === 1 && arr($text,'/[A][+]/') && !in_array($fo,$haha) && ($_GET['cond1_2']==="1" || $_GET['cond2_1']==="1" ) && $Ap===0)
 {
     $text = two(array("A"),array("+"),array(""),array("+"),0);
@@ -4190,7 +4192,7 @@ if (sub(array("adas"),array("+"),array("su!"),0) && $so==="su!" && $fo==="adas")
     display(3);
 }
 /* tyadAdInAmaH (7.2.102) */
-if (sub(array("dvi"),array("+"),blank(0),0) && in_array($so,$sup) && ends(array($fo),array("dvi"),1) && $_GET['cond1_3_2']==="2" && $idamoma===0 && $svamo===0 && $noatvasatva===0)
+if (sub(array("dvi"),array("+"),blank(0),0) && in_array($so,$sup) && ends(array($fo),array("dvi"),1) && $_GET['cond1_19']==="2" && $idamoma===0 && $svamo===0 && $noatvasatva===0)
 {
     $text = one(array("dvi"),array("dv+a"),0);
     echo "<p class = sa >By tyadAdInAmaH (7.2.102) :</p>";

@@ -58,8 +58,7 @@ if($last === 'a' && $_POST['first']!=="anyatama")
 			$html .= '<input type="radio" value="5" name="cond1_1_1" > सर्वादयः बहुव्रीहि समास में प्रयुक्त हुए हैं ? ';
 			$html .= '<input type="radio" value="6" name="cond1_1_1" > उपर से किसी में नहीं प्रयुक्त हुए हैं ';
 			$html .= '</div>';
-		}
-		
+		}		
 		if($_POST['step'] === '1_1_1_5' && ends($arrWord,array("pUrva","paScima","uttara","dakziNa"),1) ){
 			$html .= '<div id="step22">';
 			$html .= '<input type="radio" value="1" name="cond1_1_1_5" > दिक्समास है ';
@@ -128,13 +127,6 @@ elseif($last === 'i' )
         $html .= '<input type="radio" value="3" name="cond1_3_1" >लाक्षणिक – जैसे कि अतिसखिः (सखीमतिक्रान्तः) ';
         $html .= '</div>';
     }
-    if (ends($arrWord,array("dvi"),1))
-    {
-        $html .= '<div class="step11">';
-        $html .= '<input type="radio" value="1" name="cond1_3_2" >सञ्ज्ञा है या उपसर्जनीभूत है ';
-        $html .= '<input type="radio" value="2" name="cond1_3_2" >सञ्ज्ञा नहीं है और उपसर्जनीभूत नहीं है ';
-        $html .= '</div>';        
-    }    
 }
 elseif($last === 'I' )
 {
@@ -228,7 +220,7 @@ elseif ( $last==="j" && $_POST['step']==='1')
             $html .= '<input type="radio" value="2" name="cond1_9" > नहीं ';                    
             $html .= '</div>';    
 }
-if ( ends($arrWord,array("tyad","tad","yad","etad","idam","adas","eka","dvi","idakam",),1) && $_POST['step']!=='1_10_2' )
+if ( ends($arrWord,array("tyad","tad","yad","etad","idam","adas","idakam",),1) && $_POST['step']!=='1_10_2')
 {
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond1_10" > त्यदादि सञ्ज्ञा या उपसर्जनीभूत के तौर पर प्रयुक्त हुए हैं ';                    
@@ -342,6 +334,15 @@ if ( $_POST['step']==='1' && ends($arrWord,array("takz","rakz"),1) )
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond1_15" > ण्यन्त ';                    
             $html .= '<input type="radio" value="2" name="cond1_15" > अण्यन्त ';                    
+            $html .= '</div>';    
+}
+$nityabahuvacana = array("kati","tri","catur","paYcan","saptan","azwan","navan","daSan","ap"); // list of words which are used in bahuvacanam always. New can be added.
+$nityadvivacana = array("dvi",); // list of words which are used in dvivacanam always.
+if ( ($_POST['step']==='1'||$_POST['step']==='2'||$_POST['step']==='3') && ( ends($arrWord,$nityabahuvacana,1) || ends($arrWord,$nityadvivacana,1) ))
+{
+            $html .= '<div id="step11">';
+            $html .= '<input type="radio" value="1" name="cond1_19" > सञ्ज्ञा या उपसर्जनीभूत है ';                    
+            $html .= '<input type="radio" value="2" name="cond1_19" > नहीं ';                    
             $html .= '</div>';    
 }
 
