@@ -4469,7 +4469,7 @@ if ($nadi!==0 && arr($text,'/[iu][+][N][i]$/'))
     display(3);    
 }
 /* GerAmnadyAmnIbhyaH (7.3.116) */
-if (arr($text,'/[n][I][+]/') && $pada=== "pratyaya" && $so==="Ni")
+if (arr($text,'/[nR][I][+]/') && $pada=== "pratyaya" && $so==="Ni")
 {
     $text = two(array("+"),array("Ni"),array("+"),array("Am"),0);
     echo "<p class = sa >By GerAmnadyAmnIbhyaH (7.3.116) :</p>";
