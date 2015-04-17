@@ -3818,7 +3818,6 @@ if ( arr($text,'/['.flat($ac).'][n][+]/')  && !arr($text,'/['.flat($ac).'][n][+]
     $casambu=1; // 0 - This sUtra has not applied. 1 - This sUtra has applied. Useful for preventing repeat application.
 } else {$casambu=0; }
 /* tRjvatkroSTuH (7.1.95), vibhASA tRtIyAdiSvaci (7.1.97) and numaciratRjvadbhAvebhyo nuT pUrvavipratiSedhena (vA 4374) */
-print_r($text); print_r($sarvanamasthana); echo $sarvanamasthana1, $pada, $sambuddhi;
 if ((sub(array("krozwu"),array("+"),$sarvanamasthana,0)||sub(array("krozwu"),array("+"),$tRtIyAdiSvaci,0) ) && $sarvanamasthana1===1 && $pada==="pratyaya" && ($sambuddhi===0 || ($sambuddhi===1 && $so!=="su!")))
 {
     if ( (in_array($so,$sarvanamasthana)|| in_array($so,$tRtIyAdiSvaci) || arr($text,'/[+][S][i]$/')) && $gender==="n") 
@@ -4020,6 +4019,7 @@ if (arr(array($fo),'/[a][p]$/') && arr($text,'/[a][p][+][B]/') && in_array($so,a
 }
 /* Ato dhAtoH (6.4.140) */
 $haha = array("hAhA");
+echo $bham, $_GET['cond1_2'], $_GET['cond2_1'], $Ap;
 if ($bham === 1 && arr($text,'/[A][+]/') && !in_array($fo,$haha) && ($_GET['cond1_2']==="1" || $_GET['cond2_1']==="1" ) && $Ap===0)
 {
     $text = two(array("A"),array("+"),array(""),array("+"),0);
@@ -5979,7 +5979,6 @@ if (arr($text,'/[Kt][y][+][a]/')  && arr(array($fo),'/[Kt][iI]$/') && in_array($
     echo "<p class = sa >ख्यत्यात्परस्य (६.१.११२) :</p>";
     display(0);
 }
-print_r($text);
 if (sub(array("lUny","kzAmy","prastImy"),array("+"),blank(0),0) && in_array($so,array("Nasi!","Nas")) && $pada==="pratyaya")
 {
     $text = three(array("lUny","kzAmy","prastImy"),array("+"),array("a"),array("lUny","kzAmy","prastImy"),array("+"),array("u"),0);

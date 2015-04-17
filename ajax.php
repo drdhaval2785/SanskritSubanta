@@ -111,13 +111,13 @@ if($last === 'a' && $_POST['first']!=="anyatama")
 		
 	}
 }
-/*elseif($last === 'A' && $_POST['step'] !== '1_2' && $_POST['gender']==='m')
+elseif($last === 'A' && $_POST['step'] !== '1_2' && $_POST['gender']==='m')
 {		
     $html .= '<div class="step11">';
-    $html .= '<input type="radio" value="1" name="cond1_2" > Is this ākārānta dhātu? ';
-    $html .= '<input type="radio" value="2" name="cond1_2" > No ';
+    $html .= '<input type="radio" value="1" name="cond1_2" > क्या यह आकारान्त धातु है? ';
+    $html .= '<input type="radio" value="2" name="cond1_2" > नहीं ';
     $html .= '</div>';
-}*/
+}
 elseif($last === 'i' )
 {
     if ($last_4 === 'saKi')
