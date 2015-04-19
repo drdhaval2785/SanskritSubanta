@@ -4580,14 +4580,6 @@ if ($Ap===1 && arr($text,'/[A][+][O][w]$/') && in_array($so,array("Ow")))
     echo "<p class = sa >औङ आपः (७.१.१८) :</p>";
     display(3);
 }
-/* sambuddhau ca (7.3.106) */
-if ($Ap===1 && $sambuddhi===1 && in_array($so,array("su!")) && arr($text,'/[A][+]/'))
-{
-    $text = two(array("A+"),array("su!"),array("e+"),array("su!"),0);
-    echo "<p class = sa >By sambuddhau ca (7.3.106) :</p>";
-    echo "<p class = sa >सम्बुद्धौ च (७.३.१०६) :</p>";
-    display(3);
-}
 /* sarvanAmnaH syADDhrasvazca (7.3.114) */ 
 $sarvanamastri = array("sarvA","viSvA","uBA","uBayA","atarA","atamA","anyA","anyatarA","itarA","tvA","nemA","simA","pUrvA","parA","avarA","dakziRA","uttarA","aparA","aDarA","svA","antarA","tyA","tA","yA","etA","idA","adA","ekA","dvA","kA","idakA");
 $sarvanamastri1 = array("sarva","viSva","uBa","uBaya","atara","atama","anya","anyatara","itara","tva","nema","sima","pUrva","para","avara","dakziRa","uttara","apara","aDara","sva","antara","tya","ta","ya","eta","ida","ada","eka","dva","ka","idaka");
@@ -5058,6 +5050,14 @@ if ($sambuddhi===1 &&  ($nadi!==0 || ends(array($fo),array("ambA","akkA","allA")
     display(3); 
     $amba = 1; // 0 - ambArthanadyorhrasva has not applied. 1 - ambArthanadyorhrasva has applied.
 } else { $amba = 0; }
+/* sambuddhau ca (7.3.106) */
+if ($Ap===1 && $sambuddhi===1 && in_array($so,array("su!")) && arr($text,'/[A][+]/'))
+{
+    $text = two(array("A+"),array("su!"),array("e+"),array("su!"),0);
+    echo "<p class = sa >By sambuddhau ca (7.3.106) :</p>";
+    echo "<p class = sa >सम्बुद्धौ च (७.३.१०६) :</p>";
+    display(3);
+}
 /* shatR */
 if ($shatR===1)
 {
