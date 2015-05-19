@@ -6630,11 +6630,12 @@ if (arr($text,'/[CS]$/'))
         else
         {
 //            $text = last(array("C","S"),array("z","z"),1);                    
-                        $text = last(array("C","S"),array("z","z"),0);                    
+             $text = last(array("C","S"),array("z","z"),0);  
+			 $text = one(array("niz+"),array("niS"),1);		// See https://github.com/drdhaval2785/SanskritSubanta/issues/45				
         }
     echo "<p class = sa >By vrazcabhrasjasRjamRjayajarAjabhrAjacChazAM SaH (8.2.35) :</p>";
     echo "<p class = hn >Some people hold that there is anuvRtti of 'dhAtoH' here. In that case Satva won't happen. It is optional.</p>";
-    echo "<p class = sa >व्रश्चभ्रस्जसृजमृजयजराजभ्राजच्छशां षः (८.२.३५) :</p>";
+    echo "<p class = sa >व्रश्चभ्रस्जसृजमृजयजराजभ्राजच्छशां षः (८.२.३५) 1:</p>";
     echo "<p class = hn >केचित्तु व्रश्चादिसूत्रे 'दादेर्धातोः इति सूत्रात्‌ 'धातोः' इत्यनुवर्तयन्ति । तन्मते षत्वं न भवति ।</p>";
     }
     display(0); 
@@ -6671,10 +6672,11 @@ if (arr($text,'/[CS][+]/') && $pada === "pada")
         {
 //           $text = two(array("C","S"),array("+"),array("z","z"),array("+"),1);
              $text = two(array("C","S"),array("+"),array("z","z"),array("+"),0);
+			 $text = one(array("niz+"),array("niS"),1);
         }
     echo "<p class = sa >By vrazcabhrasjasRjamRjayajarAjabhrAjacChazAM SaH (8.2.35) :</p>";
     echo "<p class = hn >Some people hold that there is anuvRtti of 'dhAtoH' here. In that case Satva won't happen. It is optional.</p>";
-    echo "<p class = sa >व्रश्चभ्रस्जसृजमृजयजराजभ्राजच्छशां षः (८.२.३५) :</p>";
+    echo "<p class = sa >व्रश्चभ्रस्जसृजमृजयजराजभ्राजच्छशां षः (८.२.३५) 2:</p>";
     echo "<p class = hn >केचित्तु व्रश्चादिसूत्रे 'दादेर्धातोः इति सूत्रात्‌ 'धातोः' इत्यनुवर्तयन्ति । तन्मते षत्वं न भवति ।</p>";
     }
     display(0); 
