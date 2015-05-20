@@ -3892,8 +3892,29 @@ if ($ghi===1 && $so==="wA" && $gender !== "f" && arr($text,'/[iu][+]/') && !(in_
 $ik = array("i","I","u","U","f","F","x","X"); // ik pratyAhAra.
 $ikyan = array("y","y","v","v","ar","Ar","ar","Ar"); // yaN replacements of ik pratyAhAra.
 $acsup = array_merge($acsup,array("SI","Si")); // adding Si of jas/Sas as ajAdivibhakti.
+/* napuMsakAcca (7.1.19) */
+if ( $gender==="n" && in_array($so,array("O","Ow"))) 
+{
+    $text = two(array("+"),array("Ow","O",),array("+"),array("SI","SI"),0);
+    echo "<p class = sa >By napuMsakAcca (7.1.19) :</p>";
+    echo "<p class = sa >नपुंसकाच्च (७.१.१९) :</p>";
+    display(3); 
+    $napuMsakAcca=1; // 0 - napuMsakAcca has not applied. 1 - napuMsakAcca has applied.
+    $text = two(array("+"),array("SI"),array("+"),array("I"),0);
+    echo "<p class = sa >By lazakvataddhite (1.3.8) and tasya lopaH (1.1.9) :</p>";
+    echo "<p class = sa >लशक्वतद्धिते (१.३.८) तथा तस्य लोपः (१.१.९) :</p>";
+    display(0);
+} else { $napuMsakAcca=0; }
+/* auGaH zyAM pratiSedho vAcyaH (vA) */
+if (arr($text,'/[+][S][I]/') && in_array($so,array("O","Ow")))
+{
+    echo "<p class = pa >By auGaH zyAM pratiSedho vAcyaH (vA) :</p>";
+    echo "<p class = pa >औङः श्यां प्रतिषेधो वाच्यः (वा) :</p>";
+    display(0); 
+    $auGazyA = 1; // 0 - doesn't prevent application of yasyeti ca. 1 - prevents application of yasyeti ca.	
+} else { $auGazyA = 0; }
 /* iko'ci vibhaktau (7.1.73) */
-if ( $gender==="n" && arr($text,'/['.flat($ik).'][+]/') && in_array($so,$acsup) && sub($ik,array("+"),$acsup,0))
+if ( $gender==="n" && arr($text,'/['.flat($ik).'][+]/') && in_array($so,$acsup) && (sub($ik,array("+"),$acsup,0) || $napuMsakAcca===1))
 {
     if ($ghi===1 && in_array($so,array("Ne","Nasi!","Nas","Ni")) && $bhashitapumska===0)
     {
@@ -3922,6 +3943,15 @@ if ( $gender==="n" && arr($text,'/['.flat($ik).'][+]/') && in_array($so,$acsup) 
     $text = three(array("sulu",),array("+"),array("wA"),array("sulun",),array("+"),array("wA"),0);
     echo "<p class = sa >By iko'ci vibhaktau (7.1.73) :</p>";
     echo "<p class = sa >इकोऽचि विभक्तौ (७.१.७३) :</p>";
+    display(3);        
+    }
+    elseif ($napuMsakAcca===1)
+    {
+    $text = three(array("i","u","f","x"),array("+"),array("I"),array("i","u","f","x"),array("n+"),array("I"),0);            
+    echo "<p class = sa >By iko'ci vibhaktau (7.1.73) :</p>";
+    echo "<p class = hn >This rule overrules the possibility of 'iyaG' or 'uvaG'</p>";
+    echo "<p class = sa >इकोऽचि विभक्तौ (७.१.७३) :</p>";
+    echo "<p class = hn >इयङुवङौ प्रबाध्य इकोऽचि विभक्तौ (७.१.७३) इति नुमागमः भवति :</p>";
     display(3);        
     }
     else
@@ -4105,23 +4135,6 @@ if ( in_array(1,$samp) && arr($text,'/[yv][uU][+]/') )
     echo "<p class = sa>न सम्प्रसारणे सम्प्रसारणम्‌ :</p>";
     display(0); 
 }
-/* napuMsakAcca (7.1.19) */
-if ( $gender==="n" && in_array($so,array("O","Ow"))) 
-{
-    $text = two(array("+"),array("Ow","O",),array("+"),array("SI","SI"),0);
-    echo "<p class = sa >By napuMsakAcca (7.1.19) :</p>";
-    echo "<p class = sa >नपुंसकाच्च (७.१.१९) :</p>";
-    display(3); 
-    $napuMsakAcca=1; // 0 - napuMsakAcca has not applied. 1 - napuMsakAcca has applied.
-} else { $napuMsakAcca=0; }
-/* auGaH zyAM pratiSedho vAcyaH (vA) */
-if (arr($text,'/[+][S][I]/') && in_array($so,array("O","Ow")))
-{
-    echo "<p class = pa >By auGaH zyAM pratiSedho vAcyaH (vA) :</p>";
-    echo "<p class = pa >औङः श्यां प्रतिषेधो वाच्यः (वा) :</p>";
-    display(0); 
-    $auGazyA = 1; // 0 - doesn't prevent application of yasyeti ca. 1 - prevents application of yasyeti ca.
-} else { $auGazyA = 0; }
 /* paddannomAshRnnizasanyUSandoSanyakaJChakannudannAsaJChasprabhRtiSu (6.1.63) special case kakuddoSaNI */
 if (sub(array("doz"),array("+"),array("SI"),0) && in_array($so,array("O","Ow")))
 {
