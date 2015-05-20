@@ -4525,7 +4525,7 @@ if ($Ap===1 && $pada=== "pratyaya" && $so==="Ni")
     display(3);
 }
 /* aut (7.3.118) */
-if (arr($text,'/[iu][+][N][i]$/') && $so==="Ni" && $pada==="pratyaya")
+if (arr($text,'/[iu][+][N][i]$/') && $so==="Ni" && $pada==="pratyaya" && $ghi!==1)
 {
     $text = two(array("i","u",),array("Ni"),array("i","u"),array("O"),0);
     echo "<p class = sa >By aut (7.3.118) :</p>";
@@ -4552,7 +4552,7 @@ if ($nadi!==0 && arr($text,'/[+][N]/') && in_array($so,array("Ne","Nasi!","Nas",
 /* acca gheH (7.3.119) */ 
 if ($ghi===1 && in_array($so,array("Ni")))
 {
-    $text = two(array("i","u"),array("O"),array("a","a"),array("O"),0);
+    $text = two(array("i","u"),array("Ni"),array("a","a"),array("O"),0);
     echo "<p class = sa >By acca gheH (7.3.119) :</p>";
     echo "<p class = sa >अच्च घेः (७.३.११९) :</p>";
     display(3);
