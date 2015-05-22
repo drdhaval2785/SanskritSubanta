@@ -2831,6 +2831,10 @@ elseif ( $gender==="f" && in_array($fo,array("grAmaRI","KalapU")) )
     display(0);
     $nadi = 0;
 }
+/* varSAbhvazca (6.8.84) patch */ 
+elseif ($dhatu===1 && $first==="varzABU" && in_array($so,$acsup))
+{
+}
 elseif ( $gender==="f" && !in_array($fo,array("stri","strI")) && $dhatu===1 && arr($text,'/[IU][+]/') && $dRnkar===0 && $eranekaca!==2 && $_GET['cond2_3_5']!=="2")
 {
     echo "<p class = pa >By neyaGuvaGsthAnAvastrI (1.4.4) :</p>";
@@ -5853,7 +5857,7 @@ if ( $Ap===1 && sub(array("A"),array("+"),array("s","t"),0) && in_array($so,arra
     $pada="pada"; // there is no pratyaya left now.
 }
 /* patch for varShABU sambodhana */
-if ($dhatu===1 && $first==="varzABU" && sub(array("varzABU"),array("+"),array("s"),1) && $pada==="pratyaya" )
+if ($dhatu===1 && $first==="varzABU" && sub(array("varzABU"),array("+"),array("s"),1) && $pada==="pratyaya" && $sambuddhi===1)
 {
     $text = two(array("varzABU"),array("+"),array("varzABu"),array("+"),1);
     echo "<p class = sa >kaiyaTa believes it to be 'he varSAbhUH'. The alternative belief is 'he varSAbhu'.</p>";
