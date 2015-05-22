@@ -3681,7 +3681,8 @@ if ( $fo==="adas" && $so==="wA" && $gender!=="f")
 
 /* yaci bham (1.4.14) and A kaDArAdekA saJjJA (1.4.1) */
 // Not coded perfectly. Only for sup pratyayas.
-if ($sarvanamasthana1 === 0 && in_array($so,$acsup) && $luk===0 && $svamo===0 )
+echo $luk, $svamo;
+if ($sarvanamasthana1 === 0 && arr($text,'/[+]['.pc('ac').']/') && $luk===0 && $svamo===0 )
 {
     echo "<p class = pa >By yaci bham (1.4.14) and A kaDArAdekA saJjJA (1.4.1) :</p>";
     echo "<p class = pa >यचि भम्‌ (१.४.१४) तथा आ कडारादेका सञ्ज्ञा (१.४.१) :</p>";
@@ -3740,6 +3741,7 @@ if (sub(array("pAd"),array("+"),$sup,0) && $bham===1)
     echo "<p class = sa >पादः पत्‌ (६.४.१३०):</p>";
     display(3);
 }
+print_r($text);
 /* TeH (6.4.143) */
 if ($Dit===1 && $bham===1 )
 {   
