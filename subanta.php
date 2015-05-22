@@ -2824,7 +2824,13 @@ elseif ( $gender==="f" && !in_array($fo,array("stri","strI")) && $dhatu===1 && a
     display(0);
     $nadi = 2;
 }
-//elseif ( $gender==="f" && !in_array($fo,array("stri","strI")) && $dhatu===1 && arr($text,'/[IU][+]/') && $dRnkar===0 && $eranekaca!==2 && !in_array($so,array("su!","ByAm","Bis","sup")))
+elseif ( $gender==="f" && in_array($fo,array("grAmaRI","KalapU")) )
+{
+    echo "<p class = pa >As these words are naturally qualities of musculine, therefore they are derived as per musculine.</p>";
+    echo "<p class = pa >उत्सर्गतः पुंधर्मतया पदान्तरं विनापि स्त्रियामप्रवृत्तेः पुंवद्रूपम्‌ ।</p>";
+    display(0);
+    $nadi = 0;
+}
 elseif ( $gender==="f" && !in_array($fo,array("stri","strI")) && $dhatu===1 && arr($text,'/[IU][+]/') && $dRnkar===0 && $eranekaca!==2 && $_GET['cond2_3_5']!=="2")
 {
     echo "<p class = pa >By neyaGuvaGsthAnAvastrI (1.4.4) :</p>";
