@@ -1057,7 +1057,6 @@ if ($gender==="f" && sub($ugitverbs,array("+"),blank(0),0))
     echo "<p class = pa >धातोश्चेदुगित्कार्यं तर्ह्यञ्चतेरेव (वा) इति नियम्यते । :</p>";        
     display(0);    
 }
-print_r($text); echo $SaTsvasrAdi, $allopo, $GIS, $GIn, $tiH;
 /* antarvatpativatornuk (4.1.32) */
 if ($gender === "f" && sub(array("antarvat","pativat"),array("+"),blank(0),0) )
 {
