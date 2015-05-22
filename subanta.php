@@ -1057,6 +1057,7 @@ if ($gender==="f" && sub($ugitverbs,array("+"),blank(0),0))
     echo "<p class = pa >धातोश्चेदुगित्कार्यं तर्ह्यञ्चतेरेव (वा) इति नियम्यते । :</p>";        
     display(0);    
 }
+print_r($text); echo $SaTsvasrAdi, $allopo, $GIS, $GIn, $tiH;
 /* antarvatpativatornuk (4.1.32) */
 if ($gender === "f" && sub(array("antarvat","pativat"),array("+"),blank(0),0) )
 {
@@ -1196,6 +1197,11 @@ elseif ($gender === "f" && sub(array("krozwu"),array("+"),blank(0),0))
     echo "<p class = sa >By striyAM ca (7.1.96) :</p>";
     echo "<p class = sa >स्त्रियां च (७.१.९७) :</p>";        
     display(3);
+    $text = two(array("f","n"),array("+"),array("f+NIp","n+NIp"),array("+"),0);
+    echo "<p class = st >By Rnnebhyo Gip (4.1.5) :</p>";
+    echo "<p class = st >ऋन्नेभ्यो ङीप्‌ (४.१.५) :</p>";        
+    display(8);
+    $GIp=1;
 }
 /* pUtakratorai ca (4.1.36) */
 elseif ($gender === "f" && $fo==="pUtakratu" && $_GET['cond2_22']==="1")
@@ -2437,7 +2443,15 @@ if ($GIp===1 )
         $taddhita=0;
         $text = two(array("+"),array("I+"),array(""),array("I+"),0);
     }
-/* eco'yavAyAvaH (7.1.78) */
+	/* patch for kroSTrI */
+	if (sub(array("krozwf"),array("+"),array("I+"),0))
+	{
+		$text = three(array("krozwf"),array("+"),array("I+"),array("krozwr"),array(""),array("I+"),0);
+		echo "<p class = sa >iko yaNaci (6.1.77) :</p>";
+		echo "<p class = sa >इको यणचि (६.१.७७) :</p>";
+		display(0); 
+	}
+	/* eco'yavAyAvaH (7.1.78) */
     $ayavayavah = array("ay","av","Ay","Av");
     if (sub(prat('ec'),prat('ac'),blank(0),0))
     {
@@ -3810,7 +3824,7 @@ if ($gender==="f" && $vamanta===0 && $anobahuvrihe===1 && arr($text,'/[Aa][n][+]
     echo "<p class = st >By ana upadhAlopino'nyatarasyAm (4.1.28) :</p>";
     echo "<p class = st >अन उपधालोपिनोऽन्यतरस्याम्‌ (४.१.२८) :</p>";
     display(8); 
-        $text = two(array("NIp"),array("+"),array("I"),array("+"),0); 
+    $text = two(array("NIp"),array("+"),array("I"),array("+"),0); 
     $it = array_merge($it,array("N","p"));
     $itprakriti = array_merge($itprakriti,array("p","N"));
     echo "<p class = sa >GakAra and pakAra are 'it'. They are elided by lazakvataddhite (1.3.8), halantyam (1.3.3) and tasya lopaH (1.3.9) :</p>";
