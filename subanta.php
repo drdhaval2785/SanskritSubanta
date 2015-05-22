@@ -1187,6 +1187,8 @@ elseif ($shat===1 || in_array($fo,$svasrAdi))
 {
     echo "<p class = st >By na SaTsvasrAdibhyaH (4.1.10) :</p>";
     echo "<p class = st >न षट्स्वस्रादिभ्यः (४.१.१०) :</p>";
+    echo "<p class = hn >GIp mandated by Rnnebhyo GIp is overruled by this rule. :</p>";
+    echo "<p class = hn >न षट्स्वस्रादिभ्यः (४.१.१०) इत्यनेन ऋन्नेभ्यो ङीबित्यन्तेन प्राप्तो ङीब्निषिध्यते । :</p>";
     display(0); $Ap = 0; $GI = 0; $SaTsvasrAdi=1;
 } 
 /* striyAM ca (7.1.96) */
@@ -2920,7 +2922,6 @@ if ( sub(array("vidvas","sedivas","uzivas","Suzruvas","upeyivas","anASvas"),arra
     echo "<p class = pa >यह एक वस्वन्त शब्द है ।</p>";
     display(0); $vasu=1;
 }
-print_r($text); echo $dhatu;
 /* dRnkarapunaHpUrvasya bhuvo yaN vaktavyaH (vA 4118) */ 
 if ($dhatu===1 && in_array($fo,array("dfnBU","karaBU","kAraBU","punarBU")) && (in_array($so,array("Ne","Nasi!","Nas","Ni")) || ($sambuddhi===1 && $so==="su!") ) )
 {
