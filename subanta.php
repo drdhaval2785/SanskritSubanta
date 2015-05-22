@@ -2916,10 +2916,11 @@ if ( sub(array("vidvas","sedivas","uzivas","Suzruvas","upeyivas","anASvas"),arra
     echo "<p class = pa >यह एक वस्वन्त शब्द है ।</p>";
     display(0); $vasu=1;
 }
+print_r($text); echo $dhatu;
 /* dRnkarapunaHpUrvasya bhuvo yaN vaktavyaH (vA 4118) */ 
-if ($dhatu===1 && in_array($fo,array("dfnBU","karaBU","kAraBU","punarBU")) && (in_array($so,array("Ne","Nasi!","Nas","Ni")) || ($sambuddhi===1 && $so==="su!") ) && arr($text,'/[U][+]['.pc('ac').']/'))
+if ($dhatu===1 && in_array($fo,array("dfnBU","karaBU","kAraBU","punarBU")) && (in_array($so,array("Ne","Nasi!","Nas","Ni")) || ($sambuddhi===1 && $so==="su!") ) )
 {
-    echo "<p class = pa >By dRnkarapunaHpUrvasya bhuvo yaN vaktavyaH (vA 4118), yaN bars application of iyaG,uvaG. Therefore, nadIkAryas will happen. :</p>";
+    echo "<p class = pa >By dRnkarapunaHpUrvasya bhuvo yaN vaktavyaH (vA 4118), yaN bars application of iyaG,uvaG. Therefore, nadIkAryas will happen. 1:</p>";
     $nadi=1;
     if (in_array($fo,array("karaBU","kAraBU")))
     {
