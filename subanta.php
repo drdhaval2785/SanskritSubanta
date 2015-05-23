@@ -387,7 +387,7 @@ elseif ( $_GET['cond1_1_1_6_4']==="1" || $_GET['cond2_1_2_1_6_4']==="1" )
 elseif ( $_GET['cond1_1_1_6_4']==="2" && !in_array($fo,array("anyatara","anyatarA")) && $_GET['cond2_1_2_1_6_4']==="2")
 {
     $sarvafinal = 0; 
-    $sarvanama=array_diff($sarvanama,array("atara","atama","atarA","atamA")); echo "hi";
+    $sarvanama=array_diff($sarvanama,array("atara","atama","atarA","atamA"));
 }
 elseif (ends(array($fo),array("anyatama","anyatamA"),1))
 {
@@ -423,7 +423,7 @@ elseif ( $_GET['cond1_10']==="2"  )
 {
     $sarvafinal = 1;
 }
-elseif ( ends(array($fo),array("tvat","tyad","tad","yad","etad","idam","adas","yuzmad","asmad","kim","idakam"),1)  ) // prAdhAnya and gauNatva pending.
+elseif ( ends(array($fo),array("tvat","tyad","tad","yad","etad","idam","adas","yuzmad","asmad","kim","idakam","atara","atama"),1)  ) // prAdhAnya and gauNatva pending.
 {
     $sarvafinal = 1;
 }
@@ -3039,7 +3039,6 @@ if (sub($ac,array("+"),blank(0),0) && $gender==="n" && in_array($so,$sup)  && $r
     display(0);         
     }
 }
-
 /* ato'm (7.1.24) */
 if (sub(array("a"),array("+"),array("su!","am"),0) && $gender==="n" && $adD ===0)
 {
@@ -3681,8 +3680,7 @@ if ( $fo==="adas" && $so==="wA" && $gender!=="f")
 
 /* yaci bham (1.4.14) and A kaDArAdekA saJjJA (1.4.1) */
 // Not coded perfectly. Only for sup pratyayas.
-echo $luk, $svamo;
-if ($sarvanamasthana1 === 0 && arr($text,'/[+]['.pc('ac').']/') && $luk===0 && $svamo===0 )
+if ($sarvanamasthana1 === 0 && arr($text,'/[+]['.pc('ac').']/') && $luk===0 && $svamo===0 && !($gender==="n" && in_array($so,array("O","Ow"))) )
 {
     echo "<p class = pa >By yaci bham (1.4.14) and A kaDArAdekA saJjJA (1.4.1) :</p>";
     echo "<p class = pa >यचि भम्‌ (१.४.१४) तथा आ कडारादेका सञ्ज्ञा (१.४.१) :</p>";
@@ -3741,7 +3739,6 @@ if (sub(array("pAd"),array("+"),$sup,0) && $bham===1)
     echo "<p class = sa >पादः पत्‌ (६.४.१३०):</p>";
     display(3);
 }
-print_r($text);
 /* TeH (6.4.143) */
 if ($Dit===1 && $bham===1 )
 {   
@@ -4337,8 +4334,9 @@ if (arr($text,'/[a][+][N][e]/') && $so === "Ne" && $sarvafinal!==0)
     display(3); 
     $sarva =1; // 0 - sarvanAmnaH smai has not applied. 1 - sarvanAmnaH smai has applied.
 } else { $sarva = 0; }
+print_r($text); echo $sarvafinal, $pada;
 /* GasiGyoH smAtsminau (7.1.15) */ 
-if (arr($text,'/[a][+][N]/') && $pada=== "pratyaya" && in_array($so,array("Nasi!","Ni")) && $sarvafinal!==0)
+if (arr($text,'/[a][+][N]/') && in_array($so,array("Nasi!","Ni")) && $sarvafinal!==0)
 {
     if ($sarvafinal===2)
     {
