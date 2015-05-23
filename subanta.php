@@ -3964,6 +3964,7 @@ if ( $gender==="n" && arr($text,'/['.flat($ik).'][+]/') && in_array($so,$acsup) 
     $text = three(array("i","u","f","x"),array("+"),$acsup,array("i","u","f","x"),array("n+"),$acsup,1);            
     // patch for sudhI
     $text = three(array("suDi","praDi","krozwfn","sulUn"),array("+"),$acsup,array("suDI","praDI","krozwf","sulun"),array("+"),$acsup,0);
+    $text = three(array("sulu"),array("+"),$acsup,array("sulU"),array("+"),$acsup,0);
     $text = three(array("sulu",),array("+"),array("wA"),array("sulun",),array("+"),array("wA"),0);
     echo "<p class = sa >By iko'ci vibhaktau (7.1.73) :</p>";
     echo "<p class = sa >इकोऽचि विभक्तौ (७.१.७३) :</p>";
@@ -3986,6 +3987,7 @@ if ( $gender==="n" && arr($text,'/['.flat($ik).'][+]/') && in_array($so,$acsup) 
     display(3);        
     }
  $ikoci=1; // 0 - iko'ci vibhaktau has not applied. 1 - iko'ci vibhaktau has applied.
+ $pada = "pratyaya";
 } else { $ikoci = 0; $noghe=0;}
 /* vA'mzasoH (6.4.80) */
 if (ends(array($fo),array("strI","stri"),1) && in_array($so,array("am","Sas")) && sub(array("strI","stri"),array("am","Sas"),blank(0),0))
