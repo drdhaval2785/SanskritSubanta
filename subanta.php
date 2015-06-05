@@ -5847,14 +5847,14 @@ if (arr($text,'/[iufx][+][s]/') && $so==="su!" && $sambuddhi===1 && $amba===0)
 {
     $text = two(array("i","u","f","x"),array("+"),array("e","o","ar","al"),array("+"),0);
     echo "<p class = sa >By hrasvasya guNaH (7.3.108) :</p>";
-    echo "<p class = sa >ह्रस्वस्य गुणः (७.३.१०८) :</p>";
+    echo "<p class = sa >ह्रस्वस्य गुणः (७.३.१०८) 1:</p>";
     display(3);
 }
-if (arr($text,'/[iufx][+]$/') && $so==="su!" && $sambuddhi===1 && $svamo===1)
+if (arr($text,'/[iufx][+]$/') && $so==="su!" && $sambuddhi===1 && $svamo===1 && $start===1)
 {
     $text = two(array("i","u","f","x"),array("+"),array("e","o","ar","al"),array("+"),1);
     echo "<p class = sa >By hrasvasya guNaH (7.3.108) :</p>";
-    echo "<p class = sa >ह्रस्वस्य गुणः (७.३.१०८) :</p>";
+    echo "<p class = sa >ह्रस्वस्य गुणः (७.३.१०८) 2:</p>";
     display(3);
 }
 /* halGyAbbhyo dIrghAtsutisyapRktaM hal (6.1.68) and apRkta ekAlpratyayaH (1.2.41) */
