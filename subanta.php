@@ -1327,7 +1327,7 @@ elseif ($gender === "f" && sub(array("i"),array("+"),blank(0),0) && AdivRddhi($t
     $ajAdyataSTAp=0;
 }
 /* bahvAdibhyazca (4.1.45), kRdikArAdaktinaH (ga 50) and sarvato'ktinnarthAdityeke (ga 51) */
-elseif ($gender === "f" && $_GET['cond2_21']==="2" && !sub(array("patn"),array("+"),blank(0),0) )
+/*elseif ($gender === "f" && $_GET['cond2_21']==="2" && !sub(array("patn"),array("+"),blank(0),0) )
 {
     $text = two(array("i"),array("+"),array("i"),array("+NIz+"),1);
     echo "<p class = st >By bahvAdibhyazca (4.1.45), kRdikArAdaktinaH (ga 50) :</p>";
@@ -1335,7 +1335,7 @@ elseif ($gender === "f" && $_GET['cond2_21']==="2" && !sub(array("patn"),array("
     display(8);
     $GIS=1;
     $ajAdyataSTAp=0;
-}
+}*/ // kRdakArAdaktinaH gives too many wrong forms.
 /* bahvAdibhyazca (4.1.45), kRdikArAdaktinaH (ga 50) and sarvato'ktinnarthAdityeke (ga 51) */
 elseif ($gender === "f" && $_GET['cond2_21']==="2" && sub(array("Sakawi","aSani","AtmamBari"),array("+"),blank(0),0) )
 {
@@ -4277,7 +4277,7 @@ if (sub($tyadadi,array("+"),blank(0),1) && !sub(array("dvi"),array("+"),blank(0)
 
 }
 /* ajAdyataSTAp (4.1.4) */
-if ($gender==="f" && sub(array("a+"),$sup,blank(0),0) && in_array($so,$sup) && ($SaTsvasrAdi=0 || sub(array("a+"),$sup,blank(0),0)) && $ajAdyataSTAp===0)
+if ($gender==="f" && sub(array("a+"),$sup,blank(0),0) && in_array($so,$sup) && ($SaTsvasrAdi=0 || sub(array("a+"),$sup,blank(0),0)) && $ajAdyataSTAp===0 && !sub(array("traya"),array("+"),blank(0),0))
 {
     $text = two(array("a+"),$sup,array("A+"),$sup,0);
     echo "<p class = st >By ajAdyataSTAp (4.1.4) :</p>";
@@ -5151,10 +5151,11 @@ if ( $so === "Am" && $numacira===0 && arr($text,'/[aiufx][+][A][m]/') )
 {
     $text = two($hrasva,array("+Am"),$hrasva,array("+nAm"),0);
     echo "<p class = sa >By hrasvanadyApo nuT (7.1.54) :</p>";
-    echo "<p class = sa >ह्रस्वनद्यापो नुट्‌ (७.१.५४) :</p>";
+    echo "<p class = sa >ह्रस्वनद्यापो नुट्‌ (७.१.५४) 1:</p>";
     display(3);
+	$hrasvanadyApo = 1;
 } 
-if ( $so === "Am" && $numacira===0 && $nadi!==0 )//&& arr($text,'/[IU][+][A][m]/') )
+if ( $so === "Am" && $numacira===0 && $nadi!==0 && $hrasvanadyApo!==1)//&& arr($text,'/[IU][+][A][m]/') )
 {
     if ($nadi===2)
     {
@@ -5165,14 +5166,14 @@ if ( $so === "Am" && $numacira===0 && $nadi!==0 )//&& arr($text,'/[IU][+][A][m]/
     $text = two(array("I","U"),array("+Am"),array("I","U"),array("+nAm"),0);        
     }
     echo "<p class = sa >By hrasvanadyApo nuT (7.1.54) :</p>";
-    echo "<p class = sa >ह्रस्वनद्यापो नुट्‌ (७.१.५४) :</p>";
+    echo "<p class = sa >ह्रस्वनद्यापो नुट्‌ (७.१.५४) 2:</p>";
     display(3);
 }
-if ( $so === "Am" && $numacira===0 && $Ap===1 && arr($text,'/[A][+][A][m]/'))
+if ( $so === "Am" && $numacira===0 && $Ap===1 && arr($text,'/[A][+][A][m]/') && $hrasvanadyApo!==1)
 {
     $text = two(array("A"),array("+Am"),array("A"),array("+nAm"),0);
     echo "<p class = sa >By hrasvanadyApo nuT (7.1.54) :</p>";
-    echo "<p class = sa >ह्रस्वनद्यापो नुट्‌ (७.१.५४) :</p>";
+    echo "<p class = sa >ह्रस्वनद्यापो नुट्‌ (७.१.५४) 3:</p>";
     display(3);
 }
 /* bahUrji exception to napuMsakasya jhalacaH (7.1.72) */ 
@@ -5524,7 +5525,7 @@ if ($Ne===1 && $start === 1)
 /* iko'savarNe zAkalyasya hrasvazca (6.1.127) */ // Right now coded for only dIrgha. Clarify wheter the hrasva preceding also included?
 $ik = array("i","I","u","U","f","F","x","X");
 $nonik = array("a","A","e","E","o","O");
-if (sub($ik,array("+"),$nonik,0) && $pada==="pada")
+/*if (sub($ik,array("+"),$nonik,0) && $pada==="pada")
 {
 // for pragRhya, it is difficult to tell the machine that it is not to be combined. So we have added one additional space. e.g. "a" -> "a ".
 $text = two(array("i+","I+"),array("a","A","u","U","f","F","x","X","e","o","E","O"),array("i +","i +"),array("a","A","u","U","f","F","x","X","e","o","E","O"),1);
@@ -5536,7 +5537,7 @@ echo "<p class = sa >By iko'savarNe zAkalyasya hrasvazca (6.1.127) :</p>
 echo "<p class = sa >इकोऽसवर्णे शाकल्यस्य ह्रस्वश्च (६.१.१२७) :</p>
     <p class = hn >समास व सित्‌ प्रत्यय परे होने पर यह लागू नहीं होता । जैसे कि पार्श्व ।</p>";
 display(0);
-}
+}*/ // this gives too many wrong forms in subanta. It is not useful in subanta. It is useful only in sandhi.
 /* upasargAdRti dhAtau (6.1.11) and vA supyApizaleH (6.1.12) */
 $akarantaupasarga = array("pra","apa","ava","upa",);
 $changedupasarga = array("prAr","apAr","avAr","upAr");
