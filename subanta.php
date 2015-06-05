@@ -4335,7 +4335,6 @@ if (arr($text,'/[a][+][N][e]/') && $so === "Ne" && $sarvafinal!==0)
     display(3); 
     $sarva =1; // 0 - sarvanAmnaH smai has not applied. 1 - sarvanAmnaH smai has applied.
 } else { $sarva = 0; }
-print_r($text); echo $sarvafinal, $pada;
 /* GasiGyoH smAtsminau (7.1.15) */ 
 if (arr($text,'/[a][+][N]/') && in_array($so,array("Nasi!","Ni")) && $sarvafinal!==0)
 {
@@ -4610,7 +4609,7 @@ if (ends(array($fo),array("strI","stri"),1) && $so==="Ni" )
     display(0);
 }
 /* acca gheH (7.3.119) */ 
-elseif ($ghi===1 && in_array($so,array("Ni")))
+elseif ($ghi===1 && in_array($so,array("Ni")) && arr($text,'/[iu][+][N][i]$/'))
 {
     $text = two(array("i","u"),array("Ni"),array("a","a"),array("O"),0);
     echo "<p class = sa >By acca gheH (7.3.119) :</p>";
