@@ -4200,7 +4200,6 @@ if ( sub(array("h"),array("n"),blank(0),0) && arr(array($fo),'/[h][a][n]/') && !
     display(3); 
     $hohante=1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
 } else { $hohante=0; }
-/* jasi ca (7.3.109) */
 /* trestrayaH (7.1.53) */
 if (arr($text,'/[t][r][i][+][A][m]$/') && !sub(array("stri"),array("+"),blank(0),0) && $so==="Am" )
 {
@@ -4462,7 +4461,18 @@ if ((arr($text,'/['.flat($ac).'][+][YR]/')||arr($text,'/[a][+][*][YR]$/')||$Nidv
     echo "<p class = sa >अचो ञ्णिति (७.२.११५) :</p>";
     display(3);
 }
-if (arr($text,'/[iufx][+][j]/') && $so==="jas")
+/* Patch to show overruling of striyAH (6.4.79) by jasi ca */
+if (ends(array($fo),array("strI","stri"),1) && $so==="jas" )
+{
+    $text = two(array("strI+","stri+"),array("jas"),array("stre+","stre+"),array("jas"),0);
+    echo "<p class = sa >By jasi ca (7.3.109) :</p>";
+    echo "<p class = hn >This rule overrules 'iyaG' mandated by striyAH (7.3.109) :</p>";
+    echo "<p class = sa >जसि च (७.३.१०९) :</p>";
+    echo "<p class = hn >'स्त्रियाः' इति इयङ्-आदेशे प्राप्ते तं प्रबाध्य जसि च इति सूत्रेण गुणः भवति। :</p>";
+    display(0);
+}
+/* jasi ca (7.3.109) */
+elseif (arr($text,'/[iufx][+][j]/') && $so==="jas")
 {
     $text = two(array("i","u","f","x"),array("+"),array("e","o","ar","al"),array("+"),0);
     echo "<p class = sa >By jasi ca (7.3.109) :</p>";
@@ -4589,13 +4599,33 @@ if ($nadi!==0 && arr($text,'/[+][N]/') && in_array($so,array("Ne","Nasi!","Nas",
     display(3); 
     $ANnadyAH =1; // 0 - ANnadyAH has not applied. 1 - ANnadyAH has applied.
 } else {$ANnadyAH = 0; } 
+/* Patch to show overruling of striyAH (6.4.79) by acca gheH (7.3.119) */
+if (ends(array($fo),array("strI","stri"),1) && $so==="Ni" )
+{
+    $text = two(array("strI+","stri+"),array("Ni"),array("stra+","stra+"),array("O"),0);
+    echo "<p class = sa >By acca gheH (7.3.119) :</p>";
+    echo "<p class = hn >This rule overrules 'iyaG' mandated by striyAH (7.3.109) :</p>";
+    echo "<p class = sa >अच्च घेः (७.३.११९) :</p>";
+    echo "<p class = hn >'स्त्रियाः' इति इयङ्-आदेशे प्राप्ते तं प्रबाध्य 'अच्च घेः' सूत्रस्य प्रवृत्तिर्भवति । :</p>";
+    display(0);
+}
 /* acca gheH (7.3.119) */ 
-if ($ghi===1 && in_array($so,array("Ni")))
+elseif ($ghi===1 && in_array($so,array("Ni")))
 {
     $text = two(array("i","u"),array("Ni"),array("a","a"),array("O"),0);
     echo "<p class = sa >By acca gheH (7.3.119) :</p>";
     echo "<p class = sa >अच्च घेः (७.३.११९) :</p>";
     display(3);
+}
+/* Patch to show overruling of striyAH (6.4.79) by gherGiti (7.3.111) */
+if (ends(array($fo),array("strI","stri"),1) && in_array($so,array("Ne","Nasi!","Nas")))
+{
+    $text = two(array("stri","strI"),array("Ne","Nasi!","Nas"),array("stre","stre"),array("Ne","Nasi!","Nas"),0);
+    echo "<p class = sa >By gherGiti (7.3.111) :</p>";
+    echo "<p class = hn >This rule overrules 'iyaG' mandated by striyAH (7.3.109) :</p>";
+    echo "<p class = sa >घेर्ङिति (७.३.१११) :</p>";
+    echo "<p class = hn >'स्त्रियाः' इति इयङ्-आदेशे प्राप्ते तं प्रबाध्य 'घेर्ङिति' सूत्रस्य प्रवृत्तिर्भवति । :</p>";
+    display(0);
 }
 /* gherGiti (7.3.111) */
 if ($ghi===1 && $noghe===0 && arr($text,'/[iu][+]/') && in_array($so,array("Ne","Nasi!","Nas")))
