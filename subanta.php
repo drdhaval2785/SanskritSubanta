@@ -3693,7 +3693,8 @@ if ( $fo==="adas" && $so==="wA" && $gender!=="f")
 
 /* yaci bham (1.4.14) and A kaDArAdekA saJjJA (1.4.1) */
 // Not coded perfectly. Only for sup pratyayas.
-if ($sarvanamasthana1 === 0 && arr($text,'/[+]['.pc('ac').']/') && $luk===0 && $svamo===0 && !($gender==="n" && in_array($so,array("O","Ow"))) )
+echo $sarvanamasthana1, $luk, $svamo; print_r($text);
+if ($sarvanamasthana1 === 0 && (arr($text,'/[+]['.pc('ac').']/') || in_array($so,$acsup)) && $luk===0 && $svamo===0 && !($gender==="n" && in_array($so,array("O","Ow"))) )
 {
     echo "<p class = pa >By yaci bham (1.4.14) and A kaDArAdekA saJjJA (1.4.1) :</p>";
     echo "<p class = pa >यचि भम्‌ (१.४.१४) तथा आ कडारादेका सञ्ज्ञा (१.४.१) :</p>";
@@ -3703,7 +3704,7 @@ if ($sarvanamasthana1 === 0 && arr($text,'/[+]['.pc('ac').']/') && $luk===0 && $
 /* svAdiSvasarvanAmasthAne (1.4.17) */
 if ($sarvanamasthana1 ===0 && in_array($so,$sup) && $bham!==1 )
 {
-    $pada="pada"; // this sUtra mandates pada saJjJA in these cases.
+	$pada = "pada";
     echo "<p class = pa >By svAdiSvasarvanAmasthAne (1.4.17) :</p>";
     echo "<p class = pa >स्वादिष्वसर्वनामस्थाने (१.४.१७) :</p>";
     display(0);    
