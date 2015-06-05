@@ -3930,10 +3930,12 @@ if ( $gender==="n" && in_array($so,array("O","Ow")))
     display(0);
 } else { $napuMsakAcca=0; }
 /* auGaH zyAM pratiSedho vAcyaH (vA) */
-if (arr($text,'/[+][S][I]/') && in_array($so,array("O","Ow")))
+if ($napuMsakAcca===1 && in_array($so,array("O","Ow")))
 {
     echo "<p class = pa >By auGaH zyAM pratiSedho vAcyaH (vA) :</p>";
+    echo "<p class = hn >This vArtika prevents application of 'yasyeti ca'.</p>";
     echo "<p class = pa >औङः श्यां प्रतिषेधो वाच्यः (वा) :</p>";
+    echo "<p class = hn >'यस्येति च' इति सूत्रेण प्राप्तौ अकारेकारलोपौ अनेन वार्तिकेन निषिध्यते ।</p>";
     display(0); 
     $auGazyA = 1; // 0 - doesn't prevent application of yasyeti ca. 1 - prevents application of yasyeti ca.	
 } else { $auGazyA = 0; }
