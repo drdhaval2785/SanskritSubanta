@@ -882,6 +882,14 @@ if ($bhashitapumska===1 && in_array($so,$tRtIyAdiSvaci) ) // see function.php fo
     echo "<p class = pa >तृतीयादिषु भाषितपुंस्कं पुंवद्गालवस्य (७.१.७४):</p>";
     display(0);
 }
+/* tRtIyAdiSu bhASitapuMskaM puMvadgAlavasya (7.1.74) */
+if (in_array($fo,array("prarE")) && $gender==="n" && in_array($so,$tRtIyAdiSvaci) ) // see function.php for $tRtIyAdiSvaci.
+{
+    echo "<p class = pa >By tRtIyAdiSu bhASitapuMskaM puMvadgAlavasya (7.1.74) :</p>";
+    echo "<p class = pa >तृतीयादिषु भाषितपुंस्कं पुंवद्गालवस्य (७.१.७४):</p>";
+    display(0);
+    $bhashitapumska=1;
+}
 
 
 /* defining kRt pratyayas */
@@ -3012,7 +3020,7 @@ if (sub(array("rE"),array("+"),$hlsup,0) && in_array($so,$hlsup) && !($gender===
 $achrasva= array("a","a","i","i","u","u","f","f","x","x","i","u","i","u",);
 if (sub($ac,array("+"),blank(0),0) && $gender==="n" && in_array($so,$sup)  && $rayo===0)
 {
-    if (sub(array("e","o","E","O"),array("+"),blank(0),0))
+    if (sub(array("e","o","E","O"),array("+"),blank(0),0) && $bhashitapumska!==1) 
     {
     $text = two($ac,array("+"),$achrasva,array("+"),0);        
     echo "<p class = sa >By hrasvo napuMsake prAtipadikasya (1.2.47) :</p>";
@@ -3567,6 +3575,11 @@ if (sub($asthi,array("+"),$tRtIyAdiSvaci,0) && in_array($so,$tRtIyAdiSvaci))
     echo "<p class = sa >By asthidadhisakthyakSNAmanaGudAttaH (7.1.75) :</p>";
     echo "<p class = sa >अस्थिदधिसक्थ्यक्ष्णामनङुदात्तः (७.१.७५) :</p>";
     display(0);
+    $text = one(array("an+"),array("n+"),0);
+    $text = one(array("n+Ni"),array("an+Ni"),1);
+    echo "<p class = sa >By allopo'naH (6.4.134) :</p>";
+    echo "<p class = sa >अल्लोपोऽनः (६.४.१३४) :</p>";
+    display(6);    
 }
 /* saGkhyAvisAyapUrvasyAhnasyAhannanyatarasyAM Gau (6.3.110) */
 $sankhyahan = array("ekAhna","dvyahna","tryahna","caturahna","paJcAhna","zaDAhna","saptAhna","azwAhna","navAhna","daSAhna","vyahna","sAyAhna"); // defining an array which satisfies needs of this sUtra.
@@ -3900,6 +3913,10 @@ if ($ghi===1 && $so==="wA" && $gender !== "f" && arr($text,'/[iu][+]/') && !(in_
     if ($bhashitapumska===0 )
     {
         $text = two(array("i+","u+"),array("wA"),array("i+","u+"),array("nA"),0);    
+    }
+    elseif (arr(array($fo),'/[eE]$/'))
+    {
+        $text = two(array("i+","u+"),array("wA"),array("i+","u+"),array("nA"),0);     
     }
     else
     {
@@ -7348,7 +7365,7 @@ display(0);
 }
 /* Gamo hrasvAdaci GamuNnityam (8.3.32) */ // Here the Agama has to be affiliated to $ac. Patch is bad.
 $nogamo = array("aR","ak","ik","uk","ac","ic","ec","aw","aR","iR","am","aS","al",); // array where this rule won't apply.
-if (arr($text,'/['.flat($hrasva).'][NRn][+]['.flat($ac).']/') && $pada === "pada" && !in_array($second,$nogamo) && !sub(array("pataYjal","sImant"),blank(0),blank(0),0))
+if (arr($text,'/['.flat($hrasva).'][NRn][+]['.flat($ac).']/') && $pada === "pada" && !in_array($second,$nogamo) && !sub(array("pataYjal","sImant"),blank(0),blank(0),0) && !in_array($so,$sup))
 {
 $text = three($hrasva,array("N","R","n"),$ac,$hrasva,array("NN","RR","nn"),$ac,0);
 echo "<p class = sa >By Gamo hrasvAdaci GamuNnityam (8.3.32) :</p>";
