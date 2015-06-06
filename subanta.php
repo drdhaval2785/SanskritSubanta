@@ -97,11 +97,21 @@ $sup1= array("su!","O","jas","am","Ow","Sas","wA","ByAm","Bis","Ne","ByAm","Byas
 for ($w=0;$w<count($sup1);$w++) // running the loop till $sup1 is exhausted.
 {
 
+if (20<$w && $w<24)
+{
+	$sambuddhi=1;
+}
+
 $nityaekavacana = array("eka");
 $nityabahuvacana = array("kati","tri","catur","paYcan","saptan","azwan","navan","daSan","ap"); // list of words which are used in bahuvacanam always. New can be added.
 $nityadvivacana = array("dvi",); // list of words which are used in dvivacanam always.
 if ($_GET['cond1_1_1']==="1"||$_GET['cond1_19']==="1") // make provision for saJjJA and upasarjanIbhUta.
 {
+}
+/* kim sambodhana special messages */
+elseif (in_array($first,array("kim")) &&  $sambuddhi===1)
+{
+	continue;
 }
 /* nityabahuvacanAnta special messages */
 elseif (in_array($first,$nityabahuvacana) && !in_array($sup1[$w],$bahusup) )
@@ -124,7 +134,7 @@ elseif ( in_array($first,array("uBaya")) && in_array($sup1[$w],$dvisup) )
 	continue;
 }
 /* tyadAdi sambodhana special messages */
-elseif (in_array($first,$tyadadi) && $sup1[$w]==="su!" && $sambuddhi===1)
+elseif (in_array($first,$tyadadi) && $sambuddhi===1)
 {
 	continue;
 }
