@@ -3312,7 +3312,9 @@ if (sub(array("vaya","yUya"),array("+"),array("am"),0) && $so==="jas" )
 if (sub(array("idam","idakam"),array("+"),blank(0),0) && $so==="su!")
 {
     echo "<p class = sa >By idamo maH (7.2.108) :</p>";
+    echo "<p class = hn >This is an exception to tyadAdInAmaH.</p>";
     echo "<p class = sa >इदमो मः (७.२.१०८) :</p>";
+    echo "<p class = hn >त्यदादीनामः इति सूत्रेण अत्वे प्राप्ते तदपवादतया इदमो मः इति सूत्रेण मकारादेशः ।</p>";
     display(3); 
     /* ido'y puMsi (7.2.111) */
     if (sub(array("idam","idakam"),array("+"),blank(0),0) && $so==="su!" && $gender==="m")
