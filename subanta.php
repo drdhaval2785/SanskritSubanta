@@ -3712,7 +3712,9 @@ if ($sarvanamasthana1 ===0 && in_array($so,$sup) && $bham!==1 )
 if (  $_GET['cond1_6_1']==="1" && $so==="Am")
 {
     echo "<p class = pa >'nuT' Agama doesn't happen in case of gauNatva.</p>";
+    echo "<p class = hn >This overrules 'nuT' Agama mandated by SaTcaturbhyazca (7.1.55)</p>";
     echo "<p class = pa >गौणत्वे तु नुट्‌ नेष्यते ।</p>";
+    echo "<p class = pa >षट्चतुर्भ्यश्च इति नुडागमे प्राप्ते गौणत्वे तु नुट् नेष्यते इति वचनेन नुट् न भवति ।</p>";
     display(0); 
 }
 elseif ( ($shat===1 || arr(array($fo),'/[c][a][t][u][r]$/')) && $so === "Am" && !in_array($fo,$sarvanama) && ($samasa===0 || $samasa===1 && $pradhana===1) && $_GET['cond1_6_1']!=="1")
