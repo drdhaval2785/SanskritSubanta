@@ -3653,7 +3653,7 @@ if (sub(array("div+"),$hlsup,blank(0),0) || arr($text,'/[d][i][v][+]$/') )
     $text = one(array("div+"),array("diu+"),0);
     echo "<p class = sa >By diva ut (6.1.131) :</p>";
     echo "<p class = sa >दिव उत्‌ (६.१.१३१) :</p>";
-    display(0);        
+    display(0);
 }
 /* zeSo ghyasakhi (1.4.7) */
 if ($nadi!==1 && arr($text,'/[iu][+]/') && $fo!=="saKi" && !arr($text,'/[iu][+]$/'))
@@ -3693,7 +3693,6 @@ if ( $fo==="adas" && $so==="wA" && $gender!=="f")
 
 /* yaci bham (1.4.14) and A kaDArAdekA saJjJA (1.4.1) */
 // Not coded perfectly. Only for sup pratyayas.
-echo $sarvanamasthana1, $luk, $svamo; print_r($text);
 if ($sarvanamasthana1 === 0 && (arr($text,'/[+]['.pc('ac').']/') || in_array($so,$acsup)) && $luk===0 && $svamo===0 && !($gender==="n" && in_array($so,array("O","Ow"))) )
 {
     echo "<p class = pa >By yaci bham (1.4.14) and A kaDArAdekA saJjJA (1.4.1) :</p>";
@@ -3710,7 +3709,7 @@ if ($sarvanamasthana1 ===0 && in_array($so,$sup) && $bham!==1 )
     display(0);    
 }
 /* SaTcaturbhyazca (7.1.55) */
-if (  $_GET['cond1_6_1']==="1")
+if (  $_GET['cond1_6_1']==="1" && $so==="Am")
 {
     echo "<p class = pa >'nuT' Agama doesn't happen in case of gauNatva.</p>";
     echo "<p class = pa >गौणत्वे तु नुट्‌ नेष्यते ।</p>";
