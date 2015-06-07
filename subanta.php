@@ -3749,7 +3749,7 @@ if ( sub(array("azwan"),array("nAm"),blank(0),1) && $so === "Am" && ($samasa===0
     display(3); 
 }
 /* nopadhAyAH (6.4.7) */
-if ( arr($text,'/[n][+]/') && $so === "Am" && !in_array($fo,$sarvanama) && ($samasa===0 || ($samasa===1 && $pradhana===1)))
+if ( arr($text,'/[n][+][n][A][m]$/') && $so === "Am" && !in_array($fo,$sarvanama) && ($samasa===0 || ($samasa===1 && $pradhana===1)))
 {
     $text = three($ac,array("n"),array("+nAm"),$acdir,array("n"),array("+nAm"),0); // for function three, please see function.php.
     echo "<p class = sa >By nopadhAyAH (6.4.7) :</p>";
