@@ -3835,7 +3835,7 @@ if (sub(array("in","han","pUzan","aryaman"),array("+"),array("su!"),1) && !in_ar
     $inhan=1; // 0 - the word is  not eligible for inhanpU... 1 - the word is eligible for inhanpU.. 
 } else {$inhan=0; }
 /* inhanpUSAryamNAM zau (6.4.12) */
-if (sub(array("in","han","pUzan","aryaman"),array("+"),$sarvanamasthana,0) && !sub(array("ahan","Ahan",),array("+"),array("su!"),0) && $sambuddhi===0 && $inhan===0 && !in_array($fo,array("ahan","dIrGAhan")))
+if (sub(array("in","han","pUzan","aryaman"),array("+"),array("Si"),0) && !sub(array("ahan","Ahan",),array("+"),array("su!"),0) && $sambuddhi===0 && $inhan===0 && !in_array($fo,array("ahan","dIrGAhan")))
 {
     $text = two(array("in","han","pUzan","aryaman"),array("Si"),array("In","hAn","pUzAn","aryamAn"),array("Si"),0);
     echo "<p class = sa >By inhanpUSAryamNAM zau (6.4.12) :</p>";
