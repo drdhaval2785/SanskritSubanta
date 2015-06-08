@@ -636,14 +636,15 @@ else
     $yuj=0;
 }
 /* tyadAdi gauNatva definition */
-if ( $_GET['cond1_10']==="1"  )
+$noatvasatva=0;
+/*if ( $_GET['cond1_10']==="1"  )
 {
     $noatvasatva=1; // 0 - tyadAdi are upasarjanIbhUta / saJjJA. 1 - tyadAdi are not upasarjanIbhUta / saJjJA i.e. prAdhAnya.
 }
 else
 {
     $noatvasatva=0;
-}
+}*/ // https://github.com/drdhaval2785/SanskritSubanta/issues/86 trial.
 /* asmad / yuSmad -> nau / naH etc definition */
 if ($_GET['cond1_12']==="1" && in_array($w,array(3,4,5,9,10,11,15,16,17)) )
 {
@@ -4291,6 +4292,7 @@ if (sub(array("dvi"),array("+"),blank(0),0) && in_array($so,$sup) && ends(array(
     echo "<p class = hn >द्विपर्यन्तानामेवेष्टिः (वा ४४६८) :</p>";
     display(3);
 }
+echo $idamoma, $svamo, $noatvasatva;
 $tyadadinamah = array("dv+a","tya+a","ta+a","ya+a","eta+a","ida+a","ada+a","eka+a","idaka+a"); // creating a set of words eligible for tyadAdInAmaH
 $tyadadinamah1 = array("dva","tya","ta","ya","eta","ida","ada","eka","idaka"); // creating a list of converted words after tyadAdInAmaH.
 if (sub($tyadadi,array("+"),blank(0),1) && !sub(array("dvi"),array("+"),blank(0),1) && in_array($so,$sup) && $idamoma===0 && $svamo===0 && $noatvasatva===0 )
