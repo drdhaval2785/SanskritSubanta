@@ -4292,7 +4292,6 @@ if (sub(array("dvi"),array("+"),blank(0),0) && in_array($so,$sup) && ends(array(
     echo "<p class = hn >द्विपर्यन्तानामेवेष्टिः (वा ४४६८) :</p>";
     display(3);
 }
-echo $idamoma, $svamo, $noatvasatva;
 $tyadadinamah = array("dv+a","tya+a","ta+a","ya+a","eta+a","ida+a","ada+a","eka+a","idaka+a"); // creating a set of words eligible for tyadAdInAmaH
 $tyadadinamah1 = array("dva","tya","ta","ya","eta","ida","ada","eka","idaka"); // creating a list of converted words after tyadAdInAmaH.
 if (sub($tyadadi,array("+"),blank(0),1) && !sub(array("dvi"),array("+"),blank(0),1) && in_array($so,$sup) && $idamoma===0 && $svamo===0 && $noatvasatva===0 )
