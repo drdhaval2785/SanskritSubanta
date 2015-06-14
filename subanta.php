@@ -5079,7 +5079,7 @@ if ($sarvanamasthana1===1 && !in_array(1,$num) && (( $dhatu===0 && itcheck(array
     $text = mit('/['.pc('hl').']/',"n",0);
     $text = one(array("annc"),array("anc"),0);
     $text = one(array("+In+"),array("+I+"),0);
-    $text = one(array("maGavann+"),array("maGavan+"),0);
+    $text = one(array("maGavann+","maGavAnn"),array("maGavan+","maGavAn+"),0);
     echo "<p class = sa >By ugidacAM sarvanAmasthAne'dhAtoH (7.1.70) :</p>";
     echo "<p class = sa >उगिदचां सर्वनामस्थानेऽधातोः (७.१.७०) :</p>";
     if ( ($kvip===1 || $kvin===1)&& $dhatu===1)
@@ -5282,7 +5282,7 @@ if ( $gender==="n" && $sarvanamasthana1===1 && arr($text,'/['.pc('Jl').'][+]/') 
 }
 /* sarvanAmasthAne cAsambuddhau (6.4.8) */
 $acdir = array("A","A","I","I","U","U","F","F","F","F","e","o","E","O",);
-if (arr($text,'/['.flat($ac).'][n][+]/') && !arr($text,'/['.flat($ac).'][n][+]$/') && !in_array(1,$num) && !sub(array("Ahan"),blank(0),blank(0),0) && $sarvanamasthana1===1 && $sambuddhi===0 && $inhan===0 && $inhan1===0 && $aptRn===0 && $casambu!==1 && !arr($text,'/[i][n][+]/') && !arr($text,'/[h][a][n][+]/') && !arr($text,'/pUzan+/')&& !arr($text,'/ryaman+/'))
+if (arr($text,'/['.flat($ac).'][n][+]/') && !arr($text,'/['.flat($ac).'][n][+]$/') && !in_array(1,$num) && !in_array($fo,array("maGavan")) && !sub(array("Ahan"),blank(0),blank(0),0) && $sarvanamasthana1===1 && $sambuddhi===0 && $inhan===0 && $inhan1===0 && $aptRn===0 && $casambu!==1 && !arr($text,'/[i][n][+]/') && !arr($text,'/[h][a][n][+]/') && !arr($text,'/pUzan+/')&& !arr($text,'/ryaman+/'))
 {
     $text = two($ac,array("n+"),$acdir,array("n+"),0);
     echo "<p class = sa >By sarvanAmasthAne cAsambuddhau (6.4.8) :</p>";
@@ -6572,15 +6572,28 @@ if (sub(array("maGavAn"),blank(0),blank(0),0) && arr($text,'/[v][a][n][+]$/') &&
     echo "<p class = sa >न लोपः प्रातिपदिकान्तस्य (८.२.७) :</p>";
     display(0);        
 }
-/*if (sub(array("maGavan","Ahar@","Ahan"),blank(0),blank(0),0) && in_array($so,$sup) && $bham===0 && $shi===0 && $ikoci===0 && $Gisambu===0 && $sambuddhi===0)
+if (sub(array("maGavan","Ahar@","Ahan","maGavant"),blank(0),blank(0),0) && in_array($so,$sup) && $bham===0 && $shi===0 && $ikoci===0 && $Gisambu===0 && $sambuddhi===0)
 {
-    $text = two(array("maGavan","Ahar@","Ahan"),array("+"),array("maGavAn","AhAr@","AhAn"),array("+"),0);
+	$text = two(array("maGavant"),array("+"),array("maGavan"),array("+"),0);
+	echo "<p class = sa >By saMyogAntasya lopaH (8.2.23) :</p>";
+    echo "<p class = sa >संयोगान्तस्य लोपः (८.२.२३) :</p>";
+    display(0);
+    $text = two(array("Ahar@","Ahan"),array("+"),array("AhAr@","AhAn"),array("+"),0);
+	if ($so==="su!")
+	{
+		$text = two(array("maGavan"),array("+"),array("maGavAn"),array("+"),1);
+	}
+	else
+	{
+		$text = two(array("maGavan"),array("+"),array("maGavAn"),array("+"),1);
+		$text = two(array("maGavan"),array("+"),array("maGavant"),array("+"),0);		
+	}
     echo "<p class = sa >By sarvanAmasthAne cAsambuddhau (6.4.8) :</p>";
     echo "<p class = hn >Because of bahulagrahaNa in maghavan, saMyogAntasya lopaH is not asiddha here. :</p>";
     echo "<p class = sa >सर्वनामस्थाने चासम्बुद्धौ (६.४.८)  :</p>";
     echo "<p class = hn >मघवा बहुलं के बहुलग्रहण के कारण, संयोगान्तलोप असिद्ध नहीं है । </p>";
     display(0);        
-}*/
+}
 /* NAvuttarapade pratiSedho vaktavyaH (vA 4785) */
 // Pending because involves samAsa. Out of purview right now.
 
