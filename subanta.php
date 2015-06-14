@@ -6564,14 +6564,6 @@ if (arr($text,'/[n][+]$/')  && ( in_array($so,array("Ni")) || (in_array($so,arra
     display(0); 
     $Gisambu=1; // 0 - This sUtra has not applied. 1 - This sUtra has applied.
 } else {$Gisambu=0; }
-/* patches for maghavA bahulam */
-if (sub(array("maGavAn"),blank(0),blank(0),0) && arr($text,'/[v][a][n][+]$/') && in_array($so,$sup) && $bham===0 && $shi===0 && $ikoci===0 && $Gisambu===0 && $sambuddhi===0)
-{
-    $text = two(array("maGavAn"),array("+"),array("maGavA"),array("+"),0);
-    echo "<p class = sa >By na lopaH prAtipadikAntasya (8.2.7) :</p>";
-    echo "<p class = sa >न लोपः प्रातिपदिकान्तस्य (८.२.७) :</p>";
-    display(0);        
-}
 if (sub(array("maGavan","Ahar@","Ahan","maGavant"),blank(0),blank(0),0) && in_array($so,$sup) && $bham===0 && $shi===0 && $ikoci===0 && $Gisambu===0 && $sambuddhi===0)
 {
 	$text = two(array("maGavant"),array("+"),array("maGavan"),array("+"),0);
@@ -6581,7 +6573,7 @@ if (sub(array("maGavan","Ahar@","Ahan","maGavant"),blank(0),blank(0),0) && in_ar
     $text = two(array("Ahar@","Ahan"),array("+"),array("AhAr@","AhAn"),array("+"),0);
 	if ($so==="su!")
 	{
-		$text = two(array("maGavan"),array("+"),array("maGavAn"),array("+"),1);
+		$text = two(array("maGavan"),array("+"),array("maGavAn"),array("+"),0);
 	}
 	else
 	{
@@ -6610,7 +6602,16 @@ if (arr($text,'/[n][+]$/') && in_array($so,$sup) && $bham===0 && $shi===0 && $ik
 /* na lopaH prAtipadikAntasya (8.2.7) */
 // parame vyoman is pending. Vedic in nature. 
 $nalopa=0; // 0 - no nalopa, is default. 1 - there is nalopa. Useful to display nalopaH supsvarasaJjJAtugvidhiSu kRti (8.2.2).
-if (arr($text,'/[n][+]$/') && $nopadha===1 && !in_array(1,$napumsakanalopa) )
+print_r($text);
+/* patches for maghavA bahulam */
+if (sub(array("maGavAn"),blank(0),blank(0),0) && arr($text,'/[v][A][n][+]$/') && in_array($so,$sup) && $bham===0 && $shi===0 && $ikoci===0 && $Gisambu===0 && $sambuddhi===0)
+{
+    $text = two(array("maGavAn"),array("+"),array("maGavA"),array("+"),1);
+    echo "<p class = sa >By na lopaH prAtipadikAntasya (8.2.7) :</p>";
+    echo "<p class = sa >न लोपः प्रातिपदिकान्तस्य (८.२.७) :</p>";
+    display(0);        
+}
+elseif (arr($text,'/[n][+]$/') && $nopadha===1 && !in_array(1,$napumsakanalopa) )
 {
     $text = two(array("n"),array("+"),array(""),array("+"),0);
     echo "<p class = sa >By na lopaH prAtipadikAntasya (8.2.7) :</p>";
