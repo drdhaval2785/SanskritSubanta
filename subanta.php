@@ -8224,6 +8224,7 @@ $pada="pratyaya";
 $it = array();
 $itprakriti = array();
 $itpratyaya = array();
+$num = array();
 $TAp=0; $DAp=0; $cAp=0; $GIp=0; $GIn=0; $GIS=0; $ajAdyataSTAp=0;
 }
 ?>
