@@ -31,7 +31,7 @@ $word = convert1($word); // convert devangari to SLP1.
 
 // usable variables
 $arrWord[] = $word; // creating an array $arrWord with first member as $word.
-$pancan=array("paYcan","saptan","zwan","navan","daSan"); // array of paJcan words.
+$pancan=array("paYcan","saptan","azwan","navan","daSan","Azwan"); // array of paJcan words.
 $last = substr($word, -1);    // returns "last letter"
 $last_4 = substr($word, -4);    // returns "last 4 letters"
 $last_5 = substr($word, -5); // returns "last 5 letters"
