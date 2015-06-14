@@ -1202,7 +1202,7 @@ elseif ( (in_array($fo,$ajAdi) || $ajAdyataSTAp===1) && $kevala!==1)
 
 /* na SaTsvasrAdibhyaH (4.1.10) */
 // bracketed because deals with strIpratyayas.
-elseif ($shat===1 || in_array($fo,$svasrAdi))
+elseif ( ($shat===1 || in_array($fo,$svasrAdi)) && $gender==="f")
 {
     echo "<p class = st >By na SaTsvasrAdibhyaH (4.1.10) :</p>";
     echo "<p class = st >न षट्स्वस्रादिभ्यः (४.१.१०) :</p>";
