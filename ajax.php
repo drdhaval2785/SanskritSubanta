@@ -14,7 +14,7 @@ $tran = $_POST['tran'];
 // Code for converting from IAST to SLP
 $iast = array("a","ā","i","ī","u","ū","ṛ","ṝ","ḷ","ḹ","e","ai","o","au","ṃ","ḥ","kh","ch","ṭh","th","ph","gh","jh","ḍh","dh","bh","ṅ","ñ","ṇ","k","c","ṭ","t","p","g","j","ḍ","d","b","n","m","y","r","l","v","s","h","ś","ṣ",); // IAST letters
 $slp = array("a","A","i","I","u","U","f","F","x","X","e","E", "o","O", "M","H","K", "C",  "W", "T", "P","G", "J",  "Q", "D","B", "N","Y","R","k","c","w","t","p","g","j","q","d","b","n","m","y","r","l","v","s","h","S","z",); // SLP1 letters
-  if (preg_match('/[āĀīĪūŪṛṚṝṜḷḶḹḸṃṂḥḤṭṬḍḌṅṄñÑṇṆśŚṣṢV]/',$word)) // If there is any IAST specific characters, we convert IAST->SLP1.
+if (preg_match('/[āĀīĪūŪṛṚṝṜḷḶḹḸṃṂḥḤṭṬḍḌṅṄñÑṇṆśŚṣṢV]/',$word)) // If there is any IAST specific characters, we convert IAST->SLP1.
 {
     $word = str_replace($iast,$slp,$word);
 }
@@ -223,6 +223,13 @@ elseif ( $last==="j" && $_POST['step']==='1')
             $html .= '<div id="step11">';
             $html .= '<input type="radio" value="1" name="cond1_9" > क्विन्‌ प्रत्ययान्त है ';                    
             $html .= '<input type="radio" value="2" name="cond1_9" > नहीं ';                    
+            $html .= '</div>';    
+}
+if ( ends($arrWord,array("yuj"),1) && $_POST['step']==='1_9_1')
+{
+            $html .= '<div id="step22">';
+            $html .= '<input type="radio" value="1" name="cond1_9_1_1" > युजि ';                    
+            $html .= '<input type="radio" value="2" name="cond1_9_1_1" > युजिर्‌ ';                    
             $html .= '</div>';    
 }
 if ( ends($arrWord,array("tyad","tad","yad","etad","idam","adas","idakam",),1) && $_POST['step']!=='1_10_2')

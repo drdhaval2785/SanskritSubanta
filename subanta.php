@@ -617,14 +617,15 @@ elseif ( $_GET['cond1_8']==="2")
     $pradhana=1;
 }
 /* jakArAnta pulliGga kvin pratyaya definition */
-if ( $_GET['cond1_9']==="1" && $_GET['cond1_9_1']==="1" )
+if ( $_GET['cond1_9']==="1" && $_GET['cond1_9_1_1']==="1" )
 {
     $dhatu=1;
     $kvin=1;
     $samasa=0;
+	$itprakriti = array_merge($itprakriti,array("i"));
     $yuj=1; // 0 - yujerasamAse (7.1.71) won't apply. 1 - yujerasamAse (7.1.71) will apply.
 }
-elseif ( $_GET['cond1_9']==="1" || $_GET['cond1_9_1']==="2" )
+elseif ( $_GET['cond1_9']==="1" || $_GET['cond1_9_1_1']==="2" )
 {
     $dhatu=1;
     $kvin=1;
@@ -5006,9 +5007,11 @@ if (sub(array("hiMs"),array("+"),blank(0),0))
     $it=array_merge($it,array("i"));
     $itprakriti=array_merge($it,array("i"));
 }
+print_r($it);
 /* aniditAM hala upadhAyAH kGiti (6.4.24) */ 
 if ( !itcheck(array("i"),1) && arr($text,'/[nM]['.pc('hl').'][+]/') && ( itcheck(array("k","N"),1)|| $ancu===1 ) && !($kruJca===1 && sub(array("krunc","kruYc"),blank(0),blank(0),0) ) && $nance===0 )
 {
+	echo "yes";
     $text = three(array("n","M"),$hl,array("+"),array("",""),$hl,array("+"),0);        
     echo "<p class = sa >aniditAM hala upadhAyAH kGiti (6.4.24) :</p>";
     echo "<p class = sa >अनिदितां हल उपधायाः क्ङिति (६.४.२४) :</p>";
