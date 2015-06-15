@@ -5007,7 +5007,6 @@ if (sub(array("hiMs"),array("+"),blank(0),0))
     $it=array_merge($it,array("i"));
     $itprakriti=array_merge($it,array("i"));
 }
-print_r($it);
 /* aniditAM hala upadhAyAH kGiti (6.4.24) */ 
 if ( !itcheck(array("i"),1) && arr($text,'/[nM]['.pc('hl').'][+]/') && ( itcheck(array("k","N"),1)|| $ancu===1 ) && !($kruJca===1 && sub(array("krunc","kruYc"),blank(0),blank(0),0) ) && $nance===0 )
 {
@@ -6605,7 +6604,6 @@ if (arr($text,'/[n][+]$/') && in_array($so,$sup) && $bham===0 && $shi===0 && $ik
 /* na lopaH prAtipadikAntasya (8.2.7) */
 // parame vyoman is pending. Vedic in nature. 
 $nalopa=0; // 0 - no nalopa, is default. 1 - there is nalopa. Useful to display nalopaH supsvarasaJjJAtugvidhiSu kRti (8.2.2).
-print_r($text);
 /* patches for maghavA bahulam */
 if (sub(array("maGavAn"),blank(0),blank(0),0) && arr($text,'/[v][A][n][+]$/') && in_array($so,$sup) && $bham===0 && $shi===0 && $ikoci===0 && $Gisambu===0 && $sambuddhi===0)
 {
