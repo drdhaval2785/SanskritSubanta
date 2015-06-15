@@ -1165,6 +1165,7 @@ elseif ( (in_array($fo,$ajAdi) || $ajAdyataSTAp===1) && $kevala!==1)
 {
     echo "<p class = st >ajAdyataSTAp (4.1.4) :</p>";
     echo "<p class = st >अजाद्यतष्टाप्‌ (४.१.४) 1:</p>";
+    $text = last(array($so),array("+wAp+".$so),0);
 /* displaying various sub part of ajAdi gaNa and relevant explanation for introduction of word in ajAdi gaNa */
     if( sub(array("aja","eqaka","aSva","cawaka","mUzika"),array("+"),blank(0),0))    
     {
@@ -1183,6 +1184,7 @@ elseif ( (in_array($fo,$ajAdi) || $ajAdyataSTAp===1) && $kevala!==1)
     }    
     if( sub(array("kruYc","uzRih","devaviS","diS","dfS","kzuD","vAc","gir",),array("+"),blank(0),0))
     {
+    $text = two(array("+wAp+"),$so,array("+"),$so,1);
     echo "<p class = hn >These are not ending with akAra. Therefore included in ajAdi class for TAp pratyaya.</p>";
     echo "<p class = hn >अदन्तत्व नहीं होने के कारण टाप्‌ प्रत्यय के लिए समर्थ बनाने के लिए अजादि गण में इनका समावेश किया गया है ।</p>";        
     }    
@@ -1196,7 +1198,6 @@ elseif ( (in_array($fo,$ajAdi) || $ajAdyataSTAp===1) && $kevala!==1)
     echo "<p class = hn >Even in jAti, this word takes TAp pratyaya.</p>";
     echo "<p class = hn >जाति में भी टाप्‌ प्रत्यय के लिए समर्थ बनाने के लिए अजादि गण में इनका समावेश किया गया है ।</p>";        
     }    
-    $text = last(array($so),array("+wAp+".$so),0);
     display(0); 
     $TAp = 1;
 }
