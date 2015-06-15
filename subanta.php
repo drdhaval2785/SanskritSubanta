@@ -4309,10 +4309,10 @@ if (sub($tyadadi,array("+"),blank(0),1) && !sub(array("dvi"),array("+"),blank(0)
     echo "<p class = sa >By ato guNe (6.1.96) :</p>";
     echo "<p class = sa >अतो गुणे (६.१.९६) :</p>";
     display(0);    
-
 }
+echo $gender;
 /* ajAdyataSTAp (4.1.4) */
-if ($gender==="f" && sub(array("a+"),$sup,blank(0),0) && in_array($so,$sup) && ($SaTsvasrAdi=0 || sub(array("a+"),$sup,blank(0),0)) && $ajAdyataSTAp===0 && !sub(array("traya"),array("+"),blank(0),0))
+if ($gender==="f" && sub(array("a+"),$sup,blank(0),0) && in_array($so,$sup) && ($SaTsvasrAdi===0 || sub(array("a+"),$sup,blank(0),0)) && $ajAdyataSTAp!==1 && !sub(array("traya"),array("+"),blank(0),0))
 {
     $text = two(array("a+"),$sup,array("A+"),$sup,0);
     echo "<p class = st >By ajAdyataSTAp (4.1.4) :</p>";
