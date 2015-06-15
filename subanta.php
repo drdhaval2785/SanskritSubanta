@@ -4310,7 +4310,6 @@ if (sub($tyadadi,array("+"),blank(0),1) && !sub(array("dvi"),array("+"),blank(0)
     echo "<p class = sa >अतो गुणे (६.१.९६) :</p>";
     display(0);    
 }
-echo $gender;
 /* ajAdyataSTAp (4.1.4) */
 if ($gender==="f" && sub(array("a+"),$sup,blank(0),0) && in_array($so,$sup) && ($SaTsvasrAdi===0 || sub(array("a+"),$sup,blank(0),0)) && $ajAdyataSTAp!==1 && !sub(array("traya"),array("+"),blank(0),0))
 {
