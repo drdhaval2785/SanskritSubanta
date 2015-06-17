@@ -6708,8 +6708,8 @@ else { $kvinku=0; }
 /* vrazcabhrasjamRjayajarAjabhrAjacChazAM ca (8.2.35) */
 // TubhrAjR dIptau and ejR bhejR bhrAjR dIptau are different. This is pending to code.
 // parau vrajeH SaH padAnte (u 217) pending. 
-$vrasca = array("vfSc","sfj","mfj","yaj","rAj","BrAj","devej","parivrAj","Bfj","ftvij");
-$vrashca = array("vfSz","sfz","mfz","yaz","rAz","BrAz","devez","parivrAz","Bfz","ftviz");
+$vrasca = array("vfSc","sfj","mfj","yaj","rAj","BrAj","devej","parivrAj","Bfj","ftvij","Bfsj");
+$vrashca = array("vfSz","sfz","mfz","yaz","rAz","BrAz","devez","parivrAz","Bfz","ftviz","Bfsz");
 if ( (sub($vrasca,array("+"),prat("Jl"),0) ||  ( sub($vrasca,array("+"),blank(0),0) && $pada==="pada")) && $_GET['cond1_9_3']!=="2" && ($kvinku===0 || ($fo==="asfj" && in_array($so,array("su!","am")))) )
 {
     if (sub($vrasca,prat('Jl'),blank(0),0))
