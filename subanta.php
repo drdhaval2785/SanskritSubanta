@@ -6871,8 +6871,8 @@ if ((arr($text,('/[r][+][s]$/')) && $pada === "pratyaya") || (arr($text,('/[r][s
 }
 if ((arr($text,('/[r][+][hyvrlYmGRnJBGQDjbgqdKPCWTcwtkpzS]$/')) && $pada === "pratyaya") || (arr($text,('/[r][hyvrlYmGRnJBGQDjbgqdKPCWTcwtkpzS][+]/')) && $pada === "pada") )
 {
-    echo "<p class = pa >rAtsasya (8.2.24) prevents application of saMyogAntasya lopaH.</p>"; 
-    echo "<p class = pa >रात्सस्य (८.२.२४) से संयोगान्तस्य लोपः का प्रतिषेध होता है ।</p>";
+    echo "<p class = pa >rAtsasya (8.2.24) lays down a rule that only sakAra can be elided after rakAra.</p>"; 
+    echo "<p class = pa >रात्सस्य (८.२.२४) इत्यनेन नियमः क्रियते यत्‌ रकारात्परस्य सकारस्यैव लोपो भवति । नान्यवर्णस्य ।</p>";
     display(0); 
     $ratsasya=1; // 0 - doesn't prevent saMyogAntasya lopaH. 1 - prevents saMyogAntasya lopaH.
 } else { $ratsasya=0; }
