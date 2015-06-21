@@ -4781,8 +4781,7 @@ if (arr($text,'/^[a][+]/') && $so==="Bis" && in_array($fo,array("idam","idakam",
 } else { $nedamadas=0; }
 /* jasaH zI (7.1.17) */ 
 if (arr($text,'/[a][+]/') && $pada=== "pratyaya" && $so === "jas" && ends(array($fo),$sarvanama,1) && $nojas===0  && $sarvafinal!==0 && $shi!==1)
-    {
-    {
+{
     if ($sarvafinal===2)
     {
     $text = last(array("jas"),array("SI"),1);        
@@ -5061,6 +5060,25 @@ elseif ( ( $atu===1  )  && $so==="su!" && $sambuddhi===0 )
     echo "<p class = sa >अत्वसन्तस्य चाधातोः (६.४.१४) :</p>";
     display(3);
 }
+/* vA napuMsakasya (7.1.79) */  
+$vAnapuMsaka=0;
+if ($abhyasta===1 && $shatR===1 && itcheck(array("f"),1) && $gender==="n" && $sarvanamasthana1===1 )
+{
+    $text = mit('/['.pc('hl').'][+]/','n',1); $num=array_merge($num,array(1));
+    $text = one(array("annc"),array("anc"),0);
+    echo "<p class = sa >By vA napuMsakasya (7.1.79) :</p>";
+    echo "<p class = sa >वा नपुंसकस्य (७.१.७९) :</p>";
+    display(0); 
+    $vAnapuMsaka=1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
+}
+/* nAbhyAsAcChatuH (7.1.78) */
+elseif ($abhyasta===1 && $shatR===1 && itcheck(array("f"),1) )
+{
+    echo "<p class = sa >By nAbhyastAcChatuH (7.1.78) :</p>";
+    echo "<p class = sa >नाभ्यास्ताच्छतुः (7.1.78) :</p>";
+    display(0); 
+    $nAbhyasta=1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
+} else { $nAbhyasta=0; }
 /* ugidacAM sarvanAmasthAne'dhAtoH (7.1.70) */ 
 if (sub(array("BavantI","BavatI"),array("+"),blank(0),0))
 {
@@ -5079,7 +5097,7 @@ if ($sarvanamasthana1===1 && ( ($ancu===0 && $dhatu===1)  ) && $kruJca===0 && ar
     display(0);
     }
 //if ($sarvanamasthana1===1 && $nAbhyasta===0 &&  (( $dhatu===0 && arr($text,'/[uUfFxX][!][+]/') ) ||  ($ancu===1 && $dhatu===1) ||  ( ($kvip===1 || $kvin===1)&& $dhatu===1 && arr(array($fo),'/[a][t]$/')) || $bhavat===1 ) && $kruJca===0 && $vAnapuMsaka===0)
-if ($sarvanamasthana1===1 && !in_array(1,$num) && (( $dhatu===0 && itcheck(array("u","U","f","F","x","X"),1))  ||  ($ancu===1 && $kvin===1) ||  ( ($kvip===1 || $kvin===1)&& $dhatu===1 && arr(array($fo),'/[a][t]$/')) || $bhavat===1 ) && $aniditAm===0 && $GIS!==1 && $GIn!==1 && $GIp!==1) // added aniditAM for prAcI.
+if ($sarvanamasthana1===1 && $nAbhyasta===0 && !in_array(1,$num) && (( $dhatu===0 && itcheck(array("u","U","f","F","x","X"),1))  ||  ($ancu===1 && $kvin===1) ||  ( ($kvip===1 || $kvin===1)&& $dhatu===1 && arr(array($fo),'/[a][t]$/')) || $bhavat===1 ) && $aniditAm===0 && $vAnapuMsaka===0 && $GIS!==1 && $GIn!==1 && $GIp!==1) // added aniditAM for prAcI.
 {
     $text = one(array("ac+","Ac+"),array("anc+","Anc+"),0);
     $text = three(blank(1),$hl,array("u!+","U!+","f!+","F!+","x!+"),array("n"),$hl,array("u!+","U!+","f!+","F!+","x!+"),0); $num=array_merge($num,array(1));
@@ -5175,24 +5193,6 @@ if ($shatR===1)
     $it=array_merge($it,array("f"));
     $itprakriti=array_merge($itprakriti,array("f"));
 }
-/* nAbhyAsAcChatuH (7.1.78) */
-if ($abhyasta===1 && $shatR===1 && itcheck(array("f"),1) && $gender!=="n")
-{
-    echo "<p class = sa >By nAbhyastAcChatuH (7.1.78) :</p>";
-    echo "<p class = sa >नाभ्यास्ताच्छतुः (7.1.78) :</p>";
-    display(0); 
-    $nAbhyasta=1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
-} else { $nAbhyasta=0; }
-/* vA napuMsakasya (7.1.79) */  
-if ($abhyasta===1 && $shatR===1 && itcheck(array("f"),1) && $gender==="n")
-{
-    $text = mit('/['.pc('hl').'][+]/','n',1); $num=array_merge($num,array(1));
-    $text = one(array("annc"),array("anc"),0);
-    echo "<p class = sa >By vA napuMsakasya (7.1.79) :</p>";
-    echo "<p class = sa >वा नपुंसकस्य (७.१.७९) :</p>";
-    display(0); 
-    $vAnapuMsaka=1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
-} else { $vAnapuMsaka=0; }
 /* special message for ikAra of kvip, kvin etc. */
 if (arr($text,'/[+][v][i]$/')&& in_array($so,array("kvip","kvin")) && $taddhita === 0  && $sarva === 0 )
 {
