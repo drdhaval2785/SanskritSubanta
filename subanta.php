@@ -4134,6 +4134,13 @@ if (arr(array($fo),'/[a][p]$/') && $sarvanamasthana1===1 && $pada==="pratyaya" &
     echo "<p class = sa >By aptRntRcsvasRnaptRneSTRtvaSTRkSattRhotRpotRprazAstRRNAm (6.4.11) :</p>";
     echo "<p class = sa >अप्तृन्तृच्स्वसृनप्तृनेष्टृत्वष्टृक्षत्तृहोतृपोतृप्रशास्तॄणाम्‌ (६.४.११) :</p>";
     display(3);
+	if ($gender==="n" && in_array($so,array("jas","Sas")))
+	{
+		$text = two(array("Ap"),array("+"),array("ap"),array("+"),1);
+		echo "<p class = sa >By niravakAzatvaM pratipadoktatvam :</p>";
+		echo "<p class = sa >निरवकाशत्वं प्रतिपदोक्तत्वम्‌ </p>";
+		display(0);		
+	}
 }
 /* apo bhi (7.4.48) */
 if (arr(array($fo),'/[a][p]$/') && arr($text,'/[a][p][+][B]/') && in_array($so,array("Bis","Byas","ByAm")))
