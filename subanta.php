@@ -223,6 +223,13 @@ $input = ltrim(chop($first."+".$second));
 $text = array();
 $text[] = $input; // Defining first member of the array as $input (combined words first and second)
 
+/* ancu! verb specific inputs */
+$ancuwords = array("praanc","praaYc","prAnc","prAYc","pratianc","pratiaYc","pratyanc","pratyaYc","udanc","udaYc","tirianc","tiriaYc","tiryanc","tiryaYc","adadryaYc","adadryanc","adadriaYc","adadrianc");
+$ancureps = array("praanc","praanc","praanc","praanc","pratianc","pratianc","pratianc","pratianc","udanc","udanc","tirianc","tirianc","tirianc","tirianc","adadrianc","adadrianc","adadrianc","adadrianc");
+if (sub($ancuwords,array("+"),blank(0),0))
+{
+	$text = one($ancuwords,$ancureps,0);
+}
 /* displaying general information about the sup vibhaktis */
 /* arthavadadhAturapratyayaH prAtipadikam (1.2.45), kRttaddhitasamAsAzca (1.2.46), pratyayaH (3.1.1), parazca (3.1.2), GyAppradipadikAt (4.1.1), svaujasamauTCaSTAbhyAmbhisGebhyAmbhyasGasibhyAmbhyasGasosAmGyossup (4.1.2), vibhaktizca (1.4.104), supaH (1.4.103) */
 // For future sUtras also, code for each sUtra is separated by /* xyz.... */.
@@ -5096,8 +5103,7 @@ if ($sarvanamasthana1===1 && ( ($ancu===0 && $dhatu===1)  ) && $kruJca===0 && ar
     echo "<p class = pa >धातोश्चेदुगित्कार्यं तर्ह्यञ्चतेरेव ।</p>";      
     display(0);
     }
-//if ($sarvanamasthana1===1 && $nAbhyasta===0 &&  (( $dhatu===0 && arr($text,'/[uUfFxX][!][+]/') ) ||  ($ancu===1 && $dhatu===1) ||  ( ($kvip===1 || $kvin===1)&& $dhatu===1 && arr(array($fo),'/[a][t]$/')) || $bhavat===1 ) && $kruJca===0 && $vAnapuMsaka===0)
-if ($sarvanamasthana1===1 && $nAbhyasta===0 && !in_array(1,$num) && (( $dhatu===0 && itcheck(array("u","U","f","F","x","X"),1))  ||  ($ancu===1 && $kvin===1) ||  ( ($kvip===1 || $kvin===1)&& $dhatu===1 && arr(array($fo),'/[a][t]$/')) || $bhavat===1 ) && $aniditAm===0 && $vAnapuMsaka===0 && $GIS!==1 && $GIn!==1 && $GIp!==1) // added aniditAM for prAcI.
+if ($sarvanamasthana1===1 && $nAbhyasta===0 && !in_array(1,$num) && (( $dhatu===0 && itcheck(array("u","U","f","F","x","X"),1))  ||  ($ancu===1 && $kvin===1) ||  ( ($kvip===1 || $kvin===1)&& $dhatu===1 && arr(array($fo),'/[a][t]$/')) || $bhavat===1 ) && !($aniditAm===1 && $gender==="f") && $vAnapuMsaka===0 && $GIS!==1 && $GIn!==1 && $GIp!==1) // added aniditAM for prAcI.
 {
     $text = one(array("ac+","Ac+"),array("anc+","Anc+"),0);
     $text = three(blank(1),$hl,array("u!+","U!+","f!+","F!+","x!+"),array("n"),$hl,array("u!+","U!+","f!+","F!+","x!+"),0); $num=array_merge($num,array(1));
