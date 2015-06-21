@@ -3437,6 +3437,10 @@ if ($gender === "n" && $pada=== "pratyaya" && in_array($so,array("jas","Sas")) &
     echo "<p class = hn >अनेकाल्शित्सर्वस्य से सर्वादेश होता है । :</p>";
     display(3); 
     $shi = 1; // 0 - zi Adeza has not happened. 1 - zi Adeza has happened.
+	$text = one(array("+Si"),array("+i"),0);
+    echo "<p class = sa >zakAra is 'it'. It is elided by lazakvataddhite (1.3.8) and tasya lopaH (1.3.9) :</p>";
+    echo "<p class = sa >शकार इत्‌ । लशक्वतद्धिते (१.३.८) और तस्य लोपः (१.३.९) :</p>";
+    display(0); 
 } else { $shi = 0; }
 /* zi sarvanAmasthAnam (1.1.42) */
 if ($shi===1 )
@@ -3874,18 +3878,6 @@ if ($gender==="f" && $vamanta===0 && $anobahuvrihe===1 && arr($text,'/[Aa][n][+]
     $GI=1;
     $nadi=1;
 }
-/* sarvanAmasthAne cAsambuddhau (6.4.8) */  
-//if ( arr($text,'/['.flat($ac).'][n][+]/')  && !arr($text,'/['.flat($ac).'][n][+]$/') && !sub(array("Ahan"),blank(0),blank(0),0) && $sarvanamasthana1===1 && $sambuddhi===0 && $inhan===0 && $inhan1===0 && !in_array($fo,array("maGavan")) ) // To check for dIrghAhan 
-if ( arr($text,'/['.flat($ac).'][n][+]/')  && !arr($text,'/['.flat($ac).'][n][+]$/') && !in_array(1,$num) && $sarvanamasthana1===1 && $sambuddhi===0 && $inhan===0 && $inhan1===0 && !in_array($fo,array("maGavan")) && !arr($text,'/[i][n][+]/') && !arr($text,'/[h][a][n][+]/') && !arr($text,'/pUzan+/')&& !arr($text,'/ryaman+/'))
-{
-    $text = two($ac,array("n+"),$acdir,array("n+"),0);
-    echo "<p class = sa >By sarvanAmasthAne cAsambuddhau (6.4.8) :</p>";
-    echo "<p class = sa >सर्वनामस्थाने चासम्बुद्धौ (६.४.८) :</p>";
-    echo "<p class = pa >alo'ntyAtpUrva upadhA (1.1.65) </p>";
-    echo "<p class = pa >अलोऽन्त्यात्पूर्व उपधा (१.१.६५) </p>";   
-    display(3); 
-    $casambu=1; // 0 - This sUtra has not applied. 1 - This sUtra has applied. Useful for preventing repeat application.
-} else {$casambu=0; }
 /* tRjvatkroSTuH (7.1.95), vibhASA tRtIyAdiSvaci (7.1.97) and numaciratRjvadbhAvebhyo nuT pUrvavipratiSedhena (vA 4374) */
 if ((sub(array("krozwu"),array("+"),$sarvanamasthana,0)||sub(array("krozwu"),array("+"),$tRtIyAdiSvaci,0) ) && $sarvanamasthana1===1 && $pada==="pratyaya" && ($sambuddhi===0 || ($sambuddhi===1 && $so!=="su!")))
 {
@@ -3949,7 +3941,7 @@ if ($ghi===1 && $so==="wA" && $gender !== "f" && arr($text,'/[iu][+]/') && !(in_
 /* defining some sets */
 $ik = array("i","I","u","U","f","F","x","X"); // ik pratyAhAra.
 $ikyan = array("y","y","v","v","ar","Ar","ar","Ar"); // yaN replacements of ik pratyAhAra.
-$acsup = array_merge($acsup,array("SI","Si")); // adding Si of jas/Sas as ajAdivibhakti.
+$acsup = array_merge($acsup,array("SI","Si","i","I")); // adding Si of jas/Sas as ajAdivibhakti.
 /* napuMsakAcca (7.1.19) */
 if ( $gender==="n" && in_array($so,array("O","Ow"))) 
 {
@@ -3975,13 +3967,13 @@ if ($napuMsakAcca===1 && in_array($so,array("O","Ow")) && arr(array($fo),'/[aAiI
     $auGazyA = 1; // 0 - doesn't prevent application of yasyeti ca. 1 - prevents application of yasyeti ca.	
 } else { $auGazyA = 0; }
 /* iko'ci vibhaktau (7.1.73) */
-if ( $gender==="n" && arr($text,'/['.flat($ik).'][+]/') && in_array($so,$acsup) && (sub($ik,array("+"),$acsup,0) || $napuMsakAcca===1))
+if ( $gender==="n" && arr($text,'/['.flat($ik).'][+]/') && in_array($so,$acsup) && (sub($ik,array("+"),$acsup,0) || $napuMsakAcca===1 || $shi===1))
 {
     if ($ghi===1 && in_array($so,array("Ne","Nasi!","Nas","Ni")) && $bhashitapumska===0)
     {
     echo "<p class = pa >guNa of gherGiti is overruled by 'num' by vRddhyauttvatRjvadbhAvaguNebhyo num pUrvavipratiSedhena (vA 4373). </p>";
     echo "<p class = pa >घेर्ङिति से प्राप्त गुण का वृद्ध्यौत्त्वतृज्वद्भावगुणेभ्यो नुम्‌ पूर्वविप्रतिषेधेन (वा ४३७३) से बाध होता है ।</p>";        
-    display(0); 
+    display(0); $num=array_merge($num,array(1));
     $noghe=1; // 0 - gherGiti will not apply. 1 - gherGiti will apply.
     } else {$noghe=0; }
     if (in_array($so,array("Am")))
@@ -4005,7 +3997,7 @@ if ( $gender==="n" && arr($text,'/['.flat($ik).'][+]/') && in_array($so,$acsup) 
     $text = three(array("sulu",),array("+"),array("wA"),array("sulun",),array("+"),array("wA"),0);
     echo "<p class = sa >By iko'ci vibhaktau (7.1.73) :</p>";
     echo "<p class = sa >इकोऽचि विभक्तौ (७.१.७३) :</p>";
-    display(3);        
+    display(3); $num=array_merge($num,array(1));        
     }
     elseif ($napuMsakAcca===1)
     {
@@ -4014,14 +4006,14 @@ if ( $gender==="n" && arr($text,'/['.flat($ik).'][+]/') && in_array($so,$acsup) 
     echo "<p class = hn >This rule overrules the possibility of 'iyaG' or 'uvaG'</p>";
     echo "<p class = sa >इकोऽचि विभक्तौ (७.१.७३) :</p>";
     echo "<p class = hn >इयङुवङौ प्रबाध्य इकोऽचि विभक्तौ (७.१.७३) इति नुमागमः भवति :</p>";
-    display(3);        
+    display(3);         $num=array_merge($num,array(1));
     }
     else
     {
     $text = three(array("i","u","f","x"),array("+"),$acsup,array("i","u","f","x"),array("n+"),$acsup,0);            
     echo "<p class = sa >By iko'ci vibhaktau (7.1.73) :</p>";
     echo "<p class = sa >इकोऽचि विभक्तौ (७.१.७३) :</p>";
-    display(3);        
+    display(3);         $num=array_merge($num,array(1));
     }
  $ikoci=1; // 0 - iko'ci vibhaktau has not applied. 1 - iko'ci vibhaktau has applied.
  $pada = "pratyaya";
@@ -4034,6 +4026,20 @@ if (ends(array($fo),array("strI","stri"),1) && in_array($so,array("am","Sas")) &
     echo "<p class = sa >वाऽम्शसोः (६.४.८०) :</p>";
     display(0);
 }
+print_r($text); echo $sarvanamasthana1, $sambuddhi, $inhan, $inhan1;
+/* sarvanAmasthAne cAsambuddhau (6.4.8) */  
+if ( arr($text,'/['.flat($ac).'][n][+]/')  && !arr($text,'/['.flat($ac).'][n][+]$/') && $sarvanamasthana1===1 && $sambuddhi===0 && $inhan===0 && $inhan1===0 && !in_array($fo,array("maGavan")) && !arr(array($fo),'/[i][n]$/') && !arr($text,'/pUzan+/')&& !arr($text,'/ryaman+/'))
+{
+    $text = two($ac,array("n+"),$acdir,array("n+"),0);
+	if ($fo!=="ahan")
+	{ $text = two(array("ahAn"),array("+"),array("ahan"),array("+"),0); }
+    echo "<p class = sa >By sarvanAmasthAne cAsambuddhau (6.4.8) :</p>";
+    echo "<p class = sa >सर्वनामस्थाने चासम्बुद्धौ (६.४.८) :</p>";
+    echo "<p class = pa >alo'ntyAtpUrva upadhA (1.1.65) </p>";
+    echo "<p class = pa >अलोऽन्त्यात्पूर्व उपधा (१.१.६५) </p>";   
+    display(3); 
+    $casambu=1; // 0 - This sUtra has not applied. 1 - This sUtra has applied. Useful for preventing repeat application.
+} else {$casambu=0; }
 
 /* lomno'patyeSu bahuSvakAro vaktavyaH (vA 2560) */
 // Pending, because it is for taddhita derivation. Right now made a patch.
@@ -7052,7 +7058,6 @@ if (arr($text,'/['.pc('Jl').']$/') )
             echo "<p class = sa >झलां जशोऽन्ते (८.२.३९) :</p>";
             display(0);
 }
-echo $pada;
 if (arr($text,'/['.pc('Jl').'][+]/') && ( $pada === "pada" && !arr(array($fo),'/[s]$/'))  )
 {     
     if ($r1 === 1 ) 
