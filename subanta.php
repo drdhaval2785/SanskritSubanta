@@ -769,7 +769,7 @@ if ($_GET['cond1_15']==="1")
 }
 /* defining dhatus */
 // This is the crude way in which dhAtu saJjJA is given without user interface. In practice it is difficult to decide whether the word ends with a dhAtu or not. So made enumeration.
-if (sub(array("supis","sutus","suhiMs","gir","pur","sajuz","ASiz"),array("+"),blank(0),0))
+if (sub(array("supis","sutus","suhiMs","gir","pur","sajuz","ASiz","suhins"),array("+"),blank(0),0))
 {
     $dhatu=1;
 }
