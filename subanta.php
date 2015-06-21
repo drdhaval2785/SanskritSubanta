@@ -3956,9 +3956,8 @@ if ( $gender==="n" && in_array($so,array("O","Ow")))
     display(0);
 } else { $napuMsakAcca=0; }
 /* auGaH zyAM pratiSedho vAcyaH (vA) */
-if ($napuMsakAcca===1 && in_array($so,array("O","Ow")) && arr(array($fo),'/[aAiI]$/'))
+if ($napuMsakAcca===1 && in_array($so,array("O","Ow")) && arr($text,'/[aAiI][+]/'))
 {
-    echo "<p class = pa >By auGaH zyAM pratiSedho vAcyaH (vA) :</p>";
     echo "<p class = pa >By auGaH zyAM pratiSedho vAcyaH (vA) :</p>";
     echo "<p class = hn >This vArtika prevents application of 'yasyeti ca'.</p>";
     echo "<p class = pa >औङः श्यां प्रतिषेधो वाच्यः (वा) :</p>";
@@ -4026,7 +4025,6 @@ if (ends(array($fo),array("strI","stri"),1) && in_array($so,array("am","Sas")) &
     echo "<p class = sa >वाऽम्शसोः (६.४.८०) :</p>";
     display(0);
 }
-print_r($text); echo $sarvanamasthana1, $sambuddhi, $inhan, $inhan1;
 /* sarvanAmasthAne cAsambuddhau (6.4.8) */  
 if ( arr($text,'/['.flat($ac).'][n][+]/')  && !arr($text,'/['.flat($ac).'][n][+]$/') && $sarvanamasthana1===1 && $sambuddhi===0 && $inhan===0 && $inhan1===0 && !in_array($fo,array("maGavan")) && !arr(array($fo),'/[i][n]$/') && !arr($text,'/pUzan+/')&& !arr($text,'/ryaman+/'))
 {
@@ -4782,7 +4780,7 @@ if (arr($text,'/^[a][+]/') && $so==="Bis" && in_array($fo,array("idam","idakam",
     $nedamadas=1; // 0 - nedamadasorakoH doesn't prevent application of ato bhisa ais. 1 - nedamadasorakoH prevents application of ato bhisa ais. 
 } else { $nedamadas=0; }
 /* jasaH zI (7.1.17) */ 
-if (arr($text,'/[a][+]/') && $pada=== "pratyaya" && $so === "jas" && ends(array($fo),$sarvanama,1) && $nojas===0  && $sarvafinal!==0 )
+if (arr($text,'/[a][+]/') && $pada=== "pratyaya" && $so === "jas" && ends(array($fo),$sarvanama,1) && $nojas===0  && $sarvafinal!==0 && $shi!==1)
     {
     if ($sarvafinal===2)
     {
@@ -5474,8 +5472,18 @@ if (arr($text,'/[a][+]/') && $so === "Bis" && $nedamadas===0 && $fo!=="adas" )
     display(5); 
     $atobhis = 1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
 } else { $atobhis = 0; }
+/* auGaH zyAM pratiSedho vAcyaH (vA) */
+if ($napuMsakAcca===1 && in_array($so,array("O","Ow")) && arr($text,'/[aAiI][+]/') && $auGazyA!==1)
+{
+    echo "<p class = pa >By auGaH zyAM pratiSedho vAcyaH (vA) :</p>";
+    echo "<p class = hn >This vArtika prevents application of 'yasyeti ca'.</p>";
+    echo "<p class = pa >औङः श्यां प्रतिषेधो वाच्यः (वा) :</p>";
+    echo "<p class = hn >'यस्येति च' इति सूत्रेण प्राप्तौ अकारेकारलोपौ अनेन वार्तिकेन निषिध्यते ।</p>";
+    display(0); 
+    $auGazyA = 1; // 0 - doesn't prevent application of yasyeti ca. 1 - prevents application of yasyeti ca.	
+}
 /* yasyeti ca (6.4.148) */
-if (arr($text,'/[aI][+][I]/') && $bham===1 && ($auGazyA===0))
+if (arr($text,'/[aI][+][I]/') && $bham===1 && ($auGazyA===0 ))
 {
     $text = two(array("a","I"),array("I"),array("",""),array("I"),0);
     echo "<p class = sa >By yasyeti ca (6.4.148) :</p>";
@@ -5962,6 +5970,7 @@ if ($sambuddhi === 1 && $so === "su!" && (sub($hrasva,array("+"),array("s","m"),
     echo "<p class = sa >एङ्ह्रस्वात्सम्बुद्धेः (६.१.६९) :</p>";
     display(0); 
 }
+print_r($text);
 /* dazca (7.2.109) */
 if (sub(array("ida","idak","idA","idAn",),blank(0),blank(0),0) && in_array($fo,array("idam","idakam")) && in_array($so,$sup))
 {
