@@ -5035,8 +5035,9 @@ if ( !itcheck(array("i"),1) && arr($text,'/[nMY]['.pc('hl').'][+]/') && ( itchec
     display(0); 
     $aniditAm = 1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
 }
+echo $ancu;
 /* samaH sami (6.3.93) */ 
-if (preg_match('/[s][a][m][a][n][c]/',$fo) && sub(array("anc","Anc"),array("+"),blank(0),0) && $ancu===1)
+if ($fo==="samanc" && sub(array("ac","Ac"),array("+"),blank(0),0) && $ancu===1)
 {
     $text = two(array("samac"),array("+"),array("samiac"),array("+"),0);
     echo "<p class = sa >samaH sami (6.3.93) :</p>";
