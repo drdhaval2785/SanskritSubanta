@@ -4782,6 +4782,7 @@ if (arr($text,'/^[a][+]/') && $so==="Bis" && in_array($fo,array("idam","idakam",
 /* jasaH zI (7.1.17) */ 
 if (arr($text,'/[a][+]/') && $pada=== "pratyaya" && $so === "jas" && ends(array($fo),$sarvanama,1) && $nojas===0  && $sarvafinal!==0 && $shi!==1)
     {
+    {
     if ($sarvafinal===2)
     {
     $text = last(array("jas"),array("SI"),1);        
@@ -5970,7 +5971,6 @@ if ($sambuddhi === 1 && $so === "su!" && (sub($hrasva,array("+"),array("s","m"),
     echo "<p class = sa >एङ्ह्रस्वात्सम्बुद्धेः (६.१.६९) :</p>";
     display(0); 
 }
-print_r($text);
 /* dazca (7.2.109) */
 if (sub(array("ida","idak","idA","idAn",),blank(0),blank(0),0) && in_array($fo,array("idam","idakam")) && in_array($so,$sup))
 {
