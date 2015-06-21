@@ -225,7 +225,7 @@ $text[] = $input; // Defining first member of the array as $input (combined word
 
 /* ancu! verb specific inputs */
 $ancuwords = array("praanc","praaYc","prAnc","prAYc","pratianc","pratiaYc","pratyanc","pratyaYc","udanc","udaYc","tirianc","tiriaYc","tiryanc","tiryaYc","adadryaYc","adadryanc","adadriaYc","adadrianc");
-$ancureps = array("praanc","praanc","praanc","praanc","pratianc","pratianc","pratianc","pratianc","udanc","udanc","tirianc","tirianc","tirianc","tirianc","adadrianc","adadrianc","adadrianc","adadrianc");
+$ancureps = array("praanc","praanc","praanc","praanc","pratianc","pratianc","pratianc","pratianc","udanc","udanc","tirasanc","tirasanc","tirasanc","tirasanc","adadrianc","adadrianc","adadrianc","adadrianc");
 if (sub($ancuwords,array("+"),blank(0),0))
 {
 	$text = one($ancuwords,$ancureps,0);
