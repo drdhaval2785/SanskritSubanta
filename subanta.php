@@ -103,7 +103,7 @@ if (20<$w && $w<24)
 }
 
 $nityaekavacana = array("eka");
-$nityabahuvacana = array("kati","tri","catur","paYcan","saptan","azwan","navan","daSan","ap"); // list of words which are used in bahuvacanam always. New can be added.
+$nityabahuvacana = array("kati","tri","catur","paYcan","saptan","azwan","navan","daSan","ap","zaz"); // list of words which are used in bahuvacanam always. New can be added.
 $nityadvivacana = array("dvi",); // list of words which are used in dvivacanam always.
 if ($_GET['cond1_1_1']==="1"||$_GET['cond1_19']==="1") // make provision for saJjJA and upasarjanIbhUta.
 {
