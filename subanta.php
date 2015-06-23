@@ -5035,7 +5035,6 @@ if ( !itcheck(array("i"),1) && arr($text,'/[nMY]['.pc('hl').'][+]/') && ( itchec
     display(0); 
     $aniditAm = 1; // 0 - this sUtra has not applied. 1 - this sUtra has applied.
 }
-echo $ancu;
 /* samaH sami (6.3.93) */ 
 if ($fo==="samanc" && sub(array("ac","Ac"),array("+"),blank(0),0) && $ancu===1)
 {
