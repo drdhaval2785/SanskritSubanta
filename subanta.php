@@ -3830,7 +3830,6 @@ if (sub(array("paTa","maTa"),blank(0),blank(0),0) && ($pathi===1 || $pathi1===1)
     echo "<p class = sa >थोऽन्थः (७.१.८७) :</p>";
     display(3);
 }
-print_r($text);
 /* sambuddhau napuMsakAnAM nalopo vA vAcyaH (vA) */
 // Pending. Not clear to me.
 /* sau ca (6.4.13) */
@@ -5301,7 +5300,6 @@ if ( $gender==="n" && $sarvanamasthana1===1 && arr($text,'/['.pc('Jl').'][+]/') 
     echo "<p class = sa >नपुंसकस्य झलचः (७.१.७२) :</p>";
     display(3);
 }
-print_r($text); print_r($num);echo $sarvanamasthana1, $sambuddhi, $inhan, $inhan1, $aptRn, $casambu;
 /* sarvanAmasthAne cAsambuddhau (6.4.8) */
 $acdir = array("A","A","I","I","U","U","F","F","F","F","e","o","E","O",);
 if (arr($text,'/['.flat($ac).'][n][+]/') && !arr($text,'/['.flat($ac).'][n][+]$/') && !in_array(1,$num) && !in_array($fo,array("maGavan")) && !sub(array("Ahan"),blank(0),blank(0),0) && $sarvanamasthana1===1 && $sambuddhi===0 && $inhan===0 && $inhan1===0 && $aptRn===0 && $casambu!==1 && !arr($text,'/[i][n][+]/') && (!arr($text,'/[h][a][n][+]/') || $fo==="anehas") && !arr($text,'/pUzan+/')&& !arr($text,'/ryaman+/'))
