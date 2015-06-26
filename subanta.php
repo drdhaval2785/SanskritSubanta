@@ -754,7 +754,6 @@ elseif ($_GET['cond1_13']==="2")
 if (in_array($fo,array("goanc","goaYc")) )
 {
     $kvin=1;
-    $nance=1; 
     $goanc=1; // 0 - no goanc word. 1 - the word is goanc.
 }
 else
