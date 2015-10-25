@@ -3868,7 +3868,7 @@ if ($bham === 1 && arr($text,'/['.pc('hl').'][vm][a][n][+]/'))
     display(3);  $vamanta=1;   // 0 - the word is not vamanta. 1 - the word is vamanta.
 } else {$vamanta=0; }
 /* ana upadhAlopino'nyatarasyAm (4.1.28) */
-if ($gender==="f" && $vamanta===0 && $anobahuvrihe===1 && arr($text,'/[Aa][n][+]/') && !(sub(array("udan+","Asan"),blank(0),blank(0),0) ) ) 
+if ($gender==="f" && $vamanta===0 && $anobahuvrihe===1 && arr($text,'/[Aa][n][+]/') && !(sub(array("udan+","Asan","yajvan"),blank(0),blank(0),0) ) ) 
 {
     $text = one(array("An+","an+"),array("n+NIp+","n+NIp+"),1);
     echo "<p class = st >By ana upadhAlopino'nyatarasyAm (4.1.28) :</p>";
