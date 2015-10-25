@@ -3681,7 +3681,7 @@ if (sub(array("div+"),$hlsup,blank(0),0) || arr($text,'/[d][i][v][+]$/') )
     display(0);
 }
 /* zeSo ghyasakhi (1.4.7) */
-if ($nadi!==1 && arr($text,'/[iu][+]/') && $fo!=="saKi" && !arr($text,'/[iu][+]$/'))
+if ($nadi!==1 && arr($text,'/[iu][+]/') && preg_match('/[iu]$/',$fo) && $fo!=="saKi" && !arr($text,'/[iu][+]$/'))
 {
     if (arr(array($fo),'/[p][a][t][i]$/') && $fo==='pati')
     {
