@@ -662,7 +662,7 @@ return $arr; // returning the desired savarNa array.
 // new messages can be added if the message is of repeated nature.
 function display($n)
 {
-    global $text; global $upasarga_joined; global $us; // bringing $text from main php function.
+    global $text; global $upasarga_joined; global $us; global $type; // bringing $text from main php function.
     /* removal of two ++ signs */
     $text = one(array("++"),array("+"),0);
     if ($n === 1) // sending special messages.
@@ -706,13 +706,17 @@ function display($n)
         }
     for($i=1;$i<count($text)+1;$i++) // for all members of the $text array
     {
-        if ($us==="")
+        if ($us==="" && $type==="tiGanta")
         {
         echo "<p class = form>$i - ".convert($text[$i-1])."</p>\n"; // showing the output to the browser. e.g. 1. rAmaH. $i is for numbering. function convert converts the output into devanAgarI.
         }
-        elseif ($us!=="" )
+        elseif ($us!=="" && $type==="tiGanta")
         {
         echo "<p class = form>$i - ".convert($us."+".$text[$i-1])."</p>\n"; // showing the output to the browser. e.g. 1. rAmaH. $i is for numbering. function convert converts the output into devanAgarI.
+        }
+        else
+        {
+        echo "<p class = form>$i - ".convert($text[$i-1])."</p>\n"; // showing the output to the browser. e.g. 1. rAmaH. $i is for numbering. function convert converts the output into devanAgarI.
         }
     }
     if ($n === 2) { $text1 = $text; $text = $text2; } // not useful because the display(2) is not used in the code. If it is used, this will work.
