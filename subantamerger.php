@@ -633,7 +633,7 @@ if ($type==='tiGanta')
 }
 if ($debug===1) {dibug("600");}
 
-if ($type==='subanta') { $suffix = $sup; }
+if ($type==='subanta') { $suffix = $sup1; }
 /* Deciding suffixes based on parasmai, Atmane or ubhayapada of verbs. */
 if ($type==='tiGanta') 
 {
@@ -1329,7 +1329,7 @@ if ( $sic!==0 && $so==="Ji" && sub(array("A"),array("+"),array("Ji"),0) )
 }
 if ($debug===1) {dibug("1300");}
 /* zruvaH zR ca (3.1.74) */
-if (in_array($fo,array("Sru")) && $sarvadhatuka===1 && sub(array("Sru"),array("+"),$tiG,0))
+if (in_array($fo,array("Sru")) && $sarvadhatuka===1 && sub(array("Sru"),array("+"),$tiG,0) && in_array($so,$tiG))
 {
     $text=three(array("Sru"),array("+"),$tiG,array("Sf"),array("+Snu+"),$tiG,0);
     $text=one(array("+Snu+Snu"),array("+Snu+"),0);
@@ -1338,7 +1338,7 @@ if (in_array($fo,array("Sru")) && $sarvadhatuka===1 && sub(array("Sru"),array("+
     $set=2;
 }
 /* dhivikRNvyora ca (3.1.80) */
-elseif (in_array($fo,array("Divi!","kfvi!")) && $sarvadhatuka===1 && sub(array("Divi!","kfvi!"),array("+"),$tiG,0))
+elseif (in_array($so,$tiG) && in_array($fo,array("Divi!","kfvi!")) && $sarvadhatuka===1 && sub(array("Divi!","kfvi!"),array("+"),$tiG,0))
 {
     $text=three(array("Divi!","kfvi!"),array("+"),$tiG,array("Divi!","kfvi!"),array("+u+"),$tiG,0);
     $text=one(array("+u+u"),array("+u+"),0);
@@ -1349,7 +1349,7 @@ elseif (in_array($fo,array("Divi!","kfvi!")) && $sarvadhatuka===1 && sub(array("
 // first treatment of curAdi, because, it will take Nic before vikaraNa pratyaya.
 /* satyApapAzarUpavINAtUlazlokasenAlomatvacavarmacUrNacurAdibhyo Nic (3.1.25) */
 //elseif ($sarvadhatuka===1 && $verbset==="curAdi" && sub($curAdi,array("+"),blank(0),0) && sub(array("+"),$tiG,blank(0),0) && in_array($fo,$curAdi) )
-elseif ( $verbset==="curAdi" && sub($curAdi,array("+"),blank(0),0) && sub(array("+"),$tiG,blank(0),0) && in_array($fo,$curAdi) )
+elseif (in_array($so,$tiG) &&  $verbset==="curAdi" && sub($curAdi,array("+"),blank(0),0) && sub(array("+"),$tiG,blank(0),0) && in_array($fo,$curAdi) )
 {
 	if($Nizri===1)
 	{
@@ -1377,7 +1377,7 @@ elseif ( $verbset==="curAdi" && sub($curAdi,array("+"),blank(0),0) && sub(array(
     $set=1; // defining set as per sahajabodha groups.
 }
 // For pratipadikas.
-elseif (in_array($fo,array("satyApa","pASa","vIRA","tUla","Sloka","senA","loma","tvac","varRa","cUrRa")) && sub(array("satyApa","pASa","vIRA","tUla","Sloka","senA","loma","tvac","varRa","cUrRa"),array("+"),blank(0),0) )
+elseif (in_array($so,$tiG) && in_array($fo,array("satyApa","pASa","vIRA","tUla","Sloka","senA","loma","tvac","varRa","cUrRa")) && sub(array("satyApa","pASa","vIRA","tUla","Sloka","senA","loma","tvac","varRa","cUrRa"),array("+"),blank(0),0) )
 {
     $text=two(array("satyApa","pASa","vIRA","tUla","Sloka","senA","loma","tvac","varRa","cUrRa"),array("+"),array("satyApa","pASa","vIRA","tUla","Sloka","senA","loma","tvac","varRa","cUrRa"),array("+Ric+"),0);
     $text=one(array("+Ric+Ric"),array("+Ric+"),0);
@@ -1616,7 +1616,7 @@ if ( !in_array($fo,$allverbs) && sub(array("+Ric+Sap+","+RiN+Sap+"),$tiG,blank(0
     }
 }
 /* pAghrAdhmAsthAmnAdANdRzyartizadasadAM pibajighradhamatiSThamanayacCapazyarcCadhaushIyasIdAH (7.3.78) */
-if ($lakAra!=="" && in_array($fo,array("pA","GrA","DmA","zWA","mnA","dAR","dfSi!r","f","sf","Sadx!","zadx!","zWA")) && sub(array("pA","GrA","DmA","zWA","mnA","dAR","dfSi!r","f","sf","Sadx!","zadx!"),array("+"),$shitpratyaya,0) )
+if (in_array($so,$tiG) && $lakAra!=="" && in_array($fo,array("pA","GrA","DmA","zWA","mnA","dAR","dfSi!r","f","sf","Sadx!","zadx!","zWA")) && sub(array("pA","GrA","DmA","zWA","mnA","dAR","dfSi!r","f","sf","Sadx!","zadx!"),array("+"),$shitpratyaya,0) )
 {
     $text=three(array("pA","GrA","DmA","zWA","mnA","dAR","dfSi!r","sf","f","Sadx!","zadx!"),array("+"),$shitpratyaya,array("piba","jiGra","Dama","tizWa","mana","yacCa","paSya","DO","fcCa","SIya","sIda"),array("+"),$shitpratyaya,0);
 	storedata('7.3.78','sa',0);
@@ -1746,7 +1746,7 @@ if (in_array($fo,array("takzU!")) && sub(array("takzU!"),array("+"),array("Sap")
 }
 /* tiGzitsArvadhAtukam (3.4.113) */
 // for zit pratyayas.
-if (sub(array("+"),$shitpratyaya,blank(0),0) && $lakAra!=="")
+if (in_array($so,$tiG) && sub(array("+"),$shitpratyaya,blank(0),0) && $lakAra!=="")
 {
     $sarvadhatuka=1;
 	storedata('3.4.113','sa',0);
@@ -1770,7 +1770,7 @@ if ( in_array("i",$it) && $lakAra!=="" && in_array($fo,array("cakzi!N")) )
 	storedata('anteidita','sa',0);
 }
 /* idito numdhAtoH (7.1.58) */ # See https://github.com/drdhaval2785/SanskritVerb/issues/299.
-elseif ( in_array("i",$it) && $lakAra!=="" && !in_array($fo,$irendiditverbs) )
+elseif (in_array($so,$tiG) &&  in_array("i",$it) && $lakAra!=="" && !in_array($fo,$irendiditverbs) )
 {
 	storedata('1.3.2','pa',0);
 	$text = two($iditverbs,array("+"),$iditverbs2,array("+"),0);
@@ -3275,7 +3275,6 @@ if ( in_array($fo,array("Gasa!","Basa!")) && pr2(array("Gas","Bas"),array("+"),$
 /* sArvadhAtukamapit (1.2.4) */
 if (  !in_array("Sap",$vik) && !in_array("N",$itpratyaya) && $sarvadhatuka===1 && sub(array("+"),$apit_sArvadhAtuka_pratyayas,blank(0),0) && $kGiti!==1  && $znasorallopaH!==1)
 {
-	echo "yes";
     $it=array_merge($it,array("N"));
     $itpratyaya=array_merge($itpratyaya,array("N"));
 	storedata('1.2.4','pa',0);
@@ -11802,7 +11801,7 @@ if ($debug===1) {dibug('11740');}
 
 }
 
-if (isset($argv[0])|| $test ===1)
+if ((isset($argv[0])|| $test ===1) )
 { 
 	$suspectentryfile = fopen('suspectverbforms.txt','a+');
 	$generatedformfile = fopen('generatedforms.xml','a+');
@@ -11817,16 +11816,27 @@ if (isset($argv[0])|| $test ===1)
 	$susoutput = convert($susinput);
 	file_put_contents('suspectverbforms_deva.txt',$susoutput);*/
 }
-else 
+elseif ($type==="tiGanta")
 {
-$ou = array_map('convert',$ou);
-tablemaker($ou);
-/* Closing the HTML */
-echo "</body>
-</html>";
-fputs($outfile,"</body>
-</html>");
-fclose($outfile);
+	$ou = array_map('convert',$ou);
+	tablemaker($ou);
+	/* Closing the HTML */
+	echo "</body>
+	</html>";
+	fputs($outfile,"</body>
+	</html>");
+	fclose($outfile);
+}
+elseif ($type==="subanta")
+{
+	$ou = array_map('convert',$ou);
+	tablemaker1($ou);
+	/* Closing the HTML */
+	echo "</body>
+	</html>";
+	fputs($outfile,"</body>
+	</html>");
+	fclose($outfile);
 }
 
 /* Logging the end of execution in logfile */

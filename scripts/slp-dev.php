@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /* This code is borrowed most probably from php.net examples site. But I am unable to trace it now. */
 function html2txt($document){ 
 $search = array('@<script[^>]*?>.*?</script>@si',  // Strip out javascript 
@@ -123,9 +123,10 @@ $ch['hk'] = array(
 	$text = str_replace("&nbsp;","",$text);				
 
 	/* Main Converter Part */
-$text = str_replace("kxp","कॢप्",$text); // patch for ळ removal
+//$text = str_replace("kxp","कॢप्",$text); // patch for ळ removal
 $text = str_replace("\n ", "\n", $text);
 $text = str_replace(" /'","/'",$text);
+$text = str_replace("/#'","",$text);
 $text = str_replace($ch['slp'],$ch['hk'],$text);
 $v = "्"; // Virama
 
@@ -275,7 +276,7 @@ $main['scr'] = array(
 	
 	40 => "ऽ", // apostrophe (avagraha)
 	41 => "’", // Latin apostrophe (’)
-	42 => "॰", // Abbreviation
+	42 => "", // Abbreviation
 	
 	116 => "ख", // kha
 	115 => "क", // ka
@@ -447,5 +448,10 @@ $text = str_replace("औं","ॐ",$text);
 return $text;
 }
 
-
+function slp_to_dev_file_converter($inputfile,$outputfile)
+{
+	$inputdata = file_get_contents($inputfile);
+	$outputdata = convert($inputdata);
+	file_put_contents($outputfile,$outputdata);
+}
 ?>
