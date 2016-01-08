@@ -652,6 +652,7 @@ if ($type==='subanta') { $suffix = $sup1; }
 elseif ($type==="sandhi")
 {
 	$suffix = array($_GET['sec']);
+	$pada = $_GET['pada'];
 }
 /* Deciding suffixes based on parasmai, Atmane or ubhayapada of verbs. */
 elseif ($type==='tiGanta') 

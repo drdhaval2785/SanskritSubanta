@@ -2049,6 +2049,18 @@ function suffix_display()
 			fputs($outfile,"<p class = red >".convert($fo)." + ".convert($so)." <a href = subanta.html>Go Back</a></p>\n<hr>\n");    
 		}				
 	}
+	elseif ($type==="sandhi")
+	{
+		if ($frontend!=="0")
+		{
+			echo "<p class = red >".convert($fo)." + ".convert($so)." <a href = sandhi.html>Go Back</a></p>\n<hr>\n";    
+			fputs($outfile,"<p class = red >".convert($fo)." + ".convert($so)." <a href = sandhi.html>Go Back</a></p>\n<hr>\n");    
+		}		
+		else
+		{
+			fputs($outfile,"<p class = red >".convert($fo)." + ".convert($so)." <a href = sandhi.html>Go Back</a></p>\n<hr>\n");    
+		}				
+	}
 }
 // for deciding verb padas.
 function verb_pada($sutra)
