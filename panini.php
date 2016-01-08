@@ -649,8 +649,12 @@ if ($type==='tiGanta')
 if ($debug===1) {dibug("600");}
 
 if ($type==='subanta') { $suffix = $sup1; }
+elseif ($type==="sandhi")
+{
+	$suffix = array($_GET['sec']);
+}
 /* Deciding suffixes based on parasmai, Atmane or ubhayapada of verbs. */
-if ($type==='tiGanta') 
+elseif ($type==='tiGanta') 
 {
 	$suffix=verb_suffixes($verbpada);
 	/* idAgama decision */

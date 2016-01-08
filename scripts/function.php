@@ -2009,19 +2009,45 @@ function upasarga_display($text)
 // for display of lakAra and suffix details.
 function suffix_display()
 {
-	global $frontend, $outfile, $sanAdi, $lakAra, $fo, $so;
-	if ($frontend!=="0")
+	global $frontend, $outfile, $sanAdi, $lakAra, $fo, $so, $type;
+	if ($type==="tiGanta")
 	{
-		if ($sanAdi!=="")
+		if ($frontend!=="0")
 		{
-		echo "<p class = red >".convert($lakAra) ." लकार<br>".convert($fo)." + ".convert($sanAdi)." + ".convert($so)." <a href = tiGanta.html>Go Back</a></p>\n<hr>\n";
-		fputs($outfile,"<p class = red >".convert($lakAra) ." लकार<br>".convert($fo)." + ".convert($sanAdi)." + ".convert($so)." <a href = tiGanta.html>Go Back</a></p>\n<hr>\n<hr>\n");    
-		}
+			if ($sanAdi!=="")
+			{
+			echo "<p class = red >".convert($lakAra) ." लकार<br>".convert($fo)." + ".convert($sanAdi)." + ".convert($so)." <a href = tiGanta.html>Go Back</a></p>\n<hr>\n";
+			fputs($outfile,"<p class = red >".convert($lakAra) ." लकार<br>".convert($fo)." + ".convert($sanAdi)." + ".convert($so)." <a href = tiGanta.html>Go Back</a></p>\n<hr>\n<hr>\n");    
+			}
+			else
+			{
+			echo "<p class = red >".convert($lakAra) ." लकार<br>".convert($fo)." + ".convert($so)." <a href = tiGanta.html>Go Back</a></p>\n<hr>\n";    
+			fputs($outfile,"<p class = red >".convert($lakAra) ." लकार<br>".convert($fo)." + ".convert($so)." <a href = tiGanta.html>Go Back</a></p>\n<hr>\n");    
+			}		
+		}		
 		else
 		{
-		echo "<p class = red >".convert($lakAra) ." लकार<br>".convert($fo)." + ".convert($so)." <a href = tiGanta.html>Go Back</a></p>\n<hr>\n";    
-		fputs($outfile,"<p class = red >".convert($lakAra) ." लकार<br>".convert($fo)." + ".convert($so)." <a href = tiGanta.html>Go Back</a></p>\n<hr>\n");    
+			if ($sanAdi!=="")
+			{
+			fputs($outfile,"<p class = red >".convert($lakAra) ." लकार<br>".convert($fo)." + ".convert($sanAdi)." + ".convert($so)." <a href = tiGanta.html>Go Back</a></p>\n<hr>\n<hr>\n");    
+			}
+			else
+			{
+			fputs($outfile,"<p class = red >".convert($lakAra) ." लकार<br>".convert($fo)." + ".convert($so)." <a href = tiGanta.html>Go Back</a></p>\n<hr>\n");    
+			}		
 		}		
+	}
+	elseif ($type==="subanta")
+	{
+		if ($frontend!=="0")
+		{
+			echo "<p class = red >".convert($fo)." + ".convert($so)." <a href = subanta.html>Go Back</a></p>\n<hr>\n";    
+			fputs($outfile,"<p class = red >".convert($fo)." + ".convert($so)." <a href = subanta.html>Go Back</a></p>\n<hr>\n");    
+		}		
+		else
+		{
+			fputs($outfile,"<p class = red >".convert($fo)." + ".convert($so)." <a href = subanta.html>Go Back</a></p>\n<hr>\n");    
+		}				
 	}
 }
 // for deciding verb padas.

@@ -7,15 +7,16 @@
 <body>
 
 <div>
-<form action="sandhi.php" method = "get">
+<form action="panini.php" method = "get" id="frm">
 First Word: <input type="text" name="first"><br>
-Second Word: <input type="text" name="second"><br>
+Second Word: <input type="text" name="sec"><br>
 <input type="radio" name="trans" value="Devanagari" checked>Devanagari
 <input type="radio" name="trans" value="IAST">IAST
 <input type="radio" name="trans" value="SLP1">SLP1<br>
 <input type="radio" name="pada" value="pada" checked>पद + पद
 <input type="radio" name="pada" value="pratyaya">प्रातिपदिक + प्रत्यय
 <input type="submit">
+<input type="hidden" name="type" id="sandhi" value="sandhi" />
 </form>
 </div>
 
