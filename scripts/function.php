@@ -3902,7 +3902,7 @@ function nosavarna($c)
 /* Function to find savarna of a given letter from the given array. Not used in code. */
 function sl($text,$array) // Known issue - words having two Asyas.
 {
-    global $kantha,$talu,$murdha,$danta,$oshtha,$nasika,$kanthatalu,$kanthoshtha,$dantoshtha,$sprushta,$ishatsprushta,$vivruta,$samvruta,$aghosha,$alpaprana,$ghosha,$mahaprana,$ac,$udatta,$anudatta,$svarita,$shvasa,$nada,$vivara,$samvara,$hl,$ru,$e;
+    global $kantha,$talu,$murdha,$danta,$oshtha,$nasika,$kanthatalu,$kanthoshtha,$dantoshtha,$sprushta,$ishatsprushta,$vivruta,$samvruta,$aghosha,$alpaprana,$ghosha,$mahaprana,$ac,$udatta,$anudatta,$svarita,$shvasa,$nada,$vivara,$samvara,$hl,$ru,$e,$type;
     // defining an array for sthAna
 $i=0;
 if (in_array($text,$kantha)) { $sthana[$i] = $kantha; $i++; }
@@ -3934,29 +3934,29 @@ if (in_array($text,$ac)) { $svar[$u] = $udatta; $u++; }
 if(empty($sthana)===FALSE)
 {
 $sthanasamya = array_intersect(flatten($sthana),$array); 
-//echo "The letters in the pratyAhAra with same sthAna (Asya) as the letter input are: ".implode(",",$sthanasamya)."</br>";    
+	if ($type==="savarna") {echo "The letters in the pratyAhAra with same sthAna (Asya) as the letter input are: ".implode(",",$sthanasamya)."</br>"; }
 }
 if(empty($abhyantara)===false)
 {
 $abhyantarasamya = array_intersect(flatten($abhyantara),$array);
-//echo "The letters in the pratyAhAra with the same Abhyantara prayatna as the letter input are: ".implode(",",$abhyantarasamya)."</br>";    
+	if ($type==="savarna") {echo "The letters in the pratyAhAra with the same Abhyantara prayatna as the letter input are: ".implode(",",$abhyantarasamya)."</br>"; }
 }
 if(empty($ghosh)===FALSE)
 {
 $ghoshasamya = array_intersect(flatten($ghosh),$array);
-//echo "The letters in the pratyAhAra with the same ghoSa as the letter input are: ".implode(",",$ghoshasamya)."</br>";    
+	if ($type==="savarna") {echo "The letters in the pratyAhAra with the same ghoSa as the letter input are: ".implode(",",$ghoshasamya)."</br>"; }
 }
 if(empty($prana)===FALSE)
 {
 $pranasamya = array_intersect(flatten($prana),$array);
-//echo "The letters in the pratyAhAra with the same prANa as the letter input are: ".implode(",",$pranasamya)."</br>";    
+	if ($type==="savarna") {echo "The letters in the pratyAhAra with the same prANa as the letter input are: ".implode(",",$pranasamya)."</br>"; }
 }
 if(empty($svar)===false)
 {
 if(in_array($text,$ac)) 
         { $svarasamya = array_intersect(flatten($svar),$array,$ac); 
-//echo "The letters in the pratyAhAra with the same udAtta/anudAtta/svarita as the letter input are: ".implode(",",$svarasamya)."</br>";
-        }    
+			if ($type==="savarna") {echo "The letters in the pratyAhAra with the same udAtta/anudAtta/svarita as the letter input are: ".implode(",",$svarasamya)."</br>"; }
+        } 
 }
 if(empty($sthanasamya)===false && empty($abhyantarasamya)===false && empty($ghoshasamya)===false && empty($pranasamya)===false)
 { $l = array_intersect($sthanasamya,$abhyantarasamya,$ghoshasamya,$pranasamya); }
