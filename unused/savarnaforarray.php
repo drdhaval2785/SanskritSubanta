@@ -1,4 +1,5 @@
 ﻿<?php
+error_reporting(0);
 $first = $_POST["letter"];
 $second = $_POST['pratyahara'];
 echo "You entered this pratyAhAra: ".$first."</br>You want to find its savarNa in this pratyAhAra: ".$second."</br>";
@@ -48,7 +49,6 @@ $text = array("y","y","v","v","r","r","l","l");
 }
 else
 {
-$a = str_split($text);
 $a[1] = str_replace($a[1],"-".$a[1],$a[1]); 
 $text = array_slice($shiv,array_search($a[0],$shiv),array_search($a[1],$shiv)-array_search($a[0],$shiv)+1);    
 $b = implode(" ",$text);
