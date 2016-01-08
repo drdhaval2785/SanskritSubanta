@@ -66,6 +66,7 @@ $verbset = verbset_from_number($number); // bhvAdi, adAdi etc. Fetched via ajax.
 $frontend = $_GET['frontend']; // Whether to display sUtras in frontend or not. Fetched via tiGanta.html
 //$frontend = '0';
 $type = $_GET['type'];
+$letter = $_GET['letter'];
 //$type = 'subanta';
 global $storedata;
 if (!$verbset) { $verbset = scrape1($number,8,9,1)[0]; } // for overcoming issue in https://github.com/drdhaval2785/SanskritVerb/issues/97
@@ -79,6 +80,12 @@ tran - 'SLP1'
 upasarga - ''
 vAcya - 'kartR'
 */
+/* input from asyaprayatna.html */
+if ($type==="asyaprayatna")
+{
+	asyaprayatna($letter);
+	exit();
+}
 // Input from commandline has to be in `php tiGanta.php 01.0001 law` format. Other details are fetched from verb number.
 if ($type==="tiGanta" && (isset($argv[0]) || $test===1) )
 {
