@@ -95,14 +95,20 @@ elseif ($type==="savarna")
 	exit();
 }
 /* input from pratyahara.html */
-if ($type==="pratyahara")
+elseif ($type==="pratyahara")
 {
 	$pratyahara = prat($pr);
 	print_r($pratyahara);
 	exit();
 }
+/* input from stri.html */
+elseif ($type==="stri")
+{
+	$gender = "f";
+	$type = "subanta";
+}
 // Input from commandline has to be in `php tiGanta.php 01.0001 law` format. Other details are fetched from verb number.
-if ($type==="tiGanta" && (isset($argv[0]) || $test===1) )
+elseif ($type==="tiGanta" && (isset($argv[0]) || $test===1) )
 {
 	$number = $argv[1];
 	$first = dhatu_from_number($number);
@@ -656,6 +662,7 @@ if ($type==='tiGanta')
 if ($debug===1) {dibug("600");}
 
 if ($type==='subanta') { $suffix = $sup1; }
+elseif ($type==='stri') { $suffix = array("su!"); }
 elseif ($type==="sandhi")
 {
 	$suffix = array($_GET['sec']);
@@ -8488,8 +8495,7 @@ if ($debug===1) {dibug("8400");}
 if ($gender==="f" && sub(array("a+"),$sup,blank(0),0) && in_array($so,$sup) && ($SaTsvasrAdi=0 || sub(array("a+"),$sup,blank(0),0)) && $ajAdyataSTAp===0)
 {
     $text = two(array("a+"),$sup,array("A+"),$sup,0);
-    echo "<p class = st >By ajAdyataSTAp (".link_sutra("4.1.4").") :</p>\n";
-    echo "<p class = st >अजाद्यतष्टाप्‌ (४.१.४) :</p>\n";
+	storedata('4.1.4','st',0);
     $Ap=1;
 }
 /* akaH savarNe dIrghaH (6.1.101) */
@@ -11784,7 +11790,7 @@ if( $veda===1 && sub(array("apasparDeTAm","AnarcuH","AnarhuH","cucyuvize","tatyA
 	storedata('6.1.35','sa',0);
 }
 if ($debug===1) {dibug('11700');}
-$us='';
+//$us='';
 /* Displaying the sUtras and sequential changes of $frontend is not set to 0. */
 if ($frontend!=="0")
 {

@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="mystyle.css">
+<link rel="stylesheet" type="text/css" href="scripts/mystyle.css">
 </link>
 </meta>
 </head> 
@@ -29,9 +29,9 @@
   */
  
 /* Including arrays and functions */
-include "function.php"; // includes the file function.php which is collection of functions used in this code.
-include "slp-dev.php"; // includes code for conversion from SLP to devanagari,
-include "dev-slp.php"; // includes code for devanagari to SLP.
+include "scripts/function.php"; // includes the file function.php which is collection of functions used in this code.
+include "scripts/slp-dev.php"; // includes code for conversion from SLP to devanagari,
+include "scripts/dev-slp.php"; // includes code for devanagari to SLP.
 
 /* hides error reports. */
 //error_reporting(0);
@@ -108,15 +108,15 @@ $first = json_decode($first);
 $first = convert1($first); // converting to SLP1
 
 $fo = $first; // remembering the original prakRti. Sometimes we need to know what was the original prakRti.
-
 $text=array($first);
+print_r($text);
 /* striyAm (4.1.3) */
     echo "<p class = pa >striyAm (4.1.3) :</p>"; // the class 'pa' is used for sUtras, which are not vidhisUtras.
     echo "<p class = pa >स्त्रियाम्‌ (४.१.३) :</p>";
     display(0); // see function.php for documentation for display function.
 /* adding a "+" sign to mark separation of prAtipadika and pratyaya */
 $text = addlast($text,"+",0);
-
+print_r($text);
 /* ajAdyataSTAp (4.1.4) */
 // dIrgha are pending. e.g. mahAja? what will happen? 
 // SUdrA is pending. User feedback needed.
@@ -268,8 +268,6 @@ if ($gender === "f" && sub($ugitprAtipadika,array("+"),blank(0),0) )
     $nadi=1;
 }
 
-
-    
 ?>
 </body>
 </html>

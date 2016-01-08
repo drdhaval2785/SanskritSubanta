@@ -744,11 +744,11 @@ function display($n)
         }
     for($i=1;$i<count($text)+1;$i++) // for all members of the $text array
     {
-        if ($us==="")
+        if (($us==="" && $type==="tiGanta") || $type!=="tiGanta")
         {
         echo "<p class = form>$i - ".convert($text[$i-1])."</p>\n"; // showing the output to the browser. e.g. 1. rAmaH. $i is for numbering. function convert converts the output into devanAgarI.
         }
-        elseif ($us!=="" )
+        elseif ($us!=="" && $type==="tiGanta")
         {
         echo "<p class = form>$i - ".convert($us."+".$text[$i-1])."</p>\n"; // showing the output to the browser. e.g. 1. rAmaH. $i is for numbering. function convert converts the output into devanAgarI.
         }
@@ -3975,7 +3975,7 @@ if(in_array($text,$hl))
 {
     if(empty($sthanasamya)===false&&empty($abhyantarasamya)===false&&empty($ghoshasamya)===false&&empty($pranasamya)===FALSE&&empty($l)===false) 
     {//echo "four match";
-            $savarna = implode(", ",$l);     
+           $savarna = implode(", ",$l);     
     }
     elseif (empty($sthanasamya)===false&&empty($abhyantarasamya)===false&&empty($ghoshasamya)===false&&empty($m)===false)
     {//echo "three match";

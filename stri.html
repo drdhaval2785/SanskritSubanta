@@ -4,17 +4,17 @@
 <!--... Defining UTF-8 as our default character set, so that devanagari is displayed properly. -->
 <meta charset="UTF-8">
 <!--... Defining CSS -->
-<link rel="stylesheet" type="text/css" href="mystyle.css">
+<link rel="stylesheet" type="text/css" href="scripts/mystyle.css">
 <!--... including jquery. -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
 <!--... script.js is javascript which we use to make the frontend interective for user feedback. Whenever the user clicks the radio button specified in script.js, the data is sent to ajax.php and then output from ajax.php is shown in the frontend. This process may continue as long as you want. -->
-<script src="script.js" ></script>
+<script src="scripts/script.js" ></script>
 </head>
 <body>
 
-<div>
+<div class="one">
 <!--... submitting data to stri.php. -->
-<form action="stri.php" method = "get" id="frm">
+<form action="panini.php" method = "get" id="frm">
 <!--... first is the input word, which the user enters. -->
 प्रकृतिः : <input type="text" name="first" id="first"><br>
 <!--... Defining transliteration of the word. Default is kept as Devanagari. User may change it according to his wish. -->
@@ -34,6 +34,8 @@
 <input type="submit">
 <!--... Sending the step id to stri.php hidden. -->
 <input type="hidden" name="step" id="step" value="0" />
+<input type="hidden" name="type" id="stri" value="stri" />
+<input type="hidden" name="frontend" id="stri" value="1" />
 </form>
 </div>
 

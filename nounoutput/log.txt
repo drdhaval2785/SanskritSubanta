@@ -96,3 +96,23 @@ Fri, 08 Jan 2016 06:49:03
 verb = rAma, transliteration = SLP1
 Request completed on :Fri, 08 Jan 2016 06:49:05
 ------------------------------
+Fri, 08 Jan 2016 12:20:03
+verb = kaTa, transliteration = Devanagari
+Request completed on :Fri, 08 Jan 2016 12:20:09
+------------------------------
+Fri, 08 Jan 2016 12:21:40
+verb = kaTa, transliteration = Devanagari
+Request completed on :Fri, 08 Jan 2016 12:21:47
+------------------------------
+Fri, 08 Jan 2016 12:24:46
+verb = kaTa, transliteration = Devanagari
+Request completed on :Fri, 08 Jan 2016 12:24:53
+------------------------------
+Fri, 08 Jan 2016 12:26:58
+verb = kaTa, transliteration = Devanagari
+Request completed on :Fri, 08 Jan 2016 12:27:05
+------------------------------
+Fri, 08 Jan 2016 12:27:37
+verb = kartf, transliteration = Devanagari
+Request completed on :Fri, 08 Jan 2016 12:27:45
+------------------------------
