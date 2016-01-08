@@ -267,7 +267,7 @@ $(document).ready(function() {
 	$( document ).on( "click", "input:radio[name=gender]", function() {
 		if($('input:radio[name=gender]:checked').val() === "n"){
 			$('#step').val('3');
-		 	$.getData();
+			$.getData();
 			//$('.innerStep').html('');
 			$('#step1').html(response);
 		}
