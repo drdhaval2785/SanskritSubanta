@@ -4,20 +4,20 @@
 <!--... Defining UTF-8 as our default character set, so that devanagari is displayed properly. -->
 <meta charset="UTF-8">
 <!--... Defining CSS -->
-<link rel="stylesheet" type="text/css" href="mystyle.css">
-  <link rel="stylesheet" href="jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="scripts/mystyle.css">
+  <link rel="stylesheet" href="scripts/jquery-ui.css">
 <!--... including Ajax jquery. -->
 <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script> -->
-<script src="ajaxcode.js" ></script>
-  <script src="jquery-ui.js"></script>
+<script src="scripts/ajaxcode.js" ></script>
+  <script src="scripts/jquery-ui.js"></script>
 <!--... script.js is javascript which we use to make the frontend interective for user feedback. Whenever the user clicks the radio button specified in script.js, the data is sent to ajax.php and then output from ajax.php is shown in the frontend. This process may continue as long as you want. -->
-<script src="script.js" ></script>
+<script src="scripts/script.js" ></script>
 </head>
 <body>
 
 <div>
 <!--... submitting data to subanta.php. -->
-<form action="subantamerger.php" method = "get" id="frm">
+<form action="panini.php" method = "get" id="frm">
 <!--... first is the input word, which the user enters. -->
 प्रकृतिः : <input type="text" name="first" required id="first" autofocus="autofocus" >   <font color="red" size="2">Mandatory field.</font><br>
 <!--... Defining gender of the word. -->
