@@ -67,6 +67,7 @@ $frontend = $_GET['frontend']; // Whether to display sUtras in frontend or not. 
 //$frontend = '0';
 $type = $_GET['type'];
 $letter = $_GET['letter'];
+$pr = $_GET['pratya'];
 //$type = 'subanta';
 global $storedata;
 if (!$verbset) { $verbset = scrape1($number,8,9,1)[0]; } // for overcoming issue in https://github.com/drdhaval2785/SanskritVerb/issues/97
@@ -84,6 +85,13 @@ vAcya - 'kartR'
 if ($type==="asyaprayatna")
 {
 	asyaprayatna($letter);
+	exit();
+}
+/* input from pratyahara.html */
+if ($type==="pratyahara")
+{
+	$pratyahara = prat($pr);
+	print_r($pratyahara);
 	exit();
 }
 // Input from commandline has to be in `php tiGanta.php 01.0001 law` format. Other details are fetched from verb number.
