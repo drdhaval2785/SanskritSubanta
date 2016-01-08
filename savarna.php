@@ -177,7 +177,7 @@ if(in_array($text,$hl))
     }
     elseif (empty($sthanasamya)===false&&empty($abhyantarasamya)===false&&empty($ghoshasamya)===false&&empty($m)===false)
     {echo "three match";
-            $savarna = implode(", ",$m);     
+            $savarna = implode(", ",$m);
     }
     elseif (empty($sthanasamya)===false&&empty($abhyantarasamya)===false&&empty($pranasamya)===false&&empty($o)===false)
     {echo "three match";

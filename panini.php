@@ -68,9 +68,10 @@ $frontend = $_GET['frontend']; // Whether to display sUtras in frontend or not. 
 $type = $_GET['type'];
 $letter = $_GET['letter'];
 $pr = $_GET['pratya'];
+$inprat = $_GET['pratyahara'];
 //$type = 'subanta';
 global $storedata;
-if (!$verbset) { $verbset = scrape1($number,8,9,1)[0]; } // for overcoming issue in https://github.com/drdhaval2785/SanskritVerb/issues/97
+if (!$verbset && $type==="tiGanta") { $verbset = scrape1($number,8,9,1)[0]; } // for overcoming issue in https://github.com/drdhaval2785/SanskritVerb/issues/97
 /* Now trying to make program equally compatible with commandline.
 The proposed structure is php tiGanta.php verb verbset lakAra tran upasarga vAcya
 defaults:
@@ -85,6 +86,12 @@ vAcya - 'kartR'
 if ($type==="asyaprayatna")
 {
 	asyaprayatna($letter);
+	exit();
+}
+elseif ($type==="savarna")
+{
+	$sav = sl($letter,prat($inprat));
+	echo "savarNa of '".$letter."' in pratyAhAra '".$inprat."' is: ".$sav;
 	exit();
 }
 /* input from pratyahara.html */
