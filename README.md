@@ -1,3 +1,7 @@
+#This code is now subsumed under drdhaval2785/SanskritVerb repository
+
+Further corrections to the code would be made there.
+
 sanskrit
 ========
 #For using the code online:

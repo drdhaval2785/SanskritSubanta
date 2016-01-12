@@ -116,3 +116,37 @@ Fri, 08 Jan 2016 12:27:37
 verb = kartf, transliteration = Devanagari
 Request completed on :Fri, 08 Jan 2016 12:27:45
 ------------------------------
+Tue, 12 Jan 2016 05:34:37
+verb = jawA, transliteration = SLP1
+Request completed on :Tue, 12 Jan 2016 05:34:40
+------------------------------
+Tue, 12 Jan 2016 05:36:47
+verb = jawA, transliteration = SLP1
+Request completed on :Tue, 12 Jan 2016 05:36:50
+------------------------------
+Tue, 12 Jan 2016 05:39:47
+verb = jawA, transliteration = SLP1
+Request completed on :Tue, 12 Jan 2016 05:39:50
+------------------------------
+Tue, 12 Jan 2016 05:42:02
+verb = jawA, transliteration = SLP1
+Request completed on :Tue, 12 Jan 2016 05:42:04
+------------------------------
+Tue, 12 Jan 2016 05:42:19
+verb = jawA, transliteration = SLP1
+Request completed on :Tue, 12 Jan 2016 05:42:21
+------------------------------
+Tue, 12 Jan 2016 05:44:06
+verb = jawA, transliteration = SLP1
+Request completed on :Tue, 12 Jan 2016 05:44:09
+------------------------------
+Tue, 12 Jan 2016 05:44:26
+verb = jawA, transliteration = SLP1
+Tue, 12 Jan 2016 05:45:02
+verb = jawA, transliteration = SLP1
+Request completed on :Tue, 12 Jan 2016 05:45:05
+------------------------------
+Tue, 12 Jan 2016 05:45:23
+verb = jawA, transliteration = SLP1
+Request completed on :Tue, 12 Jan 2016 05:45:26
+------------------------------
