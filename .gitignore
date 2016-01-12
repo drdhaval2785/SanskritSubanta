@@ -215,5 +215,6 @@ pip-log.txt
 .mr.developer.cfg
 
 #Custom
-verboutput
-nounoutput
+/verboutput/*.*
+/nounoutput/*.*
+
