@@ -6,9 +6,9 @@ sanskrit
 ========
 #For using the code online:
 
-Use http://lanover.com/lan/sanskrit/sandhi.html for sandhi generation.
+Use http://www.sanskritworld.in/sanskrittool/sandhi.html for sandhi generation.
 
-Use http://lanover.com/lan/sanskrit/subanta.html for subanta generation.
+Use http://www.sanskritworld.in/sanskrittool/subanta.html for subanta generation.
 
 #For using the code offline on your computer:
 
