@@ -1,38 +1,34 @@
-#SanskritSubanta
+SanskritSubanta
+==============
 
-##DEPRECATED
+# IMPORTANT: THIS REPO IS DEPRECATED!
 
-Please note that this code is now subsumed under the [`drdhaval2785/SanskritVerb repository`](https://github.com/drdhaval2785/SanskritVerb) and all development will continue there.
+This code is now subsumed under the [`drdhaval2785/SanskritVerb repository`](https://github.com/drdhaval2785/SanskritVerb) and all development will continue there. Please open any issues and pull requests to the **SanskritVerb** repo.
 
-##For using the code online:
+### Online Demos
 
-* Use http://www.sanskritworld.in/sanskrittool/subanta.html for subanta generation.
-* Use http://www.sanskritworld.in/sanskrittool/SanskritVerb/tiGanta.html for tiGanta generation (Verb conjugation.)
-* Use http://www.sanskritworld.in/sanskrittool/sandhi.html for sandhi generation.
+* [*tiṅanta* generation (verb conjugation)](http://www.sanskritworld.in/sanskrittool/SanskritVerb/tiGanta.html)
+* [*subanta* generation (noun declension)](http://www.sanskritworld.in/sanskrittool/subanta.html)
+* [*sandhi* generation](http://www.sanskritworld.in/sanskrittool/sandhi.html)
 
-##For using the code offline on your computer:
+### Running the Code Locally with XAMPP
 
-1. Download the latest version of XAMPP from https://www.apachefriends.org/index.html
+This is a one time exercise. Once you have completed the steps below, you should only open your browser (Firefox, Chrome, Internet Explorer, etc.) and browse to `localhost/SanskritVerb/tiGanta.html` to access a frontend that will allow you to interact with the machine.
 
-2. Install XAMPP.
-
+1. Download the latest version of [XAMPP](https://www.apachefriends.org/index.html)
+2. Install XAMPP
 3. Locate XAMPP directory. Usually it is `c://xampp`
+4. Go to `xampp/htdocs` directory
+5. Create a directory named `sanskrit`
+6. Copy-and-paste the files mentioned in the next section in `sanskrit` directory (This is a one-time job)
+7. Go to the `xampp` folder and click on `xampp-control`
+8. Click start for **Apache**, **MySQL**, **Filezilla** (This you have to do all time you start your computer — this functions as server for your html and php files)
 
-4. go to `xampp/htdocs` directory.
-
-5. Create a directory named `sanskrit`.
-
-5. Copy paste the files mentioned in the next section in `sanskrit` directory. (This is a one-time job).
-
-6. Go to `xampp folder` and click on `xampp-control`.
-
-7. Click start for Apache, MySQL, Filezilla. (This you have to do all time you start your computer. This functions as server for your html and php files.)
-
-##For Sandhi generation:
+### For Sandhi generation:
 
 This is an attempt to create an open source sandhi joiner.
 
-The text used is **siddhAntakaumudI**.
+The text used is **Siddhāntakaumudī**.
 
 Install `sandhi.html`, `sandhi.php`, `dev-slp.php`, `slp-dev.php`, `function.php` and the `mystyle.css` in your localhost and run the `sandhi.html`.
 
@@ -40,7 +36,7 @@ Input your words and provide necessary user input. Machine will fetch the output
 
 **For offline usage, please run `localhost/sanskrit/sandhi.html` from your browser.**
 
-##For Subanta generation:
+### For Subanta generation:
 
 Install `dev-slp.php`, `slp-dev.php`, `function.php`, `mystyle.css`, `subanta.html`, `subanta.php`, `ajax.php` and `script.js` in your system and then input a word.
 
